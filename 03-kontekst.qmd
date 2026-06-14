@@ -22,6 +22,17 @@ Model „czytający" surowy PDF dostaje numery stron, stopki i śmieci po OCR �
 - **DOCX** niesie balast formatowania.
 - **Markdown** to czysty tekst ze strukturą (nagłówki, listy): model dostaje treść i hierarchię bez szumu, mniej tokenów idzie na bałagan, a kontekst jest „chudszy" i czytelniejszy.
 
+<!-- ════════ GRAFIKA [G10] ════════
+TYP: GENERATOR (parsowanie PDF → Markdown)
+PLIK: images/g10-pdf-markdown.png
+PROMPT: "Dwa panele obok siebie z poziomą strzałką między nimi. Lewy: zagracona strona PDF — kolumny,
+numery stron, stopki, plamki/artefakty po OCR (chaos). Prawy: czysty dokument Markdown — wyraźne nagłówki
+i listy (porządek). Minimalistyczna ilustracja edytorska, cienka precyzyjna kreska, płaskie kolory, japandi.
+Tło jednolite matowe kremowe #F1ECE3. Akcenty: szałwiowa zieleń #8A9A82, błękit łupkowy #6B7B8C; kreska
+atrament #26211C. Bez gradientów, winiet i cieni; tekst jako abstrakcyjne kreski (nieczytelny). 16:9." -->
+
+![](images/g10-pdf-markdown.png){fig-align="center" width="80%"}
+
 Konwersja nie wymaga programowania — uruchamiamy gotowy, przetestowany skrypt jedną komendą:
 
 ```bash
@@ -51,6 +62,18 @@ Wklejona tabela z Excela rozjeżdża się w tekście — model zgaduje, która l
 { "autorzy": ["Kowalski, Jan"], "rok": 2021, "metoda": "analiza jakościowa",
   "glowna_teza": "...", "cytat_kotwica": "...", "strona": 12 }
 ```
+
+<!-- ════════ GRAFIKA [G11] ════════
+TYP: GENERATOR (rozjechana tabela → uporządkowany JSON)
+PLIK: images/g11-tabela-json.png
+PROMPT: "Dwa panele obok siebie ze strzałką między nimi. Lewy: rozjechana tabela skopiowana z arkusza —
+poprzesuwane, pomieszane komórki; niejasne, która liczba to rok, a która strona (chaos). Prawy: uporządkowany
+zapis JSON z wyraźnie nazwanymi polami klucz–wartość i schludnymi wcięciami (porządek). Minimalistyczna
+ilustracja edytorska, cienka precyzyjna kreska, płaskie kolory, japandi. Tło matowe kremowe #F1ECE3. Akcenty
+szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C; kreska atrament #26211C. Bez gradientów, winiet i cieni;
+tekst jako abstrakcyjne kreski (nieczytelny). 16:9." -->
+
+![](images/g11-tabela-json.png){fig-align="center" width="80%"}
 
 JSON ma trzy zalety nad wklejoną tabelą: nazywa każde pole, jest stabilny przy zagnieżdżeniu (np. lista autorów w rekordzie) i — gdy poprosisz o **wynik w JSON** — zwraca dane gotowe do dalszego przetworzenia, choćby wczytania z powrotem do arkusza. Tabela wystarczy tylko do małych, płaskich zestawień na jeden rzut oka.
 

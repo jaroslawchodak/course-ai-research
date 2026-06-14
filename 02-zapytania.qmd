@@ -39,6 +39,17 @@ Zbuduj plik `00_mapa-narzedzi.md` z tabelą: *narzędzie · typ · do czego uży
 
 Prompt to **nauka iteracyjna i empiryczna** — idealną instrukcję buduje się krok po kroku, obserwując błędy. Informacje stałe (rola, format) oddzielamy od zmiennych (konkretne dane); to zalążek myślenia o prompcie systemowym.
 
+<!-- ════════ GRAFIKA [G09] ════════
+TYP: GENERATOR (diagram 4 warstw)
+PLIK: images/g09-prompt-4-warstwy.png
+PROMPT: "Diagram czterech paneli ułożonych jeden nad drugim: ROLA / KONTEKST / ZADANIE / FORMAT, każdy
+jako cienko obrysowany prostokąt z małą ikoną. Minimalistyczna ilustracja edytorska, cienka precyzyjna
+kreska, płaskie kolory, japandi. Tło jednolite matowe kremowe #F1ECE3, dużo pustej przestrzeni. Akcenty:
+szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, kreska w atramencie #26211C. Bez gradientów, winiet i
+ostrych cieni, bez czytelnego tekstu. 16:9." -->
+
+![](images/g09-prompt-4-warstwy.png){fig-align="center" width="60%"}
+
 Porównajmy dwie jakości tej samej prośby. Najpierw wersja, która zawodzi:
 
 ```text
