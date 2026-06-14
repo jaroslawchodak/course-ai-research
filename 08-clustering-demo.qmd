@@ -47,7 +47,7 @@ Uruchomienie przez OpenCode z **modelem lokalnym** oznacza, że streszczenia **n
 :::
 
 ::: {.callout-note title="Dwa wnioski z demonstracji"}
-Po pierwsze, na pokazie do folderu `summaries/` trafia znacznie więcej plików — kilkadziesiąt do stu — żeby było widać prawdziwą skalę możliwości modeli agentycznych. Po drugie, outputem jest nie tylko raport, ale i **OPML** — czyli struktura, którą znamy z Dnia 2, gotowa do napisania własnego przeglądu literatury.
+Po pierwsze, na pokazie do folderu `summaries/` trafia znacznie więcej plików — kilkadziesiąt do stu — żeby było widać prawdziwą skalę możliwości modeli agentycznych. Po drugie, outputem jest nie tylko raport, ale i **OPML** — czyli struktura, którą już znamy, gotowa do napisania własnego przeglądu literatury.
 :::
 
 Agent zadziałał. Zostaje złożyć wszystkie nawyki z trzech dni w jeden, powtarzalny i bezpieczny protokół — i to jest temat ostatniego rozdziału.

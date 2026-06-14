@@ -6,13 +6,23 @@ To materiały do **3-dniowego półwarsztatu (24 godziny lekcyjne)** dla multidy
 To **wersja do czytania** — dla osób, które nie były na warsztacie albo chcą wrócić do treści po sesji. Slajdy do projekcji prowadzę z osobnego źródła (`_slajdy-kurs-AI.qmd`); tutaj wszystko jest spisane w spokojnym, czytelnym formacie, rozdział po rozdziale.
 :::
 
+<!-- ════════ OKŁADKA KSIĄŻKI [COVER] ════════
+TYP: GENERATOR (okładka)  |  PLIK: images/cover.png
+Po wygenerowaniu: odkomentuj `cover-image: images/cover.png` w _quarto.yml.
+PROMPT: "Minimalist editorial book cover, thin precise line work, flat colors, japandi aesthetic.
+Background: uniform matte warm cream / light beige #F1ECE3 (japandi paper tone), lots of empty negative
+space. Motyw: spokojny warsztat badacza z AI — uporządkowane dokumenty/markdown, delikatny graf wiedzy,
+mały znak terminala — jako lekka kompozycja z cienkich linii. Muted accents: sage green #8A9A82, cool
+slate blue #6B7B8C; line work in warm ink #26211C. No gradients, no vignettes, no harsh shadows, no text
+on the image. Calm, quiet composition. Portrait cover ratio (~3:4)." -->
+
+
 <!-- ════════ GRAFIKA [G01] ════════
 TYP: GENERATOR (ilustracja otwierająca)
 PLIK: images/g01-hero.png
 PROMPT: "Minimalistyczna ilustracja koncepcyjna: badacz przy biurku współpracujący z asystentem AI
 jako świetlisty, uporządkowany panel z dokumentami markdown i grafem wiedzy. Po lewej chaos surowych
-PDF-ów, po prawej uporządkowana struktura. Paleta granat/biel/bursztyn, styl płaski, akademicki,
-bez tekstu, 16:9." -->
+PDF-ów, po prawej uporządkowana struktura. Paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, kreska w atramencie #26211C; bez gradientów, bez winiet, bez ostrych cieni, styl płaski, akademicki, bez tekstu, 16:9." -->
 
 ![](images/g01-hero.png){fig-align="center" width="78%"}
 
@@ -60,8 +70,8 @@ Nie musisz rozumieć sieci neuronowych.
 | Rozdział | Treść |
 |---|---|
 | **Fundament** | Trzy filary, słownik pojęć, łuk i agenda kursu. |
-| **Dzień 1 — Zapytania** | Krajobraz narzędzi, anatomia promptu, Markdown/XML, halucynacje i ochrona danych. |
-| **Dzień 2 — Kontekst** | Inżynieria kontekstu, PDF→Markdown, dane w JSON, RAG i matryca literatury. |
+| **Zapytania** | Krajobraz narzędzi, anatomia promptu, Markdown/XML, halucynacje i ochrona danych. |
+| **Kontekst** | Inżynieria kontekstu, PDF→Markdown, dane w JSON, RAG i matryca literatury. |
 | **NotebookLM** | Parser i generator notatek; case study czytania książki naukowej. |
 | **Deep research** | Tryby pogłębione i ich granice; obowiązkowa weryfikacja źródeł. |
 | **Lokalne LLM** | Dense vs MoE, agentic vs chatbot, kwantyzacja, uruchamianie z agentami. |

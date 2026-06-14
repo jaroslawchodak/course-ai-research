@@ -1,6 +1,6 @@
-# Dzień 2 — Inżynieria kontekstu: zakotwiczenie w danych
+# Inżynieria kontekstu: zakotwiczenie w danych
 
-Większość „słabych odpowiedzi AI" to nie wina modelu, lecz złego doboru kontekstu — za mało, za dużo albo nie tego. Drugi dzień jest o tym, **co** podać modelowi i jak ten materiał przygotować.
+Większość „słabych odpowiedzi AI" to nie wina modelu, lecz złego doboru kontekstu — za mało, za dużo albo nie tego. Ta część jest o tym, **co** podać modelowi i jak ten materiał przygotować.
 
 ## Od inżynierii promptu do inżynierii kontekstu
 
@@ -71,7 +71,7 @@ TYP: GENERATOR (diagram RAG)
 PLIK: images/g05-rag.png
 PROMPT: "Schemat RAG w 3 krokach: (1) biblioteka źródeł → (2) wyszukanie/selekcja trafnych fragmentów
 (lupa) → (3) model generuje odpowiedź zakotwiczoną w tych fragmentach. Strzałki, ikony, styl flat,
-granat/bursztyn, 16:9, minimum tekstu." -->
+paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9, minimum tekstu." -->
 
 ![](images/g05-rag.png){fig-align="center" width="80%"}
 

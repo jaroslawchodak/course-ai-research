@@ -3,7 +3,7 @@
 Ten plik jest pamięcią/kontekstem projektu dla asystenta AI. Ładuje się automatycznie po uruchomieniu `claude` w tym katalogu. Język pracy: **polski**.
 
 ## Czym jest to repo
-**Książka Quarto (format `book`)** do 3-dniowego kursu (24 godz.) o prompt engineeringu, inżynierii kontekstu i agentach AI dla multidyscyplinarnych pracowników naukowych. Renderuje się do **wielu plików HTML** (rozdział = osobna strona) → katalog `_book/`. Styl wizualny wzorowany na repo `/Users/jerry/dev/agentic-sociology` (motyw `litera`/`darkly`, `theme/custom.scss`, fonty Inter/JetBrains Mono).
+**Książka Quarto (format `book`)** do 3-dniowego kursu (24 godz.) o prompt engineeringu, inżynierii kontekstu i agentach AI dla multidyscyplinarnych pracowników naukowych. Renderuje się do **wielu plików HTML** (rozdział = osobna strona) → katalog `_book/`. Układ wzorowany na repo `/Users/jerry/dev/agentic-sociology`; styl wizualny: **Claude Design / japandi** — motyw `litera` + `theme/custom.scss` (kremowe matowe tło #F1ECE3, akcenty szałwia #8A9A82 / łupek #6B7B8C / atrament #26211C, bez trybu ciemnego), fonty Inter/JetBrains Mono.
 
 Istnieje też **wersja slajdowa** `_slajdy-kurs-AI.qmd` (revealjs, do projekcji). Prefiks `_` → Quarto pomija ją przy renderze książki; renderuj osobno: `quarto render _slajdy-kurs-AI.qmd --to revealjs`.
 
@@ -13,8 +13,9 @@ Repo celowo leży **poza iCloud** (`/Users/jerry/Documents/...` jest w iCloud), 
 ## Struktura
 - `_quarto.yml` — konfiguracja książki (lista rozdziałów, motyw, `output-dir: _book`)
 - `index.qmd` — Przedmowa
-- `01-fundament` · `02-dzien-1-zapytania` · `03-dzien-2-kontekst` · `04-notebooklm` · `05-deep-research` · `06-lokalne-llm` · `07-agenci-i-srodowiska` · `08-clustering-demo` · `09-integracja-ewaluacja` (`.qmd`)
-- `theme/custom.scss` — styl
+- `01-fundament` · `02-zapytania` · `03-kontekst` · `04-notebooklm` · `05-deep-research` · `06-lokalne-llm` · `07-agenci-i-srodowiska` · `08-clustering-demo` · `09-integracja-ewaluacja` (`.qmd`) — podział na „dni" usunięty (materiał przelewa się między dniami)
+- `theme/custom.scss` — styl japandi (paleta Claude Design)
+- okładka: prompt w `index.qmd` (`[COVER]`); po wygenerowaniu `images/cover.png` odkomentuj `cover-image` w `_quarto.yml`
 - `images/` — grafiki/zrzuty; **11 miejsc** oznaczonych w rozdziałach:
   - `GRAFIKA [G01–G08]` → **TYP: GENERATOR** (ilustracje; w komentarzu HTML jest gotowy prompt do generatora obrazów),
   - `GRAFIKA [S01–S03]` → **TYP: SCREENSHOT** (zrzuty ekranu),

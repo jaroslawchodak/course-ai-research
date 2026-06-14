@@ -6,6 +6,7 @@ book:
   title: "Prompt engineering w badaniach naukowych"
   subtitle: "Od pojedynczych zapytań do agentów AI i inżynierii kontekstu"
   #author: "Jarosław Chodak"
+  # cover-image: images/cover.png   # odkomentuj po wygenerowaniu okładki (prompt: zob. komentarz w index.qmd)
   date: today
   date-format: "YYYY-MM-DD"
   language: pl
@@ -22,8 +23,8 @@ book:
   chapters:
     - index.qmd
     - 01-fundament.qmd
-    - 02-dzien-1-zapytania.qmd
-    - 03-dzien-2-kontekst.qmd
+    - 02-zapytania.qmd
+    - 03-kontekst.qmd
     - 04-notebooklm.qmd
     - 05-deep-research.qmd
     - 06-lokalne-llm.qmd
@@ -33,9 +34,9 @@ book:
 
 format:
   html:
-    theme:
-      light: [litera, theme/custom.scss]
-      dark: [darkly, theme/custom.scss]
+    # Styl „Claude Design / japandi" — jednolita, ciepła, kremowa paleta (zob. theme/custom.scss).
+    # Świadomie bez trybu ciemnego, by utrzymać spójną, matową estetykę kremu.
+    theme: [litera, theme/custom.scss]
     toc: true
     toc-depth: 3
     toc-title: "Na tej stronie"

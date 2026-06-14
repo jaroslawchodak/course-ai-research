@@ -1,6 +1,6 @@
 # Deep research i jego granice
 
-Dzień trzeci zaczynamy od narzędzi, które robią najwięcej za nas — i właśnie dlatego wymagają najwięcej czujności.
+Tę część zaczynamy od narzędzi, które robią najwięcej za nas — i właśnie dlatego wymagają najwięcej czujności.
 
 ## Spektrum: od czatu do agentowego raportu
 

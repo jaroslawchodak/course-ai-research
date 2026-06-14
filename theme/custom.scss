@@ -1,8 +1,68 @@
 /*-- scss:defaults --*/
-$h2-font-size:          1.6rem !default;
-$headings-font-weight:  500 !default;
+// Paleta „Claude Design / japandi" — ciepła, matowa, spokojna.
+$cream:      #F1ECE3;   // tło, japandi paper
+$ink:        #26211C;   // atrament (tekst, kreska)
+$sage:       #8A9A82;   // akcent: szałwiowa zieleń
+$slate:      #6B7B8C;   // akcent: błękit łupkowy
+$slate-dark: #4E5D6B;   // ciemniejszy łupek do linków (kontrast)
+$warm:       #B08A6A;   // ciepły akcent (important)
+$surface:    #EAE3D6;   // karty / bloki kodu (odrobinę ciemniejsze tło)
+$line:       #DDD4C6;   // delikatne linie / obramowania
+
+$body-bg:              $cream;
+$body-color:          $ink;
+$link-color:          $slate-dark;
+$link-hover-color:    $slate;
+$headings-color:      $ink;
+$headings-font-weight: 500;
+$h2-font-size:        1.6rem;
+$border-color:        $line;
+$table-border-color:  $line;
+$code-color:          #6E5F50;
+$light:               $surface;
 
 /*-- scss:rules --*/
-h1, h2, h3, h4, h5, h6 {
-  text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
+// Matowo: bez gradientów, bez ostrych cieni, bez winiet.
+body { background-color: $cream; }
+
+.sidebar, .sidebar-navigation, nav.sidebar {
+  background-color: $surface !important;
+  box-shadow: none !important;
 }
+.card, .sidebar { box-shadow: none !important; }
+
+// Nagłówki — płaskie, bez „grawerowanego" cienia.
+h1, h2, h3, h4, h5, h6 { text-shadow: none; }
+
+// Bloki kodu — ciepła, matowa karta.
+div.sourceCode, pre.sourceCode {
+  background-color: $surface;
+  border: 1px solid $line;
+  border-radius: .375rem;
+}
+code:not(.sourceCode) {
+  background-color: #E8E1D3;
+  color: #6E5F50;
+  padding: .1em .35em;
+  border-radius: .25rem;
+}
+
+// Cytaty — akcent szałwiowy.
+blockquote {
+  border-left: 3px solid $sage;
+  color: #4A443D;
+}
+
+// Callouty — stonowane akcenty, matowe nagłówki.
+.callout { border-radius: .4rem; }
+.callout.callout-style-default > .callout-header { background-color: $surface; }
+.callout-note      { border-left-color: $slate; }
+.callout-tip       { border-left-color: $sage; }
+.callout-important { border-left-color: $warm; }
+.callout-warning   { border-left-color: #C2A86A; }
+
+// Tabele — delikatne linie.
+table { border-color: $line; }
+
+// Linki — cienkie podkreślenie.
+a { text-decoration-thickness: 1px; }

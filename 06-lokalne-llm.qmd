@@ -60,7 +60,7 @@ TYP: GENERATOR (diagram porównawczy)
 PLIK: images/g06-dense-moe.png
 PROMPT: "Porównanie Dense vs MoE. Po lewej sieć, w której świecą WSZYSTKIE węzły (Dense). Po prawej
 sieć, w której świeci tylko kilku wybranych ekspertów, reszta wyszarzona (MoE). Podpisy 'Dense' i
-'MoE'. Styl flat, granat/bursztyn, 16:9." -->
+'MoE'. Styl flat, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9." -->
 
 ![](images/g06-dense-moe.png){fig-align="center" width="78%"}
 

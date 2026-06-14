@@ -4,7 +4,7 @@ Pojedyncze techniki dają wartość dopiero złożone w *powtarzalny, bezpieczny
 
 ## Spięcie łuku w jeden protokół
 
-Cały kurs to jeden ciąg: **prompt (Dzień 1) → kontekst i dane (Dzień 2) → nadzorowany agent (Dzień 3)**. Osobisty protokół pracy z AI łączy cztery elementy w jedną stronę:
+Cały kurs to jeden ciąg: **prompt → kontekst i dane → nadzorowany agent**. Osobisty protokół pracy z AI łączy cztery elementy w jedną stronę:
 
 - **szablon promptu** (cztery warstwy),
 - **karta `privacy cage`** (co lokalnie, co w chmurze, czego nie powierzam AI),
@@ -40,7 +40,7 @@ TYP: GENERATOR (ilustracja zamykająca)
 PLIK: images/g08-zamkniecie.png
 PROMPT: "Spokojna, optymistyczna ilustracja: badacz i asystent-AI pracujący ramię w ramię nad
 uporządkowanym warsztatem wiedzy (markdown, graf, ikona lokalnego serwera). Symbolika kontroli i
-zaufania. Styl flat, granat/bursztyn, 16:9, bez tekstu." -->
+zaufania. Styl flat, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9, bez tekstu." -->
 
 ![](images/g08-zamkniecie.png){fig-align="center" width="72%"}
 

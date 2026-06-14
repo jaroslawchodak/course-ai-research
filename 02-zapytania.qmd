@@ -1,6 +1,6 @@
-# Dzień 1 — Od zapytania do precyzyjnej instrukcji
+# Od zapytania do precyzyjnej instrukcji
 
-Pierwszy dzień jest o jednej rzeczy: jak rozmawiać z modelem tak, by dostać użyteczną, sprawdzalną odpowiedź — i nie wyrządzić sobie krzywdy danymi.
+Ta część jest o jednej rzeczy: jak rozmawiać z modelem tak, by dostać użyteczną, sprawdzalną odpowiedź — i nie wyrządzić sobie krzywdy danymi.
 
 ## Krajobraz narzędzi i zasada ograniczonego zaufania
 
@@ -16,7 +16,7 @@ Badacz, który nie odróżnia czatu od trybu *research* i od wyszukiwarki AI, za
 TYP: GENERATOR (diagram)
 PLIK: images/g02-piec-narzedzi.png
 PROMPT: "Diagram pięciu typów narzędzi AI od lewej (prosty czat) do prawej (agentowy deep research),
-rosnąca złożoność, ikony zamiast tekstu, styl flat, granat/biel/bursztyn, 16:9, bez napisów." -->
+rosnąca złożoność, ikony zamiast tekstu, styl flat, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9, bez napisów." -->
 
 ![](images/g02-piec-narzedzi.png){fig-align="center" width="80%"}
 
@@ -107,7 +107,7 @@ TYP: GENERATOR (ilustracja metafory)
 PLIK: images/g04-privacy-cage.png
 PROMPT: "Subtelna ilustracja: wrażliwe dane badawcze (dokumenty, ikona medyczna, dyktafon) bezpiecznie
 wewnątrz delikatnej, świetlistej strefy na laptopie; chmura na zewnątrz oddzielona granicą. Styl flat,
-stonowany, 16:9, bez tekstu." -->
+paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9, bez tekstu." -->
 
 ![](images/g04-privacy-cage.png){fig-align="center" width="70%"}
 

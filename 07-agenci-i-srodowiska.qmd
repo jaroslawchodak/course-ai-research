@@ -4,7 +4,7 @@ Agent przyspiesza wieloetapową pracę — ale działa na *realnych plikach*. Be
 
 ## Od czatu do agenta: plik instrukcji projektowych
 
-**Agent** to model wyposażony w **narzędzia** (czytanie i zapis plików, wyszukiwanie) oraz w **plik instrukcji projektowych** — trwały „prompt systemowy projektu". Ten plik jest bezpośrednim rozwinięciem czterowarstwowego promptu z Dnia 1 i briefu z Dnia 2, tyle że trwałym.
+**Agent** to model wyposażony w **narzędzia** (czytanie i zapis plików, wyszukiwanie) oraz w **plik instrukcji projektowych** — trwały „prompt systemowy projektu". Ten plik jest bezpośrednim rozwinięciem czterowarstwowego promptu i briefu kontekstowego, tyle że trwałym.
 
 ```markdown
 # INSTRUKCJE PROJEKTU
@@ -33,7 +33,7 @@ TYP: GENERATOR (hierarchia)
 PLIK: images/g07-hierarchia-agentow.png
 PROMPT: "Uporządkowana lista/piramida 5 narzędzi agentowych od najważniejszego u góry: Claude
 Code/Cowork, Codex, Antigravity, OpenCode, a na dole drobna wzmianka Hermes/Pi. Każdy poziom z ikoną,
-malejący rozmiar, czytelne etykiety. Styl flat, granat/bursztyn, 16:9." -->
+malejący rozmiar, czytelne etykiety. Styl flat, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9." -->
 
 ![](images/g07-hierarchia-agentow.png){fig-align="center" width="72%"}
 
@@ -60,7 +60,7 @@ Nowoczesny **terminal** z asystą AI — wygodny do uruchamiania agentów i kome
 :::
 :::
 
-Do tego dochodzi klasyka z Dnia 1: edytory Markdown (iA Writer, Typora, MarkEdit, VS Code, Obsidian). Nie narzucamy jednego — chodzi o dobranie narzędzia do własnego stylu.
+Do tego dochodzi klasyka: edytory Markdown (iA Writer, Typora, MarkEdit, VS Code, Obsidian). Nie narzucamy jednego — chodzi o dobranie narzędzia do własnego stylu.
 
 ## MCP w jednym zdaniu
 

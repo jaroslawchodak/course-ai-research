@@ -46,19 +46,19 @@ Kurs prowadzi po jednym łuku i tej kolejności **nie odwracamy**: najpierw uczy
 
 ::: {.columns}
 ::: {.column width="33%"}
-**Dzień 1 — Zapytania**
+**Zapytania**
 *„Jak pytać?"*
 
 Krajobraz narzędzi · anatomia promptu · Markdown i XML · halucynacje i ochrona danych.
 :::
 ::: {.column width="33%"}
-**Dzień 2 — Kontekst**
+**Kontekst**
 *„Co podać modelowi?"*
 
 Czym jest kontekst · PDF→Markdown · dane w JSON · RAG i matryca · NotebookLM.
 :::
 ::: {.column width="33%"}
-**Dzień 3 — Agenci**
+**Agenci**
 *„Jak to bezpiecznie złożyć?"*
 
 Deep research · lokalne LLM · hierarchia agentów i edytory · clustering demo i portfolio.
@@ -75,4 +75,4 @@ Pracujemy w **zwykłym folderze plików** oraz w edytorze Markdown, Obsidianie, 
 Notion przechowuje treść na swoich serwerach. Dla materiałów badawczych łamie to zasadę `privacy cage`, dlatego nie budujemy na nim ćwiczeń. DEVONthink pokazuję wyłącznie jako *przykład* zaawansowanej, lokalnej bazy wiedzy prowadzącego — uczestnicy go nie potrzebują.
 :::
 
-Mając fundament za sobą, wchodzimy w Dzień 1 — od pojedynczego, niezgrabnego zapytania do precyzyjnej instrukcji.
+Mając fundament za sobą, zaczynamy od pojedynczego, niezgrabnego zapytania i doprowadzamy je do precyzyjnej instrukcji.

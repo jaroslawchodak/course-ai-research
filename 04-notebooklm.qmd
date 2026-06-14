@@ -70,7 +70,7 @@ Symetria z resztą kursu jest prosta: każde mocne narzędzie ma cenę.
 :::
 
 ::: {.callout-important title="Tylko źródła jawne"}
-Ceną wygody jest chmura: materiały trafiają na serwery Google. Niezanonimizowanych transkrypcji, recenzji pod NDA czy danych pacjentów tam **nie wgrywamy**. To naturalne wejście w Dzień 3, gdzie pokazujemy, jak te same zadania zrobić lokalnie, gdy dane są wrażliwe.
+Ceną wygody jest chmura: materiały trafiają na serwery Google. Niezanonimizowanych transkrypcji, recenzji pod NDA czy danych pacjentów tam **nie wgrywamy**. To naturalne wejście w część o agentach, gdzie pokazujemy, jak te same zadania zrobić lokalnie, gdy dane są wrażliwe.
 :::
 
-NotebookLM domyka temat kontekstu od strony narzędzia gotowego. Teraz przechodzimy do dnia trzeciego — najpierw do trybów *deep research*, a potem do tego, co zrobić, gdy dane nie mogą opuścić komputera.
+NotebookLM domyka temat kontekstu od strony narzędzia gotowego. Teraz przechodzimy do agentów — najpierw do trybów *deep research*, a potem do tego, co zrobić, gdy dane nie mogą opuścić komputera.
