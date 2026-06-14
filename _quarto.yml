@@ -6,7 +6,7 @@ book:
   title: "Prompt engineering w badaniach naukowych"
   subtitle: "Od pojedynczych zapytań do agentów AI i inżynierii kontekstu"
   #author: "Jarosław Chodak"
-  # cover-image: images/cover.png   # odkomentuj po wygenerowaniu okładki (prompt: zob. komentarz w index.qmd)
+  cover-image: images/cover.png
   date: today
   date-format: "YYYY-MM-DD"
   language: pl
