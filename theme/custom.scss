@@ -66,3 +66,13 @@ table { border-color: $line; }
 
 // Linki — cienkie podkreślenie.
 a { text-decoration-thickness: 1px; }
+
+// Strona tytułowa — większa, wyśrodkowana okładka.
+.quarto-cover-image {
+  display: block;
+  margin: 1.5rem auto 2.25rem;
+  width: 100%;
+  max-width: min(720px, 92%);
+  height: auto;
+  border-radius: .5rem;
+}
