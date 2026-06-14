@@ -12,6 +12,17 @@ Jego druga siła to **rozległy output**. Z tego samego materiału można wygene
 - **prezentacje, PDF, PPTX**,
 - **wideo** (omówienia) oraz **podcasty audio** — rozmowę dwóch syntetycznych głosów.
 
+<!-- ════════ GRAFIKA [G12] ════════
+TYP: GENERATOR (jedno źródło → wiele wyjść)
+PLIK: images/g12-notebooklm-outputy.png
+PROMPT: "Jedno źródło po lewej (książka/PDF) rozchodzi się wachlarzem cienkich linii do wielu wyjść po
+prawej: notatki, slajdy, ikona audio (podcast), ikona wideo. Minimalistyczna ilustracja edytorska, cienka
+precyzyjna kreska, płaskie kolory, japandi. Tło jednolite matowe kremowe #F1ECE3, dużo pustej przestrzeni.
+Akcenty: szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C; kreska atrament #26211C. Bez gradientów, winiet
+i cieni, bez czytelnego tekstu. 16:9." -->
+
+![](images/g12-notebooklm-outputy.png){fig-align="center" width="78%"}
+
 <!-- ════════ GRAFIKA [S02] ════════
 TYP: SCREENSHOT
 PLIK: images/s02-notebooklm.png
@@ -23,7 +34,7 @@ wielokanałowy output." -->
 
 ## Case study: czytanie książki naukowej
 
-Najlepiej pokazać NotebookLM na konkretnym, sprawdzonym schemacie czytania książki. Zaczynamy od **preambuły sesji**, którą wklejamy raz — to grounding w czystej postaci, te same zasady co w Dniu 1, tylko zaaplikowane do całej książki:
+Najlepiej pokazać NotebookLM na konkretnym, sprawdzonym schemacie czytania książki. Zaczynamy od **preambuły sesji**, którą wklejamy raz — to grounding w czystej postaci, te same zasady, które poznaliśmy wcześniej, tylko zaaplikowane do całej książki:
 
 ```markdown
 Zasady na całą rozmowę:

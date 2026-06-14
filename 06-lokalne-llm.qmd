@@ -70,6 +70,17 @@ Praktyczny wniosek dla badacza: na laptopie model MoE często daje lepszy stosun
 
 To jedno z najczęstszych źródeł rozczarowań. Ludzie biorą model, który pięknie odpowiada w czacie, wsadzają go do agenta i dziwią się, że nie wywołuje narzędzi i gubi format.
 
+<!-- ════════ GRAFIKA [G15] ════════
+TYP: GENERATOR (agentic vs chatbot — ten sam model, dwie role)
+PLIK: images/g15-agentic-vs-chatbot.png
+PROMPT: "Ten sam model (jeden prosty znak/okrąg) pokazany w dwóch rolach obok siebie. Po lewej CHATBOT:
+pojedynczy dymek rozmowy. Po prawej AGENT: ten sam znak połączony cienkimi liniami z narzędziami — plik,
+lupa, zapis — działa w pętli. Minimalistyczna ilustracja edytorska, cienka precyzyjna kreska, płaskie
+kolory, japandi. Tło matowe kremowe #F1ECE3. Akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C;
+kreska atrament #26211C. Bez gradientów, winiet i cieni, bez czytelnego tekstu. 16:9." -->
+
+![](images/g15-agentic-vs-chatbot.png){fig-align="center" width="78%"}
+
 - **Model agentyczny** potrafi wywoływać narzędzia (*tool calling*), trzymać format i działać w pętli — czytać pliki, wyszukiwać, zapisywać wyniki. Nadaje się do RAG i do pipeline'ów.
 - **Chatbot** świetnie rozmawia, ale w roli agenta zawodzi.
 

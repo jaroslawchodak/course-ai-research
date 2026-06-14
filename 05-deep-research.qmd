@@ -16,6 +16,17 @@ W praktyce badacza krążą tu konkretne narzędzia: **ChatGPT i Gemini Deep Res
 
 Deep research generuje *ładny raport* — ale ładny raport z trzema zmyślonymi cytatami jest gorszy niż brak raportu, bo usypia czujność. Narzędzia te świetnie **zbierają**, lecz **nie zastępują oceny badacza**: zdarzają im się źródła nieistniejące lub błędnie sparafrazowane oraz tendencyjny dobór.
 
+<!-- ════════ GRAFIKA [G14] ════════
+TYP: GENERATOR (weryfikacja cytowań)
+PLIK: images/g14-deep-research-weryfikacja.png
+PROMPT: "Kartka raportu z listą cytowań (jako abstrakcyjne kreski) i lupa najechana na trzy z nich: dwa
+oznaczone delikatnym ptaszkiem (zweryfikowane), jeden przekreślony / ze znakiem ostrzeżenia (zmyślony).
+Minimalistyczna ilustracja edytorska, cienka precyzyjna kreska, płaskie kolory, japandi. Tło matowe kremowe
+#F1ECE3, dużo pustej przestrzeni. Akcenty: szałwiowa zieleń #8A9A82 (ok) oraz ciepły akcent #B08A6A
+(ostrzeżenie); kreska atrament #26211C. Bez gradientów, winiet i cieni, bez czytelnego tekstu. 16:9." -->
+
+![](images/g14-deep-research-weryfikacja.png){fig-align="center" width="72%"}
+
 ::: {.callout-important title="Obowiązkowa weryfikacja próbki"}
 Z każdego raportu wylosuj **trzy cytowania** i sprawdź je u źródła (DOI, PubMed, OpenAlex). Zapisz, ile przeszło weryfikację. To nie biurokracja — to jedyna rzecz, która odróżnia przegląd od ładnie sformatowanego zgadywania.
 :::

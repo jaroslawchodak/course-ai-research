@@ -8,6 +8,17 @@ Agent dostaje folder ze streszczeniami literatury, **czyta wszystko**, **grupuje
 
 Wyobraź sobie folder z setką streszczeń. Mówisz: „przeczytaj wszystko, pogrupuj tematycznie, wskaż luki, zapisz raport i plan przeglądu". Wracasz po kawę — raport czeka, z listą plików, których agent użył, i z miejscami, gdzie sam się waha.
 
+<!-- ════════ GRAFIKA [G13] ════════
+TYP: GENERATOR (rozsypane notatki → klastry)
+PLIK: images/g13-klastrowanie.png
+PROMPT: "Po lewej luźno rozrzucone karteczki/notatki (chaos). Po prawej te same karteczki zebrane w kilka
+wyraźnych, otoczonych cienką linią grup-klastrów (porządek); pozioma strzałka między panelami.
+Minimalistyczna ilustracja edytorska, cienka precyzyjna kreska, płaskie kolory, japandi. Tło jednolite
+matowe kremowe #F1ECE3, dużo pustej przestrzeni. Akcenty: szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C;
+kreska atrament #26211C. Bez gradientów, winiet i cieni, bez czytelnego tekstu. 16:9." -->
+
+![](images/g13-klastrowanie.png){fig-align="center" width="80%"}
+
 ## Struktura pipeline'u
 
 Pełny, sprawdzony pipeline leży w katalogu `clustering-demo`; jego opis i powiązania z kursem są w `kurs-pe/modul-clustering-demo.md`.
