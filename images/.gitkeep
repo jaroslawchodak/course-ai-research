@@ -1,0 +1,3 @@
+# Ten plik utrzymuje katalog images/ w gicie (git nie śledzi pustych katalogów).
+# Tu wrzucaj grafiki/zrzuty oznaczone w prezentacji jako GRAFIKA [Gxx]/[Sxx]
+# PRZED renderem/publikacją (np. g01-hero.png, s01-konwersja-terminal.png).

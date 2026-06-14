@@ -1,0 +1,24 @@
+# --- Quarto ---
+/.quarto/
+_book/
+_site/
+_freeze/
+*_files/
+*_cache/
+*.html
+*.pdf
+
+# render lokalny slajdów (CI renderuje book od nowa)
+_slajdy-kurs-AI.html
+_slajdy-kurs-AI_files/
+
+# --- System ---
+.DS_Store
+Thumbs.db
+
+# --- Edytory / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

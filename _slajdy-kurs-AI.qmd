@@ -1,0 +1,752 @@
+---
+title: "Prompt engineering w badaniach naukowych"
+subtitle: "Od pojedynczych zapytań do agentów AI i inżynierii kontekstu"
+author: "Jarosław Chodak"
+date: "2026-06-14"
+lang: pl
+format:
+  revealjs:
+    theme: simple
+    slide-number: c/t
+    show-slide-number: all
+    progress: true
+    history: true
+    transition: fade
+    transition-speed: fast
+    width: 1280
+    height: 720
+    margin: 0.06
+    center-title-slide: true
+    highlight-style: github
+    code-line-numbers: true
+    code-overflow: wrap
+    footer: "Kurs: AI w badaniach naukowych · 3 dni / 24h · 2026"
+    incremental: false
+    toc: false
+execute:
+  echo: true
+  eval: false
+---
+
+<!--
+═══════════════════════════════════════════════════════════════════════════
+  PREZENTACJA QUARTO (revealjs).  Źródło treści: kurs-AI-reserach.md + plan-kursu-01.md.
+  Materiały: ./kurs-pe/ ; demo agentowe: ./clustering-demo/ (modul: kurs-pe/modul-clustering-demo.md).
+
+  RENDER:        quarto render prezentacja-kurs-AI.qmd
+  PODGLĄD:       quarto preview prezentacja-kurs-AI.qmd
+  GITHUB PAGES:  quarto publish gh-pages prezentacja-kurs-AI.qmd
+                 (alternatywnie zmień nazwę na index.qmd → renderuje się do index.html)
+
+  GRAFIKI: miejsca oznaczone blokiem "GRAFIKA [Gxx]/[Sxx]" + prompt/opis.
+           Pliki wrzucasz do ./images/ PRZED eksportem. TYP: GENERATOR = obraz z generatora,
+           TYP: SCREENSHOT = zrzut ekranu. Ścieżki ![](images/...) są już wpięte.
+
+  NOTATKI PRELEGENTA: bloki ::: notes ... ::: (niewidoczne na slajdzie, widoczne w trybie S).
+  Stan narzędzi: czerwiec 2026 — przed wykładem zweryfikuj liczby u źródeł.
+═══════════════════════════════════════════════════════════════════════════
+-->
+
+<!-- ════════ GRAFIKA [G01] ════════
+TYP: GENERATOR (ilustracja tytułowa / hero)
+PLIK: images/g01-hero.png
+PROMPT: "Minimalistyczna, elegancka ilustracja koncepcyjna: badacz przy biurku
+współpracujący z asystentem AI przedstawionym jako świetlisty, uporządkowany panel z
+dokumentami markdown i grafem wiedzy. Po lewej chaos surowych PDF-ów, po prawej
+uporządkowana struktura. Paleta stonowana (granat, biel, akcent bursztynowy), styl
+płaski, akademicki, bez tekstu na obrazie. Proporcje 16:9."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/g01-hero.png){width="70%" fig-align="center"}
+
+::: notes
+Powitanie. Ten kurs prowadzi od pojedynczego zapytania, przez inżynierię kontekstu, po nadzorowanych agentów AI. Trzy dni, dwadzieścia cztery godziny lekcyjne, format półwarsztatowy: 30–40% teorii i demonstracji, 60–70% praktyki. Grupa jest multidyscyplinarna — przykłady trzymam neutralne dziedzinowo, a Państwo pracują na własnych, zanonimizowanych materiałach. Nie trzeba umieć programować. Jedna obietnica na wstępie: po kursie nie będą Państwo „używać AI" — będą Państwo mieli *protokół* pracy z AI.
+:::
+
+---
+
+## Zaktualizowana agenda {.smaller}
+
+::: {.columns}
+::: {.column width="33%"}
+**DZIEŃ 1 — Zapytania**
+„Jak pytać?"
+
+- B1 · Krajobraz + ograniczone zaufanie
+- B2 · Anatomia promptu (4 warstwy)
+- B3 · Markdown i XML w prompcie
+- B4 · Halucynacje + ochrona danych
+:::
+::: {.column width="33%"}
+**DZIEŃ 2 — Kontekst**
+„Co podać modelowi?"
+
+- B5 · Czym jest kontekst
+- B6 · PDF → czysty Markdown (Python)
+- B7 · Dane strukturalne (JSON)
+- B8 · RAG + matryca literatury
+- 🆕 **NotebookLM** — parser i generator
+:::
+::: {.column width="33%"}
+**DZIEŃ 3 — Agenci**
+„Jak to bezpiecznie złożyć?"
+
+- B9 · Deep research i jego granice
+- B10 · 🆕 Lokalne LLM (Dense/MoE, qat)
+- B11 · 🆕 Hierarchia agentów + edytory
+- B12 · 🆕 Clustering Demo (live) + portfolio
+:::
+:::
+
+::: notes
+To jest mapa całości i zarazem kontrakt na trzy dni. Zwracam uwagę na cztery nowości w stosunku do pierwotnego planu, oznaczone „nowość": moduł NotebookLM w Dniu 2 jako parser i generator notatek; rozbudowany Dzień 3 — najpierw technikalia modeli lokalnych (Dense kontra MoE, kwantyzacja qat), potem uporządkowana hierarchia agentów i nowoczesne edytory, a na końcu demonstracja agentowa na żywo: klastrowanie literatury. Kolejności nie odwracamy — agent bez opanowanego promptu i kontekstu tylko szybciej powiela błędy.
+:::
+
+---
+
+## Jak działa ten kurs {.smaller}
+
+- **Każdy blok = 90 minut** i kończy się **konkretnym artefaktem**.
+- Suma artefaktów = **portfolio** (podstawa ewaluacji).
+- Pracujemy w **zwykłym folderze + edytorze Markdown / Obsidian / Zotero / Bookends**.
+- Materiały i szablony: katalog **`kurs-pe/`**.
+
+> **Trzy filary przez cały kurs:** ograniczone zaufanie · grounding (zakotwiczenie w danych) · `privacy cage` (klatka prywatności).
+
+::: notes
+Podkreślam praktyczność: nie wychodzimy z bloku bez artefaktu — szablonu promptu, mapy ryzyka, matrycy literatury, karty privacy cage. Wszystkie szablony są w folderze kurs-pe, więc nikt nie zaczyna od pustej kartki. I jeszcze jedno: nie polecam Notion na materiały badawcze — trzyma treść na serwerze, co łamie zasadę klatki prywatności. DEVONthink pokażę tylko jako mój przykład zaawansowanej bazy wiedzy — Państwo go nie potrzebują.
+:::
+
+# Część 0 — Fundament {background-color="#1a2b4a"}
+
+## Trzy filary
+
+::: {.columns}
+::: {.column width="33%"}
+### 1. Ograniczone zaufanie
+AI to **asystent pod nadzorem**, nie wyrocznia. Model nie „wie" — przewiduje prawdopodobny tekst. Stąd halucynacje.
+:::
+::: {.column width="33%"}
+### 2. Grounding
+Wartościowa odpowiedź opiera się na **podanym materiale** i **sprawdzalnych źródłach**, nie na „pamięci" modelu.
+:::
+::: {.column width="33%"}
+### 3. `privacy cage`
+Świadome ograniczanie przepływu danych do **kontrolowanego, w miarę możliwości lokalnego** środowiska.
+:::
+:::
+
+::: notes
+To jest serce kursu. Jeśli zapamiętają Państwo tylko jeden slajd — ten. Ograniczone zaufanie: model generuje statystycznie prawdopodobny ciąg, więc potrafi zmyślić cytat brzmiący jak prawdziwy. Grounding: zawsze pytam „na czym to opierasz?" i żądam cytatu z podanego materiału. Privacy cage: zanim cokolwiek wkleję, pytam „gdzie trafią te dane?". Cała reszta to techniki realizujące te trzy zasady.
+:::
+
+## Słownik pojęć (wprowadzamy stopniowo) {.smaller}
+
+| Termin | Po ludzku |
+|---|---|
+| **Token** | Najmniejszy kawałek tekstu modelu (≈ ¾ słowa). |
+| **Okno kontekstowe** | Ile tekstu model widzi naraz. Duże ≠ dobra pamięć. |
+| **Inżynieria kontekstu** | Jaką *konfigurację* informacji podać, by uzyskać pożądane zachowanie. |
+| **Halucynacja** | Zmyślenie podane z pełną pewnością. |
+| **Grounding** | Zakotwiczenie odpowiedzi w materiale i źródłach. |
+| **RAG** | Najpierw wyszukaj właściwe fragmenty, potem każ odpowiedzieć tylko na ich podstawie. |
+| **Agent** | Model z narzędziami (pliki, wyszukiwanie) wykonujący zadania wieloetapowe. |
+| **MCP** | Standard bezpiecznego sięgania modelu do zewnętrznych źródeł/narzędzi. |
+
+::: notes
+Nie omawiam tej tabeli punkt po punkcie — wróci do niej, gdy każde pojęcie pojawi się w praktyce. Teraz tylko sygnalizuję, że każdy termin techniczny wyjaśnię jednym prostym zdaniem, zanim go użyję. Żargonu informatycznego unikamy.
+:::
+
+# DZIEŃ 1 — Od zapytania do precyzyjnej instrukcji {background-color="#1a2b4a"}
+
+## B1 · Krajobraz narzędzi i ograniczone zaufanie {.smaller}
+**09:00–10:30 · 50% teoria / 50% praktyka**
+
+Pięć typów narzędzi, które się mylą:
+
+- **Czat ogólny** (ChatGPT, Claude, Gemini, Grok) — z „pamięci", bez źródeł.
+- **Tryb research / z siecią** — dokłada aktualne wyszukiwanie i cytaty.
+- **Wyszukiwarka AI** (Perplexity, Grok) — punkt ciężkości to odnośniki.
+- **Narzędzia literaturowe** (Elicit, Consensus, Scite) — pracują na bazach publikacji.
+- **Agentowy deep research** — planuje, wyszukuje wielokrotnie, składa raport.
+
+<!-- ════════ GRAFIKA [G02] ════════
+TYP: GENERATOR (diagram pojęciowy)
+PLIK: images/g02-piec-narzedzi.png
+PROMPT: "Czysty diagram pięciu typów narzędzi AI ułożonych od lewej (prosty czat)
+do prawej (agentowy deep research), rosnąca złożoność, ikony zamiast tekstu, styl flat,
+paleta granat/biel/bursztyn, 16:9, bez napisów."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/g02-piec-narzedzi.png){width="70%" fig-align="center"}
+
+::: notes
+Sedno bloku: badacz, który nie odróżnia czatu od trybu research i od wyszukiwarki AI, zadaje właściwe pytanie niewłaściwemu narzędziu — i dostaje pewnie brzmiącą, niesprawdzalną odpowiedź. Ćwiczenie: to samo jawne pytanie do trzech narzędzi, porównanie, czy są sprawdzalne źródła. Pokażę też na żywo jedno zmyślone źródło, żeby od pierwszej godziny zbudować odruch weryfikacji. Artefakt: osobista mapa narzędzi z kolumną „gdzie trafiają moje dane".
+:::
+
+## B1 · Kluczowy wniosek
+
+> Najpierw dobierz **typ** narzędzia do zadania; dopiero potem pisz prompt.
+
+**Ryzyko:** zachwyt narzędziem → bezkrytyczne zaufanie.
+**Przeciwdziałanie:** pokaz halucynacji na żywo (`kurs-pe/pulapki/`).
+
+**❓ Pytanie refleksyjne:** Które narzędzie najłatwiej skłoniłoby mnie do uwierzenia w nieprawdę — i dlaczego?
+
+::: notes
+Pytanie refleksyjne zapisujemy — wróci w bloku 12, gdy budujemy osobisty protokół. To technika domykania bloku: jedno zdanie, które uczestnik notuje do swojego dziennika.
+:::
+
+## B2 · Anatomia promptu: struktura 4-warstwowa {.smaller}
+**10:45–12:15 · 35% / 65%**
+
+„Jedno zdanie + nadzieja" zawodzi — model dopowiada kontekst po swojemu.
+
+1. **Rola / ton** — kim jest model, że *nie zgaduje*.
+2. **Kontekst i dane** — co musi widzieć (tylko jawne/zanonimizowane).
+3. **Zadanie i kroki** — cel rozpisany na kroki.
+4. **Format i ograniczenia** — jak ma wyglądać odpowiedź i czego NIE robić.
+
+<!-- ════════ GRAFIKA [G03] ════════
+TYP: GENERATOR (diagram warstwowy)
+PLIK: images/g03-4-warstwy.png
+PROMPT: "Pionowy diagram 4 warstw promptu jako schludne, ułożone na sobie panele:
+ROLA / KONTEKST / ZADANIE / FORMAT, każdy w innym odcieniu granatu, ikona obok każdej
+warstwy. Styl flat, 16:9, bez długiego tekstu — same nagłówki warstw."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/g03-4-warstwy.png){width="70%" fig-align="center"}
+
+::: notes
+Najważniejszy blok pierwszego dnia. Prompt to nauka iteracyjna i empiryczna — idealną instrukcję buduje się krok po kroku, obserwując błędy. Informacje stałe (rola, format) oddzielamy od zmiennych (dane) — to zalążek myślenia o prompcie systemowym. Anegdota Anthropic: pozbawiony kontekstu model z nazwy ulicy wywnioskował wypadek narciarski zamiast samochodowego. Dlatego warstwa kontekstu jest tak ważna — i dlatego pilnujemy, by trafiały tam tylko dane jawne.
+:::
+
+## B2 · Demonstracja — ta sama treść, dwie jakości {.smaller}
+
+Źle (jedno zdanie):
+
+```text
+streść metodologię tego artykułu
+```
+
+Dobrze (4 warstwy):
+
+```text
+[ROLA] Jesteś recenzentem metodologii w naukach społecznych. Nie zgadujesz;
+czego nie ma w materiale, oznaczasz jako „brak danych".
+[KONTEKST] Analizuję sekcję metod artykułu jakościowego. Materiał:
+"""
+<wklejony, zanonimizowany fragment>
+"""
+[ZADANIE] 1) Wypisz projekt badania i dobór próby. 2) Wskaż 3 ryzyka trafności.
+Przy każdym punkcie zacytuj zdanie, na którym się opierasz.
+[FORMAT] Tabela Markdown: aspekt | ustalenie | cytat-kotwica. Maks. 200 słów.
+```
+
+> **Artefakt:** wypełniony `kurs-pe/szablony/szablon-promptu.md` + dziennik iteracji v1→v3.
+
+::: notes
+Pokazuję obie wersje na żywo na tym samym, jawnym fragmencie. Różnica jest natychmiast widoczna: druga wersja zwraca strukturę, cytaty-kotwice i przyznaje braki. Uczestnicy przepisują własne zadanie do szablonu czterowarstwowego i wykonują dwie iteracje poprawek. Pytanie refleksyjne: która warstwa najmocniej zmieniła jakość — i co to mówi o tym, czego modelowi brakowało.
+:::
+
+## B3 · Markdown i XML jako struktura promptu {.smaller}
+**13:15–14:45 · 30% / 70%**
+
+- **Markdown** — lekka hierarchia: `#` nagłówki, `-` listy, bloki kodu. Czytelność.
+- **XML** — twarde, nazwane granice bloków: `<material>…</material>`. Rozdzielenie.
+
+Gdy materiał **sam** zawiera nagłówki — XML odgradza dane od instrukcji:
+
+```xml
+<zadanie>Oceń metodę w materiale.</zadanie>
+<material>
+# Metoda
+Badanie w trzech etapach...
+</material>
+```
+
+> Format dobieramy **do złożoności, nie z mody**. Krótkie zadanie → Markdown.
+
+::: notes
+Cel: uczestnik umie zapisać ten sam prompt w obu formatach i wie, kiedy którego użyć. Ćwiczenie używa „trudnego cytatu" z folderu kurs-pe, który sam zawiera nagłówki i listę — w płaskim tekście model myli go z instrukcją, w XML jest bezpiecznie odgrodzony. Przestroga: XML to nie magia, krótkiemu zadaniu dokłada szumu. Artefakt: prompt w dwóch formatach plus dwa zdania „kiedy użyję którego".
+:::
+
+## B4 · Kontrola halucynacji i ochrona danych {.smaller}
+**15:00–16:30 · 35% / 65%**
+
+**Techniki groundingu:**
+
+```text
+Odpowiadaj wyłącznie na podstawie poniższego fragmentu.
+Każdą tezę poprzyj dokładnym cytatem z fragmentu.
+Czego nie ma w materiale — napisz „brak danych". Nie zgaduj, nie wymyślaj źródeł.
+```
+
+**`privacy cage` — klasyfikacja:** jawne / wrażliwe / osobowe / medyczne / pod NDA → decyzja, co wolno wkleić.
+
+> **Bezwzględnie NIE wklejamy** danych osobowych, medycznych, niezanonimizowanych transkrypcji, cudzych recenzji ani materiałów pod NDA do publicznych modeli.
+
+<!-- ════════ GRAFIKA [G04] ════════
+TYP: GENERATOR (ilustracja metafory)
+PLIK: images/g04-privacy-cage.png
+PROMPT: "Metaforyczna, subtelna ilustracja: wrażliwe dane badawcze (dokumenty, ikona
+serca/medyczna, dyktafon) bezpiecznie wewnątrz delikatnej, świetlistej klatki/strefy na
+laptopie; chmura na zewnątrz oddzielona granicą. Styl flat, stonowany, 16:9, bez tekstu."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/g04-privacy-cage.png){width="70%" fig-align="center"}
+
+::: notes
+Halucynacja brzmi dokładnie tak samo pewnie jak fakt — dlatego potrzebujemy metody jej wykrycia, a nie wyczucia. Weryfikacja krzyżowa u źródła: DOI, PubMed, OpenAlex, Semantic Scholar. Druga połowa bloku to privacy cage: uczestnicy wypełniają mapę ryzyka danych. Ostrzegam przed fałszywym poczuciem bezpieczeństwa po anonimizacji — rzadka kombinacja cech (wiek plus miejscowość plus diagnoza) wciąż reidentyfikuje. Zasada minimalizacji: podajemy najmniej, ile trzeba. Artefakty: mapa ryzyka + checklista weryfikacji.
+:::
+
+# DZIEŃ 2 — Inżynieria kontekstu: zakotwiczenie w danych {background-color="#1a2b4a"}
+
+## B5 · Czym jest kontekst {.smaller}
+**09:00–10:30 · 40% / 60%**
+
+- **Kontekst** = całość tokenów, które model widzi (instrukcja + dane + historia + wynik narzędzi).
+- **Inżynieria kontekstu**: pytanie nie „jakich słów użyć", lecz „jaka *konfiguracja* kontekstu da pożądane zachowanie".
+- Pojęcia: *chunking* (dzielenie materiału), „**śmietnik kontekstowy**" (nadmiar obniża jakość).
+
+> Zasada: **minimalny, ale wystarczający** kontekst bije „wszystko na raz".
+
+::: notes
+Większość „słabych odpowiedzi AI" to nie wina modelu, lecz złego doboru kontekstu — za mało, za dużo albo nie tego. Ćwiczenie: dostają celowo przeładowany prompt z folderu kurs-pe, gdzie instrukcja utonęła w czterech stronach tła, i odchudzają go briefem kontekstowym. Test wystarczalności: czy obca osoba wykonałaby zadanie z samego briefu? Uwaga na odwrotną skrajność — wycięcie informacji niezbędnych. Artefakt: brief kontekstowy.
+:::
+
+## B6 · PDF → czysty Markdown (Python) {.smaller}
+**10:45–12:15 · 30% / 70%**
+
+**Dlaczego Markdown, a nie DOCX/PDF jako kontekst:**
+
+- PDF = *układ graficzny* (kolumny, stopki, numery stron, śmieci OCR — model bierze je za treść).
+- Markdown = **czysty tekst ze strukturą** → mniej tokenów na bałagan, czystszy kontekst.
+
+```bash
+pip install pymupdf4llm
+python konwersja.py artykul.pdf      # → artykul.md  (kurs-pe/konwersja/konwersja.py)
+```
+
+Narzędzia: **pymupdf4llm** (najlżejsze) · **Docling** (tabele/RAG) · **marker** (trudne układy) · **Pandoc** (MD↔DOCX).
+
+<!-- ════════ GRAFIKA [S01] ════════
+TYP: SCREENSHOT
+PLIK: images/s01-konwersja-terminal.png
+DO UCHWYCENIA: "Terminal po uruchomieniu `python konwersja.py artykul.pdf` — widoczny komunikat
+'Konwertuję...' i 'Gotowe -> artykul.md', a obok otwarty plik artykul.md w edytorze Markdown
+(czysta struktura nagłówków). Pokazuje 'przed/po'."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/s01-konwersja-terminal.png){width="82%" fig-align="center"}
+
+::: notes
+Model „czytający" surowy PDF dostaje numery stron i śmieci OCR jako treść. Czyszczenie kontekstu zaczyna się przed promptem. Kluczowe: NIE programujemy — uruchamiamy gotowy, przetestowany skrypt jedną komendą; dla osób bez Pythona jest wariant awaryjny w edytorze plus prompt czyszczący. Uczestnicy konwertują własny zanonimizowany PDF i liczą, ile śmieciowych linii ubyło. Artefakt: czysty artykul.md.
+:::
+
+## B7 · Dane strukturalne: JSON zamiast wklejonej tabeli {.smaller}
+**13:15–14:45 · 35% / 65%**
+
+Wklejona tabela z Excela rozjeżdża się — model zgaduje, która liczba to rok, a która strona.
+
+```json
+{ "autorzy": ["Kowalski, Jan"], "rok": 2021, "metoda": "analiza jakościowa",
+  "glowna_teza": "...", "cytat_kotwica": "...", "strona": 12 }
+```
+
+**JSON:** nazwie każde pole · stabilny przy zagnieżdżeniu · wynik **gotowy do dalszego przetworzenia**.
+
+> Gdy dane mają strukturę — podaj je **jako struktura**. Szablon: `kurs-pe/szablony/dane-szablon.json`.
+
+::: notes
+Ćwiczenie: 5–8 pozycji z bibliografii (Zotero/Bookends, jawne metadane). Najpierw wklejają je jako brudną tabelę i widzą pomyłki w komórkach, potem zapisują w JSON i proszą o wynik także w JSON. Różnica w wierności jest wyraźna. Przestroga o danych wrażliwych w polach JSON — ćwiczymy tylko na jawnych metadanych. Artefakt: mini-baza literatury w JSON plus prompt analityczny.
+:::
+
+## B8 · RAG i matryca literatury {.smaller}
+**15:00–16:30 · 35% / 65%**
+
+**RAG po ludzku:** najpierw wyszukaj właściwe fragmenty z **własnych** materiałów, potem każ modelowi odpowiedzieć **tylko** na ich podstawie.
+
+Środowiska (preferowane, lokalne): **Obsidian · Zotero · Bookends · zwykły folder**.
+*(DEVONthink — tylko przykład zaawansowanego RAG prowadzącego; Notion — odpada, serwer = poza `privacy cage`.)*
+
+> **Matryca literatury** = ręczny, kontrolowalny „mały RAG": do tabeli trafiają **cytaty-kotwice**, nie całe PDF-y.
+
+<!-- ════════ GRAFIKA [G05] ════════
+TYP: GENERATOR (diagram RAG)
+PLIK: images/g05-rag.png
+PROMPT: "Prosty schemat RAG w 3 krokach: (1) biblioteka źródeł → (2) wyszukanie/selekcja
+trafnych fragmentów (lupa) → (3) model generuje odpowiedź zakotwiczoną w tych fragmentach.
+Strzałki, ikony, styl flat granat/bursztyn, 16:9, minimum tekstu."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/g05-rag.png){width="70%" fig-align="center"}
+
+::: notes
+RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co Państwo uznali za istotne. Ćwiczenie: matryca dla 3–5 własnych źródeł z kolumną cytat-kotwica i numerem strony, potem przegląd zakotwiczony z poleceniem „nie wychodź poza tabelę". Ryzyko: śmietnik kontekstowy, gdy ktoś wrzuci całe PDF-y. Pytanie refleksyjne: czy inny badacz odtworzyłby mój wniosek z tej matrycy. To naturalny pomost do NotebookLM — narzędzia, które ten proces częściowo automatyzuje.
+:::
+
+## 🆕 NotebookLM — parser i generator notatek {.smaller}
+
+**Czym jest:** narzędzie, które **wczytuje wiele źródeł** (PDF, strony, wideo, własne notatki) i pozwala je odpytywać z **groundingiem w tych źródłach**.
+
+**Generator z rozległym outputem:**
+
+- streszczenia i przeglądy z cytowaniami do źródeł,
+- **prezentacje, PDF, PPTX**,
+- **wideo** (omówienia) i **podcasty audio** (rozmowa dwóch głosów).
+
+<!-- ════════ GRAFIKA [S02] ════════
+TYP: SCREENSHOT
+PLIK: images/s02-notebooklm.png
+DO UCHWYCENIA: "Interfejs NotebookLM: po lewej panel źródeł (kilka wgranych PDF/książka),
+w środku odpowiedź z cytowaniami [1][2], po prawej panel generowania (Audio Overview / wideo /
+notatki). Pokaż, że output jest wielokanałowy."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/s02-notebooklm.png){width="82%" fig-align="center"}
+
+::: notes
+NotebookLM to wygodny most między blokiem o RAG a praktyką badacza. Jego siła to dwie rzeczy: po pierwsze odpowiedzi są zakotwiczone w Państwa źródłach i opatrzone odnośnikami; po drugie ten sam materiał można wyprowadzić w wielu formatach — od notatek, przez slajdy i PDF, po audio-podcast i wideo. Dla dydaktyki i szybkiego ogarniania literatury to bardzo mocne. Za chwilę pokażę konkretny schemat czytania książki naukowej i jego ograniczenia.
+:::
+
+## 🆕 NotebookLM — case study: czytanie książki naukowej {.smaller}
+
+**Krok 0 — preambuła sesji (wklej raz):**
+
+```markdown
+Zasady na całą rozmowę:
+- Odpowiadaj wyłącznie na podstawie wgranych źródeł.
+- Wskazuj rozdział/sekcję lub przypisy. Nie zmyślaj numerów stron.
+- Zachowuj dokładne terminy autora; cytuj krótką frazę, gdy liczy się brzmienie.
+- Oddzielaj twierdzenia autora od własnych wniosków; wnioski oznaczaj „(wniosek)".
+- Brak podstaw w źródłach → powiedz to wprost, nie zgaduj.
+```
+
+**Wybrane prompty z sekwencji 7-krokowej** *(pełny schemat: `NotebookLM-book-reading-PL.md`)*:
+
+```markdown
+1 · Orientacja: główny problem, teza autora (2–3 zd.), pole/debata, typ książki.
+4 · Aparat pojęciowy: tabela 5–12 pojęć | definicja autora | rola | pojęcie powiązane.
+7 · Synteza + 8 notatek trwałych (jednozdaniowych, z lokalizacją w źródle).
+```
+
+::: notes
+To skrót mojego sprawdzonego schematu z pliku NotebookLM-book-reading-PL. Pokazuję preambułę, bo to grounding w czystej postaci — te same zasady, co w bloku 4, tylko zaaplikowane do całej książki. Z siedmiu kroków na slajdzie zostawiam trzy reprezentatywne: orientację, aparat pojęciowy i syntezę z notatkami trwałymi. Ważna wskazówka metodyczna: krok krytyczny — ocena książki — jest naprawdę mocny dopiero, gdy do notatnika dorzucimy recenzje albo prace konkurencyjne jako dodatkowe źródła. Inaczej krytyka wisi w powietrzu.
+:::
+
+## 🆕 NotebookLM — możliwości a ograniczenia {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**Mocne strony**
+
+- grounding + cytowania do źródeł,
+- szybkie ogarnięcie wielu materiałów,
+- wieloformatowy output (audio, wideo, slajdy),
+- świetne do dydaktyki i powtórki.
+:::
+::: {.column width="50%"}
+**Ograniczenia / ryzyka**
+
+- **chmura Google → uwaga `privacy cage`** (nie wgrywaj danych wrażliwych),
+- potrafi zmyślać numery stron,
+- audio/wideo bywa efektowne, ale spłyca,
+- to wciąż asystent — **weryfikacja po stronie badacza**.
+:::
+:::
+
+> **Reguła:** NotebookLM tak — ale na **źródłach jawnych**; dane wrażliwe trzymamy lokalnie (zob. Dzień 3).
+
+::: notes
+Symetria z resztą kursu: każde mocne narzędzie ma cenę. Tu ceną jest chmura — materiały trafiają na serwery Google, więc niezanonimizowanych transkrypcji czy danych pacjentów tam nie wgrywamy. To naturalne wejście w Dzień trzeci, gdzie pokażę, jak te same zadania zrobić lokalnie, gdy dane są wrażliwe. Druga rzecz: kazałem w preambule nie zmyślać stron właśnie dlatego, że to typowy błąd tego narzędzia.
+:::
+
+# DZIEŃ 3 — Agenci AI i privacy cage {background-color="#1a2b4a"}
+
+## B9 · Deep research i jego granice {.smaller}
+**09:00–10:30 · 35% / 65%**
+
+Spektrum: czat ↔ tryb research ↔ **agentowy deep research** (planuje, wyszukuje wielokrotnie, składa raport).
+
+Narzędzia: ChatGPT/Gemini Deep Research, Perplexity · Elicit, Consensus, Scite · Connected Papers, Litmaps, Research Rabbit · OpenAlex, Semantic Scholar, arXiv, PubMed.
+
+> *„Głęboki research, płytka sprawczość"* — narzędzia świetnie **zbierają**, ale **nie zastępują oceny badacza**.
+
+**Obowiązkowo:** zweryfikuj **3 wylosowane cytowania** u źródła (DOI/PubMed/OpenAlex).
+
+::: notes
+Deep research generuje ładny raport — ale ładny raport z trzema zmyślonymi cytatami jest gorszy niż brak raportu, bo usypia czujność. Ćwiczenie zmusza do weryfikacji próbki źródeł i zapisania odsetka, który przeszedł. Artefakt: protokół deep research plus karta krytycznej oceny. Pytanie refleksyjne: gdzie kończy się praca, którą mogę powierzyć narzędziu, a zaczyna ta, za którą odpowiadam osobiście.
+:::
+
+## B10 · 🆕 Lokalne LLM — po co i kiedy {.smaller}
+**10:45–12:15 · 40% / 60%**
+
+- **Po co lokalnie:** dane **nie opuszczają komputera** — rdzeń `privacy cage`.
+- **Ograniczenia:** słabsze od modeli frontier · brak wiedzy webowej · wyższe ryzyko halucynacji · wolniej.
+- **Sprzęt:** min. ~16 GB RAM; model 7–8B (Q4) sensownie przy ~8–12 GB VRAM lub na Apple Silicon.
+- **Narzędzia:** **Ollama** (CLI), **LM Studio** (GUI).
+
+> Pytanie nie brzmi „lokalny czy chmura?", lecz **„dla *których danych* prywatność jest warta utraty jakości?"**
+
+::: notes
+To jest moment, gdy privacy cage przestaje być hasłem, a staje się konfiguracją. Są dane, których po prostu nie wolno wysłać do chmury — i wtedy lokalny model bywa jedyną drogą do użycia AI, za cenę jakości. Uczciwie mówię o kompromisie: „działa lokalnie" czasem znaczy „czeka się na każde zdanie". Każdy — niezależnie od sprzętu — wypełnia kartę decyzyjną privacy cage: typ danych mapujemy na środowisko frontier / lokalny / bez AI.
+:::
+
+## B10 · Uruchamianie modeli lokalnych z agentami {.smaller}
+
+Lokalny model można **podpiąć pod agenta** (OpenCode, Codex, Claude Code) zamiast modelu w chmurze:
+
+```bash
+# agent „codex" napędzany lokalną Gemmą (MoE, kwantyzacja qat):
+ollama launch codex --model gemma4:26b-a4b-it-qat
+
+# agent „claude" napędzany lekkim, lokalnym Granite:
+ollama launch claude --model granite4.1:3b
+```
+
+**Klasyfikacja sprzętowa:**
+
+| Lżejsze (mniej RAM) | Większe (mocniejszy komputer) |
+|---|---|
+| `gemma4:12b` · `granite4.1:8b` | `gemma4:26b-mlx` · `granite4.1:30b` · `qwen3.6:35b-a3b` |
+
+::: notes
+Pokazuję, że agent to warstwa nad modelem — ten sam OpenCode czy Codex można napędzić modelem w chmurze albo modelem lokalnym. To kluczowe dla privacy cage: workflow zostaje ten sam, zmienia się tylko silnik, a dane zostają na dysku. Komendy ollama launch wskazują agenta i model. Po prawej w tabeli sprzętowej: na słabszym laptopie zostajemy przy dwunastce/ósemce, na mocniejszej maszynie albo Apple Silicon sięgamy po modele 26–35B. Zwróćcie uwagę na sufiksy — za chwilę wyjaśnię, co znaczą.
+:::
+
+## B10 · Dense vs MoE {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+### Dense
+Angażuje **wszystkie** parametry przy każdym tokenie.
+
+- większe obciążenie sprzętu,
+- np. `gemma4:31b`.
+:::
+::: {.column width="50%"}
+### MoE (Mixture of Experts)
+Aktywuje **tylko część** parametrów („ekspertów").
+
+- lżejszy dla sprzętu przy podobnej „wiedzy",
+- np. `gemma4:26b` (zapis `26b-a4b` = 26B łącznie, ~4B aktywnych),
+- `qwen3.6:35b-a3b` = 35B łącznie, ~3B aktywnych.
+:::
+:::
+
+<!-- ════════ GRAFIKA [G06] ════════
+TYP: GENERATOR (diagram porównawczy)
+PLIK: images/g06-dense-moe.png
+PROMPT: "Diagram porównujący Dense vs MoE. Po lewej: sieć, w której świecą WSZYSTKIE węzły
+(Dense). Po prawej: sieć, w której świeci tylko KILKA wybranych węzłów-ekspertów, reszta wyszarzona
+(MoE). Podpisy 'Dense' i 'MoE'. Styl flat, granat/bursztyn, 16:9."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/g06-dense-moe.png){width="70%" fig-align="center"}
+
+::: notes
+To wyjaśnia tajemnicze sufiksy z poprzedniego slajdu. Model gęsty przy każdym tokenie uruchamia wszystkie wagi — stąd na przykład gemma 31B mocno obciąża sprzęt. Mixture of Experts ma router, który dla danego tokenu wybiera tylko kilku ekspertów; zapis 26b-a4b czytamy jako: dwadzieścia sześć miliardów parametrów łącznie, ale aktywne około czterech. Efekt: większy model „wiedzy" przy obciążeniu bliższym małemu modelowi. Dla badacza praktyczny wniosek: na laptopie MoE często da lepszy stosunek jakości do zużycia pamięci niż dense o tej samej liczbie parametrów.
+:::
+
+## B10 · Agentic vs Chatbot — krytyczne rozróżnienie {.smaller}
+
+**Nie każdy model nadaje się do *tool calling* i RAG.**
+
+- **Model agentyczny** — potrafi wywoływać narzędzia, trzymać format, działać w pętli (pliki, wyszukiwanie).
+- **Chatbot** — świetnie rozmawia, ale zawodzi w roli agenta.
+
+> 🇵🇱 **Bielik / Bielik-Minitron** — doskonałe rozumienie polszczyzny, świetne **chatboty** — ale to **NIE są** modele agentyczne. Do klastrowania czy tool callingu wybierz model agentyczny.
+
+::: notes
+To jest jedno z najważniejszych rozróżnień całego dnia i najczęstsze źródło rozczarowań. Ludzie biorą model, który pięknie odpowiada w czacie, wsadzają go do agenta i dziwią się, że nie wywołuje narzędzi i gubi format. Bielik to znakomity przykład: dla polskiego tekstu, redakcji, rozmowy — wyśmienity; ale nie projektowano go jako modelu agentycznego z niezawodnym tool callingiem. Morał: do demonstracji agentowej, którą zaraz pokażę, dobieramy model agentyczny, a nie najlepszego rozmówcę.
+:::
+
+## B10 · Kwantyzacja — jak wybrać wariant {.smaller}
+
+**Kwantyzacja** = kompresja wag (mniej bitów) → mniej RAM, trochę niższa jakość.
+
+- `q4` (np. `Q4_K_M`) — typowy **sweet spot** jakość/pamięć.
+- niższe (`q3`, `q2`) — gdy brakuje RAM, kosztem jakości.
+- **`qat`** (*quantization-aware training*, np. nowa **Gemma** `...-it-qat`) — model **uczony pod kwantyzację**, więc utrzymuje wyższą jakość przy małym rozmiarze.
+
+> Reguła kciuka: zacznij od **Q4 / qat**; schodź niżej tylko, gdy model nie mieści się w pamięci.
+
+::: notes
+Kwantyzacja to powód, dla którego ten sam model występuje w kilku „rozmiarach na dysku". Im mniej bitów na wagę, tym mniej pamięci, ale i delikatny spadek jakości. Dla większości badaczy Q4 to rozsądny start. Nowość warta uwagi to qat — model jest świadomy kwantyzacji już na treningu, więc po skompresowaniu trzyma jakość lepiej niż klasyczne kwantowanie po fakcie; widzieliśmy to w komendzie gemma4:26b-a4b-it-qat. Praktyczny wniosek: nie ścigajcie się o najniższy bit — zacznijcie od Q4 albo qat i schodźcie tylko z konieczności.
+:::
+
+## B11 · Od czatu do agenta {.smaller}
+**13:15–14:45 · 45% / 55%**
+
+**Agent** = model + **narzędzia** (pliki, wyszukiwanie) + **plik instrukcji projektowych** (trwały „prompt systemowy projektu").
+
+```markdown
+# INSTRUKCJE PROJEKTU
+## Rola: asystent badawczy projektu „..."
+## Privacy cage (NADRZĘDNE): nie wysyłaj danych osobowych/medycznych/NDA...
+## Format: Markdown; dane → JSON; cytaty jako dokładny tekst + lokalizacja
+## Tryb: krok po kroku; po każdym kroku CZEKAJ na moją akceptację
+```
+
+> **Człowiek w pętli** + praca na kopii folderu + reguły `privacy cage` zaszyte w instrukcji.
+
+::: notes
+Agent przyspiesza wieloetapową pracę, ale działa na realnych plikach — bez nadzoru przyspiesza też błędy i wycieki. Plik instrukcji projektowych to bezpośrednie rozwinięcie czterowarstwowego promptu z dnia pierwszego i briefu z dnia drugiego, tyle że trwałe. Najważniejsza zasada: człowiek w pętli — akceptacja po każdym kroku, praca na kopii. Agent to nie zwolnienie z odpowiedzialności. Szablon jest w kurs-pe/szablony/INSTRUKCJE-PROJEKTU-szablon.md.
+:::
+
+## B11 · Hierarchia agentów (na czym się skupiamy) {.smaller}
+
+1. **Claude Code / Claude Cowork** — *główny agent kursu* (najwięcej uwagi): praca na plikach, instrukcje projektowe, MCP.
+2. **Codex** — drugi wybór, dojrzały agent kodująco-badawczy.
+3. **Antigravity** — dostęp do **nowych modeli Gemini** oraz cenionych **starszych** (Opus 4.6, Sonnet).
+4. **OpenCode** — **otwarte** narzędzie (używam go na co dzień); darmowe modele (m.in. Nvidia) + lokalne.
+5. **Hermes, Pi** — istnieją; warto wiedzieć, że są (wzmianka).
+
+<!-- ════════ GRAFIKA [G07] ════════
+TYP: GENERATOR (piramida/hierarchia)
+PLIK: images/g07-hierarchia-agentow.png
+PROMPT: "Uporządkowana lista/piramida 5 narzędzi agentowych od najważniejszego u góry:
+Claude Code/Cowork, Codex, Antigravity, OpenCode, (Hermes/Pi jako drobna wzmianka na dole).
+Każdy poziom z ikoną, malejący rozmiar. Styl flat, granat/bursztyn, 16:9, czytelne etykiety."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/g07-hierarchia-agentow.png){width="70%" fig-align="center"}
+
+::: notes
+Świadomie ustawiam hierarchię uwagi. Najwięcej czasu poświęcam Claude Code i Cowork, bo to mój główny agent do pracy na plikach z instrukcjami projektowymi i MCP. Codex jako solidna alternatywa. Antigravity ma ważną zaletę: daje dostęp i do najnowszych Gemini, i do cenionych starszych modeli — Opus 4.6, Sonnet — co bywa istotne, gdy zależy nam na konkretnym charakterze odpowiedzi. OpenCode to narzędzie otwarte, którego sam używam codziennie; pozwala sięgać po darmowe modele, w tym od Nvidii, oraz po modele lokalne — i właśnie nim można odpalić nasze demo offline. Hermes i Pi tylko wymieniam, żeby Państwo wiedzieli, że istnieją.
+:::
+
+## B11 · Środowisko pracy: edytory i terminale {.smaller}
+
+::: {.columns}
+::: {.column width="33%"}
+### Zed
+Szybki, nowoczesny edytor z wbudowaną współpracą z AI; lekki, natywny.
+:::
+::: {.column width="33%"}
+### Cursor
+Edytor (fork VS Code) zorientowany na pracę z agentem AI w kodzie i plikach.
+:::
+::: {.column width="33%"}
+### Warp
+Nowoczesny **terminal** z asystą AI — wygodny do uruchamiania agentów i komend (Ollama, OpenCode).
+:::
+:::
+
+> Plus klasyka z Dnia 1: edytory Markdown (iA Writer, Typora, MarkEdit, VS Code, Obsidian…).
+
+::: notes
+Agent musi gdzieś „mieszkać". Zed to szybki, natywny edytor z dobrą integracją AI — dobry, gdy zależy na lekkości. Cursor to fork VS Code mocno zorientowany na pracę z agentem w projekcie — wielu badaczy lubi go za płynne łączenie czatu z plikami. Warp to z kolei nowoczesny terminal ze wsparciem AI — wygodny, gdy uruchamiamy modele lokalne i agentów z linii poleceń, jak w komendach ollama launch. Nie narzucam jednego — pokazuję krajobraz, żeby każdy dobrał narzędzie do swojego stylu.
+:::
+
+## B11 · MCP w jednym zdaniu
+
+> **MCP (Model Context Protocol)** = standard, dzięki któremu agent może **bezpiecznie** sięgać do zewnętrznych źródeł i narzędzi (np. lokalnej bazy wiedzy).
+
+Przykład prowadzącego: Claude + MCP nad bazą **DEVONthink** — *ilustracja*, nie wymóg kursu.
+
+::: notes
+MCP wyjaśniam po ludzku: to wtyczka-standard, która pozwala modelowi rozmawiać z moimi narzędziami i danymi w kontrolowany sposób. Pokażę to na własnej bazie DEVONthink przez MCP — ale wyłącznie jako demonstrację dojrzałego środowiska; nikt z Państwa nie musi mieć DEVONthink. To samo można zrobić nad zwykłym folderem.
+:::
+
+## B12 · 🆕 Clustering Demo — agent w działaniu (live) {.smaller}
+**15:00–16:30 · 25% / 75%**
+
+**Scenariusz:** agent czyta zbiór streszczeń, **grupuje je tematycznie**, wykrywa **napięcia i luki**, zapisuje **raport + strukturę przeglądu (OPML)**.
+
+**Struktura** (`./clustering-demo`, opis: `kurs-pe/modul-clustering-demo.md`):
+
+- pliki systemowe: `AGENTS.md` · `CONTEXT.md` · `WORKFLOW.md`
+- `EXECUTION-PROMPT.md` · `README.md`
+- `./summaries` (wejście) → `./outputs` (`report.md`, `outline.opml`) · `./agent_logs` (ślad rozumowania)
+
+**Wykonawcy:** Claude Code · Codex · Antigravity · **OpenCode + model lokalny** (lub darmowe modele OpenCode/Nvidia).
+
+<!-- ════════ GRAFIKA [S03] ════════
+TYP: SCREENSHOT
+PLIK: images/s03-clustering-demo.png
+DO UCHWYCENIA: "Agent (Claude Code lub OpenCode) w trakcie wykonywania clustering-demo:
+widoczne drzewo katalogu po lewej (summaries/ z wieloma plikami, outputs/, agent_logs/),
+w środku log rozumowania agenta, po prawej wygenerowany outline.opml lub report.md."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/s03-clustering-demo.png){width="82%" fig-align="center"}
+
+::: notes
+To zwieńczenie całego kursu i dowód, że agent to nie magia, lecz prompt plus kontekst plus pliki instrukcji plus nadzór człowieka — wszystko, co budowaliśmy przez trzy dni. Demonstrację robię na żywo, na moim komputerze, więc na slajdzie zostają tylko ramy; szczegóły i pełny pipeline są w katalogu clustering-demo i w pliku-wskaźniku modul-clustering-demo. Na pokazie podłożę do folderu summaries znacznie więcej plików — pięćdziesiąt do stu — żeby było widać prawdziwą skalę możliwości modeli agentycznych. Podkreślam dwie rzeczy: po pierwsze, to samo odpalę OpenCode z modelem lokalnym, więc streszczenia nie opuszczają komputera — privacy cage w praktyce; po drugie, outputem jest nie tylko raport, ale i OPML — czyli struktura, którą znamy z dnia drugiego, gotowa do napisania własnego przeglądu literatury.
+:::
+
+## B12 · Integracja i portfolio {.smaller}
+
+Spięcie łuku: **prompt (D1) → kontekst i dane (D2) → nadzorowany agent (D3)**.
+
+`PROTOKOL-AI.md` = szablon promptu + karta `privacy cage` + checklista halucynacji + dobór narzędzia.
+
+> **Zasada proporcjonalności:** prosty prompt do prostego pytania; agent i RAG tylko tam, gdzie złożoność tego wymaga.
+
+**❓ Pytanie refleksyjne:** Gdybym mógł zatrzymać tylko **jeden** nawyk z kursu — który najbardziej zmieni jakość i bezpieczeństwo mojej pracy?
+
+::: notes
+Domykamy kurs osobistym protokołem — jednostronicowym dokumentem, który w dziesięć sekund mówi: jakie narzędzie, jaki format, gdzie dane. Każdy wykonuje jeden pełny mały przepływ na własnym materiale: czysty markdown, matryca lub JSON, wynik zakotwiczony, kontrola halucynacji, decyzja środowiskowa. Ostrzegam przed pułapką „wiem wszystko" — nie chodzi o używanie całego arsenału do każdego zadania, lecz o świadomy, proporcjonalny wybór.
+:::
+
+# Ewaluacja i zamknięcie {background-color="#1a2b4a"}
+
+## Ewaluacja — portfolio {.smaller}
+
+| Kryterium | Wskaźniki spełnienia |
+|---|---|
+| **Jasność zadania (prompt)** | struktura 4-warstwowa · ślad iteracji v1→v3 · trafny format (MD/XML/JSON) |
+| **Ochrona danych (`privacy cage`)** | mapa ryzyka · karta chmura/lokalnie · brak danych wrażliwych · minimalizacja |
+| **Kontrola halucynacji** | prompty zakotwiczające · cytaty-kotwice · weryfikacja próbki źródeł |
+
+**Skala:** spełnia w pełni / częściowo / wymaga dopracowania.
+**Zaliczenie:** min. „częściowo" w każdym kryterium + kompletny `PROTOKOL-AI.md`.
+
+::: notes
+Ewaluacja jest formująca, nie rankingowa — chodzi o informację zwrotną i o to, by każdy wyszedł z działającym protokołem. Trzy kryteria odpowiadają trzem filarom z początku: jasność promptu, ochrona danych, kontrola halucynacji. Portfolio składają Państwo z artefaktów, które już powstały w trakcie bloków — nic dodatkowego nie trzeba dopisywać.
+:::
+
+## Dziękuję {.smaller}
+
+**Łuk kursu:** zapytania → kontekst → agenci. **Trzy filary:** ograniczone zaufanie · grounding · `privacy cage`.
+
+- Materiały i szablony: **`kurs-pe/`**
+- Demo agentowe: **`clustering-demo/`** (opis: `kurs-pe/modul-clustering-demo.md`)
+- Schemat NotebookLM: **`NotebookLM-book-reading-PL.md`**
+
+<!-- ════════ GRAFIKA [G08] ════════
+TYP: GENERATOR (ilustracja zamykająca)
+PLIK: images/g08-zamkniecie.png
+PROMPT: "Spokojna, optymistyczna ilustracja: badacz i asystent-AI pracujący ramię w ramię nad
+uporządkowanym warsztatem wiedzy (markdown, graf, lokalny serwer-ikona). Symbolika kontroli i
+zaufania. Styl flat, granat/bursztyn, 16:9, bez tekstu."
+═══════════════════════════════════════════════════════════════════════════ -->
+
+![](images/g08-zamkniecie.png){width="70%" fig-align="center"}
+
+> **Jeden nawyk na koniec:** zanim wciśniesz Enter — zapytaj *„gdzie trafiają te dane i czym to zakotwiczę?"*
+
+::: notes
+Zamykam tym, czym otworzyłem: kurs nie o tym, żeby „używać wszystkiego", lecz żeby mieć protokół i trzy odruchy. Zachęcam, żeby zacząć od jednego nawyku — pytania o dane i o zakotwiczenie — i rozbudowywać resztę stopniowo. Dziękuję; przechodzimy do pytań i do indywidualnej pracy nad portfolio.
+:::
+
+## Aneks — źródła i publikacja {.smaller}
+
+**Stan narzędzi: czerwiec 2026** — przed wykładem potwierdź liczby u producentów (OpenAI, Anthropic, Google) i na stronach narzędzi.
+
+- Anthropic — *Effective context engineering for AI agents*
+- Okna kontekstowe 2026 · narzędzia literaturowe · lokalne LLM (Ollama/LM Studio) · PDF→Markdown (pymupdf4llm/Docling)
+
+**Publikacja na GitHub Pages:**
+
+```bash
+quarto render prezentacja-kurs-AI.qmd     # podgląd HTML
+quarto publish gh-pages prezentacja-kurs-AI.qmd
+# wskazówka: zmiana nazwy na index.qmd → renderuje się do index.html (root strony)
+```
+
+::: notes
+Aneks techniczny dla mnie jako prowadzącego: przed każdą edycją odświeżam liczby — nazwy modeli i okna kontekstowe zmieniają się w miesiącach, nie latach. Grafiki wrzucam do folderu images zgodnie z oznaczeniami G i S na slajdach, a potem publikuję na GitHub Pages jedną komendą quarto publish. Jeśli chcę, żeby prezentacja była stroną główną repozytorium, zmieniam nazwę pliku na index.qmd.
+:::

@@ -1,0 +1,85 @@
+# Przedmowa {.unnumbered}
+
+To materiały do **3-dniowego półwarsztatu (24 godziny lekcyjne)** dla multidyscyplinarnych pracowników naukowych — z nauk humanistycznych, społecznych, ścisłych i medycznych — początkujących w pracy z generatywną AI. Prowadzą od pojedynczego zapytania, przez inżynierię kontekstu, po nadzorowanych agentów AI i modele lokalne.
+
+::: {.callout-note title="Czym jest ta książka"}
+To **wersja do czytania** — dla osób, które nie były na warsztacie albo chcą wrócić do treści po sesji. Slajdy do projekcji prowadzę z osobnego źródła (`_slajdy-kurs-AI.qmd`); tutaj wszystko jest spisane w spokojnym, czytelnym formacie, rozdział po rozdziale.
+:::
+
+<!-- ════════ GRAFIKA [G01] ════════
+TYP: GENERATOR (ilustracja otwierająca)
+PLIK: images/g01-hero.png
+PROMPT: "Minimalistyczna ilustracja koncepcyjna: badacz przy biurku współpracujący z asystentem AI
+jako świetlisty, uporządkowany panel z dokumentami markdown i grafem wiedzy. Po lewej chaos surowych
+PDF-ów, po prawej uporządkowana struktura. Paleta granat/biel/bursztyn, styl płaski, akademicki,
+bez tekstu, 16:9." -->
+
+![](images/g01-hero.png){fig-align="center" width="78%"}
+
+## Trzy filary, które wracają w każdym rozdziale
+
+Cały kurs da się streścić jedną postawą: **AI to asystent roboczy pod nadzorem człowieka, a nie autonomiczny autorytet ani zastępstwo dla badacza.** Z tej postawy wyrastają trzy zasady, do których będziemy wracać:
+
+1. **Ograniczone zaufanie** — model nie „wie", lecz przewiduje prawdopodobny tekst; stąd halucynacje.
+2. **Grounding (zakotwiczenie w danych)** — wartościowa odpowiedź opiera się na podanym materiale i sprawdzalnych źródłach.
+3. **`privacy cage` (klatka prywatności)** — świadome ograniczanie przepływu danych badawczych do kontrolowanego, w miarę możliwości lokalnego środowiska.
+
+## O czym jest ten materiał
+
+Nie musisz być programistą.
+
+Nie musisz mieszkać w terminalu.
+
+Nie musisz rozumieć sieci neuronowych.
+
+**Jeśli potrafisz otworzyć folder z plikami i napisać polecenie po polsku — jesteś przygotowany.**
+
+## Co to JEST, a co NIE jest
+
+::: {.columns}
+::: {.column width="50%"}
+**Co to NIE jest**
+
+- ❌ Kurs programowania
+- ❌ Warsztat „magii AI"
+- ❌ Reklama jednego narzędzia
+- ❌ Zachęta do wrzucania wszystkiego do chmury
+:::
+::: {.column width="50%"}
+**Co to JEST**
+
+- ✅ Warsztat precyzyjnego promptu i kontekstu
+- ✅ Mapa narzędzi badacza (od czatu po agenta)
+- ✅ Praktyka ochrony danych i kontroli halucynacji
+- ✅ Twój własny, powtarzalny protokół pracy z AI
+:::
+:::
+
+## Mapa książki
+
+| Rozdział | Treść |
+|---|---|
+| **Fundament** | Trzy filary, słownik pojęć, łuk i agenda kursu. |
+| **Dzień 1 — Zapytania** | Krajobraz narzędzi, anatomia promptu, Markdown/XML, halucynacje i ochrona danych. |
+| **Dzień 2 — Kontekst** | Inżynieria kontekstu, PDF→Markdown, dane w JSON, RAG i matryca literatury. |
+| **NotebookLM** | Parser i generator notatek; case study czytania książki naukowej. |
+| **Deep research** | Tryby pogłębione i ich granice; obowiązkowa weryfikacja źródeł. |
+| **Lokalne LLM** | Dense vs MoE, agentic vs chatbot, kwantyzacja, uruchamianie z agentami. |
+| **Agenci i środowiska** | Hierarchia agentów, edytory i terminale, MCP. |
+| **Clustering Demo** | Agent w działaniu — klastrowanie literatury (demonstracja). |
+| **Integracja i ewaluacja** | Złożenie własnego przepływu, portfolio, źródła. |
+
+## Jak korzystać z tej książki
+
+- Po lewej masz **spis treści całej książki** — klikalna nawigacja po rozdziałach.
+- Po prawej, w trakcie czytania — **spis treści bieżącego rozdziału**.
+- Na dole każdej strony — przyciski **„poprzedni / następny"**.
+- Górne pole **wyszukiwania** przeszukuje całą książkę.
+
+## Linki
+
+- **Repozytorium:** [github.com/jaroslawchodak/course-ai-research](https://github.com/jaroslawchodak/course-ai-research)
+- **Materiały i szablony kursu:** katalog `kurs-pe/` w głównym projekcie kursu.
+- **Slajdy do projekcji:** `_slajdy-kurs-AI.qmd` (format revealjs).
+
+> Stan wiedzy o narzędziach w tej książce: **czerwiec 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach — przed wykładem zweryfikuj je u źródeł.

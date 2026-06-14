@@ -1,0 +1,76 @@
+# NotebookLM — parser i generator notatek
+
+NotebookLM jest wygodnym mostem między rozdziałem o RAG a codzienną praktyką badacza. Wczytuje wiele źródeł i pozwala je odpytywać z groundingiem w tych źródłach — a przy tym wyprowadza wynik w zaskakująco wielu formatach.
+
+## Czym jest i co potrafi
+
+NotebookLM **wczytuje wiele źródeł** naraz (PDF-y, strony, wideo, własne notatki) i odpowiada na pytania, opierając się na tych źródłach i opatrując odpowiedzi odnośnikami. To grounding w gotowym narzędziu.
+
+Jego druga siła to **rozległy output**. Z tego samego materiału można wygenerować:
+
+- streszczenia i przeglądy z cytowaniami do źródeł,
+- **prezentacje, PDF, PPTX**,
+- **wideo** (omówienia) oraz **podcasty audio** — rozmowę dwóch syntetycznych głosów.
+
+<!-- ════════ GRAFIKA [S02] ════════
+TYP: SCREENSHOT
+PLIK: images/s02-notebooklm.png
+DO UCHWYCENIA: "Interfejs NotebookLM: po lewej panel źródeł (kilka PDF/książka), w środku odpowiedź
+z cytowaniami [1][2], po prawej panel generowania (Audio Overview / wideo / notatki). Pokaż
+wielokanałowy output." -->
+
+![](images/s02-notebooklm.png){fig-align="center" width="82%"}
+
+## Case study: czytanie książki naukowej
+
+Najlepiej pokazać NotebookLM na konkretnym, sprawdzonym schemacie czytania książki. Zaczynamy od **preambuły sesji**, którą wklejamy raz — to grounding w czystej postaci, te same zasady co w Dniu 1, tylko zaaplikowane do całej książki:
+
+```markdown
+Zasady na całą rozmowę:
+- Odpowiadaj wyłącznie na podstawie wgranych źródeł.
+- Wskazuj rozdział/sekcję lub przypisy. Nie zmyślaj numerów stron.
+- Zachowuj dokładne terminy autora; cytuj krótką frazę, gdy liczy się brzmienie.
+- Oddzielaj twierdzenia autora od własnych wniosków; wnioski oznaczaj „(wniosek)".
+- Brak podstaw w źródłach → powiedz to wprost, nie zgaduj.
+```
+
+Dalej idzie sekwencja siedmiu kroków; tu trzy reprezentatywne (pełny schemat w pliku `NotebookLM-book-reading-PL.md`):
+
+```markdown
+1 · Orientacja: główny problem, teza autora (2–3 zd.), pole/debata, typ książki.
+4 · Aparat pojęciowy: tabela 5–12 pojęć | definicja autora | rola | pojęcie powiązane.
+7 · Synteza + 8 notatek trwałych (jednozdaniowych, z lokalizacją w źródle).
+```
+
+::: {.callout-note title="Ugruntowana krytyka wymaga dodatkowych źródeł"}
+Krok krytyczny — ocena książki — jest naprawdę mocny dopiero, gdy do notatnika dorzucisz **recenzje albo prace konkurencyjne** jako dodatkowe źródła. Inaczej krytyka wisi w powietrzu. To ta sama zasada, co przy matrycy literatury: jakość wyniku zaczyna się od doboru wejścia.
+:::
+
+## Możliwości a ograniczenia
+
+Symetria z resztą kursu jest prosta: każde mocne narzędzie ma cenę.
+
+::: {.columns}
+::: {.column width="50%"}
+**Mocne strony**
+
+- grounding z cytowaniami do źródeł,
+- szybkie ogarnięcie wielu materiałów,
+- wieloformatowy output (audio, wideo, slajdy),
+- świetne do dydaktyki i powtórki.
+:::
+::: {.column width="50%"}
+**Ograniczenia / ryzyka**
+
+- chmura Google → uwaga `privacy cage`,
+- potrafi zmyślać numery stron,
+- audio/wideo bywa efektowne, ale spłyca,
+- to wciąż asystent — weryfikacja po stronie badacza.
+:::
+:::
+
+::: {.callout-important title="Tylko źródła jawne"}
+Ceną wygody jest chmura: materiały trafiają na serwery Google. Niezanonimizowanych transkrypcji, recenzji pod NDA czy danych pacjentów tam **nie wgrywamy**. To naturalne wejście w Dzień 3, gdzie pokazujemy, jak te same zadania zrobić lokalnie, gdy dane są wrażliwe.
+:::
+
+NotebookLM domyka temat kontekstu od strony narzędzia gotowego. Teraz przechodzimy do dnia trzeciego — najpierw do trybów *deep research*, a potem do tego, co zrobić, gdy dane nie mogą opuścić komputera.

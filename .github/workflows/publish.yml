@@ -1,0 +1,62 @@
+# Publikacja książki Quarto (book) na GitHub Pages.
+#
+# JEDNORAZOWA KONFIGURACJA (w repozytorium na GitHub):
+#   Settings → Pages → Build and deployment → Source: "GitHub Actions"
+#
+# Po tym każdy push do gałęzi main, który zmienia treść książki, odświeży stronę.
+# Adres: https://<użytkownik>.github.io/<repozytorium>/
+#
+# Książka ma `eval: false` (kod jest tylko wyświetlany, nie wykonywany),
+# więc NIE potrzebujemy Pythona/R/Jupytera w CI — workflow jest minimalny.
+
+name: Publikuj książkę (Quarto book → GitHub Pages)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**.qmd"
+      - "_quarto.yml"
+      - "theme/**"
+      - "images/**"
+      - ".github/workflows/publish.yml"
+  workflow_dispatch: {}   # pozwala uruchomić ręcznie z zakładki Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Tylko jedno wdrożenie naraz; nowy push anuluje trwające.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Zainstaluj Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render książki (Quarto book → _book/)
+        run: quarto render
+
+      - name: Wyślij artefakt Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _book
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Wdróż na GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

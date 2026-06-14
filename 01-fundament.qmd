@@ -1,0 +1,78 @@
+# Fundament: trzy filary, słownik i mapa kursu
+
+Zanim zaczniemy pisać prompty, ustalmy wspólny grunt. Ten rozdział jest krótki, ale wraca w każdym następnym — to soczewka, przez którą będziemy patrzeć na wszystkie narzędzia.
+
+## Cały kurs mieści się w jednym pytaniu
+
+Zanim użyjesz dowolnego narzędzia AI, zadaj sobie jedno pytanie: *„Czy ufam temu w ograniczonym stopniu, czy mam dowód — i gdzie trafiają moje dane?"*. To pytanie rozkłada się na trzy filary.
+
+::: {.columns}
+::: {.column width="33%"}
+### Ograniczone zaufanie
+AI to **asystent pod nadzorem**, nie wyrocznia. Model przewiduje prawdopodobny tekst, więc potrafi zmyślić cytat brzmiący jak prawdziwy.
+:::
+::: {.column width="33%"}
+### Grounding
+Wartościowa odpowiedź opiera się na **podanym materiale** i **sprawdzalnych źródłach**, nie na „pamięci" modelu.
+:::
+::: {.column width="33%"}
+### `privacy cage`
+Świadome ograniczanie przepływu danych do **kontrolowanego, w miarę możliwości lokalnego** środowiska.
+:::
+:::
+
+Jeśli z całego kursu zapamiętasz tylko te trzy słowa — *zaufanie, zakotwiczenie, klatka* — reszta jest już tylko techniką, która je realizuje.
+
+## Pojęcia techniczne wyjaśniamy raz, prostym zdaniem
+
+Unikamy żargonu informatycznego. Każdy termin pojawia się najpierw jako jedno proste zdanie, a dopiero potem w praktyce.
+
+| Termin | Po ludzku |
+|---|---|
+| **Token** | Najmniejszy kawałek tekstu, którym operuje model (≈ ¾ słowa). |
+| **Okno kontekstowe** | Ile tekstu model „widzi" naraz. Duże okno ≠ dobra pamięć — jakość spada na bardzo długim kontekście. |
+| **Prompt** | Instrukcja dla modelu. |
+| **Inżynieria kontekstu** | Decyzja, jaką *konfigurację* informacji podać modelowi, by uzyskać pożądane zachowanie. |
+| **Halucynacja** | Zmyślenie podane z pełną pewnością. |
+| **Grounding** | Zakotwiczenie odpowiedzi w podanym materiale i źródłach. |
+| **RAG** | *Retrieval-Augmented Generation* — najpierw wyszukaj właściwe fragmenty, potem każ modelowi odpowiedzieć tylko na ich podstawie. |
+| **Chunking** | Dzielenie długiego materiału na mniejsze kawałki. |
+| **Agent** | Model z narzędziami (czyta/zapisuje pliki, wyszukuje) wykonujący zadania wieloetapowe. |
+| **MCP** | Standard bezpiecznego sięgania modelu do zewnętrznych źródeł i narzędzi. |
+
+## Łuk kursu: zapytania → kontekst → agenci
+
+Kurs prowadzi po jednym łuku i tej kolejności **nie odwracamy**: najpierw uczymy się **mówić do modelu** (prompt), potem **karmić go właściwymi danymi** (kontekst), a na końcu **budować nadzorowane przepływy** (agent). Agent bez opanowanego promptu i kontekstu jedynie szybciej powiela błędy.
+
+::: {.columns}
+::: {.column width="33%"}
+**Dzień 1 — Zapytania**
+*„Jak pytać?"*
+
+Krajobraz narzędzi · anatomia promptu · Markdown i XML · halucynacje i ochrona danych.
+:::
+::: {.column width="33%"}
+**Dzień 2 — Kontekst**
+*„Co podać modelowi?"*
+
+Czym jest kontekst · PDF→Markdown · dane w JSON · RAG i matryca · NotebookLM.
+:::
+::: {.column width="33%"}
+**Dzień 3 — Agenci**
+*„Jak to bezpiecznie złożyć?"*
+
+Deep research · lokalne LLM · hierarchia agentów i edytory · clustering demo i portfolio.
+:::
+:::
+
+## Jak pracujemy
+
+Każdy z dwunastu bloków trwa 90 minut i kończy się **konkretnym artefaktem** — szablonem promptu, mapą ryzyka, matrycą literatury, kartą `privacy cage`. Suma artefaktów składa się na **portfolio**, które jest podstawą ewaluacji.
+
+Pracujemy w **zwykłym folderze plików** oraz w edytorze Markdown, Obsidianie, Zotero lub Bookends — narzędziach dostępnych bezpłatnie lub powszechnie posiadanych. Wszystkie szablony są w katalogu `kurs-pe/`, więc nikt nie zaczyna od pustej kartki.
+
+::: {.callout-warning title="Notion — dlaczego nie jako podstawowe środowisko"}
+Notion przechowuje treść na swoich serwerach. Dla materiałów badawczych łamie to zasadę `privacy cage`, dlatego nie budujemy na nim ćwiczeń. DEVONthink pokazuję wyłącznie jako *przykład* zaawansowanej, lokalnej bazy wiedzy prowadzącego — uczestnicy go nie potrzebują.
+:::
+
+Mając fundament za sobą, wchodzimy w Dzień 1 — od pojedynczego, niezgrabnego zapytania do precyzyjnej instrukcji.

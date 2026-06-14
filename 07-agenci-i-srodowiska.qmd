@@ -1,0 +1,71 @@
+# Agenci i środowiska pracy
+
+Agent przyspiesza wieloetapową pracę — ale działa na *realnych plikach*. Bez nadzoru przyspiesza też błędy i wycieki. Ten rozdział porządkuje, czym jest agent, którym narzędziom poświęcić uwagę i gdzie one działają.
+
+## Od czatu do agenta: plik instrukcji projektowych
+
+**Agent** to model wyposażony w **narzędzia** (czytanie i zapis plików, wyszukiwanie) oraz w **plik instrukcji projektowych** — trwały „prompt systemowy projektu". Ten plik jest bezpośrednim rozwinięciem czterowarstwowego promptu z Dnia 1 i briefu z Dnia 2, tyle że trwałym.
+
+```markdown
+# INSTRUKCJE PROJEKTU
+## Rola: asystent badawczy projektu „..."
+## Privacy cage (NADRZĘDNE): nie wysyłaj danych osobowych/medycznych/NDA...
+## Format: Markdown; dane → JSON; cytaty jako dokładny tekst + lokalizacja
+## Tryb: krok po kroku; po każdym kroku CZEKAJ na moją akceptację
+```
+
+::: {.callout-important title="Człowiek w pętli"}
+Najważniejsza zasada pracy z agentem: akceptacja po każdym kroku, praca na **kopii** folderu, reguły `privacy cage` zaszyte wprost w pliku instrukcji. Agent to nie zwolnienie z odpowiedzialności. Szablon: `kurs-pe/szablony/INSTRUKCJE-PROJEKTU-szablon.md`.
+:::
+
+## Hierarchia agentów: na czym skupiamy uwagę
+
+Świadomie ustawiamy hierarchię uwagi — od narzędzia, które omawiamy najszerzej, po te wspomniane jedynie z nazwy.
+
+1. **Claude Code / Claude Cowork** — *główny agent kursu*. Praca na folderze projektu badawczego: pliki kontekstowe, instrukcje projektowe, podłączenie do MCP. Najwięcej uwagi.
+2. **Codex** — dojrzała alternatywa, mocna tam, gdzie trzeba generować i poprawiać skrypty.
+3. **Antigravity** — daje dostęp do **nowych modeli Gemini**, ale też do cenionych **starszych** wersji (Opus 4.6, Sonnet), co bywa istotne, gdy zależy nam na konkretnym charakterze odpowiedzi.
+4. **OpenCode** — narzędzie **otwarte**, którego sam używam na co dzień; pozwala sięgać po darmowe modele (m.in. od Nvidii) oraz po **modele lokalne**. To nim odpalimy demo offline.
+5. **Hermes, Pi** — istnieją; warto wiedzieć, że są (wzmianka).
+
+<!-- ════════ GRAFIKA [G07] ════════
+TYP: GENERATOR (hierarchia)
+PLIK: images/g07-hierarchia-agentow.png
+PROMPT: "Uporządkowana lista/piramida 5 narzędzi agentowych od najważniejszego u góry: Claude
+Code/Cowork, Codex, Antigravity, OpenCode, a na dole drobna wzmianka Hermes/Pi. Każdy poziom z ikoną,
+malejący rozmiar, czytelne etykiety. Styl flat, granat/bursztyn, 16:9." -->
+
+![](images/g07-hierarchia-agentow.png){fig-align="center" width="72%"}
+
+::: {.callout-note title="Co naprawdę różnicuje narzędzia"}
+Nie *jakość modelu* (w bazowych zadaniach modele są dziś podobne), lecz **sposób, w jaki narzędzie trzyma projekt**: czy pamięta o plikach kontekstowych, jak prowadzi log, jak wygląda zatwierdzanie zmian. Wybór narzędzia jest mniej istotny niż dobry plik instrukcji w folderze.
+:::
+
+## Gdzie agent „mieszka": edytory i terminale
+
+Agent musi gdzieś działać. Trzy nowoczesne środowiska warto znać:
+
+::: {.columns}
+::: {.column width="33%"}
+### Zed
+Szybki, natywny edytor z wbudowaną współpracą z AI — dobry, gdy zależy na lekkości, a pliki chcesz widzieć i edytować sam.
+:::
+::: {.column width="33%"}
+### Cursor
+Edytor (fork VS Code) mocno zorientowany na pracę z agentem w kodzie i plikach — płynne łączenie czatu z projektem.
+:::
+::: {.column width="33%"}
+### Warp
+Nowoczesny **terminal** z asystą AI — wygodny do uruchamiania agentów i komend (Ollama, OpenCode), gdzie widać każdy krok.
+:::
+:::
+
+Do tego dochodzi klasyka z Dnia 1: edytory Markdown (iA Writer, Typora, MarkEdit, VS Code, Obsidian). Nie narzucamy jednego — chodzi o dobranie narzędzia do własnego stylu.
+
+## MCP w jednym zdaniu
+
+> **MCP (Model Context Protocol)** to standard, dzięki któremu agent może **bezpiecznie** sięgać do zewnętrznych źródeł i narzędzi — na przykład do lokalnej bazy wiedzy.
+
+Pokazuję to na własnej bazie DEVONthink podłączonej przez MCP — ale wyłącznie jako *ilustrację* dojrzałego środowiska. To samo można zrobić nad zwykłym folderem; nikt nie musi mieć DEVONthink.
+
+Mamy komplet: prompt, kontekst, model i agent. W następnym rozdziale składamy to w jedno zadanie wykonane na żywo — agent grupujący literaturę.

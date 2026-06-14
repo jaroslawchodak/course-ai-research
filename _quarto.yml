@@ -1,0 +1,58 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Prompt engineering w badaniach naukowych"
+  subtitle: "Od pojedynczych zapytań do agentów AI i inżynierii kontekstu"
+  #author: "Jarosław Chodak"
+  date: today
+  date-format: "YYYY-MM-DD"
+  language: pl
+  search: true
+  reader-mode: true
+  page-footer:
+    left: "Kurs · Prompt engineering w badaniach naukowych · 3 dni / 24h"
+    right: |
+      Repozytorium na [GitHub](https://github.com/jaroslawchodak/course-ai-research)
+  sidebar:
+    style: docked
+    collapse-level: 2
+    border: true
+  chapters:
+    - index.qmd
+    - 01-fundament.qmd
+    - 02-dzien-1-zapytania.qmd
+    - 03-dzien-2-kontekst.qmd
+    - 04-notebooklm.qmd
+    - 05-deep-research.qmd
+    - 06-lokalne-llm.qmd
+    - 07-agenci-i-srodowiska.qmd
+    - 08-clustering-demo.qmd
+    - 09-integracja-ewaluacja.qmd
+
+format:
+  html:
+    theme:
+      light: [litera, theme/custom.scss]
+      dark: [darkly, theme/custom.scss]
+    toc: true
+    toc-depth: 3
+    toc-title: "Na tej stronie"
+    number-sections: true
+    number-depth: 2
+    smooth-scroll: true
+    code-overflow: wrap
+    code-copy: true
+    fontsize: "1.05em"
+    linkcolor: "#0b3d91"
+    mainfont: "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+    monofont: "JetBrains Mono, 'Fira Code', 'SF Mono', Consolas, monospace"
+    mermaid:
+      theme: neutral
+
+execute:
+  echo: true
+  eval: false
+
+lang: pl

@@ -1,0 +1,56 @@
+# Integracja, ewaluacja i zamknięcie
+
+Pojedyncze techniki dają wartość dopiero złożone w *powtarzalny, bezpieczny* przepływ, który zostanie z Tobą po kursie. Ten rozdział domyka łuk i opisuje, jak oceniamy efekty.
+
+## Spięcie łuku w jeden protokół
+
+Cały kurs to jeden ciąg: **prompt (Dzień 1) → kontekst i dane (Dzień 2) → nadzorowany agent (Dzień 3)**. Osobisty protokół pracy z AI łączy cztery elementy w jedną stronę:
+
+- **szablon promptu** (cztery warstwy),
+- **karta `privacy cage`** (co lokalnie, co w chmurze, czego nie powierzam AI),
+- **checklista weryfikacji halucynacji** (kotwice + sprawdzenie próbki źródeł),
+- **zasady doboru narzędzia**.
+
+> **Zasada proporcjonalności.** Prosty prompt do prostego pytania; agent i RAG tylko tam, gdzie złożoność tego wymaga. Protokół ma *upraszczać* decyzje, nie komplikować.
+
+::: {.callout-tip title="Ćwiczenie i artefakt"}
+Złóż `PROTOKOL-AI.md` (`kurs-pe/szablony/PROTOKOL-AI-szablon.md`) i wykonaj **jeden pełny mały przepływ** na własnym materiale: czysty `.md` → matryca lub JSON → wynik zakotwiczony → kontrola halucynacji → decyzja środowiskowa. Uporządkuj folder `portfolio/` wg `kurs-pe/szablony/README-portfolio-szablon.md`. Artefakt: kompletne portfolio + osobisty protokół.
+:::
+
+## Ewaluacja — portfolio
+
+Ocena jest **formująca**, nie rankingowa — chodzi o informację zwrotną i o to, by każdy wyszedł z działającym protokołem. Trzy kryteria odpowiadają trzem filarom z pierwszego rozdziału.
+
+| Kryterium | Wskaźniki spełnienia |
+|---|---|
+| **Jasność zadania (prompt)** | struktura 4-warstwowa · ślad iteracji v1→v3 · trafny format (Markdown/XML/JSON) |
+| **Ochrona danych (`privacy cage`)** | mapa ryzyka · karta chmura/lokalnie · brak danych wrażliwych · minimalizacja |
+| **Kontrola halucynacji** | prompty zakotwiczające · cytaty-kotwice · weryfikacja próbki źródeł |
+
+Skala dla każdego kryterium: *spełnia w pełni / spełnia częściowo / wymaga dopracowania*. Warunek zaliczenia: co najmniej „spełnia częściowo" w każdym kryterium oraz kompletny `PROTOKOL-AI.md`.
+
+## Jeden nawyk na koniec
+
+Zamykamy tym, czym otworzyliśmy: ten kurs nie jest o tym, żeby „używać wszystkiego", lecz żeby mieć **protokół i trzy odruchy**. Zacznij od jednego nawyku i rozbudowuj resztę stopniowo.
+
+> Zanim wciśniesz Enter — zapytaj: *„gdzie trafiają te dane i czym to zakotwiczę?"*
+
+<!-- ════════ GRAFIKA [G08] ════════
+TYP: GENERATOR (ilustracja zamykająca)
+PLIK: images/g08-zamkniecie.png
+PROMPT: "Spokojna, optymistyczna ilustracja: badacz i asystent-AI pracujący ramię w ramię nad
+uporządkowanym warsztatem wiedzy (markdown, graf, ikona lokalnego serwera). Symbolika kontroli i
+zaufania. Styl flat, granat/bursztyn, 16:9, bez tekstu." -->
+
+![](images/g08-zamkniecie.png){fig-align="center" width="72%"}
+
+## Aneks — źródła i aktualność
+
+Stan narzędzi opisany w tej książce to **czerwiec 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach, nie latach — przed wykładem potwierdź je u producentów (OpenAI, Anthropic, Google) i na stronach narzędzi.
+
+- Anthropic — *Effective context engineering for AI agents*.
+- Okna kontekstowe 2026 · narzędzia literaturowe (Elicit, Consensus, Scite, Connected Papers, Litmaps, Research Rabbit).
+- Lokalne LLM — Ollama, LM Studio; wymagania sprzętowe i kwantyzacja.
+- Konwersja PDF→Markdown — pymupdf4llm, Docling, marker, Pandoc.
+
+> **Zastrzeżenie.** Liczby i nazwy modeli pochodzą z materiałów branżowych o różnej wiarygodności i szybko się dezaktualizują. Traktuj je jako punkt wyjścia do weryfikacji, nie jako pewnik.

@@ -1,0 +1,29 @@
+# Deep research i jego granice
+
+Dzień trzeci zaczynamy od narzędzi, które robią najwięcej za nas — i właśnie dlatego wymagają najwięcej czujności.
+
+## Spektrum: od czatu do agentowego raportu
+
+Między prostym czatem a pełnym agentem jest całe spektrum:
+
+- **czat** odpowiada z pamięci,
+- **tryb research** dokłada przeszukiwanie sieci i cytaty,
+- **agentowy deep research** planuje, wyszukuje wielokrotnie i składa wielostronicowy raport.
+
+W praktyce badacza krążą tu konkretne narzędzia: **ChatGPT i Gemini Deep Research** oraz **Perplexity** po stronie ogólnej; **Elicit** (ekstrakcja danych z wielu prac), **Consensus** (synteza „co mówi nauka"), **Scite** (kontekst cytowań: czy praca wspiera, czy podważa) po stronie literaturowej; oraz grafy powiązań — **Connected Papers, Litmaps, Research Rabbit**. Pod spodem leżą otwarte źródła: **OpenAlex, Semantic Scholar, arXiv, PubMed**.
+
+## „Głęboki research, płytka sprawczość"
+
+Deep research generuje *ładny raport* — ale ładny raport z trzema zmyślonymi cytatami jest gorszy niż brak raportu, bo usypia czujność. Narzędzia te świetnie **zbierają**, lecz **nie zastępują oceny badacza**: zdarzają im się źródła nieistniejące lub błędnie sparafrazowane oraz tendencyjny dobór.
+
+::: {.callout-important title="Obowiązkowa weryfikacja próbki"}
+Z każdego raportu wylosuj **trzy cytowania** i sprawdź je u źródła (DOI, PubMed, OpenAlex). Zapisz, ile przeszło weryfikację. To nie biurokracja — to jedyna rzecz, która odróżnia przegląd od ładnie sformatowanego zgadywania.
+:::
+
+::: {.callout-tip title="Ćwiczenie i artefakt"}
+Napisz `protokol-deep-research.md` (`kurs-pe/szablony/protokol-deep-research-szablon.md`): pytanie, kryteria włączenia i wyłączenia, oczekiwane typy źródeł. Uruchom jedno narzędzie deep research i jedno literaturowe na tym samym pytaniu, po czym zweryfikuj trzy cytowania. Artefakt: protokół + karta krytycznej oceny z odsetkiem zweryfikowanych źródeł.
+:::
+
+> **Pytanie, które zostaje z Tobą.** Gdzie kończy się praca, którą mogę powierzyć narzędziu, a zaczyna ta, za którą jako autor odpowiadam osobiście?
+
+Deep research działa w chmurze i na danych jawnych. Co jednak, gdy materiał jest wrażliwy i nie może opuścić komputera? Wtedy schodzimy na poziom modeli lokalnych — i to jest temat następnego rozdziału.
