@@ -24,7 +24,7 @@ PROMPT: "Minimalistyczna ilustracja koncepcyjna: badacz przy biurku współpracu
 jako świetlisty, uporządkowany panel z dokumentami markdown i grafem wiedzy. Po lewej chaos surowych
 PDF-ów, po prawej uporządkowana struktura. Paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, kreska w atramencie #26211C; bez gradientów, bez winiet, bez ostrych cieni, styl płaski, akademicki, bez tekstu, 16:9." -->
 
-![](images/g01-hero.png){fig-align="center" width="78%"}
+![](images/g01-hero.png){fig-align="center" width="100%"}
 
 ## Trzy filary, które wracają w każdym rozdziale
 
