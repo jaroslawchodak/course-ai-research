@@ -6,7 +6,10 @@ book:
   title: "Prompt engineering w badaniach naukowych"
   subtitle: "Od pojedynczych zapytań do agentów AI i inżynierii kontekstu"
   #author: "Jarosław Chodak"
-  cover-image: images/cover.png
+  # cover-image wyłączone: Quarto renderuje okładkę jako float (opływany tekstem),
+  # co w Safari rozpycha tekst i nachodzi na g01-hero.png. Książka zaczyna się od Przedmowy + g01-hero.
+  # (Ewentualny wariant: okładka landscape jako pełnej szerokości baner przed Przedmową — bez opływania.)
+  # cover-image: images/cover.png
   date: today
   date-format: "YYYY-MM-DD"
   language: pl
