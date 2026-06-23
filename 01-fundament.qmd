@@ -12,20 +12,79 @@ Zanim użyjesz dowolnego narzędzia AI, zadaj sobie jedno pytanie: *„Czy ufam 
 AI to **asystent pod nadzorem**, nie wyrocznia. Model przewiduje prawdopodobny tekst, więc potrafi zmyślić cytat brzmiący jak prawdziwy.
 :::
 ::: {.column width="33%"}
-### Grounding
+### Zakotwiczenie (*grounding*)
 Wartościowa odpowiedź opiera się na **podanym materiale** i **sprawdzalnych źródłach**, nie na „pamięci" modelu.
 :::
 ::: {.column width="33%"}
-### `privacy cage`
+### Klatka prywatności (*privacy cage*)
 Świadome ograniczanie przepływu danych do **kontrolowanego, w miarę możliwości lokalnego** środowiska.
 :::
 :::
 
 Jeśli z całego kursu zapamiętasz tylko te trzy słowa — *zaufanie, zakotwiczenie, klatka* — reszta jest już tylko techniką, która je realizuje.
 
+<!-- ════════ GRAFIKA [G16] ════════
+TYP: GENERATOR (trzy filary kursu)
+PLIK: images/g16-trzy-filary.png
+PROMPT: "Trzy cienko kreślone filary (kolumny) stojące obok siebie, każdy zwieńczony jedną małą ikoną:
+waga / półprzymknięte oko (ograniczone zaufanie), kotwica (zakotwiczenie) i miękka zaokrąglona obudowa
+wokół małego dokumentu (klatka prywatności). Trzy filary podtrzymują jedną wąską poziomą belkę — wszystko
+się na nich opiera. Styl flat, cienka precyzyjna kreska, paleta japandi: matowe kremowe tło #F1ECE3, akcenty
+szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9, bez tekstu." -->
+
+![](images/g16-trzy-filary.png){fig-align="center" width="100%"}
+
+## Te same filary z drugiej strony: trzy odwrotne prawa AI
+
+Trzy filary łatwiej zapamiętać przez kontrast ze znanym wzorcem. **Trzy prawa robotyki Isaaca Asimova** (z opowiadań science fiction, 1942) nakładały ograniczenia na *maszynę*, by chroniła człowieka:
+
+1. robot **nie skrzywdzi człowieka** ani przez zaniechanie nie dopuści do jego krzywdy,
+2. **słucha poleceń** człowieka, o ile nie łamią prawa pierwszego,
+3. **chroni własne istnienie**, o ile nie łamie praw pierwszego i drugiego.
+
+<!-- ════════ GRAFIKA [G17] ════════
+TYP: GENERATOR (trzy prawa robotyki Asimova)
+PLIK: images/g17-prawa-asimova.png
+PROMPT: "Mała, przyjazna sylwetka robota po lewej, delikatnie objęta trzema cienkimi koncentrycznymi łukami
+ochronnymi, które wyginają się ku sylwetce człowieka po prawej, osłaniając ją. Łuki subtelnie oznaczone trzema
+kropkami (jeden, dwa, trzy) — uporządkowana hierarchia praw. Sens: maszyna jest ograniczona, by chronić
+człowieka. Styl flat, cienka precyzyjna kreska, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa
+zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9, bez tekstu." -->
+
+![](images/g17-prawa-asimova.png){fig-align="center" width="100%"}
+
+Susam Pal (*Three Inverse Laws of AI*, 2026) odwraca perspektywę. Dziś groźniejsze nie jest to, że maszyna skrzywdzi człowieka, lecz że człowiek **za bardzo jej zawierzy**. Dlatego jego trzy prawa ograniczają nie maszynę, lecz **nas — użytkowników**:
+
+::: {.columns}
+::: {.column width="33%"}
+### Nie antropomorfizuj
+Nie przypisuj modelowi sądu, intencji ani troski. Płynny tekst nie jest rozumieniem — to filar **ograniczonego zaufania**: model przewiduje tokeny, a nie „wie".
+:::
+::: {.column width="33%"}
+### Nie zawierzaj bezkrytycznie
+Żaden wynik nie jest autorytatywny bez niezależnej weryfikacji; im poważniejsze skutki, tym wyższy próg sprawdzania. To filar **zakotwiczenia**.
+:::
+::: {.column width="33%"}
+### Nie scedowuj odpowiedzialności
+„Tak powiedziała AI" nigdy nie jest usprawiedliwieniem. Dla badacza to prawo jest najostrzejsze — na pracy widnieje **Twoje nazwisko**, nie agenta.
+:::
+:::
+
+<!-- ════════ GRAFIKA [G18] ════════
+TYP: GENERATOR (trzy odwrotne prawa AI)
+PLIK: images/g18-odwrotne-prawa.png
+PROMPT: "Lustrzane odbicie obrazu z prawami Asimova: tu to człowiek-badacz jest delikatnie objęty trzema
+cienkimi koncentrycznymi łukami zwróconymi ku niemu samemu, podczas gdy obok spokojnie stoi nieskrępowany
+panel AI. Łuki z trzema kropkami (jeden, dwa, trzy). Sens odwrócenia: dziś prawa ograniczają użytkownika,
+nie maszynę — nie antropomorfizuj, nie zawierzaj bezkrytycznie, nie scedowuj odpowiedzialności. Styl flat,
+cienka precyzyjna kreska, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i
+błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9, bez tekstu." -->
+
+![](images/g18-odwrotne-prawa.png){fig-align="center" width="100%"}
+
 ## Pojęcia techniczne wyjaśniamy raz, prostym zdaniem
 
-Unikamy żargonu informatycznego. Każdy termin pojawia się najpierw jako jedno proste zdanie, a dopiero potem w praktyce.
+Unikamy żargonu informatycznego. Każdy termin pojawia się najpierw jako jedno proste zdanie, a dopiero potem w praktyce. Dzielimy je na dwa rodzaje: **rdzeń** (musisz rozumieć, by ćwiczyć) i **horyzont „dla chętnych"** (MoE, kwantyzacja, harness) — tych ostatnich nie trzeba pamiętać.
 
 | Termin | Po ludzku |
 |---|---|
@@ -34,11 +93,37 @@ Unikamy żargonu informatycznego. Każdy termin pojawia się najpierw jako jedno
 | **Prompt** | Instrukcja dla modelu. |
 | **Inżynieria kontekstu** | Decyzja, jaką *konfigurację* informacji podać modelowi, by uzyskać pożądane zachowanie. |
 | **Halucynacja** | Zmyślenie podane z pełną pewnością. |
-| **Grounding** | Zakotwiczenie odpowiedzi w podanym materiale i źródłach. |
+| **Zakotwiczenie (*grounding*)** | Oparcie odpowiedzi na podanym materiale i sprawdzalnych źródłach. |
 | **RAG** | *Retrieval-Augmented Generation* — najpierw wyszukaj właściwe fragmenty, potem każ modelowi odpowiedzieć tylko na ich podstawie. |
 | **Chunking** | Dzielenie długiego materiału na mniejsze kawałki. |
 | **Agent** | Model z narzędziami (czyta/zapisuje pliki, wyszukuje) wykonujący zadania wieloetapowe. |
 | **MCP** | Standard bezpiecznego sięgania modelu do zewnętrznych źródeł i narzędzi. |
+
+## Pięć metafor, które wracają przez cały kurs
+
+Pięć najtrudniejszych pojęć dostało **metaforę rdzeniową**. Pada raz, przy pierwszym wprowadzeniu, i wraca jako „haczyk" w kolejnych rozdziałach. Jedna spójna metaforyka obniża obciążenie poznawcze: budujesz jeden schemat, a nie pięć osobnych definicji.
+
+| Pojęcie | Metafora |
+|---|---|
+| **Token** | **sylaba**, którą model czyta i przewiduje — układa tekst kawałek po kawałku (stąd zmyśla *płynnie*). |
+| **Okno kontekstowe** | **biurko o ograniczonej powierzchni** — im więcej walających się papierów, tym łatwiej zgubić właściwy. |
+| **Inżynieria kontekstu** | **przygotowanie biurka dla zastępcy** — nie *jak* poprosisz, lecz *co położysz*: za mało = zgaduje, za dużo = gubi się w stosie. |
+| **Agent** | **asystent z dostępem do szafy z dokumentami i listą procedur** — działa tylko wedle spisanych reguł i za Twoją zgodą. |
+| **RAG** | **egzamin z otwartą książką — ale wyłącznie z TWoją książką** (nie cytuje z pamięci, tylko z materiału, który dałeś). |
+
+Metafora „biurka" z rozdziału o kontekście wróci później jako biurko agenta, które samo się zaśmieca w długiej sesji. Warto ją zapamiętać już teraz.
+
+<!-- ════════ GRAFIKA [G19] ════════
+TYP: GENERATOR (metafora: przygotowanie biurka)
+PLIK: images/g19-metafora-biurko.png
+PROMPT: "Schludne biurko przygotowywane dla zastępcy: czysty blat z kilkoma celowo ułożonymi przedmiotami
+(jeden segregator, otwarta książka zwrócona do widza, mały przycisk-kotwica do papieru), a obok, za krawędzią,
+odłożony zagracony stos papierów. Sens: inżynieria kontekstu jako »przygotowanie biurka« — za mało, a zastępca
+zgaduje; za dużo, a gubi się w stosie. Styl flat, cienka precyzyjna kreska, paleta japandi: matowe kremowe tło
+#F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet,
+16:9, bez tekstu." -->
+
+![](images/g19-metafora-biurko.png){fig-align="center" width="100%"}
 
 ## Łuk kursu: zapytania → kontekst → agenci
 
@@ -61,18 +146,37 @@ Czym jest kontekst · PDF→Markdown · dane w JSON · RAG i matryca · Notebook
 **Agenci**
 *„Jak to bezpiecznie złożyć?"*
 
-Deep research · lokalne LLM · hierarchia agentów i edytory · clustering demo i portfolio.
+Deep research · lokalne LLM · hierarchia agentów i edytory · klastrowanie · etyka i portfolio.
 :::
 :::
+
+## Mapa odruchów: jeden rozdział, jedna rzecz do zapamiętania
+
+To narzędzie awaryjne. Jeśli w którymś momencie materiał wyda się zbyt gęsty, wróć do tej mapy — każdy etap kursu zostawia *jeden odruch*, nie listę pojęć.
+
+| Etap | Odruch, który zostaje |
+|---|---|
+| Krajobraz narzędzi | Nie ufam pewnie brzmiącemu wynikowi bez śladu źródła. |
+| Anatomia promptu | Rozpisuję prompt na rolę, kontekst, zadanie i format. |
+| Markdown i XML | Oddzielam dane od instrukcji. |
+| Halucynacje i dane | Każda teza ma kotwicę albo status „brak danych". |
+| Inżynieria kontekstu | Podaję minimalny, ale wystarczający kontekst. |
+| PDF → Markdown | Najpierw czyszczę materiał, potem proszę AI o analizę. |
+| Dane strukturalne | Dane strukturalne podaję jako dane strukturalne. |
+| RAG i matryca | Model syntetyzuje moją matrycę, nie wymyśla literatury. |
+| Deep research | Raport to lista tropów do sprawdzenia, nie gotowy przegląd. |
+| Lokalne LLM | Dla każdego typu danych wybieram środowisko. |
+| Agenci | Agent pracuje na plikach pod moim nadzorem. |
+| Integracja | Mam protokół: narzędzie, format, dane, weryfikacja. |
 
 ## Jak pracujemy
 
-Każdy z dwunastu bloków trwa 90 minut i kończy się **konkretnym artefaktem** — szablonem promptu, mapą ryzyka, matrycą literatury, kartą `privacy cage`. Suma artefaktów składa się na **portfolio**, które jest podstawą ewaluacji.
+Każdy z dwunastu bloków kursu trwa 90 minut i kończy się **konkretnym artefaktem** — szablonem promptu, mapą ryzyka, matrycą literatury, kartą klatki prywatności. Suma artefaktów składa się na **portfolio**, które jest podstawą ewaluacji.
 
 Pracujemy w **zwykłym folderze plików** oraz w edytorze Markdown, Obsidianie, Zotero lub Bookends — narzędziach dostępnych bezpłatnie lub powszechnie posiadanych. Wszystkie szablony są w katalogu `kurs-pe/`, więc nikt nie zaczyna od pustej kartki.
 
 ::: {.callout-warning title="Notion — dlaczego nie jako podstawowe środowisko"}
-Notion przechowuje treść na swoich serwerach. Dla materiałów badawczych łamie to zasadę `privacy cage`, dlatego nie budujemy na nim ćwiczeń. DEVONthink pokazuję wyłącznie jako *przykład* zaawansowanej, lokalnej bazy wiedzy prowadzącego — uczestnicy go nie potrzebują.
+Notion przechowuje treść na swoich serwerach. Dla materiałów badawczych łamie to zasadę klatki prywatności, dlatego nie budujemy na nim ćwiczeń. DEVONthink pokazuję wyłącznie jako *przykład* zaawansowanej, lokalnej bazy wiedzy prowadzącego — uczestnicy go nie potrzebują.
 :::
 
 Mając fundament za sobą, zaczynamy od pojedynczego, niezgrabnego zapytania i doprowadzamy je do precyzyjnej instrukcji.

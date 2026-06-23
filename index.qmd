@@ -31,8 +31,8 @@ PDF-ów, po prawej uporządkowana struktura. Paleta japandi: matowe kremowe tło
 Cały kurs da się streścić jedną postawą: **AI to asystent roboczy pod nadzorem człowieka, a nie autonomiczny autorytet ani zastępstwo dla badacza.** Z tej postawy wyrastają trzy zasady, do których będziemy wracać:
 
 1. **Ograniczone zaufanie** — model nie „wie", lecz przewiduje prawdopodobny tekst; stąd halucynacje.
-2. **Grounding (zakotwiczenie w danych)** — wartościowa odpowiedź opiera się na podanym materiale i sprawdzalnych źródłach.
-3. **`privacy cage` (klatka prywatności)** — świadome ograniczanie przepływu danych badawczych do kontrolowanego, w miarę możliwości lokalnego środowiska.
+2. **Zakotwiczenie w danych (*grounding*)** — wartościowa odpowiedź opiera się na podanym materiale i sprawdzalnych źródłach.
+3. **Klatka prywatności (*privacy cage*)** — świadome ograniczanie przepływu danych badawczych do kontrolowanego, w miarę możliwości lokalnego środowiska.
 
 ## O czym jest ten materiał
 
@@ -69,14 +69,17 @@ Nie musisz rozumieć sieci neuronowych.
 
 | Rozdział | Treść |
 |---|---|
-| **Fundament** | Trzy filary, słownik pojęć, łuk i agenda kursu. |
-| **Zapytania** | Krajobraz narzędzi, anatomia promptu, Markdown/XML, halucynacje i ochrona danych. |
-| **Kontekst** | Inżynieria kontekstu, PDF→Markdown, dane w JSON, RAG i matryca literatury. |
+| **Fundament** | Trzy filary i odwrotne prawa AI, słownik pojęć, pięć metafor, mapa odruchów. |
+| **Zapytania** | Krajobraz narzędzi, anatomia promptu, Markdown i XML. |
+| **Halucynacje i ochrona danych** | Zakotwiczenie, klatka prywatności, RODO, trzy środowiska danych. |
+| **Kontekst** | Inżynieria kontekstu, śmietnik kontekstowy, PDF→Markdown. |
+| **Dane i RAG** | Dane strukturalne w JSON, matryca literatury jako „mały RAG". |
 | **NotebookLM** | Parser i generator notatek; case study czytania książki naukowej. |
-| **Deep research** | Tryby pogłębione i ich granice; obowiązkowa weryfikacja źródeł. |
+| **Deep research** | Tryby pogłębione, cztery tryby porażki, obowiązkowa weryfikacja źródeł. |
 | **Lokalne LLM** | Dense vs MoE, agentic vs chatbot, kwantyzacja, uruchamianie z agentami. |
-| **Agenci i środowiska** | Hierarchia agentów, edytory i terminale, MCP. |
-| **Clustering Demo** | Agent w działaniu — klastrowanie literatury (demonstracja). |
+| **Agenci i środowiska** | Hierarchia agentów, edytory i terminale, twarde bezpieczniki, MCP. |
+| **Klastrowanie** | Agent w działaniu — klastrowanie literatury (demonstracja). |
+| **Etyka i granice AI** | Co zostaje przy badaczu, higiena pracy, oświadczenie o użyciu AI. |
 | **Integracja i ewaluacja** | Złożenie własnego przepływu, portfolio, źródła. |
 
 ## Jak korzystać z tej książki

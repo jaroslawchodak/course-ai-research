@@ -27,13 +27,16 @@ book:
     - index.qmd
     - 01-fundament.qmd
     - 02-zapytania.qmd
-    - 03-kontekst.qmd
-    - 04-notebooklm.qmd
-    - 05-deep-research.qmd
-    - 06-lokalne-llm.qmd
-    - 07-agenci-i-srodowiska.qmd
-    - 08-clustering-demo.qmd
-    - 09-integracja-ewaluacja.qmd
+    - 03-halucynacje-dane.qmd
+    - 04-kontekst.qmd
+    - 05-dane-rag.qmd
+    - 06-notebooklm.qmd
+    - 07-deep-research.qmd
+    - 08-lokalne-llm.qmd
+    - 09-agenci-srodowiska.qmd
+    - 10-clustering-demo.qmd
+    - 11-etyka.qmd
+    - 12-integracja-ewaluacja.qmd
 
 format:
   html:

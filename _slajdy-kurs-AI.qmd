@@ -67,6 +67,8 @@ Powitanie. Ten kurs prowadzi od pojedynczego zapytania, przez inżynierię konte
 
 ## Zaktualizowana agenda {.smaller}
 
+> 🆕 **Blok 0 — przed kursem** (praca własna ~15 min): konta, sprawdzenie dostępu, opcjonalny pre-setup Ollama, karta BHP danych. Cheatsheet: `kurs-pe/00_start/cheatsheet-przed-kursem.md`.
+
 ::: {.columns}
 ::: {.column width="33%"}
 **DZIEŃ 1 — Zapytania**
@@ -111,10 +113,10 @@ To jest mapa całości i zarazem kontrakt na trzy dni. Zwracam uwagę na cztery 
 - Pracujemy w **zwykłym folderze + edytorze Markdown / Obsidian / Zotero / Bookends**.
 - Materiały i szablony: katalog **`kurs-pe/`**.
 
-> **Trzy filary przez cały kurs:** ograniczone zaufanie · grounding (zakotwiczenie w danych) · `privacy cage` (klatka prywatności).
+> **Trzy filary przez cały kurs:** ograniczone zaufanie · zakotwiczenie (grounding) · klatka prywatności (`privacy cage`).
 
 ::: notes
-Podkreślam praktyczność: nie wychodzimy z bloku bez artefaktu — szablonu promptu, mapy ryzyka, matrycy literatury, karty privacy cage. Wszystkie szablony są w folderze kurs-pe, więc nikt nie zaczyna od pustej kartki. I jeszcze jedno: nie polecam Notion na materiały badawcze — trzyma treść na serwerze, co łamie zasadę klatki prywatności. DEVONthink pokażę tylko jako mój przykład zaawansowanej bazy wiedzy — Państwo go nie potrzebują.
+Podkreślam praktyczność: nie wychodzimy z bloku bez artefaktu — szablonu promptu, mapy ryzyka, matrycy literatury, karty klatki prywatności. Wszystkie szablony są w folderze kurs-pe, więc nikt nie zaczyna od pustej kartki. I jeszcze jedno: nie polecam Notion na materiały badawcze — trzyma treść na serwerze, co łamie zasadę klatki prywatności. DEVONthink pokażę tylko jako mój przykład zaawansowanej bazy wiedzy — Państwo go nie potrzebują.
 :::
 
 # Część 0 — Fundament {background-color="#1a2b4a"}
@@ -127,17 +129,33 @@ Podkreślam praktyczność: nie wychodzimy z bloku bez artefaktu — szablonu pr
 AI to **asystent pod nadzorem**, nie wyrocznia. Model nie „wie" — przewiduje prawdopodobny tekst. Stąd halucynacje.
 :::
 ::: {.column width="33%"}
-### 2. Grounding
+### 2. Zakotwiczenie (grounding)
 Wartościowa odpowiedź opiera się na **podanym materiale** i **sprawdzalnych źródłach**, nie na „pamięci" modelu.
 :::
 ::: {.column width="33%"}
-### 3. `privacy cage`
+### 3. Klatka prywatności (`privacy cage`)
 Świadome ograniczanie przepływu danych do **kontrolowanego, w miarę możliwości lokalnego** środowiska.
 :::
 :::
 
 ::: notes
-To jest serce kursu. Jeśli zapamiętają Państwo tylko jeden slajd — ten. Ograniczone zaufanie: model generuje statystycznie prawdopodobny ciąg, więc potrafi zmyślić cytat brzmiący jak prawdziwy. Grounding: zawsze pytam „na czym to opierasz?" i żądam cytatu z podanego materiału. Privacy cage: zanim cokolwiek wkleję, pytam „gdzie trafią te dane?". Cała reszta to techniki realizujące te trzy zasady.
+To jest serce kursu. Jeśli zapamiętają Państwo tylko jeden slajd — ten. Ograniczone zaufanie: model generuje statystycznie prawdopodobny ciąg, więc potrafi zmyślić cytat brzmiący jak prawdziwy. Zakotwiczenie: zawsze pytam „na czym to opierasz?" i żądam cytatu z podanego materiału. Klatka prywatności: zanim cokolwiek wkleję, pytam „gdzie trafią te dane?". Cała reszta to techniki realizujące te trzy zasady.
+:::
+
+## Trzy filary — z drugiej strony: trzy odwrotne prawa AI {.smaller}
+
+**Najpierw klasyka — 3 prawa robotyki Asimova (1942):** robot (1) **nie skrzywdzi człowieka**, (2) **słucha poleceń**, (3) **chroni siebie** — zawsze w tej kolejności. Ograniczają **maszynę**, by chroniła człowieka.
+
+> Susam Pal (2026) **odwraca perspektywę** — dziś groźniejsze, że człowiek za bardzo zawierzy maszynie. Te prawa ograniczają **nas**:
+
+1. **Nie antropomorfizuj** — nie przypisuj modelowi sądu, intencji ani troski; płynny tekst ≠ rozumienie *(filar 1: model przewiduje tokeny, nie „wie")*.
+2. **Nie zawierzaj bezkrytycznie** — żaden wynik nie jest autorytatywny bez niezależnej weryfikacji; im poważniejsze skutki, tym wyższy próg *(filary 1–2)*.
+3. **Nie scedowuj odpowiedzialności** — „tak powiedziała AI" nigdy nie jest usprawiedliwieniem *(filar 3)*.
+
+> Dla badacza prawo III jest najostrzejsze: na pracy widnieje **Twoje nazwisko**, nie agenta.
+
+::: notes
+Zaczynam od oryginału, bo nie każdy zna Asimova — bez tego antyteza wisi w próżni. Trzy prawa robotyki z lat czterdziestych chroniły człowieka przed maszyną i zawsze działały w tej kolejności: nie krzywdź, słuchaj, chroń siebie. Susam Pal odwraca soczewkę: dziś realnym ryzykiem nie jest zbuntowany robot, lecz badacz, który zbyt ufa modelowi. Stąd trzy odwrotne prawa — nie udawaj, że model ma podmiotowość; nie traktuj wyniku jak wyroczni; nie zrzucaj odpowiedzialności. Dla badacza najmocniejsze jest prawo trzecie: żadne „tak podała AI" nie zdejmie nazwiska z artykułu. Wracam do tego w rozdziale o etyce na końcu Dnia 3.
 :::
 
 ## Słownik pojęć (wprowadzamy stopniowo) {.smaller}
@@ -148,13 +166,48 @@ To jest serce kursu. Jeśli zapamiętają Państwo tylko jeden slajd — ten. Og
 | **Okno kontekstowe** | Ile tekstu model widzi naraz. Duże ≠ dobra pamięć. |
 | **Inżynieria kontekstu** | Jaką *konfigurację* informacji podać, by uzyskać pożądane zachowanie. |
 | **Halucynacja** | Zmyślenie podane z pełną pewnością. |
-| **Grounding** | Zakotwiczenie odpowiedzi w materiale i źródłach. |
+| **Zakotwiczenie (grounding)** | Oparcie odpowiedzi na materiale i źródłach. |
 | **RAG** | Najpierw wyszukaj właściwe fragmenty, potem każ odpowiedzieć tylko na ich podstawie. |
 | **Agent** | Model z narzędziami (pliki, wyszukiwanie) wykonujący zadania wieloetapowe. |
 | **MCP** | Standard bezpiecznego sięgania modelu do zewnętrznych źródeł/narzędzi. |
 
 ::: notes
-Nie omawiam tej tabeli punkt po punkcie — wróci do niej, gdy każde pojęcie pojawi się w praktyce. Teraz tylko sygnalizuję, że każdy termin techniczny wyjaśnię jednym prostym zdaniem, zanim go użyję. Żargonu informatycznego unikamy.
+Nie omawiam tej tabeli punkt po punkcie — wróci do niej, gdy każde pojęcie pojawi się w praktyce. Teraz tylko sygnalizuję, że każdy termin techniczny wyjaśnię jednym prostym zdaniem, zanim go użyję. Żargonu informatycznego unikamy. Pojęcia dzielę na **rdzeń** (musisz, by ćwiczyć) i **horyzont „dla chętnych"** (MoE, kwantyzacja, harness) — tych ostatnich nie trzeba pamiętać.
+:::
+
+## 🔑 Pięć metafor rdzeniowych {.smaller}
+
+| Pojęcie | Metafora |
+|---|---|
+| **Token** | **sylaba**, którą model czyta i przewiduje — układa tekst kawałek po kawałku (stąd zmyśla *płynnie*). |
+| **Okno kontekstowe** | **biurko o ograniczonej powierzchni** — im więcej walających się papierów, tym łatwiej zgubić właściwy. |
+| **Inżynieria kontekstu** | **przygotowanie biurka dla zastępcy** — nie *jak* poprosisz, lecz *co położysz*: za mało = zgaduje, za dużo = gubi się w stosie. |
+| **Agent** | **asystent z dostępem do szafy z dokumentami i listą procedur** — działa tylko wedle spisanych reguł i za Twoją zgodą. |
+| **RAG** | **egzamin z otwartą książką — ale wyłącznie z TWoją książką** (nie cytuje z pamięci, tylko z materiału, który dałeś). |
+
+::: notes
+Każda metafora pada raz przy pierwszym wprowadzeniu pojęcia i wraca jako „haczyk" w kolejnych blokach — np. „biurko" z B5 wraca w B11 jako biurko agenta, które samo się zaśmieca (context rot). Jedna spójna metaforyka obniża obciążenie poznawcze: uczestnik buduje jeden schemat, nie pięć osobnych definicji.
+:::
+
+## 🧭 Mapa odruchów — jeden blok, jedna rzecz {.smaller}
+
+| Blok | Odruch, który zostaje |
+|---|---|
+| B1 | Nie ufam pewnie brzmiącemu wynikowi bez śladu źródła. |
+| B2 | Rozpisuję prompt na rolę, kontekst, zadanie i format. |
+| B3 | Oddzielam dane od instrukcji. |
+| B4 | Każda teza ma kotwicę albo status „brak danych". |
+| B5 | Podaję minimalny, ale wystarczający kontekst. |
+| B6 | Najpierw czyszczę materiał, potem proszę AI o analizę. |
+| B7 | Dane strukturalne podaję jako dane strukturalne. |
+| B8 | Model syntetyzuje moją matrycę, nie wymyśla literatury. |
+| B9 | Raport deep research to lista tropów do sprawdzenia. |
+| B10 | Dla każdego typu danych wybieram środowisko. |
+| B11 | Agent pracuje na plikach pod moim nadzorem. |
+| B12 | Mam protokół: narzędzie, format, dane, weryfikacja. |
+
+::: notes
+To mapa awaryjna: gdy w którymś momencie materiał wyda się zbyt gęsty, wracamy do tej tabeli. Każdy blok zostawia jeden odruch — nie listę pojęć do zapamiętania, lecz jeden nawyk do wykonania. To zarazem zapowiedź łuku całego kursu: dwanaście odruchów składa się na osobisty protokół z bloku dwunastego.
 :::
 
 # DZIEŃ 1 — Od zapytania do precyzyjnej instrukcji {background-color="#1a2b4a"}
@@ -274,7 +327,7 @@ Cel: uczestnik umie zapisać ten sam prompt w obu formatach i wie, kiedy któreg
 ## B4 · Kontrola halucynacji i ochrona danych {.smaller}
 **15:00–16:30 · 35% / 65%**
 
-**Techniki groundingu:**
+**Techniki zakotwiczenia (groundingu):**
 
 ```text
 Odpowiadaj wyłącznie na podstawie poniższego fragmentu.
@@ -282,7 +335,7 @@ Każdą tezę poprzyj dokładnym cytatem z fragmentu.
 Czego nie ma w materiale — napisz „brak danych". Nie zgaduj, nie wymyślaj źródeł.
 ```
 
-**`privacy cage` — klasyfikacja:** jawne / wrażliwe / osobowe / medyczne / pod NDA → decyzja, co wolno wkleić.
+**Klatka prywatności (`privacy cage`) — klasyfikacja:** jawne / wrażliwe / osobowe / medyczne / pod NDA → decyzja, co wolno wkleić.
 
 > **Bezwzględnie NIE wklejamy** danych osobowych, medycznych, niezanonimizowanych transkrypcji, cudzych recenzji ani materiałów pod NDA do publicznych modeli.
 
@@ -297,7 +350,25 @@ laptopie; chmura na zewnątrz oddzielona granicą. Styl flat, stonowany, 16:9, b
 ![](images/g04-privacy-cage.png){width="70%" fig-align="center"}
 
 ::: notes
-Halucynacja brzmi dokładnie tak samo pewnie jak fakt — dlatego potrzebujemy metody jej wykrycia, a nie wyczucia. Weryfikacja krzyżowa u źródła: DOI, PubMed, OpenAlex, Semantic Scholar. Druga połowa bloku to privacy cage: uczestnicy wypełniają mapę ryzyka danych. Ostrzegam przed fałszywym poczuciem bezpieczeństwa po anonimizacji — rzadka kombinacja cech (wiek plus miejscowość plus diagnoza) wciąż reidentyfikuje. Zasada minimalizacji: podajemy najmniej, ile trzeba. Artefakty: mapa ryzyka + checklista weryfikacji.
+Halucynacja brzmi dokładnie tak samo pewnie jak fakt — dlatego potrzebujemy metody jej wykrycia, a nie wyczucia. Weryfikacja krzyżowa u źródła: DOI, PubMed, OpenAlex, Semantic Scholar. Druga połowa bloku to klatka prywatności: uczestnicy wypełniają mapę ryzyka danych. Ostrzegam przed fałszywym poczuciem bezpieczeństwa po anonimizacji — rzadka kombinacja cech (wiek plus miejscowość plus diagnoza) wciąż reidentyfikuje. Zasada minimalizacji: podajemy najmniej, ile trzeba. Artefakty: mapa ryzyka + checklista weryfikacji.
+:::
+
+## B4 · Klatka prywatności to RODO w praktyce {.smaller}
+
+Wklejenie danych osobowych do modelu w chmurze = **przetwarzanie w rozumieniu RODO** (podstawa prawna, minimalizacja — art. 5, konsultacja z **IOD/DPO** uczelni).
+
+**Trzy środowiska, nie dwa** — między chmurą publiczną a modelem lokalnym jest scenariusz pośredni:
+
+| Środowisko | Co to znaczy | Dla jakich danych |
+|---|---|---|
+| **Chmura publiczna** | darmowy/konsumencki czat; dane mogą być retencjonowane | tylko materiał **jawny** |
+| **Chmura z umową** | wdrożenie instytucjonalne, **zero-retention** (ChatGPT Edu/Enterprise, Claude for Enterprise, Azure OpenAI) | decyzję podejmuje **IOD** |
+| **Lokalnie** | model na Twoim komputerze; dane nie wychodzą (B10) | osobowe / medyczne / NDA |
+
+> ⚠️ To **nie porada prawna**. Pseudonimizacja (klucz `R-017`, B7) jest *odwracalna* → nie czyni danych anonimowymi. Przy wątpliwości: traktuj jak dane osobowe.
+
+::: notes
+To slajd, który osadza całą oś klatki prywatności w realiach prawnych europejskiego badacza. Najważniejszy komunikat: nie mówimy „chmura zakazana", mówimy „dobierz środowisko do wrażliwości danych". Najczystsza droga zgodności jest zarazem najprostsza — jeśli w prompcie nie ma danych osobowych, nie ma czego regulować (to minimalizacja z B7). Stan prawny się zmienia (decyzja TSUE 2025 ws. danych pseudonimizowanych) — odsyłam do IOD uczelni, nie rozstrzygam na sali.
 :::
 
 # DZIEŃ 2 — Inżynieria kontekstu: zakotwiczenie w danych {background-color="#1a2b4a"}
@@ -368,7 +439,7 @@ Wklejona tabela z Excela rozjeżdża się — model zgaduje, która liczba to ro
 **RAG po ludzku:** najpierw wyszukaj właściwe fragmenty z **własnych** materiałów, potem każ modelowi odpowiedzieć **tylko** na ich podstawie.
 
 Środowiska (preferowane, lokalne): **Obsidian · Zotero · Bookends · zwykły folder**.
-*(DEVONthink — tylko przykład zaawansowanego RAG prowadzącego; Notion — odpada, serwer = poza `privacy cage`.)*
+*(DEVONthink — tylko przykład zaawansowanego RAG prowadzącego; Notion — odpada, serwer = poza klatką prywatności.)*
 
 > **Matryca literatury** = ręczny, kontrolowalny „mały RAG": do tabeli trafiają **cytaty-kotwice**, nie całe PDF-y.
 
@@ -388,7 +459,7 @@ RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co Państwo uzna
 
 ## 🆕 NotebookLM — parser i generator notatek {.smaller}
 
-**Czym jest:** narzędzie, które **wczytuje wiele źródeł** (PDF, strony, wideo, własne notatki) i pozwala je odpytywać z **groundingiem w tych źródłach**.
+**Czym jest:** narzędzie, które **wczytuje wiele źródeł** (PDF, strony, wideo, własne notatki) i pozwala je odpytywać z **zakotwiczeniem (groundingiem) w tych źródłach**.
 
 **Generator z rozległym outputem:**
 
@@ -432,7 +503,7 @@ Zasady na całą rozmowę:
 ```
 
 ::: notes
-To skrót mojego sprawdzonego schematu z pliku NotebookLM-book-reading-PL. Pokazuję preambułę, bo to grounding w czystej postaci — te same zasady, co w bloku 4, tylko zaaplikowane do całej książki. Z siedmiu kroków na slajdzie zostawiam trzy reprezentatywne: orientację, aparat pojęciowy i syntezę z notatkami trwałymi. Ważna wskazówka metodyczna: krok krytyczny — ocena książki — jest naprawdę mocny dopiero, gdy do notatnika dorzucimy recenzje albo prace konkurencyjne jako dodatkowe źródła. Inaczej krytyka wisi w powietrzu.
+To skrót mojego sprawdzonego schematu z pliku NotebookLM-book-reading-PL. Pokazuję preambułę, bo to zakotwiczenie w czystej postaci — te same zasady, co w bloku 4, tylko zaaplikowane do całej książki. Z siedmiu kroków na slajdzie zostawiam trzy reprezentatywne: orientację, aparat pojęciowy i syntezę z notatkami trwałymi. Ważna wskazówka metodyczna: krok krytyczny — ocena książki — jest naprawdę mocny dopiero, gdy do notatnika dorzucimy recenzje albo prace konkurencyjne jako dodatkowe źródła. Inaczej krytyka wisi w powietrzu.
 :::
 
 ## 🆕 NotebookLM — możliwości a ograniczenia {.smaller}
@@ -441,7 +512,7 @@ To skrót mojego sprawdzonego schematu z pliku NotebookLM-book-reading-PL. Pokaz
 ::: {.column width="50%"}
 **Mocne strony**
 
-- grounding + cytowania do źródeł,
+- zakotwiczenie + cytowania do źródeł,
 - szybkie ogarnięcie wielu materiałów,
 - wieloformatowy output (audio, wideo, slajdy),
 - świetne do dydaktyki i powtórki.
@@ -449,7 +520,7 @@ To skrót mojego sprawdzonego schematu z pliku NotebookLM-book-reading-PL. Pokaz
 ::: {.column width="50%"}
 **Ograniczenia / ryzyka**
 
-- **chmura Google → uwaga `privacy cage`** (nie wgrywaj danych wrażliwych),
+- **chmura Google → uwaga, klatka prywatności** (nie wgrywaj danych wrażliwych),
 - potrafi zmyślać numery stron,
 - audio/wideo bywa efektowne, ale spłyca,
 - to wciąż asystent — **weryfikacja po stronie badacza**.
@@ -462,7 +533,7 @@ To skrót mojego sprawdzonego schematu z pliku NotebookLM-book-reading-PL. Pokaz
 Symetria z resztą kursu: każde mocne narzędzie ma cenę. Tu ceną jest chmura — materiały trafiają na serwery Google, więc niezanonimizowanych transkrypcji czy danych pacjentów tam nie wgrywamy. To naturalne wejście w Dzień trzeci, gdzie pokażę, jak te same zadania zrobić lokalnie, gdy dane są wrażliwe. Druga rzecz: kazałem w preambule nie zmyślać stron właśnie dlatego, że to typowy błąd tego narzędzia.
 :::
 
-# DZIEŃ 3 — Agenci AI i privacy cage {background-color="#1a2b4a"}
+# DZIEŃ 3 — Agenci AI i klatka prywatności {background-color="#1a2b4a"}
 
 ## B9 · Deep research i jego granice {.smaller}
 **09:00–10:30 · 35% / 65%**
@@ -471,7 +542,7 @@ Spektrum: czat ↔ tryb research ↔ **agentowy deep research** (planuje, wyszuk
 
 Narzędzia: ChatGPT/Gemini Deep Research, Perplexity · Elicit, Consensus, Scite · Connected Papers, Litmaps, Research Rabbit · OpenAlex, Semantic Scholar, arXiv, PubMed.
 
-> *„Głęboki research, płytka sprawczość"* — narzędzia świetnie **zbierają**, ale **nie zastępują oceny badacza**.
+> *„Deep research, płytka sprawczość"* — narzędzia świetnie **zbierają**, ale **nie zastępują oceny badacza**.
 
 **Obowiązkowo:** zweryfikuj **3 wylosowane cytowania** u źródła (DOI/PubMed/OpenAlex).
 
@@ -479,18 +550,40 @@ Narzędzia: ChatGPT/Gemini Deep Research, Perplexity · Elicit, Consensus, Scite
 Deep research generuje ładny raport — ale ładny raport z trzema zmyślonymi cytatami jest gorszy niż brak raportu, bo usypia czujność. Ćwiczenie zmusza do weryfikacji próbki źródeł i zapisania odsetka, który przeszedł. Artefakt: protokół deep research plus karta krytycznej oceny. Pytanie refleksyjne: gdzie kończy się praca, którą mogę powierzyć narzędziu, a zaczyna ta, za którą odpowiadam osobiście.
 :::
 
+## B9 · Cztery tryby porażki — soczewka oceny raportu {.smaller}
+
+**Test luki cytowań** (za: Aaron Tay, *Deep Research, Shallow Agency*, 2025) odsłania, czy „agent" naprawdę rozumuje:
+
+```text
+Znajdź artykuł „<znany, otwarty tytuł>". Następnie wskaż prace powiązane
+tematycznie, które MOGŁY zostać w nim zacytowane, ale NIE są cytowane.
+```
+
+| Tryb porażki | Jak wygląda w wyniku |
+|---|---|
+| **Błąd chronologiczny** | sugeruje prace **nowsze** niż artykuł kotwiczny |
+| **Nadmiarowość** | podaje prace **już cytowane** (nie odjął bibliografii) |
+| **„Przypadkowy sukces"** | trafia w niecytowane, choć **nie sprawdził** bibliografii |
+| **Wynik nietrafny** | zwraca prace **spoza tematu**, byle „niecytowane" |
+
+> Etykieta „agent" nie gwarantuje sprawczości — **przetestuj** granice narzędzia zadaniem spoza jego schematu.
+
+::: notes
+To gotowa soczewka do oceny dowolnego wyniku deep research — uczestnik nie musi jej zapamiętywać, dostaje ją jako ściągę. Test luki cytowań jest diagnostyczny: narzędzia o sztywnym przepływie zatrzymują się na odnalezieniu artykułu albo zwracają prace już cytowane, bo w ich procedurze brak kroku „sprawdź, czego artykuł NIE cytuje". Cztery tryby porażki to nazwy, którymi uczestnik opisuje, gdzie konkretnie raport zawiódł — w ćwiczeniu zaznacza, który tryb się ujawnił.
+:::
+
 ## B10 · 🆕 Lokalne LLM — po co i kiedy {.smaller}
 **10:45–12:15 · 40% / 60%**
 
-- **Po co lokalnie:** dane **nie opuszczają komputera** — rdzeń `privacy cage`.
-- **Ograniczenia:** słabsze od modeli frontier · brak wiedzy webowej · wyższe ryzyko halucynacji · wolniej.
+- **Po co lokalnie:** dane **nie opuszczają komputera** — rdzeń klatki prywatności.
+- **Ograniczenia:** słabsze od modeli czołowych (frontier) · brak wiedzy webowej · wyższe ryzyko halucynacji · wolniej.
 - **Sprzęt:** min. ~16 GB RAM; model 7–8B (Q4) sensownie przy ~8–12 GB VRAM lub na Apple Silicon.
 - **Narzędzia:** **Ollama** (CLI), **LM Studio** (GUI).
 
 > Pytanie nie brzmi „lokalny czy chmura?", lecz **„dla *których danych* prywatność jest warta utraty jakości?"**
 
 ::: notes
-To jest moment, gdy privacy cage przestaje być hasłem, a staje się konfiguracją. Są dane, których po prostu nie wolno wysłać do chmury — i wtedy lokalny model bywa jedyną drogą do użycia AI, za cenę jakości. Uczciwie mówię o kompromisie: „działa lokalnie" czasem znaczy „czeka się na każde zdanie". Każdy — niezależnie od sprzętu — wypełnia kartę decyzyjną privacy cage: typ danych mapujemy na środowisko frontier / lokalny / bez AI.
+To jest moment, gdy klatka prywatności przestaje być hasłem, a staje się konfiguracją. Są dane, których po prostu nie wolno wysłać do chmury — i wtedy lokalny model bywa jedyną drogą do użycia AI, za cenę jakości. Uczciwie mówię o kompromisie: „działa lokalnie" czasem znaczy „czeka się na każde zdanie". Każdy — niezależnie od sprzętu — wypełnia kartę decyzyjną klatki prywatności: typ danych mapujemy na środowisko model czołowy / lokalny / bez AI.
 :::
 
 ## B10 · Uruchamianie modeli lokalnych z agentami {.smaller}
@@ -512,10 +605,12 @@ ollama launch claude --model granite4.1:3b
 | `gemma4:12b` · `granite4.1:8b` | `gemma4:26b-mlx` · `granite4.1:30b` · `qwen3.6:35b-a3b` |
 
 ::: notes
-Pokazuję, że agent to warstwa nad modelem — ten sam OpenCode czy Codex można napędzić modelem w chmurze albo modelem lokalnym. To kluczowe dla privacy cage: workflow zostaje ten sam, zmienia się tylko silnik, a dane zostają na dysku. Komendy ollama launch wskazują agenta i model. Po prawej w tabeli sprzętowej: na słabszym laptopie zostajemy przy dwunastce/ósemce, na mocniejszej maszynie albo Apple Silicon sięgamy po modele 26–35B. Zwróćcie uwagę na sufiksy — za chwilę wyjaśnię, co znaczą.
+Pokazuję, że agent to warstwa nad modelem — ten sam OpenCode czy Codex można napędzić modelem w chmurze albo modelem lokalnym. To kluczowe dla klatki prywatności: przepływ pracy zostaje ten sam, zmienia się tylko silnik, a dane zostają na dysku. Komendy ollama launch wskazują agenta i model. Po prawej w tabeli sprzętowej: na słabszym laptopie zostajemy przy dwunastce/ósemce, na mocniejszej maszynie albo Apple Silicon sięgamy po modele 26–35B. Zwróćcie uwagę na sufiksy — za chwilę wyjaśnię, co znaczą.
 :::
 
-## B10 · Dense vs MoE {.smaller}
+## B10 · 📚 Dense vs MoE — *dla chętnych* {.smaller}
+
+> Do **decyzji** lokalnie↔chmura tego **nie musisz** znać — to wiedza, która *tłumaczy* dziwne sufiksy w nazwach modeli.
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -551,22 +646,22 @@ To wyjaśnia tajemnicze sufiksy z poprzedniego slajdu. Model gęsty przy każdym
 
 ## B10 · Agentic vs Chatbot — krytyczne rozróżnienie {.smaller}
 
-**Nie każdy model nadaje się do *tool calling* i RAG.**
+**Nie każdy model nadaje się do *wywoływania narzędzi (tool calling)* i RAG.**
 
 - **Model agentyczny** — potrafi wywoływać narzędzia, trzymać format, działać w pętli (pliki, wyszukiwanie).
 - **Chatbot** — świetnie rozmawia, ale zawodzi w roli agenta.
 
-> 🇵🇱 **Bielik / Bielik-Minitron** — doskonałe rozumienie polszczyzny, świetne **chatboty** — ale to **NIE są** modele agentyczne. Do klastrowania czy tool callingu wybierz model agentyczny.
+> 🇵🇱 **Bielik / Bielik-Minitron** — doskonałe rozumienie polszczyzny, świetne **chatboty** — ale to **NIE są** modele agentyczne. Do klastrowania czy wywoływania narzędzi wybierz model agentyczny.
 
 ::: notes
 To jest jedno z najważniejszych rozróżnień całego dnia i najczęstsze źródło rozczarowań. Ludzie biorą model, który pięknie odpowiada w czacie, wsadzają go do agenta i dziwią się, że nie wywołuje narzędzi i gubi format. Bielik to znakomity przykład: dla polskiego tekstu, redakcji, rozmowy — wyśmienity; ale nie projektowano go jako modelu agentycznego z niezawodnym tool callingiem. Morał: do demonstracji agentowej, którą zaraz pokażę, dobieramy model agentyczny, a nie najlepszego rozmówcę.
 :::
 
-## B10 · Kwantyzacja — jak wybrać wariant {.smaller}
+## B10 · 📚 Kwantyzacja — jak wybrać wariant — *dla chętnych* {.smaller}
 
 **Kwantyzacja** = kompresja wag (mniej bitów) → mniej RAM, trochę niższa jakość.
 
-- `q4` (np. `Q4_K_M`) — typowy **sweet spot** jakość/pamięć.
+- `q4` (np. `Q4_K_M`) — typowy **najlepszy kompromis** jakość/pamięć.
 - niższe (`q3`, `q2`) — gdy brakuje RAM, kosztem jakości.
 - **`qat`** (*quantization-aware training*, np. nowa **Gemma** `...-it-qat`) — model **uczony pod kwantyzację**, więc utrzymuje wyższą jakość przy małym rozmiarze.
 
@@ -589,7 +684,7 @@ Kwantyzacja to powód, dla którego ten sam model występuje w kilku „rozmiara
 ## Tryb: krok po kroku; po każdym kroku CZEKAJ na moją akceptację
 ```
 
-> **Człowiek w pętli** + praca na kopii folderu + reguły `privacy cage` zaszyte w instrukcji.
+> **Człowiek w pętli** + praca na kopii folderu + reguły klatki prywatności zaszyte w instrukcji.
 
 ::: notes
 Agent przyspiesza wieloetapową pracę, ale działa na realnych plikach — bez nadzoru przyspiesza też błędy i wycieki. Plik instrukcji projektowych to bezpośrednie rozwinięcie czterowarstwowego promptu z dnia pierwszego i briefu z dnia drugiego, tyle że trwałe. Najważniejsza zasada: człowiek w pętli — akceptacja po każdym kroku, praca na kopii. Agent to nie zwolnienie z odpowiedzialności. Szablon jest w kurs-pe/szablony/INSTRUKCJE-PROJEKTU-szablon.md.
@@ -674,14 +769,14 @@ w środku log rozumowania agenta, po prawej wygenerowany outline.opml lub report
 ![](images/s03-clustering-demo.png){width="82%" fig-align="center"}
 
 ::: notes
-To zwieńczenie całego kursu i dowód, że agent to nie magia, lecz prompt plus kontekst plus pliki instrukcji plus nadzór człowieka — wszystko, co budowaliśmy przez trzy dni. Demonstrację robię na żywo, na moim komputerze, więc na slajdzie zostają tylko ramy; szczegóły i pełny pipeline są w katalogu clustering-demo i w pliku-wskaźniku modul-clustering-demo. Na pokazie podłożę do folderu summaries znacznie więcej plików — pięćdziesiąt do stu — żeby było widać prawdziwą skalę możliwości modeli agentycznych. Podkreślam dwie rzeczy: po pierwsze, to samo odpalę OpenCode z modelem lokalnym, więc streszczenia nie opuszczają komputera — privacy cage w praktyce; po drugie, outputem jest nie tylko raport, ale i OPML — czyli struktura, którą znamy z dnia drugiego, gotowa do napisania własnego przeglądu literatury.
+To zwieńczenie całego kursu i dowód, że agent to nie magia, lecz prompt plus kontekst plus pliki instrukcji plus nadzór człowieka — wszystko, co budowaliśmy przez trzy dni. Demonstrację robię na żywo, na moim komputerze, więc na slajdzie zostają tylko ramy; szczegóły i pełny potok są w katalogu clustering-demo i w pliku-wskaźniku modul-clustering-demo. Na pokazie podłożę do folderu summaries znacznie więcej plików — pięćdziesiąt do stu — żeby było widać prawdziwą skalę możliwości modeli agentycznych. Podkreślam dwie rzeczy: po pierwsze, to samo odpalę OpenCode z modelem lokalnym, więc streszczenia nie opuszczają komputera — klatka prywatności w praktyce; po drugie, wynikiem jest nie tylko raport, ale i OPML — czyli struktura, którą znamy z dnia drugiego, gotowa do napisania własnego przeglądu literatury.
 :::
 
 ## B12 · Integracja i portfolio {.smaller}
 
 Spięcie łuku: **prompt (D1) → kontekst i dane (D2) → nadzorowany agent (D3)**.
 
-`PROTOKOL-AI.md` = szablon promptu + karta `privacy cage` + checklista halucynacji + dobór narzędzia.
+`PROTOKOL-AI.md` = szablon promptu + karta klatki prywatności + checklista halucynacji + dobór narzędzia.
 
 > **Zasada proporcjonalności:** prosty prompt do prostego pytania; agent i RAG tylko tam, gdzie złożoność tego wymaga.
 
@@ -691,6 +786,38 @@ Spięcie łuku: **prompt (D1) → kontekst i dane (D2) → nadzorowany agent (D3
 Domykamy kurs osobistym protokołem — jednostronicowym dokumentem, który w dziesięć sekund mówi: jakie narzędzie, jaki format, gdzie dane. Każdy wykonuje jeden pełny mały przepływ na własnym materiale: czysty markdown, matryca lub JSON, wynik zakotwiczony, kontrola halucynacji, decyzja środowiskowa. Ostrzegam przed pułapką „wiem wszystko" — nie chodzi o używanie całego arsenału do każdego zadania, lecz o świadomy, proporcjonalny wybór.
 :::
 
+# Etyka i granice AI {background-color="#1a2b4a"}
+
+## Co zostaje przy badaczu — nawet z agentem {.smaller}
+
+> **Refleksyjność badacza zostaje po stronie człowieka.** AI nie ma biografii ani stawki w temacie.
+
+- **Pozycja badacza** — kto pyta, z jakiej pozycji, z jakimi założeniami. Agent nie umiejscowi kategorii względem własnych uprzedzeń, bo ich nie ma.
+- **Odpowiedzialność za interpretację** — model może *zaproponować* wzorce; ich osadzenie w teorii to praca badacza.
+- **Autorstwo wyniku** — wymaga jawnego opisu: co zrobił człowiek, a co narzędzie.
+
+> **Narzędzie można delegować; odpowiedzialności — nie.**
+
+::: notes
+To rozdział przekrojowy z gwarantowanym slotem 10–15 minut na końcu Dnia 3, tuż przed ewaluacją — nie tnę go pod presją czasu, bufor zabieram gdzie indziej. Zbiera wątki etyczne rozsiane po całym kursie: ograniczone zaufanie z bloku pierwszego, zakotwiczenie z czwartego, klatka prywatności z dziesiątego, nadzór nad agentem z jedenastego. Trzy rzeczy są nieprzekazywalne: pozycja badacza, odpowiedzialność za interpretację i autorstwo. Bez tego rozdziału warsztat byłby naiwny — uczy narzędzia, ale nie granic ich użycia.
+:::
+
+## Higiena pracy i oświadczenie o użyciu AI {.smaller}
+
+**Pięć reguł higieny** (zebrane z całego kursu):
+
+- **Źródło dla każdego twierdzenia** — twierdzenie bez źródła to halucynacja (B4, B8).
+- **Oddzielaj cytat, parafrazę i interpretację** — zlepek to plagiat w cudzysłowie.
+- **Anonimizuj przed chmurą** — przy danych osobowych to RODO; pseudonimizacja jest *odwracalna* (B4, B7, B10).
+- **Pracuj na kopiach** — źródeł agent nie edytuje (B11).
+- **Zapisuj ślad pracy** — log (`agent_logs/`) to warunek odtwarzalności (B11).
+
+> **Ujawnianie użycia AI = część rzetelności.** **Nature, APA, SAGE** już go **wymagają**. Opisz jawnie, *co zrobił człowiek, a co narzędzie*. Szablon: `kurs-pe/szablony/ai-disclosure-szablon.md`.
+
+::: notes
+Pięć reguł higieny to nie nowe treści, lecz nawyki, które przewijały się przez cały kurs — tu zebrane w jedno miejsce. Najmocniej podkreślam ujawnianie użycia AI: to dziś element uczciwości naukowej, nie formalność. Nature oraz czasopisma APA i SAGE już tego wymagają, a tam gdzie nie wymagają, brak deklaracji bywa odczytany jako nieuczciwość. Wkład koncepcyjny, argumenty i sądy analityczne pozostają wkładem autora — narzędzie wspiera redakcję i porządkowanie. Gotowy szablon EN+PL jest w folderze; zawsze sprawdzamy wytyczne docelowego czasopisma.
+:::
+
 # Ewaluacja i zamknięcie {background-color="#1a2b4a"}
 
 ## Ewaluacja — portfolio {.smaller}
@@ -698,11 +825,11 @@ Domykamy kurs osobistym protokołem — jednostronicowym dokumentem, który w dz
 | Kryterium | Wskaźniki spełnienia |
 |---|---|
 | **Jasność zadania (prompt)** | struktura 4-warstwowa · ślad iteracji v1→v3 · trafny format (MD/XML/JSON) |
-| **Ochrona danych (`privacy cage`)** | mapa ryzyka · karta chmura/lokalnie · brak danych wrażliwych · minimalizacja |
+| **Ochrona danych (klatka prywatności)** | mapa ryzyka · karta chmura/lokalnie · brak danych wrażliwych · minimalizacja |
 | **Kontrola halucynacji** | prompty zakotwiczające · cytaty-kotwice · weryfikacja próbki źródeł |
 
 **Skala:** spełnia w pełni / częściowo / wymaga dopracowania.
-**Zaliczenie:** min. „częściowo" w każdym kryterium + kompletny `PROTOKOL-AI.md`.
+**Zaliczenie:** min. „częściowo" w każdym kryterium + kompletny `PROTOKOL-AI.md` + **oświadczenie o użyciu AI** (`ai-disclosure-szablon.md`).
 
 ::: notes
 Ewaluacja jest formująca, nie rankingowa — chodzi o informację zwrotną i o to, by każdy wyszedł z działającym protokołem. Trzy kryteria odpowiadają trzem filarom z początku: jasność promptu, ochrona danych, kontrola halucynacji. Portfolio składają Państwo z artefaktów, które już powstały w trakcie bloków — nic dodatkowego nie trzeba dopisywać.
@@ -710,7 +837,7 @@ Ewaluacja jest formująca, nie rankingowa — chodzi o informację zwrotną i o 
 
 ## Dziękuję {.smaller}
 
-**Łuk kursu:** zapytania → kontekst → agenci. **Trzy filary:** ograniczone zaufanie · grounding · `privacy cage`.
+**Łuk kursu:** zapytania → kontekst → agenci. **Trzy filary:** ograniczone zaufanie · zakotwiczenie · klatka prywatności.
 
 - Materiały i szablony: **`kurs-pe/`**
 - Demo agentowe: **`clustering-demo/`** (opis: `kurs-pe/modul-clustering-demo.md`)

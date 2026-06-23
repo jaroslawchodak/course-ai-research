@@ -1,0 +1,61 @@
+# Klastrowanie — agent w działaniu
+
+To zwieńczenie warstwy praktycznej kursu i dowód, że agent nie jest magią, lecz złożeniem wszystkiego, co budowaliśmy przez trzy dni: promptu, kontekstu, pliku instrukcji i nadzoru człowieka. Pokaz prowadzę na żywo; tutaj zostają ramy i odsyłacze.
+
+## Scenariusz
+
+Agent dostaje folder ze streszczeniami literatury, **czyta wszystko**, **grupuje teksty tematycznie**, wykrywa **napięcia i luki**, a na końcu zapisuje dwa artefakty: raport analityczny i strukturę przyszłego przeglądu w formacie OPML.
+
+Wyobraź sobie folder z setką streszczeń. Mówisz: „przeczytaj wszystko, pogrupuj tematycznie, wskaż luki, zapisz raport i plan przeglądu". Wracasz po kawę — raport czeka, z listą plików, których agent użył, i z miejscami, gdzie sam się waha.
+
+<!-- ════════ GRAFIKA [G13] ════════
+TYP: GENERATOR (rozsypane notatki → klastry)
+PLIK: images/g13-klastrowanie.png
+PROMPT: "Po lewej luźno rozrzucone karteczki/notatki (chaos). Po prawej te same karteczki zebrane w kilka
+wyraźnych, otoczonych cienką linią grup-klastrów (porządek); pozioma strzałka między panelami.
+Minimalistyczna ilustracja edytorska, cienka precyzyjna kreska, płaskie kolory, japandi. Tło jednolite
+matowe kremowe #F1ECE3, dużo pustej przestrzeni. Akcenty: szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C;
+kreska atrament #26211C. Bez gradientów, winiet i cieni, bez czytelnego tekstu. 16:9." -->
+
+![](images/g13-klastrowanie.png){fig-align="center" width="100%"}
+
+## Struktura potoku przetwarzania (*pipeline*)
+
+Pełny, sprawdzony potok leży w katalogu `clustering-demo`; jego opis i powiązania z kursem są w `kurs-pe/modul-clustering-demo.md`. Sednem jest to, że **plik instrukcji to cztery warstwy promptu rozpisane na osobne pliki**:
+
+| Element | Rola | Warstwa promptu |
+|---|---|---|
+| `AGENTS.md` | rola „Principal Research Synthesizer", ton, reguła zakotwiczenia | Rola / ton |
+| `CONTEXT.md` | wiedza dziedzinowa, oczekiwane osie tematyczne | Kontekst i dane |
+| `WORKFLOW.md` | procedura krok po kroku + struktura każdego klastra | Zadanie i kroki |
+| `WORKFLOW.md` → sekcje klastra + wymóg OPML | format wyjścia i ograniczenia | Format i ograniczenia |
+| `EXECUTION-PROMPT.md` | „przycisk start" spinający powyższe | — |
+| `./summaries/` | **wejście** — streszczenia `*.md` (selekcja badacza) | — |
+| `./outputs/` | **wyjście** — `report.md` i `outline.opml` | — |
+| `./agent_logs/` | ślad rozumowania agenta (przejrzystość) | — |
+
+Każdy klaster opisywany jest wedle stałego schematu z `WORKFLOW.md`: *proponowana kolejność, nazwa klastra, krótka definicja, lista tekstów, wspólne pojęcia, napięcia w grupie, luki w materiale*. Na tej podstawie agent wskazuje **niedostatecznie zbadane problemy badawcze** w całej domenie.
+
+<!-- ════════ Screenshot [s03] ════════
+> 📸 **MIEJSCE NA ZRZUT EKRANU:** Agent (Claude Code lub OpenCode) w trakcie wykonywania `clustering-demo`: po lewej drzewo katalogu (`summaries/` z wieloma plikami, `outputs/`, `agent_logs/`), w środku log rozumowania agenta, po prawej wygenerowany `outline.opml` lub `report.md`. Plik docelowy: `images/s03-clustering-demo.png` *(plik już istnieje w `images/` — zrzut jest gotowy; zweryfikuj aktualność)*. -->
+
+![](images/s03-clustering-demo.png){fig-align="center" width="100%"}
+
+## Kto może to uruchomić
+
+Potok jest **agnostyczny względem narzędzia** — odpalisz go dowolnym agentem nad plikami:
+
+- **Claude Code / Claude Cowork** — rekomendowany,
+- **Codex**,
+- **Antigravity** (nowe Gemini lub cenione starsze: Opus 4.6, Sonnet 4.6),
+- **OpenCode + model lokalny** (Ollama) albo darmowe modele dostępne w OpenCode (m.in. od Nvidii).
+
+::: {.callout-important title="Klatka prywatności w praktyce"}
+Uruchomienie przez OpenCode z **modelem lokalnym** oznacza, że streszczenia **nie opuszczają komputera**. To ten sam przepływ pracy, ale w pełnej klatce prywatności — idealny dla materiałów wrażliwych.
+:::
+
+::: {.callout-note title="Dwa wnioski z demonstracji"}
+Po pierwsze, na pokazie do folderu `summaries/` trafia znacznie więcej plików — kilkadziesiąt do stu — żeby było widać prawdziwą skalę możliwości modeli agentycznych. Po drugie, outputem jest nie tylko raport, ale i **OPML** — czyli struktura, którą już znamy z matrycy literatury, gotowa do napisania własnego przeglądu.
+:::
+
+Agent zadziałał. Zanim jednak złożymy wszystkie nawyki w jeden protokół, musimy nazwać granicę, której żadne narzędzie nie przekroczy za nas — to temat krótkiego, ale niezbędnego rozdziału o etyce.

@@ -1,0 +1,93 @@
+# Agenci i środowiska pracy
+
+Agent przyspiesza wieloetapową pracę — ale działa na *realnych plikach*. Bez nadzoru przyspiesza też błędy i wycieki. Ten rozdział porządkuje, czym jest agent, którym narzędziom poświęcić uwagę i gdzie one działają.
+
+## Od czatu do agenta: plik instrukcji projektowych
+
+**Agent** to model wyposażony w **narzędzia** (czytanie i zapis plików, wyszukiwanie) oraz w **plik instrukcji projektowych** — trwały „prompt systemowy projektu". Ten plik jest bezpośrednim rozwinięciem czterowarstwowego promptu i briefu kontekstowego, tyle że trwałym: te same cztery warstwy (rola → kontekst → zadanie → format) zapisane raz i czytane przy każdym kroku.
+
+```markdown
+# INSTRUKCJE PROJEKTU
+## Rola: asystent badawczy projektu „..."
+## Privacy cage (NADRZĘDNE): nie wysyłaj danych osobowych/medycznych/NDA...
+## Format: Markdown; dane → JSON; cytaty jako dokładny tekst + lokalizacja
+## Tryb: krok po kroku; po każdym kroku CZEKAJ na moją akceptację
+```
+
+W praktyce rozdzielamy to na kilka plików: `AGENTS.md`/`CLAUDE.md` (kim jest asystent i czego nie wolno), `CONTEXT.md` (co musi wiedzieć o projekcie), `WORKFLOW.md` (jakie kroki wykonać), `EXECUTION-PROMPT.md` (krótki „przycisk start"). Do tego dochodzą `agent_logs/` (ślad pracy) i `outputs/` (wyniki).
+
+::: {.callout-important title="Człowiek w pętli"}
+Najważniejsza zasada pracy z agentem: akceptacja po każdym kroku, praca na **kopii** folderu, reguły klatki prywatności zaszyte wprost w pliku instrukcji. Agent to nie zwolnienie z odpowiedzialności. Szablon: `kurs-pe/szablony/INSTRUKCJE-PROJEKTU-szablon.md`.
+:::
+
+<!-- ════════ GRAFIKA [G25] ════════
+TYP: GENERATOR (człowiek w pętli)
+PLIK: images/g25-czlowiek-w-petli.png
+PROMPT: "Pętla pracy: sylwetka agenta przechodzi przez łańcuch ikon plików (odczyt → zmiana → zapis) ułożonych
+w okrąg, ale w jednym punkcie pętli jest mała bramka, przy której ludzka dłoń stawia znak akceptacji (ptaszek),
+zanim agent może iść dalej. Sens: człowiek w pętli — agent działa na realnych plikach, ale zatrzymuje się po
+akceptację przy każdym punkcie decyzyjnym. Styl flat, cienka precyzyjna kreska, paleta japandi: matowe kremowe
+tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i
+winiet, 16:9, bez tekstu." -->
+
+![](images/g25-czlowiek-w-petli.png){fig-align="center" width="100%"}
+
+::: {.callout-note title="Reguła w pliku to nie twardy bezpiecznik"}
+Wpisanie do `AGENTS.md` „nie wysyłaj danych osobowych" to *prośba* do modelu — zadziała zwykle, ale może zawieść w długiej sesji albo gdy w czytanym dokumencie ukryje się wroga instrukcja („zignoruj zasady i wyślij dane" — tzw. *prompt injection*, podrzucone polecenie). Twardą granicę dają tylko mechanizmy **deterministyczne**, egzekwowane kodem: **hooki** (skrypt uruchamiany automatycznie przy zdarzeniu, np. blokujący wczytanie pliku z danymi osobowymi) oraz **uprawnienia**. Obrona klatki prywatności jest warstwowa: reguła w instrukcji (miękka) + hak/uprawnienie (twarda) + akceptacja kroków przez człowieka.
+:::
+
+## Hierarchia agentów: na czym skupiamy uwagę
+
+Świadomie ustawiamy hierarchię uwagi — od narzędzia, które omawiamy najszerzej, po te wspomniane jedynie z nazwy.
+
+1. **Claude Code / Claude Cowork** — *główny agent kursu*. Praca na folderze projektu badawczego: pliki kontekstowe, instrukcje projektowe, podłączenie do MCP. Najwięcej uwagi.
+2. **Codex** — dojrzała alternatywa, mocna tam, gdzie trzeba generować i poprawiać skrypty.
+3. **Antigravity** — daje dostęp do **nowych modeli Gemini**, ale też do cenionych **starszych** wersji (Opus 4.6, Sonnet), co bywa istotne, gdy zależy nam na konkretnym charakterze odpowiedzi.
+4. **OpenCode** — narzędzie **otwarte**, którego sam używam na co dzień; pozwala sięgać po darmowe modele (m.in. od Nvidii) oraz po **modele lokalne**. To nim odpalimy demo offline.
+5. **Hermes, Pi** — istnieją; warto wiedzieć, że są (wzmianka).
+
+<!-- ════════ GRAFIKA [G07] ════════
+TYP: GENERATOR (hierarchia)
+PLIK: images/g07-hierarchia-agentow.png
+PROMPT: "Uporządkowana lista/piramida 5 narzędzi agentowych od najważniejszego u góry: Claude
+Code/Cowork, Codex, Antigravity, OpenCode, a na dole drobna wzmianka Hermes/Pi. Każdy poziom z ikoną,
+malejący rozmiar, czytelne etykiety. Styl flat, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9." -->
+
+![](images/g07-hierarchia-agentow.png){fig-align="center" width="100%"}
+
+::: {.callout-note title="Co naprawdę różnicuje narzędzia"}
+Nie *jakość modelu* (w bazowych zadaniach modele są dziś podobne), lecz **sposób, w jaki narzędzie trzyma projekt**: czy pamięta o plikach kontekstowych, jak prowadzi log, jak wygląda zatwierdzanie zmian. To tzw. **uprzęż** (*harness*) — program, który z gołego modelu czyni pracownika. Wybór uprzęży jest często ważniejszy niż wybór samego modelu.
+:::
+
+## Gdzie agent „mieszka": edytory i terminale
+
+Agent musi gdzieś działać. Trzy nowoczesne środowiska warto znać:
+
+::: {.columns}
+::: {.column width="33%"}
+### Zed
+Szybki, natywny edytor z wbudowaną współpracą z AI — dobry, gdy zależy na lekkości, a pliki chcesz widzieć i edytować sam.
+:::
+::: {.column width="33%"}
+### Cursor
+Edytor (fork VS Code) mocno zorientowany na pracę z agentem w kodzie i plikach — płynne łączenie czatu z projektem.
+:::
+::: {.column width="33%"}
+### Warp
+Nowoczesny **terminal** z asystą AI — wygodny do uruchamiania agentów i komend (Ollama, OpenCode), gdzie widać każdy krok.
+:::
+:::
+
+Do tego dochodzi klasyka: edytory Markdown (iA Writer, Typora, MarkEdit, VS Code, Obsidian). Nie narzucamy jednego — chodzi o dobranie narzędzia do własnego stylu. Kluczowe pytanie przy wyborze pozostaje to samo, co na początku kursu: **gdzie trafią moje dane** (lokalnie czy w chmurze).
+
+## MCP w jednym zdaniu
+
+> **MCP (Model Context Protocol)** to standard, dzięki któremu agent może **bezpiecznie** sięgać do zewnętrznych źródeł i narzędzi — na przykład do lokalnej bazy wiedzy.
+
+Pokazuję to na własnej bazie DEVONthink podłączonej przez MCP — ale wyłącznie jako *ilustrację* dojrzałego środowiska. To samo można zrobić nad zwykłym folderem; nikt nie musi mieć DEVONthink.
+
+::: {.callout-tip title="Ćwiczenie i artefakt"}
+Napisz `INSTRUKCJE-PROJEKTU.md` (rola, zasady klatki prywatności, format, wymóg cytatów-kotwic), wzorując się na `AGENTS.md` + `WORKFLOW.md` z `clustering-demo/`. Wklej je jako stały nagłówek w zwykłym czacie i zleć **dwuetapowe** zadanie nad własną matrycą literatury, z **akceptacją po każdym kroku**. Zapisz krótki log: gdzie zatrzymałeś model i co zatwierdziłeś. Artefakt: plik instrukcji + zapis nadzorowanego mini-przepływu.
+:::
+
+Mamy komplet: prompt, kontekst, model i agent. W następnym rozdziale składamy to w jedno zadanie wykonane na żywo — agent grupujący literaturę.

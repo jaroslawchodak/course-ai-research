@@ -13,7 +13,7 @@ Repo celowo leży **poza iCloud** (`/Users/jerry/Documents/...` jest w iCloud), 
 ## Struktura
 - `_quarto.yml` — konfiguracja książki (lista rozdziałów, motyw, `output-dir: _book`)
 - `index.qmd` — Przedmowa
-- `01-fundament` · `02-zapytania` · `03-kontekst` · `04-notebooklm` · `05-deep-research` · `06-lokalne-llm` · `07-agenci-i-srodowiska` · `08-clustering-demo` · `09-integracja-ewaluacja` (`.qmd`) — podział na „dni" usunięty (materiał przelewa się między dniami)
+- `01-fundament` · `02-zapytania` · `03-halucynacje-dane` · `04-kontekst` · `05-dane-rag` · `06-notebooklm` · `07-deep-research` · `08-lokalne-llm` · `09-agenci-srodowiska` · `10-clustering-demo` · `11-etyka` · `12-integracja-ewaluacja` (`.qmd`) — podział na „dni" usunięty (materiał przelewa się między dniami); 12 rozdziałów wywiedzionych ze slajdów `_slajdy-kurs-AI.qmd`
 - `theme/custom.scss` — styl japandi (paleta Claude Design)
 - okładka: prompt w `index.qmd` (`[COVER]`); po wygenerowaniu `images/cover.png` odkomentuj `cover-image` w `_quarto.yml`
 - `images/` — grafiki/zrzuty; **11 miejsc** oznaczonych w rozdziałach:
@@ -38,5 +38,10 @@ Książka renderuje się samodzielnie — nie zależy od tych plików.
 ## Kluczowe moduły merytoryczne
 NotebookLM (parser/generator) · hierarchia agentów (Claude Code/Cowork → Codex → Antigravity → OpenCode → Hermes/Pi) · edytory Zed/Cursor/Warp · lokalne LLM (Dense vs MoE, agentic vs chatbot z przykładem Bielik, kwantyzacja qat, komendy `ollama launch …`) · Clustering Demo (live, `clustering-demo/`).
 
+## Status (2026-06-23)
+Totalna przebudowa książki ze zaktualizowanych slajdów `_slajdy-kurs-AI.qmd`: **13 plików (Przedmowa + 12 rozdziałów)** — z 9 rozdziałów rozbito na 12 i dodano nowe treści (odwrotne prawa AI/Asimov + mapa odruchów w Fundamencie, wydzielony rozdz. „Halucynacje i ochrona danych", wydzielony „Dane i RAG", cztery tryby porażki w Deep research, **nowy rozdz. „Etyka i granice AI"**, AI disclosure w ewaluacji). Render czysty (`quarto render` → `_book/`).
+- **Nowe grafiki AI [G16–G27]** w standardowym formacie `<!-- GRAFIKA [Gxx] -->` (TYP/PLIK/PROMPT po polsku) + osadzone `![](images/gXX-…)`: g16 trzy filary, g17 prawa Asimova, g18 odwrotne prawa, g19 metafora-biurko (Fundament); g20 markdown-xml (Zapytania); g21 zakotwiczenie, g22 trzy-srodowiska (Halucynacje); g23 tryby-porazki (Deep research); g24 prywatnosc-jakosc (Lokalne LLM); g25 czlowiek-w-petli (Agenci); g26 odpowiedzialnosc (Etyka); g27 piec-stacji (Integracja). Pliki PNG do wygenerowania i wrzucenia do `images/`.
+- **Brakujące zrzuty ekranu** oznaczone blokiem `> 📸 MIEJSCE NA ZRZUT EKRANU:` (`s01-konwersja-terminal` w rozdz. Kontekst; `s02-notebooklm` w rozdz. NotebookLM). `s03-clustering-demo.png` już istnieje.
+
 ## Status (2026-06-15)
-Przekształcono z pojedynczej prezentacji revealjs na **książkę Quarto** (10 plików: Przedmowa + 9 rozdziałów). Praca w toku — dochodzą grafiki i drobne zmiany. Repo na gałęzi `main`; **bez pierwszego commita i bez remote** (zostawione użytkownikowi; kroki w `README.md`).
+Przekształcono z pojedynczej prezentacji revealjs na **książkę Quarto**. Repo na gałęzi `main`; **bez pierwszego commita i bez remote** (zostawione użytkownikowi; kroki w `README.md`).

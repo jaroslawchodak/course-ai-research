@@ -1,10 +1,10 @@
 # NotebookLM — parser i generator notatek
 
-NotebookLM jest wygodnym mostem między rozdziałem o RAG a codzienną praktyką badacza. Wczytuje wiele źródeł i pozwala je odpytywać z groundingiem w tych źródłach — a przy tym wyprowadza wynik w zaskakująco wielu formatach.
+NotebookLM jest wygodnym mostem między rozdziałem o RAG a codzienną praktyką badacza. Wczytuje wiele źródeł i pozwala je odpytywać z zakotwiczeniem (*groundingiem*) w tych źródłach — a przy tym wyprowadza wynik w zaskakująco wielu formatach.
 
 ## Czym jest i co potrafi
 
-NotebookLM **wczytuje wiele źródeł** naraz (PDF-y, strony, wideo, własne notatki) i odpowiada na pytania, opierając się na tych źródłach i opatrując odpowiedzi odnośnikami. To grounding w gotowym narzędziu.
+NotebookLM **wczytuje wiele źródeł** naraz (PDF-y, strony, wideo, własne notatki) i odpowiada na pytania, opierając się na tych źródłach i opatrując odpowiedzi odnośnikami. To zakotwiczenie w gotowym narzędziu.
 
 Jego druga siła to **rozległy output**. Z tego samego materiału można wygenerować:
 
@@ -21,20 +21,17 @@ precyzyjna kreska, płaskie kolory, japandi. Tło jednolite matowe kremowe #F1EC
 Akcenty: szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C; kreska atrament #26211C. Bez gradientów, winiet
 i cieni, bez czytelnego tekstu. 16:9." -->
 
-![](images/g12-notebooklm-outputy.png){fig-align="center" width="78%"}
+![](images/g12-notebooklm-outputy.png){fig-align="center" width="100%"}
 
-<!-- ════════ GRAFIKA [S02] ════════
-TYP: SCREENSHOT
-PLIK: images/s02-notebooklm.png
-DO UCHWYCENIA: "Interfejs NotebookLM: po lewej panel źródeł (kilka PDF/książka), w środku odpowiedź
-z cytowaniami [1][2], po prawej panel generowania (Audio Overview / wideo / notatki). Pokaż
-wielokanałowy output." -->
 
-![](images/s02-notebooklm.png){fig-align="center" width="82%"}
+<!-- ════════ Screenshot [s02] ════════
+> 📸 **MIEJSCE NA ZRZUT EKRANU:** Interfejs NotebookLM — po lewej panel źródeł (kilka wgranych PDF-ów / książka), w środku odpowiedź z cytowaniami `[1][2]`, po prawej panel generowania (Audio Overview / wideo / notatki). Ujęcie ma uwidocznić, że output jest wielokanałowy. Plik docelowy: `images/s02-notebooklm.png`. -->
+
+![](images/s02-notebooklm.png){fig-align="center" width="100%"}
 
 ## Case study: czytanie książki naukowej
 
-Najlepiej pokazać NotebookLM na konkretnym, sprawdzonym schemacie czytania książki. Zaczynamy od **preambuły sesji**, którą wklejamy raz — to grounding w czystej postaci, te same zasady, które poznaliśmy wcześniej, tylko zaaplikowane do całej książki:
+Najlepiej pokazać NotebookLM na konkretnym, sprawdzonym schemacie czytania książki. Zaczynamy od **preambuły sesji**, którą wklejamy raz — to zakotwiczenie w czystej postaci, te same zasady, które poznaliśmy wcześniej, tylko zaaplikowane do całej książki:
 
 ```markdown
 Zasady na całą rozmowę:
@@ -65,7 +62,7 @@ Symetria z resztą kursu jest prosta: każde mocne narzędzie ma cenę.
 ::: {.column width="50%"}
 **Mocne strony**
 
-- grounding z cytowaniami do źródeł,
+- zakotwiczenie z cytowaniami do źródeł,
 - szybkie ogarnięcie wielu materiałów,
 - wieloformatowy output (audio, wideo, slajdy),
 - świetne do dydaktyki i powtórki.
@@ -73,7 +70,7 @@ Symetria z resztą kursu jest prosta: każde mocne narzędzie ma cenę.
 ::: {.column width="50%"}
 **Ograniczenia / ryzyka**
 
-- chmura Google → uwaga `privacy cage`,
+- chmura Google → uwaga, klatka prywatności,
 - potrafi zmyślać numery stron,
 - audio/wideo bywa efektowne, ale spłyca,
 - to wciąż asystent — weryfikacja po stronie badacza.
