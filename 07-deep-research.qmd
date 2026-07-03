@@ -66,8 +66,42 @@ i winiet, 16:9, bez tekstu." -->
 
 > Etykieta „agent" nie gwarantuje sprawczości — *przetestuj* granice narzędzia zadaniem spoza jego schematu, zanim mu zaufasz.
 
+## Warsztat weryfikacji źródeł: trzystopniowy werdykt
+
+„Sprawdź, czy DOI działa" to za mało. Najgroźniejsza halucynacja bibliograficzna to nie zmyślony identyfikator — ten wychwyci każde kliknięcie — lecz **źródło prawdziwe z fałszywą tezą**: praca istnieje, DOI prowadzi we właściwe miejsce, ale model przypisał jej twierdzenie, którego autorzy nigdy nie postawili. Taki cytat przechodzi przez pobieżną kontrolę i osadza się w przeglądzie jako „zweryfikowany".
+
+Dlatego weryfikację *jednego* cytowania rozkładamy na pięć kroków:
+
+1. **DOI → [doi.org](https://doi.org).** Czy identyfikator istnieje i prowadzi do *tego* tytułu?
+2. **Tytuł → Google Scholar / OpenAlex / PubMed.** Czy autorzy i rok się zgadzają?
+3. **Teza → źródło (krok krytyczny).** Czy praca *rzeczywiście twierdzi* to, co przypisał jej model? Tu odsiewa się prawdziwe źródło z przekręconą tezą.
+4. **[Scite](https://scite.ai) — druga opinia.** Smart Citations pokazują, czy inne prace tę tezę wspierają, podważają, czy jedynie wzmiankują.
+5. **Werdykt — trzystopniowy, nie binarny.**
+
+Sednem jest właśnie trzystopniowość: ocena „prawda / fałsz" gubi najczęstszy przypadek — ten ze środka tabeli.
+
+| Werdykt | Co znaczy | Co robisz |
+|---|---|---|
+| **istnieje + trafne** | praca jest i mówi to, co przypisał jej model | wolno użyć — z własnym cytatem-kotwicą |
+| **istnieje + przekręcone** | praca jest, ale teza zniekształcona | **nie używaj cytatu modelu** — wróć do źródła i sformułuj tezę sam |
+| **nie istnieje** | brak pracy albo zmyślony DOI | skreśl; poszukaj realnego źródła |
+
+<!-- ════════ GRAFIKA [G28] ════════
+TYP: GENERATOR (trzystopniowy werdykt weryfikacji)
+PLIK: images/g28-trzystopniowy-werdykt.png
+PROMPT: "Pojedynczy cytat wchodzi z lewej cienką linią i rozdziela się na trzy poziome tory prowadzące do trzech
+odrębnych znaków: zielony ptaszek (istnieje + trafne); zgięta/skrzywiona strzałka wewnątrz obecnego dokumentu
+(istnieje + przekręcone — praca jest, ale teza wygięta); przekreślony pusty prostokąt (nie istnieje). Środkowy tor
+subtelnie wyróżniony jako najważniejszy i najczęstszy. Styl flat, cienka precyzyjna kreska, paleta japandi: matowe
+kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, ciepły akcent ostrzegawczy #B08A6A,
+atrament #26211C; bez gradientów i winiet, 16:9, bez tekstu." -->
+
+![](images/g28-trzystopniowy-werdykt.png){fig-align="center" width="100%"}
+
+Ściąga z całą procedurą: `kurs-pe/szablony/protokol-weryfikacji-zrodel.md`.
+
 ::: {.callout-tip title="Ćwiczenie i artefakt"}
-Napisz `protokol-deep-research.md` (`kurs-pe/szablony/protokol-deep-research-szablon.md`): pytanie, kryteria włączenia i wyłączenia, oczekiwane typy źródeł. Uruchom jedno narzędzie deep research i jedno literaturowe na tym samym pytaniu, po czym zweryfikuj trzy cytowania. Dla każdego narzędzia zaznacz, który z **czterech trybów porażki** się ujawnił. Artefakt: protokół + karta krytycznej oceny z odsetkiem zweryfikowanych źródeł.
+Napisz `protokol-deep-research.md` (`kurs-pe/szablony/protokol-deep-research-szablon.md`): pytanie, kryteria włączenia i wyłączenia, oczekiwane typy źródeł. Uruchom jedno narzędzie deep research i jedno literaturowe na tym samym pytaniu, po czym zweryfikuj trzy cytowania. Dla każdego narzędzia zaznacz, który z **czterech trybów porażki** się ujawnił, a każdemu z trzech sprawdzonych cytowań przypisz **trzystopniowy werdykt** (istnieje + trafne / istnieje + przekręcone / nie istnieje). Artefakt: protokół + karta krytycznej oceny z odsetkiem zweryfikowanych źródeł.
 :::
 
 ::: {.callout-warning title="Outsourcing osądu to outsourcing odpowiedzialności"}

@@ -2,6 +2,29 @@
 
 Halucynacja brzmi *dokładnie tak samo pewnie* jak fakt — dlatego potrzebujemy metody jej wykrycia, a nie wyczucia. A skoro dobry prompt zachęca do podawania modelowi coraz więcej materiału, to właśnie tutaj zaczyna się ryzyko wycieku danych. Ten rozdział łączy dwie strony tej samej ostrożności: *zakotwicz* i *zapytaj, gdzie trafiają dane*.
 
+## Skąd biorą się halucynacje
+
+Zanim nauczymy się je ograniczać, warto zrozumieć mechanizm — bo rozumienie zamienia strach w kontrolę. Model **nie ma wewnętrznej bazy faktów**, którą by sprawdzał. Nauczył się jednej rzeczy: **przewidywać, jaki token (≈ sylaba) najprawdopodobniej pada następny** — to autouzupełnianie doprowadzone do mistrzostwa. Wynikają z tego cztery konsekwencje:
+
+- **Zawsze coś dopowie.** Zadaniem modelu jest *ciągnąć tekst*, nie „wiedzieć". Zmyślony DOI ma poprawny format właśnie dlatego, że model widział tysiące prawdziwych.
+- **Płynność to nie wiedza.** Pewny, gładki ton jest cechą dobrego przewidywania *stylu*, a nie *trafności*.
+- **Model nie wie, czego nie wie.** Nie ma wewnętrznego „licznika pewności", który zapaliłby się przy zgadywaniu — to *my* sprawdzamy u źródła.
+- **Im rzadszy fakt, tym większe ryzyko.** Wąska specjalność to teren, na którym „prawdopodobne" najmocniej rozjeżdża się z „prawdziwym".
+
+Stąd wniosek organizujący cały ten rozdział: halucynacja to nie awaria ani kłamstwo, lecz **normalny efekt uboczny** tego, jak model działa. Nie da się jej wyłączyć — można ją tylko *ograniczać* (zakotwiczeniem) i *wykrywać* (weryfikacją u źródła). Obiema stronami zajmiemy się teraz.
+
+<!-- ════════ GRAFIKA [G31] ════════
+TYP: GENERATOR (przewidywanie następnego tokenu)
+PLIK: images/g31-mechanizm-halucynacji.png
+PROMPT: "Zdanie budowane od lewej z osobnych kafelków-sylab; na prawym końcu kilka półprzezroczystych kafelków-
+kandydatów rozgałęzia się jako możliwe następne słowa, z których jeden zostaje wybrany — mechanizm autouzupełniania.
+Jeden z kandydatów ma delikatny znak ostrzegawczy (prawdopodobny, lecz nieprawdziwy). Sens: model układa tekst
+kafelek po kafelku, wybierając prawdopodobny, nie zweryfikowany. Styl flat, cienka precyzyjna kreska, paleta japandi:
+matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, ciepły akcent ostrzegawczy
+#B08A6A, atrament #26211C; bez gradientów i winiet, tekst jako abstrakcyjne kreski (nieczytelny), 16:9." -->
+
+![](images/g31-mechanizm-halucynacji.png){fig-align="center" width="100%"}
+
 ## Zakotwiczenie wbudowane w prompt
 
 Najprostsza metoda kontroli halucynacji to zakotwiczenie (*grounding*) zapisane wprost w instrukcji:

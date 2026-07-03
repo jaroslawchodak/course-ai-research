@@ -38,6 +38,16 @@ Książka renderuje się samodzielnie — nie zależy od tych plików.
 ## Kluczowe moduły merytoryczne
 NotebookLM (parser/generator) · hierarchia agentów (Claude Code/Cowork → Codex → Antigravity → OpenCode → Hermes/Pi) · edytory Zed/Cursor/Warp · lokalne LLM (Dense vs MoE, agentic vs chatbot z przykładem Bielik, kwantyzacja qat, komendy `ollama launch …`) · Clustering Demo (live, `clustering-demo/`).
 
+## Status (2026-07-03)
+Synchronizacja książki z aktualnymi slajdami `_slajdy-kurs-AI.qmd` — uzupełnienie 6 luk (nowości `🆕`), bez przepisywania dobrze pokrytych partii. Render czysty (`quarto render` → `_book/`). Dodane sekcje:
+- **Fundament** (01): „Cztery standardy przekrojowe" (Windows/macOS, trzy tory dyscyplinarne, Plan B, narastająca biblioteka promptów jako artefakt).
+- **Halucynacje** (03): „Skąd biorą się halucynacje" — mechanizm predykcji tokenu (4 konsekwencje + puenta „normalny efekt uboczny").
+- **NotebookLM** (06): „Ta sama książka, trzy pytania dyscyplinarne" + „ścieżka pracy z literaturą" (kwerenda→czyszczenie→matryca→NotebookLM→weryfikacja).
+- **Deep research** (07): „Trzystopniowy werdykt weryfikacji źródeł" (5 kroków + tabela istnieje+trafne / istnieje+przekręcone / nie istnieje; najgroźniejsza = prawdziwe źródło, fałszywa teza).
+- **Agenci** (09): „Każdy wczytany plik to powierzchnia ataku" (prompt injection na żywo) + „Katalog projektu od zera" (drzewo `moj-projekt/`, separacja `zrodla/`↔`wyniki/`).
+- **Etyka** (11): „Prawo autorskie i autorstwo dzieła współtworzonego z AI" (trzy rozdzielne kwestie: twoje autorstwo / autorstwo naukowe ≠ prawo autorskie / plagiat).
+- **Nowe grafiki [G28–G33]** w konwencji książki (japandi, prompt PL, wpięte `![]`): g28 trzystopniowy-werdykt (07), g29 prawo-autorskie (11), g30 sciezka-literatury (06), g31 mechanizm-halucynacji (03), g32 prompt-injection (09), g33 katalog-projektu (09). Pliki PNG do wygenerowania i wrzucenia do `images/`.
+
 ## Status (2026-06-23)
 Totalna przebudowa książki ze zaktualizowanych slajdów `_slajdy-kurs-AI.qmd`: **13 plików (Przedmowa + 12 rozdziałów)** — z 9 rozdziałów rozbito na 12 i dodano nowe treści (odwrotne prawa AI/Asimov + mapa odruchów w Fundamencie, wydzielony rozdz. „Halucynacje i ochrona danych", wydzielony „Dane i RAG", cztery tryby porażki w Deep research, **nowy rozdz. „Etyka i granice AI"**, AI disclosure w ewaluacji). Render czysty (`quarto render` → `_book/`).
 - **Nowe grafiki AI [G16–G27]** w standardowym formacie `<!-- GRAFIKA [Gxx] -->` (TYP/PLIK/PROMPT po polsku) + osadzone `![](images/gXX-…)`: g16 trzy filary, g17 prawa Asimova, g18 odwrotne prawa, g19 metafora-biurko (Fundament); g20 markdown-xml (Zapytania); g21 zakotwiczenie, g22 trzy-srodowiska (Halucynacje); g23 tryby-porazki (Deep research); g24 prywatnosc-jakosc (Lokalne LLM); g25 czlowiek-w-petli (Agenci); g26 odpowiedzialnosc (Etyka); g27 piec-stacji (Integracja). Pliki PNG do wygenerowania i wrzucenia do `images/`.

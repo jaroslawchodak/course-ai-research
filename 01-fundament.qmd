@@ -179,4 +179,15 @@ Pracujemy w **zwykłym folderze plików** oraz w edytorze Markdown, Obsidianie, 
 Notion przechowuje treść na swoich serwerach. Dla materiałów badawczych łamie to zasadę klatki prywatności, dlatego nie budujemy na nim ćwiczeń. DEVONthink pokazuję wyłącznie jako *przykład* zaawansowanej, lokalnej bazy wiedzy prowadzącego — uczestnicy go nie potrzebują.
 :::
 
+## Cztery standardy, które obowiązują w każdym rozdziale
+
+Cztery reguły przewijają się przez cały kurs — raz nazwane, dalej już tylko egzekwowane w tle każdego ćwiczenia:
+
+1. **Dwutorowość 🪟 Windows / 🍎 macOS.** Każda instrukcja techniczna ma wariant dla obu systemów (pary skrótów i ścieżek: `Ctrl+C`/`⌘C`, Eksplorator/Finder, PowerShell/Terminal) — czytasz tylko swoją ramkę.
+2. **Trzy tory dyscyplinarne.** Każde ćwiczenie ma *ten sam* przebieg, lecz inny materiał: **A** nauki ścisłe i przyrodnicze · **B** społeczne · **C** humanistyka. Wybierasz jeden — procedura i kryterium ukończenia są identyczne, różni się wyłącznie treść.
+3. **Plan B dla kont darmowych.** Dla każdego ćwiczenia zagrożonego limitem darmowego planu jest obejście; narzędzia płatne uruchamiamy *na początku* bloku, nie w jego połowie.
+4. **Narastająca biblioteka promptów.** Po każdym rozdziale odkładasz **jeden działający prompt** do `moj-warsztat/prompty/` (nazwa = czasownik + obiekt). Na koniec masz co najmniej sześć promptów — zalążek portfolio i „skills w wersji ręcznej".
+
+Czwarty standard jest artefaktem *narastającym*: ta sama biblioteka promptów wróci w rozdziale o agentach jako folder, który wskażesz swojemu agentowi. Warto zacząć ją prowadzić od pierwszego ćwiczenia.
+
 Mając fundament za sobą, zaczynamy od pojedynczego, niezgrabnego zapytania i doprowadzamy je do precyzyjnej instrukcji.

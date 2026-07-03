@@ -54,6 +54,34 @@ Dalej idzie sekwencja siedmiu kroków; tu trzy reprezentatywne (pełny schemat w
 Krok krytyczny — ocena książki — jest naprawdę mocny dopiero, gdy do notatnika dorzucisz **recenzje albo prace konkurencyjne** jako dodatkowe źródła. Inaczej krytyka wisi w powietrzu. To ta sama zasada, co przy matrycy literatury: jakość wyniku zaczyna się od doboru wejścia.
 :::
 
+## Ta sama książka, trzy pytania dyscyplinarne
+
+Zakotwiczenie działa **niezależnie od dyscypliny**. Na *tych samych* wgranych źródłach zmienia się nie narzędzie, lecz *pytanie badacza* — a reguła „odpowiadaj wyłącznie z materiału" pozostaje ta sama:
+
+- 🔬 **Chemik / przyrodnik:** „Jakie **metody i procedury** opisuje tekst? Zestaw je w tabeli: metoda | warunek | ograniczenie | lokalizacja w źródle."
+- 🧠 **Psycholog / badacz społeczny:** „Jakie **konstrukty i zmienne** wprowadza autor? Jak je definiuje i operacjonalizuje?"
+- 📜 **Historyk / humanista:** „W jakim **kontekście** powstała praca i z jaką debatą polemizuje? Zacytuj fragmenty świadczące o pozycji autora."
+
+Jedno narzędzie i jedna reguła zakotwiczenia obsługują chemika, psychologa i historyka jednakowo. To praktyczny dowód, że dobór *pytania* leży po stronie badacza, a zakotwiczenie po stronie metody — nie dyscypliny.
+
+## Gdzie NotebookLM leży w ścieżce pracy z literaturą
+
+NotebookLM nie zastępuje wcześniejszych kroków — wpina się między nie. Cała ścieżka pracy z literaturą, którą składamy przez kurs, tworzy powtarzalny ciąg:
+
+**kwerenda** (deep research) → **czyszczenie i streszczenie** (PDF → Markdown) → **matryca / „mały RAG"** → **zakotwiczona lektura wielu źródeł** (NotebookLM) → **weryfikacja cytowań** (u źródła).
+
+<!-- ════════ GRAFIKA [G30] ════════
+TYP: GENERATOR (ścieżka pracy z literaturą)
+PLIK: images/g30-sciezka-literatury.png
+PROMPT: "Pięć ogniw połączonych jedną ciągłą poziomą linią w łańcuch, każde jako drobny piktogram: lupa nad polem
+(kwerenda); dokument zmieniający się w czysty arkusz (czyszczenie i streszczenie); siatka kart (matryca / mały RAG);
+otwarta książka z kilkoma wpiętymi źródłami i małą kotwicą (zakotwiczona lektura wielu źródeł); ptaszek weryfikacji
+nad cytatem (weryfikacja cytowań). Sens: jeden powtarzalny ciąg pracy z literaturą. Styl flat, cienka precyzyjna
+kreska, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C,
+atrament #26211C; bez gradientów i winiet, 16:9, bez tekstu." -->
+
+![](images/g30-sciezka-literatury.png){fig-align="center" width="100%"}
+
 ## Możliwości a ograniczenia
 
 Symetria z resztą kursu jest prosta: każde mocne narzędzie ma cenę.

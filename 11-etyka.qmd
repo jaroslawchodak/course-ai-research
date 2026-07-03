@@ -52,6 +52,28 @@ used to assist with drafting, organization, and citation management.
 Gotowy szablon (EN + PL, z listą zastosowań do zaznaczenia) jest w `kurs-pe/szablony/ai-disclosure-szablon.md`. Zawsze sprawdź konkretne wytyczne docelowego czasopisma — bywają bardziej szczegółowe niż ogólna zasada.
 :::
 
+## Prawo autorskie i autorstwo dzieła współtworzonego z AI
+
+Powracające pytanie badaczy brzmi wprost: *czy mogę być uznany za twórcę tekstu powstałego z udziałem AI — i czy nie naruszę cudzych praw?* To trzy **rozdzielne** kwestie, których nie należy mylić (poniższe to reguły startowe, nie porada prawna):
+
+- **Twoje autorstwo tekstu pisanego z AI.** Prawo autorskie (w UE i USA) chroni **wkład twórczy człowieka**; *sam* fragment wygenerowany przez model bywa **niepodlegający ochronie**. Im więcej Twojej twórczej decyzji — doboru struktury, argumentu, redakcji — tym mocniejsze Twoje autorstwo.
+- **Autorstwo naukowe to nie to samo, co prawo autorskie.** COPE, ICMJE i wydawcy są zgodni: **AI nie może być współautorem**, bo nie bierze odpowiedzialności za pracę. Udział narzędzia *opisujesz* w oświadczeniu, a nie umieszczasz na liście autorów.
+- **Ryzyko naruszenia cudzych praw (plagiat).** Model potrafi *nieświadomie* powielić cudze sformułowania z danych treningowych. Dlatego traktuj wynik jak **cudzy draft do sprawdzenia**: przepuść go przez antyplagiat i konsekwentnie oddzielaj cytat, parafrazę i własną interpretację.
+
+<!-- ════════ GRAFIKA [G29] ════════
+TYP: GENERATOR (trzy rozdzielne kwestie prawa autorskiego)
+PLIK: images/g29-prawo-autorskie.png
+PROMPT: "Trzy oddzielne, cienko obrysowane pola ustawione obok siebie i wyraźnie rozdzielone pionowymi liniami —
+podkreślenie, że to trzy różne sprawy, nie jedna: (1) dłoń z piórem nad kartką (twoje autorstwo / wkład twórczy);
+(2) lista nazwisk z przekreślonym miejscem dla małej ikony robota (AI nie na liście autorów); (3) dwie nakładające
+się kartki pod lupą (ryzyko powielenia cudzego tekstu / antyplagiat). Styl flat, cienka precyzyjna kreska, paleta
+japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C;
+bez gradientów i winiet, 16:9, bez tekstu." -->
+
+![](images/g29-prawo-autorskie.png){fig-align="center" width="100%"}
+
+> **Reguła startowa.** AI może pomóc Ci pisać, ale autorem i osobą odpowiedzialną jesteś Ty. Twórczy wkład, weryfikacja źródeł i sprawdzenie oryginalności to praca, której nie da się delegować.
+
 > **Kluczowy wniosek.** Narzędzie można delegować; odpowiedzialności — nie. Pozycja badacza, interpretacja i autorstwo zostają po stronie człowieka, a ich jawny opis (*disclosure*) jest częścią rzetelności.
 
 **Pytanie, które zostaje z Tobą.** Gdyby recenzent zapytał „co tu zrobił człowiek, a co AI?" — czy potrafię odpowiedzieć precyzyjnie, dla *każdego* fragmentu?
