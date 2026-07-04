@@ -91,6 +91,6 @@ Nie musisz rozumieć sieci neuronowych.
 
 ## Materiały do ćwiczeń
 
-**Pliki robocze i szablony** znajdziesz w repozytorium GitHub `kurs-pe-materialy` (skrót od *kurs prompt engineering materiały*): [github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy). Jest tam również instrukcja, jak pobrać jego zawartość na swój komputer.
+**Pliki robocze i szablony** znajdziesz w repozytorium GitHub `kurs-pe-materialy` (skrót od *kurs prompt engineering materiały*): [github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy){target="_blank" rel="noopener"}. Jest tam również instrukcja, jak pobrać jego zawartość na swój komputer.
 
 > Stan wiedzy o narzędziach w tym podręczniku: **lipiec 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach — w trakcie lektury zweryfikuj je u źródeł.
