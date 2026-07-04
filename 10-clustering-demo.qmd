@@ -1,6 +1,6 @@
 # Klastrowanie — agent w działaniu
 
-To zwieńczenie warstwy praktycznej kursu i dowód, że agent nie jest magią, lecz złożeniem wszystkiego, co budowaliśmy przez trzy dni: promptu, kontekstu, pliku instrukcji i nadzoru człowieka. Pokaz prowadzę na żywo; tutaj zostają ramy i odsyłacze.
+To zwieńczenie warstwy praktycznej szkolenia i dowód, że agent nie jest magią, lecz złożeniem wszystkiego, co budowaliśmy przez trzy dni: promptu, kontekstu, pliku instrukcji i nadzoru człowieka. Pokaz prowadzę na żywo; tutaj zostają ramy i odsyłacze.
 
 ## Scenariusz
 

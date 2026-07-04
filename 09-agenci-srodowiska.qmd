@@ -40,7 +40,7 @@ Wpisanie do `AGENTS.md` „nie wysyłaj danych osobowych" to *prośba* do modelu
 
 Świadomie ustawiamy hierarchię uwagi — od narzędzia, które omawiamy najszerzej, po te wspomniane jedynie z nazwy.
 
-1. **Claude Code / Claude Cowork** — *główny agent kursu*. Praca na folderze projektu badawczego: pliki kontekstowe, instrukcje projektowe, podłączenie do MCP. Najwięcej uwagi.
+1. **Claude Code / Claude Cowork** — *główny agent szkolenia*. Praca na folderze projektu badawczego: pliki kontekstowe, instrukcje projektowe, podłączenie do MCP. Najwięcej uwagi.
 2. **Codex** — dojrzała alternatywa, mocna tam, gdzie trzeba generować i poprawiać skrypty.
 3. **Antigravity** — daje dostęp do **nowych modeli Gemini**, ale też do cenionych **starszych** wersji (Opus 4.6, Sonnet), co bywa istotne, gdy zależy nam na konkretnym charakterze odpowiedzi.
 4. **OpenCode** — narzędzie **otwarte**, którego sam używam na co dzień; pozwala sięgać po darmowe modele (m.in. od Nvidii) oraz po **modele lokalne**. To nim odpalimy demo offline.
@@ -78,7 +78,7 @@ Nowoczesny **terminal** z asystą AI — wygodny do uruchamiania agentów i kome
 :::
 :::
 
-Do tego dochodzi klasyka: edytory Markdown (iA Writer, Typora, MarkEdit, VS Code, Obsidian). Nie narzucamy jednego — chodzi o dobranie narzędzia do własnego stylu. Kluczowe pytanie przy wyborze pozostaje to samo, co na początku kursu: **gdzie trafią moje dane** (lokalnie czy w chmurze).
+Do tego dochodzi klasyka: edytory Markdown (iA Writer, Typora, MarkEdit, VS Code, Obsidian). Nie narzucamy jednego — chodzi o dobranie narzędzia do własnego stylu. Kluczowe pytanie przy wyborze pozostaje to samo, co na początku szkolenia: **gdzie trafią moje dane** (lokalnie czy w chmurze).
 
 ## MCP w jednym zdaniu
 
@@ -116,7 +116,7 @@ Zanim uruchomisz prawdziwego agenta, warto zbudować to, co on i tak trzyma „p
 ```text
 moj-projekt/
 ├── INSTRUKCJE-PROJEKTU.md   ← konstytucja: rola · privacy cage · format · tryb krok-po-kroku
-├── prompty/                 ← biblioteka promptów odkładana od początku kursu
+├── prompty/                 ← biblioteka promptów odkładana od początku szkolenia
 ├── zrodla/                  ← czyste .md z konwersji + matryca literatury
 ├── notatki/                 ← notatki robocze i logi
 └── wyniki/                  ← WYŁĄCZNIE efekty pracy AI (nigdy zmieszane ze źródłami)

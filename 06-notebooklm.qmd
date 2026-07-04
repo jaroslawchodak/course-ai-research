@@ -66,7 +66,7 @@ Jedno narzędzie i jedna reguła zakotwiczenia obsługują chemika, psychologa i
 
 ## Gdzie NotebookLM leży w ścieżce pracy z literaturą
 
-NotebookLM nie zastępuje wcześniejszych kroków — wpina się między nie. Cała ścieżka pracy z literaturą, którą składamy przez kurs, tworzy powtarzalny ciąg:
+NotebookLM nie zastępuje wcześniejszych kroków — wpina się między nie. Cała ścieżka pracy z literaturą, którą składamy w trakcie szkolenia, tworzy powtarzalny ciąg:
 
 **kwerenda** (deep research) → **czyszczenie i streszczenie** (PDF → Markdown) → **matryca / „mały RAG"** → **zakotwiczona lektura wielu źródeł** (NotebookLM) → **weryfikacja cytowań** (u źródła).
 
@@ -84,7 +84,7 @@ atrament #26211C; bez gradientów i winiet, 16:9, bez tekstu." -->
 
 ## Możliwości a ograniczenia
 
-Symetria z resztą kursu jest prosta: każde mocne narzędzie ma cenę.
+Symetria z resztą szkolenia jest prosta: każde mocne narzędzie ma cenę.
 
 ::: {.columns}
 ::: {.column width="50%"}

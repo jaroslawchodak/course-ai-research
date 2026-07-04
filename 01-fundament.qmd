@@ -1,8 +1,8 @@
-# Fundament: trzy filary, słownik i mapa kursu
+# Fundament: trzy filary, słownik i mapa szkolenia
 
 Zanim zaczniemy pisać prompty, ustalmy wspólny grunt. Ten rozdział jest krótki, ale wraca w każdym następnym — to soczewka, przez którą będziemy patrzeć na wszystkie narzędzia.
 
-## Cały kurs mieści się w jednym pytaniu
+## Całe szkolenie mieści się w jednym pytaniu
 
 Zanim użyjesz dowolnego narzędzia AI, zadaj sobie jedno pytanie: *„Czy ufam temu w ograniczonym stopniu, czy mam dowód — i gdzie trafiają moje dane?"*. To pytanie rozkłada się na trzy filary.
 
@@ -21,10 +21,10 @@ Wartościowa odpowiedź opiera się na **podanym materiale** i **sprawdzalnych �
 :::
 :::
 
-Jeśli z całego kursu zapamiętasz tylko te trzy słowa — *zaufanie, zakotwiczenie, klatka* — reszta jest już tylko techniką, która je realizuje.
+Jeśli z całego szkolenia zapamiętasz tylko te trzy słowa — *zaufanie, zakotwiczenie, klatka* — reszta jest już tylko techniką, która je realizuje.
 
 <!-- ════════ GRAFIKA [G16] ════════
-TYP: GENERATOR (trzy filary kursu)
+TYP: GENERATOR (trzy filary szkolenia)
 PLIK: images/g16-trzy-filary.png
 PROMPT: "Trzy cienko kreślone filary (kolumny) stojące obok siebie, każdy zwieńczony jedną małą ikoną:
 waga / półprzymknięte oko (ograniczone zaufanie), kotwica (zakotwiczenie) i miękka zaokrąglona obudowa
@@ -99,7 +99,7 @@ Unikamy żargonu informatycznego. Każdy termin pojawia się najpierw jako jedno
 | **Agent** | Model z narzędziami (czyta/zapisuje pliki, wyszukuje) wykonujący zadania wieloetapowe. |
 | **MCP** | Standard bezpiecznego sięgania modelu do zewnętrznych źródeł i narzędzi. |
 
-## Pięć metafor, które wracają przez cały kurs
+## Pięć metafor, które wracają przez całe szkolenie
 
 Pięć najtrudniejszych pojęć dostało **metaforę rdzeniową**. Pada raz, przy pierwszym wprowadzeniu, i wraca jako „haczyk" w kolejnych rozdziałach. Jedna spójna metaforyka obniża obciążenie poznawcze: budujesz jeden schemat, a nie pięć osobnych definicji.
 
@@ -125,9 +125,9 @@ zgaduje; za dużo, a gubi się w stosie. Styl flat, cienka precyzyjna kreska, pa
 
 ![](images/g19-metafora-biurko.png){fig-align="center" width="100%"}
 
-## Łuk kursu: zapytania → kontekst → agenci
+## Łuk szkolenia: zapytania → kontekst → agenci
 
-Kurs prowadzi po jednym łuku i tej kolejności **nie odwracamy**: najpierw uczymy się **mówić do modelu** (prompt), potem **karmić go właściwymi danymi** (kontekst), a na końcu **budować nadzorowane przepływy** (agent). Agent bez opanowanego promptu i kontekstu jedynie szybciej powiela błędy.
+Szkolenie prowadzi po jednym łuku i tej kolejności **nie odwracamy**: najpierw uczymy się **mówić do modelu** (prompt), potem **karmić go właściwymi danymi** (kontekst), a na końcu **budować nadzorowane przepływy** (agent). Agent bez opanowanego promptu i kontekstu jedynie szybciej powiela błędy.
 
 ::: {.columns}
 ::: {.column width="33%"}
@@ -152,7 +152,7 @@ Deep research · lokalne LLM · hierarchia agentów i edytory · klastrowanie ·
 
 ## Mapa odruchów: jeden rozdział, jedna rzecz do zapamiętania
 
-To narzędzie awaryjne. Jeśli w którymś momencie materiał wyda się zbyt gęsty, wróć do tej mapy — każdy etap kursu zostawia *jeden odruch*, nie listę pojęć.
+To narzędzie awaryjne. Jeśli w którymś momencie materiał wyda się zbyt gęsty, wróć do tej mapy — każdy etap szkolenia zostawia *jeden odruch*, nie listę pojęć.
 
 | Etap | Odruch, który zostaje |
 |---|---|
@@ -171,7 +171,7 @@ To narzędzie awaryjne. Jeśli w którymś momencie materiał wyda się zbyt gę
 
 ## Jak pracujemy
 
-Każdy z dwunastu bloków kursu trwa 90 minut i kończy się **konkretnym artefaktem** — szablonem promptu, mapą ryzyka, matrycą literatury, kartą klatki prywatności. Suma artefaktów składa się na **portfolio**, które jest podstawą ewaluacji.
+Każdy z dwunastu bloków szkolenia trwa 90 minut i kończy się **konkretnym artefaktem** — szablonem promptu, mapą ryzyka, matrycą literatury, kartą klatki prywatności. Suma artefaktów składa się na **portfolio**, które jest podstawą ewaluacji.
 
 Pracujemy w **zwykłym folderze plików** oraz w edytorze Markdown, Obsidianie, Zotero lub Bookends — narzędziach dostępnych bezpłatnie lub powszechnie posiadanych. Wszystkie szablony są w katalogu `kurs-pe/`, więc nikt nie zaczyna od pustej kartki.
 
@@ -181,7 +181,7 @@ Notion przechowuje treść na swoich serwerach. Dla materiałów badawczych łam
 
 ## Cztery standardy, które obowiązują w każdym rozdziale
 
-Cztery reguły przewijają się przez cały kurs — raz nazwane, dalej już tylko egzekwowane w tle każdego ćwiczenia:
+Cztery reguły przewijają się przez całe szkolenie — raz nazwane, dalej już tylko egzekwowane w tle każdego ćwiczenia:
 
 1. **Dwutorowość 🪟 Windows / 🍎 macOS.** Każda instrukcja techniczna ma wariant dla obu systemów (pary skrótów i ścieżek: `Ctrl+C`/`⌘C`, Eksplorator/Finder, PowerShell/Terminal) — czytasz tylko swoją ramkę.
 2. **Trzy tory dyscyplinarne.** Każde ćwiczenie ma *ten sam* przebieg, lecz inny materiał: **A** nauki ścisłe i przyrodnicze · **B** społeczne · **C** humanistyka. Wybierasz jeden — procedura i kryterium ukończenia są identyczne, różni się wyłącznie treść.

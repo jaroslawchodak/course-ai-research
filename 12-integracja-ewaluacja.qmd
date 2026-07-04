@@ -1,10 +1,10 @@
 # Integracja, ewaluacja i zamknięcie
 
-Pojedyncze techniki dają wartość dopiero złożone w *powtarzalny, bezpieczny* przepływ, który zostanie z Tobą po kursie. Ten rozdział domyka łuk i opisuje, jak oceniamy efekty.
+Pojedyncze techniki dają wartość dopiero złożone w *powtarzalny, bezpieczny* przepływ, który zostanie z Tobą po szkoleniu. Ten rozdział domyka łuk i opisuje, jak oceniamy efekty.
 
 ## Spięcie łuku w jeden protokół
 
-Cały kurs to jeden ciąg: **prompt → kontekst i dane → nadzorowany agent**. Osobisty protokół pracy z AI łączy cztery elementy w jedną stronę:
+Całe szkolenie to jeden ciąg: **prompt → kontekst i dane → nadzorowany agent**. Osobisty protokół pracy z AI łączy cztery elementy w jedną stronę:
 
 - **szablon promptu** (cztery warstwy),
 - **karta klatki prywatności** (co lokalnie, co w chmurze, czego nie powierzam AI),
@@ -54,7 +54,7 @@ Skala dla każdego kryterium: *spełnia w pełni / spełnia częściowo / wymaga
 
 ## Jeden nawyk na koniec
 
-Zamykamy tym, czym otworzyliśmy: ten kurs nie jest o tym, żeby „używać wszystkiego", lecz żeby mieć **protokół i trzy odruchy**. Zacznij od jednego nawyku i rozbudowuj resztę stopniowo.
+Zamykamy tym, czym otworzyliśmy: to szkolenie nie jest o tym, żeby „używać wszystkiego", lecz żeby mieć **protokół i trzy odruchy**. Zacznij od jednego nawyku i rozbudowuj resztę stopniowo.
 
 > Zanim wciśniesz Enter — zapytaj: *„gdzie trafiają te dane i czym to zakotwiczę?"*
 

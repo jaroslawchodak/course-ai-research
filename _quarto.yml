@@ -16,7 +16,7 @@ book:
   search: true
   reader-mode: true
   page-footer:
-    left: "Kurs · Prompt engineering w badaniach naukowych · 3 dni / 24h"
+    left: "Szkolenie · Prompt engineering w badaniach naukowych · 3 dni / 24h"
     right: |
       Repozytorium na [GitHub](https://github.com/jaroslawchodak/course-ai-research)
   sidebar:

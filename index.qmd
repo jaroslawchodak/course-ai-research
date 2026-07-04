@@ -50,7 +50,7 @@ Nie musisz rozumieć sieci neuronowych.
 ::: {.column width="50%"}
 **Co to NIE jest**
 
-- ❌ Kurs programowania
+- ❌ Szkolenie programistyczne
 - ❌ Warsztat „magii AI"
 - ❌ Reklama jednego narzędzia
 - ❌ Zachęta do wrzucania wszystkiego do chmury

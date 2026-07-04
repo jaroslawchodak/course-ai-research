@@ -77,7 +77,7 @@ Przy każdym punkcie zacytuj zdanie, na którym się opierasz.
 Druga wersja zwraca strukturę, cytaty-kotwice i — co najważniejsze — przyznaje braki, zamiast je zmyślać.
 
 ::: {.callout-warning title="Warstwa kontekstu to punkt kontrolny, nie wrzutnia"}
-Właśnie nauczyłeś się, że bogatszy kontekst daje lepszą odpowiedź — i ta sama zachęta popycha do wklejenia *surowego* materiału „żeby model miał pełny obraz". To najczęstsze miejsce wycieku w całym kursie. Zanim cokolwiek trafi do warstwy kontekstu: zanonimizuj, zapytaj „czy do *tego* zadania naprawdę potrzebuję tych danych?" i nie wklejaj materiału wrażliwego do modelu chmurowego. Systematycznie zajmiemy się tym w następnym rozdziale.
+Właśnie nauczyłeś się, że bogatszy kontekst daje lepszą odpowiedź — i ta sama zachęta popycha do wklejenia *surowego* materiału „żeby model miał pełny obraz". To najczęstsze miejsce wycieku w całym szkoleniu. Zanim cokolwiek trafi do warstwy kontekstu: zanonimizuj, zapytaj „czy do *tego* zadania naprawdę potrzebuję tych danych?" i nie wklejaj materiału wrażliwego do modelu chmurowego. Systematycznie zajmiemy się tym w następnym rozdziale.
 :::
 
 ::: {.callout-tip title="Ćwiczenie i artefakt"}

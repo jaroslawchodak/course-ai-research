@@ -28,7 +28,7 @@ winiet, 16:9, bez tekstu." -->
 
 ## Bezpieczna praca to zwykła, rygorystyczna higiena
 
-Pięć reguł, które przewijały się przez kurs jako konkretne nawyki — tu zebrane razem:
+Pięć reguł, które przewijały się przez całe szkolenie jako konkretne nawyki — tu zebrane razem:
 
 - **Źródło dla każdego twierdzenia** — twierdzenie bez źródła to nie ustalenie, lecz halucynacja.
 - **Oddzielaj cytat, parafrazę i interpretację** — cytat zlepiony z parafrazą to plagiat w cudzysłowie.
