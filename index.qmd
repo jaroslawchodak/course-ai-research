@@ -1,9 +1,9 @@
 # Przedmowa {.unnumbered}
 
-To materiały do **3-dniowego półwarsztatu (24 godziny lekcyjne)** dla multidyscyplinarnych pracowników naukowych — z nauk humanistycznych, społecznych, ścisłych i medycznych — początkujących w pracy z generatywną AI. Prowadzą od pojedynczego zapytania, przez inżynierię kontekstu, po nadzorowanych agentów AI i modele lokalne.
+To materiał z 3-dniowego szkolenia (24 godziny lekcyjne) dla naukowców reprezentujących różne dziedziny — od nauk humanistycznych i społecznych, po ścisłe i przyrodnicze — początkujących w pracy z generatywną AI. Program przeprowadzi uczestników od pojedynczego zapytania, przez inżynierię kontekstu, po nadzorowanych agentów AI i modele lokalne.
 
-::: {.callout-note title="Czym jest ta książka"}
-To **wersja do czytania** — dla osób, które nie były na warsztacie albo chcą wrócić do treści po sesji. Slajdy do projekcji prowadzę z osobnego źródła (`_slajdy-kurs-AI.qmd`); tutaj wszystko jest spisane w spokojnym, czytelnym formacie, rozdział po rozdziale.
+::: {.callout-note title="Czym jest ta publikacja"}
+To **podręcznik przygotowany do samodzielnej lektury**. Sprawdzi się idealnie, jeśli nie mogłeś/-aś uczestniczyć w szkoleniu albo chcesz wrócić do omawianych treści po jego zakończeniu. Cała wiedza przedstawiona jest tu w przejrzystym, uporządkowanym formacie.
 :::
 
 <!-- ════════ OKŁADKA KSIĄŻKI [COVER] ════════
@@ -28,21 +28,21 @@ PDF-ów, po prawej uporządkowana struktura. Paleta japandi: matowe kremowe tło
 
 ## Trzy filary, które wracają w każdym rozdziale
 
-Cały kurs da się streścić jedną postawą: **AI to asystent roboczy pod nadzorem człowieka, a nie autonomiczny autorytet ani zastępstwo dla badacza.** Z tej postawy wyrastają trzy zasady, do których będziemy wracać:
+Całe szkolenie można streścić jednym stwierdzeniem: **AI to asystent wspierający pracę człowieka pod jego ścisłym nadzorem, a nie autonomiczny autorytet ani zastępstwo dla badacza.** Z tej postawy wyrastają trzy zasady, do których będziemy regularnie wracać:
 
 1. **Ograniczone zaufanie** — model nie „wie", lecz przewiduje prawdopodobny tekst; stąd halucynacje.
 2. **Zakotwiczenie w danych (*grounding*)** — wartościowa odpowiedź opiera się na podanym materiale i sprawdzalnych źródłach.
 3. **Klatka prywatności (*privacy cage*)** — świadome ograniczanie przepływu danych badawczych do kontrolowanego, w miarę możliwości lokalnego środowiska.
 
-## O czym jest ten materiał
+## Czego (nie) musisz umieć na start
 
 Nie musisz być programistą.
 
-Nie musisz mieszkać w terminalu.
+Nie musisz używać terminala.
 
 Nie musisz rozumieć sieci neuronowych.
 
-**Jeśli potrafisz otworzyć folder z plikami i napisać polecenie po polsku — jesteś przygotowany.**
+**Jeśli potrafisz otworzyć folder z plikami i napisać polecenie po polsku — masz już wszystko, czego potrzebujesz.**
 
 ## Co to JEST, a co NIE jest
 
@@ -65,7 +65,7 @@ Nie musisz rozumieć sieci neuronowych.
 :::
 :::
 
-## Mapa książki
+## Mapa szkolenia
 
 | Rozdział | Treść |
 |---|---|
@@ -82,17 +82,15 @@ Nie musisz rozumieć sieci neuronowych.
 | **Etyka i granice AI** | Co zostaje przy badaczu, higiena pracy, oświadczenie o użyciu AI. |
 | **Integracja i ewaluacja** | Złożenie własnego przepływu, portfolio, źródła. |
 
-## Jak korzystać z tej książki
+## Jak korzystać z tego podręcznika
 
-- Po lewej masz **spis treści całej książki** — klikalna nawigacja po rozdziałach.
-- Po prawej, w trakcie czytania — **spis treści bieżącego rozdziału**.
-- Na dole każdej strony — przyciski **„poprzedni / następny"**.
-- Górne pole **wyszukiwania** przeszukuje całą książkę.
+- Po lewej stronie znajdziesz **spis treści całego podręcznika** — to klikalna nawigacja po rozdziałach.
+- Po prawej stronie, w trakcie lektury, wyświetla się **spis treści bieżącego rozdziału**.
+- Na dole każdej strony znajdziesz przyciski **„poprzedni / następny"**.
+- Górne pole **wyszukiwania** pozwala przeszukać całą treść podręcznika.
 
-## Linki
+## Materiały do ćwiczeń
 
-- **Repozytorium:** [github.com/jaroslawchodak/course-ai-research](https://github.com/jaroslawchodak/course-ai-research)
-- **Materiały i szablony kursu:** katalog `kurs-pe/` w głównym projekcie kursu.
-- **Slajdy do projekcji:** `_slajdy-kurs-AI.qmd` (format revealjs).
+**Pliki robocze i szablony** znajdziesz w repozytorium GitHub `kurs-pe-materialy` (skrót od *kurs prompt engineering materiały*): [github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy). Jest tam również instrukcja, jak pobrać jego zawartość na swój komputer.
 
-> Stan wiedzy o narzędziach w tej książce: **czerwiec 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach — przed wykładem zweryfikuj je u źródeł.
+> Stan wiedzy o narzędziach w tym podręczniku: **lipiec 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach — w trakcie lektury zweryfikuj je u źródeł.

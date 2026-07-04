@@ -69,7 +69,7 @@ zaufania. Styl flat, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałw
 
 ## Aneks — źródła i aktualność
 
-Stan narzędzi opisany w tej książce to **czerwiec 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach, nie latach — przed wykładem potwierdź je u producentów (OpenAI, Anthropic, Google) i na stronach narzędzi.
+Stan narzędzi opisany w tym podręczniku to **lipiec 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach, nie latach — sprawdź je u producentów (OpenAI, Anthropic, Google) i na stronach narzędzi.
 
 - Anthropic — *Effective context engineering for AI agents*; *Steering Claude Code: skills, hooks, subagents and more*.
 - Deep research i jego granice — Aaron Tay, *Deep Research, Shallow Agency* (2025).
