@@ -42,13 +42,22 @@ ollama launch codex --model gemma4:26b-a4b-it-qat
 ollama launch claude --model granite4.1:3b
 ```
 
-Dobór modelu zaczyna się od tego, co udźwignie sprzęt:
+Dobór modelu zaczyna się od jednego, praktycznego pytania: **co udźwignie mój komputer?** Zasada jest prosta — im mocniejsza maszyna, tym większy model, a rozmiar poznasz po liczbie z literą `b` w nazwie (miliardy parametrów, czyli apetyt na pamięć). Poniższa tabela odpowiada na jedyne pytanie, które badacz realnie zadaje na starcie: *mam tyle a tyle RAM — co mogę uruchomić?*
 
-| Lżejsze (mniej RAM, słabszy komputer) | Większe (mocniejszy komputer) |
+| Ile masz RAM | Który model na start |
 |---|---|
-| `gemma4:12b` · `granite4.1:8b` | `gemma4:26b-mlx` · `granite4.1:30b` · `qwen3.6:35b-a3b` |
+| **8 GB** | `gemma4:e2b` · `granite4.1:3b` |
+| **16 GB** | `gemma4:e4b` · `granite4.1:8b` |
+| **32 GB** | `gemma4:12b` |
+| **64 GB** | `gemma4:26b` · `qwen3.6:35b` · `granite4.1:30b` |
 
-Sufiksy w nazwach nie są przypadkowe — wyjaśniamy je niżej.
+Trzy uwagi wyczerpują temat na poziomie decyzji:
+
+1. **RAM to główne kryterium**, choć nie jedyne — liczą się też procesor i karta graficzna, a na Apple Silicon pamięć zunifikowana (współdzielona przez procesor i GPU) pozwala sięgnąć wyżej niż wskazywałaby sama liczba gigabajtów. Jeśli model działa wyraźnie za wolno, zejdź o jeden wiersz niżej.
+2. **Warianty skompresowane** (`Q4`, `qat`) to ten sam model „odchudzony" — na start wybieraj właśnie takie. Co dokładnie znaczą te sufiksy, wyjaśniamy niżej; do samej decyzji nie musisz tego wiedzieć.
+3. **Nie każdy model uniesie agenta.** Model, który pięknie rozmawia, niekoniecznie nadaje się do wywoływania narzędzi — to najczęstsze źródło rozczarowań, do którego wracamy przy rozróżnieniu *agent kontra chatbot*.
+
+Sufiksy w nazwach (`-a4b`, `-it-qat`, `-mlx`) nie są przypadkowe — wyjaśniamy je niżej, przy okazji rozróżnienia Dense/MoE i kwantyzacji.
 
 ## Dense vs MoE
 

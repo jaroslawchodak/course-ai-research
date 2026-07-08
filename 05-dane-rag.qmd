@@ -11,6 +11,28 @@ Wklejona tabela z Excela rozjeżdża się w tekście — model zgaduje, która l
   "glowna_teza": "...", "cytat_kotwica": "...", "strona": 12 }
 ```
 
+Jeśli nawiasy klamrowe i cudzysłowy wyglądają onieśmielająco, pomocna jest jeszcze jedna, bardziej dosłowna analogia — **karton luźnych kartek kontra segregator z opisanymi teczkami**. Wklejona tabela z Excela to karton, do którego wsypano kartki: po drodze się przetasowały, więc model musi *zgadywać*, która liczba była rokiem, a która stroną. JSON to segregator, w którym każda informacja leży w osobnej teczce z etykietą — *żadna wartość nie może się pomylić, bo każda nosi swój napis*. To nie jest język programowania, którego trzeba się uczyć; to sposób pakowania danych, żeby nie zgubiły opisu.
+
+Do czytania JSON-a wystarczą **trzy znaki** — i to cała „składnia", jaką badacz musi rozpoznać:
+
+| Znak | Po ludzku |
+|---|---|
+| `{ }` | jedna teczka (rekord — np. jedna pozycja bibliograficzna) |
+| `[ ]` | półka z teczkami (lista — np. kilku autorów albo kilka źródeł) |
+| `"etykieta": wartość` | napis na teczce i jej zawartość (`"rok": 2021`) |
+
+<!-- ════════ GRAFIKA [G34] ════════
+TYP: GENERATOR (analogia: karton luźnych kartek → segregator z teczkami)
+PLIK: images/g34-segregator-karton.png
+PROMPT: "Dwa panele obok siebie ze strzałką jednokierunkową między nimi. Lewy: otwarty kartonowy pudełko pełne
+luźnych, poprzewracanych i pomieszanych karteczek — chaos, rozsypane liczby. Prawy: schludny segregator z
+opisanymi, wysuniętymi teczkami-zakładkami, w każdej jedna kartka — porządek, każda teczka ma etykietę.
+Minimalistyczna ilustracja edytorska, cienka precyzyjna kreska, płaskie kolory, japandi. Tło matowe kremowe
+#F1ECE3. Akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C; kreska atrament #26211C. Bez gradientów,
+winiet i cieni; tekst jako abstrakcyjne kreski (nieczytelny). 16:9." -->
+
+![](images/g34-segregator-karton.png){fig-align="center" width="80%"}
+
 <!-- ════════ GRAFIKA [G11] ════════
 TYP: GENERATOR (rozjechana tabela → uporządkowany JSON)
 PLIK: images/g11-tabela-json.png
@@ -21,9 +43,9 @@ ilustracja edytorska, cienka precyzyjna kreska, płaskie kolory, japandi. Tło m
 szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C; kreska atrament #26211C. Bez gradientów, winiet i cieni;
 tekst jako abstrakcyjne kreski (nieczytelny). 16:9." -->
 
-![](images/g11-tabela-json.png){fig-align="center" width="100%"}
+![](images/g11-tabela-json.png){fig-align="center" width="80%"}
 
-JSON ma trzy zalety nad wklejoną tabelą: **nazywa każde pole** (`"rok": 2021` — znika dwuznaczność), jest **stabilny przy zagnieżdżeniu** (np. lista autorów w rekordzie) i — gdy poprosisz o **wynik w JSON** — zwraca dane gotowe do dalszego przetworzenia, choćby wczytania z powrotem do arkusza. Mała, płaska lista do jednorazowego odczytu wystarczy jako CSV; gdy pola są opisowe, zagnieżdżone albo wynik ma trafić do agenta lub API — sięgasz po JSON.
+JSON ma trzy zalety nad wklejoną tabelą: **nazywa każde pole** (`"rok": 2021` — znika dwuznaczność), jest **stabilny przy zagnieżdżeniu** (np. lista autorów w rekordzie) i — gdy poprosisz o **wynik w JSON** — zwraca dane gotowe do dalszego przetworzenia, choćby wczytania z powrotem do arkusza. (Kiedy wystarczy prostszy CSV, a kiedy warto sięgnąć po JSON — rozstrzygamy niżej, przy konwersji.)
 
 ::: {.callout-warning title="Struktura usypia czujność"}
 Im czystszy rekord budujesz, tym łatwiej *odruchowo* dołożyć pola identyfikujące (`"nazwisko"`, `"email"`, `"nr_pacjenta"`) — „skoro porządkuję dane, niech będą w komplecie". Tak struktura JSON, która ma pomóc, czyni wyciek najłatwiejszym. Przeciwdziałanie: **klucz zastępczy** (zamiast identyfikatora wstaw `"id": "R-017"`, a mapę trzymaj offline) oraz **minimalizacja pól** — analiza tez nie wymaga nazwisk. Pamiętaj: pseudonimizacja jest odwracalna, więc nie zwalnia z reguł klatki prywatności. Na ćwiczeniach pracujemy wyłącznie na jawnych metadanych bibliograficznych.
@@ -31,6 +53,26 @@ Im czystszy rekord budujesz, tym łatwiej *odruchowo* dołożyć pola identyfiku
 
 ::: {.callout-tip title="Ćwiczenie i artefakt"}
 Weź 3–5 pozycji z bibliografii (Zotero/Bookends — jawne metadane). Najpierw wklej je jako „brudną" tabelę i poproś o zestawienie; zaobserwuj pomyłki w komórkach. Potem zapisz te same dane w `dane.json` (`kurs-pe/szablony/dane-szablon.json`) jako fiszki z polami *źródło · rok · metoda · teza · luka · cytat-kotwica* i ponów prompt, prosząc o wynik także w JSON. Artefakt: mini-baza literatury w JSON.
+:::
+
+### Konwersja tabela → JSON bez programowania
+
+Najczęstsza obawa brzmi: „nie umiem programować, więc nie zapiszę danych w JSON". To nieporozumienie — **konwerterem jest sam model**. Nie instalujesz niczego i nie piszesz kodu; przekazujesz modelowi tabelę wraz z krótkim poleceniem konwersji.
+
+1. **Prompt-konwerter.** Skopiuj tabelę wprost z arkusza lub Worda (`Ctrl+C` / `Cmd+C`) i wklej do czatu razem z instrukcją:
+
+```text
+Przekształć poniższą tabelę do formatu JSON. Każdy wiersz zapisz
+jako osobny obiekt { }, a nazwy kolumn użyj jako etykiet pól.
+Niczego nie dodawaj ani nie poprawiaj — pusta komórka = null.
+```
+
+2. **Kontrola odwrotna (krok obowiązkowy).** Zasada ograniczonego zaufania obowiązuje także wobec konwertera: model potrafi pomylić komórki przy przepisywaniu dokładnie tak samo, jak przy wklejonej tabeli. Dlatego po otrzymaniu JSON-a każ go **przekształcić z powrotem w tabelę** i porównaj z oryginałem. Zgodność w obie strony — z tabeli do JSON i z JSON do tabeli — oznacza, że konwersja jest wierna. To ta sama logika, co weryfikacja cytatu u źródła: sprawdzasz nie deklarację, lecz wynik.
+
+3. **CSV czy JSON?** Prosta, płaska lista do jednorazowego odczytu (np. spis nazwisk i lat) wystarczy jako CSV. Po JSON sięgasz, gdy pola są **opisowe**, **zagnieżdżone** (lista autorów w rekordzie) albo gdy wynik ma trafić do dalszego przetworzenia — do arkusza, API czy **agenta**. To ostatnie zastosowanie okaże się kluczowe w rozdziale o agentach: plik `dane-projekt.json`, który zbudujesz tutaj, trafi później do folderu `zrodla/` w katalogu projektu, a agent odczyta go bez zgadywania, bo każde pole nosi etykietę.
+
+::: {.callout-warning title="Konwerter też jest w chmurze"}
+Jeśli konwersję wykonujesz w modelu chmurowym, obowiązuje ta sama granica, co przy każdym innym prompcie: do konwertera trafiają **wyłącznie dane jawne lub zagregowane**. Tabelę z danymi respondentów najpierw pseudonimizujesz (klucz zastępczy) albo konwertujesz w **modelu lokalnym** — o tym w rozdziale o lokalnych LLM.
 :::
 
 ## RAG i matryca literatury

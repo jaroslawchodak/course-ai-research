@@ -93,10 +93,11 @@ Powitanie. Ten kurs prowadzi od pojedynczego zapytania, przez inżynierię konte
 **DZIEŃ 3 — Agenci**
 „Jak to bezpiecznie złożyć?"
 
-- B9 · Deep research + weryfikacja źródeł
+- 🆕 Rozgrzewka · „JSON dla opornych"
 - B10 · 🆕 Lokalne LLM + karta `privacy cage`
-- B11 · 🆕 Agent nad plikami + Clustering Demo (live)
+- B11 · 🆕 Agent nad plikami: katalog, pliki kontekstowe, SKILLS
 - B12 · Integracja: 5 stacji + portfolio
+- B9 · Deep research ⏳ *(buforowy — ew. samodzielnie)*
 :::
 :::
 
@@ -543,10 +544,10 @@ Wklejona tabela z Excela rozjeżdża się — model zgaduje, która liczba to ro
 
 **JSON:** nazwie każde pole · stabilny przy zagnieżdżeniu · wynik **gotowy do dalszego przetworzenia**.
 
-> Gdy dane mają strukturę — podaj je **jako struktura**. Szablon: `kurs-pe/szablony/dane-szablon.json`.
+> Gdy dane mają strukturę — podaj je **jako struktura**. Szablon: `kurs-pe/szablony/dane-szablon.json`. **➡️ Ciąg dalszy jutro:** „JSON dla opornych" — analogia segregatora i konwersja tabel **jednym promptem** (rozgrzewka Dnia 3).
 
 ::: notes
-Ćwiczenie: 5–8 pozycji z bibliografii (Zotero/Bookends, jawne metadane). Najpierw wklejają je jako brudną tabelę i widzą pomyłki w komórkach, potem zapisują w JSON i proszą o wynik także w JSON. Różnica w wierności jest wyraźna. Przestroga o danych wrażliwych w polach JSON — ćwiczymy tylko na jawnych metadanych. Artefakt: mini-baza literatury w JSON plus prompt analityczny.
+Ćwiczenie: 5–8 pozycji z bibliografii (Zotero/Bookends, jawne metadane). Najpierw wklejają je jako brudną tabelę i widzą pomyłki w komórkach, potem zapisują w JSON i proszą o wynik także w JSON. Różnica w wierności jest wyraźna. Przestroga o danych wrażliwych w polach JSON — ćwiczymy tylko na jawnych metadanych. Artefakt: mini-baza literatury w JSON plus prompt analityczny. Zapowiadam ciąg dalszy: jutro na rozgrzewce wracamy do JSON-a „dla opornych" — z analogią segregatora z teczkami i konwersją tabel z Excela jednym promptem, bo jutro JSON stanie się językiem danych dla agentów.
 :::
 
 ## B8 · RAG i matryca literatury {.smaller}
@@ -669,67 +670,61 @@ Symetria z resztą kursu: każde mocne narzędzie ma cenę. Tu ceną jest chmura
 
 # DZIEŃ 3 — Agenci AI i klatka prywatności {background-color="#1a2b4a"}
 
-## B9 · Deep research i jego granice {.smaller}
-**09:00–10:30 · 35% / 65%**
+## 🆕 Rozgrzewka · „JSON dla opornych" — analogia segregatora {.smaller}
+**Otwarcie dnia (~15–20 min) · domknięcie B7 — dziś JSON to język danych dla agentów**
 
-Spektrum: czat ↔ tryb research ↔ **agentowy deep research** (planuje, wyszukuje wielokrotnie, składa raport).
+Dwa sposoby przekazania dokumentów asystentowi:
 
-Narzędzia: ChatGPT/Gemini Deep Research, Perplexity · Elicit, Consensus, Scite · Connected Papers, Litmaps, Research Rabbit · OpenAlex, Semantic Scholar, arXiv, PubMed.
-
-> *„Deep research, płytka sprawczość"* — narzędzia świetnie **zbierają**, ale **nie zastępują oceny badacza**.
-
-**Obowiązkowo:** zweryfikuj **3 wylosowane cytowania** u źródła (DOI/PubMed/OpenAlex).
-
-::: notes
-Deep research generuje ładny raport — ale ładny raport z trzema zmyślonymi cytatami jest gorszy niż brak raportu, bo usypia czujność. Ćwiczenie zmusza do weryfikacji próbki źródeł i zapisania odsetka, który przeszedł. Artefakt: protokół deep research plus karta krytycznej oceny. Pytanie refleksyjne: gdzie kończy się praca, którą mogę powierzyć narzędziu, a zaczyna ta, za którą odpowiadam osobiście.
+::: {.columns}
+::: {.column width="50%"}
+### 📦 Karton luźnych kartek
+= wklejona tabela z Excela — kartki się przetasowały, asystent **zgaduje**, co jest rokiem, a co stroną.
+:::
+::: {.column width="50%"}
+### 🗂️ Segregator z teczkami
+= **JSON** — na każdej teczce etykieta, w środku jedna informacja. **Każda wartość nosi swoją etykietę.**
+:::
 :::
 
-## B9 · Cztery tryby porażki — soczewka oceny raportu {.smaller}
+| Znak | Po ludzku |
+|---|---|
+| `{ }` | jedna teczka (rekord) |
+| `[ ]` | półka z teczkami (lista) |
+| `"etykieta": wartość` | napis na teczce + zawartość |
 
-**Test luki cytowań** (za: Aaron Tay, *Deep Research, Shallow Agency*, 2025) odsłania, czy „agent" naprawdę rozumuje:
-
-```text
-Znajdź artykuł „<znany, otwarty tytuł>". Następnie wskaż prace powiązane
-tematycznie, które MOGŁY zostać w nim zacytowane, ale NIE są cytowane.
+```json
+{ "autor": "Lazer i in.", "rok": 2009, "metoda": "artykuł stanowiskowy" }
 ```
 
-| Tryb porażki | Jak wygląda w wyniku |
-|---|---|
-| **Błąd chronologiczny** | sugeruje prace **nowsze** niż artykuł kotwiczny |
-| **Nadmiarowość** | podaje prace **już cytowane** (nie odjął bibliografii) |
-| **„Przypadkowy sukces"** | trafia w niecytowane, choć **nie sprawdził** bibliografii |
-| **Wynik nietrafny** | zwraca prace **spoza tematu**, byle „niecytowane" |
-
-> Etykieta „agent" nie gwarantuje sprawczości — **przetestuj** granice narzędzia zadaniem spoza jego schematu.
-
 ::: notes
-To gotowa soczewka do oceny dowolnego wyniku deep research — uczestnik nie musi jej zapamiętywać, dostaje ją jako ściągę. Test luki cytowań jest diagnostyczny: narzędzia o sztywnym przepływie zatrzymują się na odnalezieniu artykułu albo zwracają prace już cytowane, bo w ich procedurze brak kroku „sprawdź, czego artykuł NIE cytuje". Cztery tryby porażki to nazwy, którymi uczestnik opisuje, gdzie konkretnie raport zawiódł — w ćwiczeniu zaznacza, który tryb się ujawnił.
+To rozgrzewka otwierająca Dzień 3, nie nowy blok — domykamy JSON z Bloku 7, ale w wersji przystępnej, bo dziś ten format przestaje być ćwiczeniem z formatowania, a staje się językiem, w którym podajemy dane agentom. Pliki instrukcji projektowych z Bloku 11 mówią wprost: dane w JSON. Analogia, która zostaje w głowach: wklejona tabela to karton luźnych kartek — po drodze się przetasowały; JSON to segregator z opisanymi teczkami — nic nie może się pomylić, bo każda wartość nosi etykietę. Do czytania wystarczą trzy znaki: klamry to teczka, nawiasy kwadratowe to półka z teczkami, dwukropek łączy etykietę z zawartością. Przykład na slajdzie to ta sama fiszka Lazera, którą znają z wczoraj.
 :::
 
-## 🆕 B9 · Warsztat weryfikacji źródeł — trzystopniowy werdykt {.smaller}
+## 🆕 Rozgrzewka · Tabela → JSON bez programowania {.smaller}
 
-Procedura pięciu kroków na **jedno** cytowanie z raportu:
+**Konwerterem jest sam model** — trzy kroki:
 
-1. **DOI → [doi.org](https://doi.org)** — istnieje? prowadzi do *tego* tytułu?
-2. **Tytuł → Google Scholar / OpenAlex / PubMed** — autorzy i rok się zgadzają?
-3. **Teza → źródło (krok krytyczny)** — czy praca **rzeczywiście twierdzi** to, co przypisał jej model?
-4. **[Scite](https://scite.ai) — druga opinia** — Smart Citations: wspiera / podważa / wzmiankuje.
-5. **Werdykt — TRZYstopniowy, nie binarny:**
+1. **Prompt-konwerter:** skopiuj tabelę z Excela/Worda (`Ctrl+C`), wklej do czatu:
 
-| Werdykt | Co znaczy | Co robisz |
-|---|---|---|
-| **istnieje + trafne** | praca jest i mówi to, co przypisał model | wolno użyć (z cytatem-kotwicą) |
-| **istnieje + przekręcone** | praca jest, ale teza zniekształcona | **nie używaj cytatu modelu** — wróć do źródła |
-| **nie istnieje** | brak pracy / zmyślony DOI | skreśl; szukaj realnego źródła |
+```text
+Przekształć poniższą tabelę do formatu JSON. Każdy wiersz zapisz
+jako osobny obiekt { }, a nazwy kolumn użyj jako etykiet pól.
+Niczego nie dodawaj ani nie poprawiaj — pusta komórka = null.
+```
 
-> Sedno: **najgroźniejsza halucynacja bibliograficzna to źródło prawdziwe z fałszywą tezą** — przechodzi przez pobieżne „czy DOI działa". Ściąga: `kurs-pe/szablony/protokol-weryfikacji-zrodel.md`.
+2. **Kontrola odwrotna (obowiązkowa):** każ przekształcić JSON **z powrotem w tabelę** i porównaj z oryginałem — zgodność w obie strony = konwersja zaliczona.
+3. **Reguła CSV/JSON:** CSV do prostych, płaskich list · **JSON**, gdy pola opisowe, zagnieżdżone albo wynik idzie do dalszego przetworzenia (agent).
+
+> 🔒 Do konwertera w chmurze — **tylko dane jawne/zagregowane**. Dane respondentów: pseudonimizacja (B7) albo model lokalny (B10).
+>
+> **Mini-ćwiczenie (10 min):** jedna własna tabela → JSON → kontrola odwrotna → zapis jako `dane-projekt.json` (trafi do `zrodla/` w B11).
 
 ::: notes
-To rdzeń bloku, rozpisany krok po kroku, bo praca z literaturą to oczekiwanie nr 1 tej grupy, a weryfikowalność cytowań — jej największa obawa. Grupa już weryfikuje: 100% sprawdza w niezależnym źródle. Nie przekonuję więc, ŻE trzeba — pokazuję, JAK sprawniej: próbkowanie zamiast czytania całości, szybkie ścieżki DOI/PubMed/OpenAlex, i najważniejsze — trzeci, środkowy werdykt. „Sprawdź źródło" brzmi oczywiście, dopóki nie nazwie się najgroźniejszego przypadku: praca istnieje, ale model przekręcił jej tezę. Tego nie łapie sprawdzenie samego DOI. W ćwiczeniu każdy weryfikuje trzy wylosowane cytowania i przypisuje im trzystopniowy werdykt; do publikacji sprawdza się każde cytowanie.
+Kluczowa wiadomość dla tej grupy: nie potrzeba żadnego narzędzia programistycznego — konwerterem jest sam model. Pokazuję na żywo: kopiuję tabelę z Excela, wklejam z promptem-konwerterem, dostaję JSON. Ale zaraz potem drugi krok, który odróżnia badacza od entuzjasty: kontrola odwrotna. Model może pomylić komórki przy konwersji dokładnie tak samo jak przy wklejonej tabeli — więc każę mu przekształcić JSON z powrotem w tabelę i porównuję z oryginałem. Zasada ograniczonego zaufania działa też wobec konwertera. Mini-ćwiczenie od razu produkuje artefakt: plik dane-projekt.json, który po południu trafi do folderu zrodla w katalogu projektu.
 :::
 
 ## B10 · 🆕 Lokalne LLM — po co i kiedy {.smaller}
-**10:45–12:15 · 40% / 60% · blok prowadzony „decyzja + demonstracja"**
+**09:00–10:30 · 40% / 60% · blok prowadzony „decyzja + demonstracja"** *(po rozgrzewce JSON)*
 
 **Na żywo — trzy decyzje** (nie masowa instalacja):
 
@@ -762,93 +757,31 @@ Ten sam **zakotwiczony prompt** (z B4) i ten sam zanonimizowany fragment przez d
 Różnica jakości przestaje być abstrakcją, gdy puszczę identyczny prompt przez model czołowy i lokalny na tym samym fragmencie. Nie oceniam na oko — używam trzypunktowego rubryka: wierność kotwiczeniu, kompletność, halucynacje. To ważne dydaktycznie: uczestnik z rozszerzenia ocenia własny lokalny wynik tym samym rubrykiem. Uczciwa puenta: lokalny model bywa wolniejszy i częściej się myli, ale przy mocnym zakotwiczeniu z Bloku 4 wystarcza — a dane zostają na dysku. Stąd hybryda, nie „albo–albo".
 :::
 
-## B10 · 📚 Uruchamianie modeli lokalnych z agentami — *dla chętnych* {.smaller}
+## B10 · 📚 Jaki model uniesie mój komputer? — aneks w pigułce {.smaller}
 
-Lokalny model można **podpiąć pod agenta** (OpenCode, Codex, Claude Code) zamiast modelu w chmurze:
+**Jedna zasada:** im mocniejszy komputer, tym większy model — rozmiar poznasz po liczbie z „b" (miliardy parametrów = apetyt na RAM).
 
-```bash
-# agent „codex" napędzany lokalną Gemmą (MoE, kwantyzacja qat):
-ollama launch codex --model gemma4:26b-a4b-it-qat
-
-# agent „claude" napędzany lekkim, lokalnym Granite:
-ollama launch claude --model granite4.1:3b
-```
-
-**Klasyfikacja sprzętowa:**
-
-| Lżejsze (mniej RAM) | Większe (mocniejszy komputer) |
+| Ile RAM masz | Który model na start |
 |---|---|
-| `gemma4:12b` · `granite4.1:8b` | `gemma4:26b-mlx` · `granite4.1:30b` · `qwen3.6:35b-a3b` |
+| **8 GB** | `gemma4:e2b` · `granite4.1:3b` |
+| **16 GB** | `gemma4:e4b` · `granite4.1:8b` |
+| **32 GB** | `gemma4:12b` |
+| **64 GB** | `gemma4:26b` · `qwen3.6:35b` · `granite4.1:30b` |
+
+Trzy uwagi — i to wszystko:
+
+1. **RAM to główne kryterium** (liczy się też procesor/GPU i dysk); działa wolno → zejdź o wiersz niżej.
+2. **Warianty skompresowane** (`Q4`, `qat`) = ten sam model odchudzony — na start wybieraj takie.
+3. **Nie każdy model uniesie agenta:** 🇵🇱 **Bielik** — świetny chatbot do polszczyzny, ale **nie** model agentyczny.
+
+> 📚 Lokalny model pod agentem (most do B11): `ollama launch claude --model granite4.1:8b` — przepływ ten sam, dane zostają na dysku.
 
 ::: notes
-Pokazuję, że agent to warstwa nad modelem — ten sam OpenCode czy Codex można napędzić modelem w chmurze albo modelem lokalnym. To kluczowe dla klatki prywatności: przepływ pracy zostaje ten sam, zmienia się tylko silnik, a dane zostają na dysku. Komendy ollama launch wskazują agenta i model. Po prawej w tabeli sprzętowej: na słabszym laptopie zostajemy przy dwunastce/ósemce, na mocniejszej maszynie albo Apple Silicon sięgamy po modele 26–35B. Zwróćcie uwagę na sufiksy — za chwilę wyjaśnię, co znaczą.
-:::
-
-## B10 · 📚 Dense vs MoE — *dla chętnych* {.smaller}
-
-> Do **decyzji** lokalnie↔chmura tego **nie musisz** znać — to wiedza, która *tłumaczy* dziwne sufiksy w nazwach modeli.
-
-::: {.columns}
-::: {.column width="50%"}
-### Dense
-Angażuje **wszystkie** parametry przy każdym tokenie.
-
-- większe obciążenie sprzętu,
-- np. `gemma4:31b`.
-:::
-::: {.column width="50%"}
-### MoE (Mixture of Experts)
-Aktywuje **tylko część** parametrów („ekspertów").
-
-- lżejszy dla sprzętu przy podobnej „wiedzy",
-- np. `gemma4:26b` (zapis `26b-a4b` = 26B łącznie, ~4B aktywnych),
-- `qwen3.6:35b-a3b` = 35B łącznie, ~3B aktywnych.
-:::
-:::
-
-<!-- ════════ GRAFIKA [G06] ════════
-TYP: GENERATOR (diagram porównawczy)
-PLIK: images/g06-dense-moe.png
-PROMPT: "Diagram porównujący Dense vs MoE. Po lewej: sieć, w której świecą WSZYSTKIE węzły
-(Dense). Po prawej: sieć, w której świeci tylko KILKA wybranych węzłów-ekspertów, reszta wyszarzona
-(MoE). Podpisy 'Dense' i 'MoE'. Styl flat, granat/bursztyn, 16:9."
-═══════════════════════════════════════════════════════════════════════════ -->
-
-![](images/g06-dense-moe.png){width="70%" fig-align="center"}
-
-::: notes
-To wyjaśnia tajemnicze sufiksy z poprzedniego slajdu. Model gęsty przy każdym tokenie uruchamia wszystkie wagi — stąd na przykład gemma 31B mocno obciąża sprzęt. Mixture of Experts ma router, który dla danego tokenu wybiera tylko kilku ekspertów; zapis 26b-a4b czytamy jako: dwadzieścia sześć miliardów parametrów łącznie, ale aktywne około czterech. Efekt: większy model „wiedzy" przy obciążeniu bliższym małemu modelowi. Dla badacza praktyczny wniosek: na laptopie MoE często da lepszy stosunek jakości do zużycia pamięci niż dense o tej samej liczbie parametrów.
-:::
-
-## B10 · 📚 Agentic vs Chatbot — rozróżnienie warte zapamiętania {.smaller}
-
-**Nie każdy model nadaje się do *wywoływania narzędzi (tool calling)* i RAG.**
-
-- **Model agentyczny** — potrafi wywoływać narzędzia, trzymać format, działać w pętli (pliki, wyszukiwanie).
-- **Chatbot** — świetnie rozmawia, ale zawodzi w roli agenta.
-
-> 🇵🇱 **Bielik / Bielik-Minitron** — doskonałe rozumienie polszczyzny, świetne **chatboty** — ale to **NIE są** modele agentyczne. Do klastrowania czy wywoływania narzędzi wybierz model agentyczny.
-
-::: notes
-To jest jedno z najważniejszych rozróżnień całego dnia i najczęstsze źródło rozczarowań. Ludzie biorą model, który pięknie odpowiada w czacie, wsadzają go do agenta i dziwią się, że nie wywołuje narzędzi i gubi format. Bielik to znakomity przykład: dla polskiego tekstu, redakcji, rozmowy — wyśmienity; ale nie projektowano go jako modelu agentycznego z niezawodnym tool callingiem. Morał: do demonstracji agentowej, którą zaraz pokażę, dobieramy model agentyczny, a nie najlepszego rozmówcę.
-:::
-
-## B10 · 📚 Kwantyzacja — jak wybrać wariant — *dla chętnych* {.smaller}
-
-**Kwantyzacja** = kompresja wag (mniej bitów) → mniej RAM, trochę niższa jakość.
-
-- `q4` (np. `Q4_K_M`) — typowy **najlepszy kompromis** jakość/pamięć.
-- niższe (`q3`, `q2`) — gdy brakuje RAM, kosztem jakości.
-- **`qat`** (*quantization-aware training*, np. nowa **Gemma** `...-it-qat`) — model **uczony pod kwantyzację**, więc utrzymuje wyższą jakość przy małym rozmiarze.
-
-> Reguła kciuka: zacznij od **Q4 / qat**; schodź niżej tylko, gdy model nie mieści się w pamięci.
-
-::: notes
-Kwantyzacja to powód, dla którego ten sam model występuje w kilku „rozmiarach na dysku". Im mniej bitów na wagę, tym mniej pamięci, ale i delikatny spadek jakości. Dla większości badaczy Q4 to rozsądny start. Nowość warta uwagi to qat — model jest świadomy kwantyzacji już na treningu, więc po skompresowaniu trzyma jakość lepiej niż klasyczne kwantowanie po fakcie; widzieliśmy to w komendzie gemma4:26b-a4b-it-qat. Praktyczny wniosek: nie ścigajcie się o najniższy bit — zacznijcie od Q4 albo qat i schodźcie tylko z konieczności.
+Cały dawny aneks techniczny — MoE, kwantyzacja, sufiksy — zszedł do materiału do zabrania; na slajdzie zostaje tylko to, co potrzebne do decyzji. Tabela odpowiada na jedyne pytanie, które uczestnik realnie zada: mam 16 GB RAM — co mogę uruchomić? Trzy uwagi wyczerpują temat: RAM to główne kryterium, ale nie jedyne — na Apple Silicon pamięć współdzielona pozwala na więcej; warianty skompresowane wybieramy domyślnie; i najczęstsze źródło rozczarowań — model, który pięknie rozmawia, niekoniecznie uniesie agenta, Bielik jest tu najlepszym polskim przykładem. Na dole most do Bloku 11: ten sam lokalny model może napędzać agenta — przepływ pracy zostaje, zmienia się silnik, dane zostają na dysku.
 :::
 
 ## B11 · Od czatu do agenta {.smaller}
-**13:15–14:45 · 45% / 55% · blok prowadzony „zrozum i nadzoruj"**
+**10:45–12:15 · 45% / 55% · blok prowadzony „zrozum i nadzoruj"**
 
 > 🎤 **Minimalny rdzeń — trzy rzeczy na żywo:** (1) **Agent = model + narzędzia + plik instrukcji** (czat, który dostał ręce). (2) **Plik instrukcji = Twój prompt z B2 rozłożony na pliki** — te same 4 warstwy. (3) **Człowiek w pętli** — agent czeka na Twoją akceptację.
 
@@ -866,6 +799,70 @@ Kwantyzacja to powód, dla którego ten sam model występuje w kilku „rozmiara
 
 ::: notes
 Ten blok prowadzę jako „zrozum i nadzoruj", nie „zbuduj agenta" — zainteresowanie agentami zadeklarowało 20% grupy. Na żywo mówię tylko trzy rzeczy: agent to model z narzędziami i plikiem instrukcji; plik instrukcji to nie nowa magia, tylko czterowarstwowy prompt z Bloku 2 rozłożony na pliki i czytany przy każdym kroku; człowiek w pętli to sedno nadzoru. Całą warstwę techniczną — uprzęż, hooki, hierarchia agentów, prompt injection — traktuję jako materiał do zabrania; jej pominięcie nie blokuje artefaktu. Kluczowy przekaz: agent to Twój prompt rozłożony na pliki plus człowiek w pętli.
+:::
+
+## B11 · 🆕 Struktura katalogu = połowa instrukcji {.smaller}
+
+**Agent zaczyna sesję od rozejrzenia się po folderze** — układ plików to pierwsza warstwa instrukcji. Dwa wzorce do skopiowania:
+
+::: {.columns}
+::: {.column width="50%"}
+### a) Eksperyment / badanie
+```text
+moje-badanie/
+├── AGENTS.md        ← rola + zakazy
+├── CONTEXT.md       ← wiedza o projekcie
+├── WORKFLOW.md      ← procedura + format
+├── EXECUTION-PROMPT.md
+├── summaries/       ← WEJŚCIE (selekcja!)
+├── agent_logs/      ← ślad pracy
+└── outputs/         ← WYJŚCIE
+```
+:::
+::: {.column width="50%"}
+### b) Artykuł naukowy
+```text
+artykul-rewolucje/
+├── CLAUDE.md        ← zasady stałe
+├── CONTEXT.md       ← stan: teza, decyzje
+├── WORKFLOW.md      ← konspekt→sekcja→recenzja
+├── notatki/
+├── literatura/      ← streszczenia + matryca
+├── wersje/          ← draft-01, draft-02…
+├── recenzje/
+└── wyniki/          ← wersja do wysyłki
+```
+:::
+:::
+
+> Wspólny mianownik: **wejście badacza fizycznie oddzielone od wyników AI** · instrukcje na wierzchu · ślad pracy osobno.
+
+::: notes
+Kluczowe spostrzeżenie, od którego zależy cała praca z agentami kodującymi — Claude Code, Cursor, Codex: agent nie zna projektu i nie pamięta poprzednich rozmów; widzi tylko pliki i ich układ. Czytelna struktura katalogu to więc nie estetyka, lecz pierwsza warstwa instrukcji. Agent, który widzi folder zrodla obok folderu wyniki, wie bez tłumaczenia, skąd czytać, a dokąd pisać. Chaotyczny folder zmusza go do zgadywania, a zgadujący agent halucynuje na poziomie plików. Wzorzec po lewej to dokładnie struktura naszego clustering-demo; wzorzec po prawej pokazuje, że ta sama logika działa przy pisaniu artykułu — z folderem wersji, których nigdy nie nadpisujemy, i recenzji, także tych od agenta-recenzenta.
+:::
+
+## B11 · 🆕 Pliki kontekstowe — kto czyta który i po co {.smaller}
+
+**„Instrukcja obsługi projektu dla agenta"** — briefing dla nowego współpracownika:
+
+| Plik | Kto czyta | Rola po ludzku |
+|---|---|---|
+| `CLAUDE.md` | Claude Code/Cowork — **automatycznie** | stały regulamin: rola, zakazy, `privacy cage` |
+| `AGENTS.md` | Codex, OpenCode (standard [agents.md](https://agents.md)) | to samo, uniwersalnie — „README dla agentów" |
+| `CONTEXT.md` | każdy agent, gdy wskażesz | **„tu jesteśmy"**: etap, pytania, decyzje |
+| `WORKFLOW.md` | każdy agent, gdy wskażesz | **„tak to robimy"**: kroki 1→N, format |
+
+```text
+CLAUDE.md / AGENTS.md  →  zasady stałe („regulamin")
+CONTEXT.md             →  aktualny stan („na czym stoimy")
+WORKFLOW.md            →  procedura („jak to robimy")
+prompt wykonawczy      →  zadanie na teraz („zrób W_014")
+```
+
+> Dwie reguły: **prompt odwołuje się do plików, nie powtarza ich** · plik kontekstowy to **prośba, nie bezpiecznik** (twarda granica = separacja folderów + akceptacja kroków).
+
+::: notes
+Najprostsza rama: pliki kontekstowe mówią agentowi, jak ma pracować zawsze, a prompt wykonawczy — co ma zrobić teraz. To briefing, jaki dałbym nowemu współpracownikowi pierwszego dnia: umowa i regulamin to CLAUDE.md albo AGENTS.md, „na czym stoimy" to CONTEXT.md, procedura to WORKFLOW.md, a zadanie na dziś to prompt. Piramida na slajdzie układa warstwy od najtrwalszej do najbardziej ulotnej. Dwie reguły praktyczne: prompt powinien odwoływać się do plików zamiast je powtarzać — „pracuj zgodnie z AGENTS.md i WORKFLOW.md, przeanalizuj matrycę" — dzięki czemu polecenia są krótkie, a zasady jedne dla projektu; i uczciwe zastrzeżenie — plik kontekstowy to prośba do modelu, nie twardy bezpiecznik. Jeśli ktoś używa i Claude Code, i Codexa: jedna treść, a CLAUDE.md może po prostu odsyłać do AGENTS.md. W ćwiczeniu uczestnik przetnie swoją konstytucję na te trzy pliki — wyjdzie z gotowym szablonem pod każdy przyszły projekt.
 :::
 
 ## B11 · 📚 Cztery mechanizmy agenta — *dla chętnych* {.smaller}
@@ -986,6 +983,36 @@ Dwie reguły obrony:
 To pokaz ryzyka na żywo, dokładnie jak zmyślony DOI w Bloku 1 — działa mocniej niż słowne ostrzeżenie. Podkładam do folderu źródeł spreparowane streszczenie z ukrytym poleceniem i wydaję agentowi zwykłe „streść źródła". Sala patrzy, czy agent weźmie ukryte zdanie za moją instrukcję. Puenta: model nie odróżnia mojej instrukcji od zdania schowanego w danych, więc każdy wczytany plik to powierzchnia ataku. Stąd dwie reguły, które uczestnik właśnie zbudował w ćwiczeniu: czytaj tylko z folderu, który sam przygotowałeś, i zatwierdzaj każdy krok. Reguła w prompcie jest miękka; twardą granicę dają hooki i uprawnienia z aneksu.
 :::
 
+## B11 · 🆕 SKILLS — spakowane procedury badawcze {.smaller}
+
+**Skill** = powtarzalna procedura w pliku `SKILL.md` — ładowana **na żądanie**, wywoływana `/nazwa`. Reguła kciuka: *powtarzasz? zrób skill; jednorazowe? zostaw prompt.*
+
+```markdown
+---
+name: nazwa-skilla                ← czasownik+obiekt
+description: >                    ← OPIS-WYZWALACZ (najważniejsza linijka!)
+  Rób X, gdy użytkownik prosi o Y. Nie używaj do Z.
+---
+## Kroki
+1. [czynność]  2. [czynność]  3. [czynność + format i miejsce zapisu]
+```
+
+**Trzy realne skille prowadzącego — trzy typy procedur:**
+
+| Skill | Typ | Co robi |
+|---|---|---|
+| `research-ideation` | scenariusz rozmowy | sokratejski partner: od mglistego pomysłu do planu badania |
+| `social-science-paper-reviewer` | symulacja ról | 5 recenzentów (redaktor + 3 + adwokat diabła) → mapa poprawek |
+| `sylabus-fakultet` | generator wg wzorca | 15 rubryk sylabusa ze źródeł (katalog kursu + DEVONthink) + **auto-weryfikacja** (łańcuch efekt→ocena, 6 pytań PKA) + raport założeń |
+
+> 📄 `sylabus-fakultet` = wzorzec dojrzałego skilla: katalog `reference/` (wiedza czytana przed pracą) · twarde reguły + anty-wzorce · „brak danych = zapytaj, nie zgaduj" · auto-weryfikacja przed zapisem.
+>
+> **🎤 Mikroćwiczenie (10–15 min):** weź szablon (`kurs-pe/szablony/skill-*.md`) → przepisz **opis-wyzwalacz** i **2 kroki** pod swoją dyscyplinę → przetestuj w czacie („Działaj dokładnie według tej procedury").
+
+::: notes
+Sekcja rozwinięta na wyraźną prośbę uczestników o praktyczne przykłady. Skill to spakowana procedura badawcza: plik SKILL.md z nazwą, opisem-wyzwalaczem i krokami, który agent ładuje na żądanie — nie obciąża kontekstu, dopóki niepotrzebny. Najważniejsza linijka to opis-wyzwalacz: po nim agent decyduje, kiedy skill uruchomić, więc piszemy go jak instrukcję dla dyżurnego — używaj gdy, nie używaj gdy. Trzy moje skille pokazują trzy różne typy procedur: research-ideation to spisany scenariusz rozmowy sokratejskiej — skill nie podaje odpowiedzi, zadaje pytania; paper-reviewer to symulacja wielu ról — model kolejno wciela się w recenzentów i dopiero na końcu składa werdykt, zasada writer nie równa się reviewer w praktyce; sylabus-fakultet to generator dokumentu według sztywnego wzorca uczelni — i zarazem wzorzec dojrzałego skilla: obok SKILL.md ma katalog reference z poradnikiem i wzorem tabeli, które czyta przed pracą zamiast dźwigać całą wiedzę w prompcie; ma twarde reguły i anty-wzorce, regułę „brak danych w źródłach — zapytaj, nie zgaduj", a przed zapisem sam sprawdza spójność łańcucha efekt-metoda-weryfikacja-ocena i raportuje przyjęte założenia do weryfikacji przez człowieka. To jest ograniczone zaufanie wbudowane w automatyzację. Wspólny wniosek: skill to nie automat zastępujący badacza, lecz spisany raz dobry warsztat. Decyzje merytoryczne zostają przy człowieku. Mikroćwiczenie daje artefakt: własny SKILL.md przetestowany w czacie.
+:::
+
 ## 🆕 B11 · Ćwiczenie — „Katalog projektu od zera" (każdy na sali) {.smaller}
 
 Budujesz **fizyczną strukturę projektu** w zwykłym menedżerze plików (🪟 Eksplorator / 🍎 Finder) — **bez terminala, bez instalacji**. To samo, co agent robi „pod maską", tylko ręcznie.
@@ -999,7 +1026,9 @@ moj-projekt/
 └── wyniki/                  ← WYŁĄCZNIE efekty pracy AI (nigdy mieszane ze źródłami)
 ```
 
-**Test ręczny w czacie:** wklej `INSTRUKCJE-PROJEKTU.md` + jeden plik ze `zrodla/`, wydaj dwuetapowe polecenie **z akceptacją po każdym kroku**, zapisz log do `notatki/`.
+**🆕 Szablon plików kontekstowych:** **przetnij** konstytucję na trzy pliki — *rola + privacy cage* → `CLAUDE.md`/`AGENTS.md` · *opis projektu* → `CONTEXT.md` · *kroki + format* → `WORKFLOW.md`. Wychodzisz z szablonem pod **każdy** przyszły projekt.
+
+**Test ręczny w czacie:** wklej konstytucję (albo trzy pliki kontekstowe) + jeden plik ze `zrodla/`, wydaj dwuetapowe polecenie **z akceptacją po każdym kroku**, zapisz log do `notatki/`.
 
 > **Puenta, którą odkrywasz sam:** *to jest dokładnie to, co agent zrobiłby automatycznie — tylko Ty już wiesz, co jest w środku każdego folderu.* Separacja `zrodla/` od `wyniki/` to **fizyczna higiena kontekstu**. 📚 Rozszerzenie: uruchom agenta na tym samym katalogu (`CLAUDE.md`/`AGENTS.md`).
 
@@ -1008,7 +1037,7 @@ To punkt kulminacyjny Dnia 3 i celowo wykonuje go cała sala, nie tylko ogląda.
 :::
 
 ## B12 · 🆕 Łuk kursu w pięciu stacjach (jeden przebieg na żywo) {.smaller}
-**15:00–16:30 · 25% / 75%**
+**13:15–14:45 · 25% / 75%**
 
 Prowadzący wykonuje **kompletny mały przebieg** na jednym jawnym materiale — **żadna stacja nie jest nową techniką**:
 
@@ -1040,6 +1069,67 @@ Spięcie łuku: **prompt (D1) → kontekst i dane (D2) → nadzorowany agent (D3
 
 ::: notes
 Domykamy kurs osobistym protokołem — jednostronicowym dokumentem, który w dziesięć sekund mówi: jakie narzędzie, jaki format, gdzie dane. Każdy wykonuje jeden pełny mały przepływ na własnym materiale i porządkuje portfolio w strukturze katalogu projektu z Bloku 11 — nie jako teczkę luźnych ćwiczeń, lecz jako gotowy, działający warsztat. Jest jeszcze sprawdzenie w parach: druga osoba patrzy tylko na trzy kryteria — jasność zadania, bezpieczeństwo danych, kotwice w wyniku. Ostrzegam przed pułapką „wiem wszystko" — nie chodzi o cały arsenał do każdego zadania, lecz o proporcjonalny wybór.
+:::
+
+## B9 · Deep research i jego granice {.smaller}
+**15:00–16:30 · 35% / 65% · ⏳ blok buforowy**
+
+> ⏳ **Blok buforowy:** priorytetem Dnia 3 są agenci i pliki kontekstowe (B10–B12). Jeśli zabraknie czasu — ten blok **opracowujesz samodzielnie**: masz gotową ściągę (cztery tryby porażki), rozpisany warsztat pięciu kroków i ćwiczenie na darmowe konta. Slot „Etyka" + ewaluacja mają zawsze pierwszeństwo.
+
+Spektrum: czat ↔ tryb research ↔ **agentowy deep research** (planuje, wyszukuje wielokrotnie, składa raport).
+
+Narzędzia: ChatGPT/Gemini Deep Research, Perplexity · Elicit, Consensus, Scite · Connected Papers, Litmaps, Research Rabbit · OpenAlex, Semantic Scholar, arXiv, PubMed.
+
+> *„Deep research, płytka sprawczość"* — narzędzia świetnie **zbierają**, ale **nie zastępują oceny badacza**.
+
+**Obowiązkowo:** zweryfikuj **3 wylosowane cytowania** u źródła (DOI/PubMed/OpenAlex).
+
+::: notes
+Deep research generuje ładny raport — ale ładny raport z trzema zmyślonymi cytatami jest gorszy niż brak raportu, bo usypia czujność. Ćwiczenie zmusza do weryfikacji próbki źródeł i zapisania odsetka, który przeszedł. Artefakt: protokół deep research plus karta krytycznej oceny. Pytanie refleksyjne: gdzie kończy się praca, którą mogę powierzyć narzędziu, a zaczyna ta, za którą odpowiadam osobiście.
+:::
+
+## B9 · Cztery tryby porażki — soczewka oceny raportu {.smaller}
+
+**Test luki cytowań** (za: Aaron Tay, *Deep Research, Shallow Agency*, 2025) odsłania, czy „agent" naprawdę rozumuje:
+
+```text
+Znajdź artykuł „<znany, otwarty tytuł>". Następnie wskaż prace powiązane
+tematycznie, które MOGŁY zostać w nim zacytowane, ale NIE są cytowane.
+```
+
+| Tryb porażki | Jak wygląda w wyniku |
+|---|---|
+| **Błąd chronologiczny** | sugeruje prace **nowsze** niż artykuł kotwiczny |
+| **Nadmiarowość** | podaje prace **już cytowane** (nie odjął bibliografii) |
+| **„Przypadkowy sukces"** | trafia w niecytowane, choć **nie sprawdził** bibliografii |
+| **Wynik nietrafny** | zwraca prace **spoza tematu**, byle „niecytowane" |
+
+> Etykieta „agent" nie gwarantuje sprawczości — **przetestuj** granice narzędzia zadaniem spoza jego schematu.
+
+::: notes
+To gotowa soczewka do oceny dowolnego wyniku deep research — uczestnik nie musi jej zapamiętywać, dostaje ją jako ściągę. Test luki cytowań jest diagnostyczny: narzędzia o sztywnym przepływie zatrzymują się na odnalezieniu artykułu albo zwracają prace już cytowane, bo w ich procedurze brak kroku „sprawdź, czego artykuł NIE cytuje". Cztery tryby porażki to nazwy, którymi uczestnik opisuje, gdzie konkretnie raport zawiódł — w ćwiczeniu zaznacza, który tryb się ujawnił.
+:::
+
+## 🆕 B9 · Warsztat weryfikacji źródeł — trzystopniowy werdykt {.smaller}
+
+Procedura pięciu kroków na **jedno** cytowanie z raportu:
+
+1. **DOI → [doi.org](https://doi.org)** — istnieje? prowadzi do *tego* tytułu?
+2. **Tytuł → Google Scholar / OpenAlex / PubMed** — autorzy i rok się zgadzają?
+3. **Teza → źródło (krok krytyczny)** — czy praca **rzeczywiście twierdzi** to, co przypisał jej model?
+4. **[Scite](https://scite.ai) — druga opinia** — Smart Citations: wspiera / podważa / wzmiankuje.
+5. **Werdykt — TRZYstopniowy, nie binarny:**
+
+| Werdykt | Co znaczy | Co robisz |
+|---|---|---|
+| **istnieje + trafne** | praca jest i mówi to, co przypisał model | wolno użyć (z cytatem-kotwicą) |
+| **istnieje + przekręcone** | praca jest, ale teza zniekształcona | **nie używaj cytatu modelu** — wróć do źródła |
+| **nie istnieje** | brak pracy / zmyślony DOI | skreśl; szukaj realnego źródła |
+
+> Sedno: **najgroźniejsza halucynacja bibliograficzna to źródło prawdziwe z fałszywą tezą** — przechodzi przez pobieżne „czy DOI działa". Ściąga: `kurs-pe/szablony/protokol-weryfikacji-zrodel.md`.
+
+::: notes
+To rdzeń bloku, rozpisany krok po kroku, bo praca z literaturą to oczekiwanie nr 1 tej grupy, a weryfikowalność cytowań — jej największa obawa. Grupa już weryfikuje: 100% sprawdza w niezależnym źródle. Nie przekonuję więc, ŻE trzeba — pokazuję, JAK sprawniej: próbkowanie zamiast czytania całości, szybkie ścieżki DOI/PubMed/OpenAlex, i najważniejsze — trzeci, środkowy werdykt. „Sprawdź źródło" brzmi oczywiście, dopóki nie nazwie się najgroźniejszego przypadku: praca istnieje, ale model przekręcił jej tezę. Tego nie łapie sprawdzenie samego DOI. W ćwiczeniu każdy weryfikuje trzy wylosowane cytowania i przypisuje im trzystopniowy werdykt; do publikacji sprawdza się każde cytowanie.
 :::
 
 # Etyka i granice AI {background-color="#1a2b4a"}
