@@ -19,9 +19,9 @@ kreska atrament #26211C. Bez gradientów, winiet i cieni, bez czytelnego tekstu.
 
 ![](images/g13-klastrowanie.png){fig-align="center" width="100%"}
 
-## Struktura potoku przetwarzania (*pipeline*)
+## Struktura pipeline'u przetwarzania (potok)
 
-Pełny, sprawdzony potok leży w katalogu `clustering-demo`; jego opis i powiązania z kursem są w `kurs-pe/modul-clustering-demo.md`. Sednem jest to, że **plik instrukcji to cztery warstwy promptu rozpisane na osobne pliki**:
+Pełny, sprawdzony pipeline leży w katalogu `clustering-demo`; jego opis i powiązania z kursem są w `kurs-pe/modul-clustering-demo.md`. Sednem jest to, że **plik instrukcji to cztery warstwy promptu rozpisane na osobne pliki**:
 
 | Element | Rola | Warstwa promptu |
 |---|---|---|
@@ -43,7 +43,7 @@ Każdy klaster opisywany jest wedle stałego schematu z `WORKFLOW.md`: *proponow
 
 ## Kto może to uruchomić
 
-Potok jest **agnostyczny względem narzędzia** — odpalisz go dowolnym agentem nad plikami:
+Pipeline jest **agnostyczny względem narzędzia** — odpalisz go dowolnym agentem nad plikami:
 
 - **Claude Code / Claude Cowork** — rekomendowany,
 - **Codex**,

@@ -105,7 +105,7 @@ kreska atrament #26211C. Bez gradientów, winiet i cieni, bez czytelnego tekstu.
 
 ![](images/g15-agentic-vs-chatbot.png){fig-align="center" width="100%"}
 
-- **Model agentyczny** potrafi wywoływać narzędzia (*tool calling*), trzymać format i działać w pętli — czytać pliki, wyszukiwać, zapisywać wyniki. Nadaje się do RAG i do złożonych potoków.
+- **Model agentyczny** potrafi wywoływać narzędzia (*tool calling*), trzymać format i działać w pętli — czytać pliki, wyszukiwać, zapisywać wyniki. Nadaje się do RAG i do złożonych pipeline'ów (potok).
 - **Chatbot** świetnie rozmawia, ale w roli agenta zawodzi.
 
 ::: {.callout-warning title="Bielik: świetny chatbot, nie agent"}

@@ -511,10 +511,13 @@ Większość „słabych odpowiedzi AI" to nie wina modelu, lecz złego doboru k
 
 ```bash
 pip install pymupdf4llm
-python konwersja.py artykul.pdf      # → artykul.md  (kurs-pe/konwersja/konwersja.py)
+python konwersja.py artykul.pdf              # → artykul.md  (kurs-pe/konwersja/konwersja.py)
+python konwersja-batch.py ./pdfy ./markdown  # cały folder PDF → folder .md (batch)
 ```
 
 🎤 **Jedno narzędzie na start — `pymupdf4llm`** (bez modeli ML/GPU). 📚 gdy zawiedzie: **Docling/Granite-Docling** (tabele/RAG) · **GROBID** (artykuły) · **nougat** (wzory) · **Pandoc** (MD↔DOCX). 📄 `privacy cage`: parsery chmurowe (np. **Llama Parse**) — **nie do materiałów wrażliwych**.
+
+> 🗂️ **Batch — wiele PDF-ów naraz:** zaktualizowane repo materiałów ([github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy/)) ma pipeline (potok) zbiorczego parsowania — skrypt `konwersja-batch.py`, instrukcja krok po kroku w `instrukcja-python.md` (**Krok 5**).
 
 > **Rozszerzenie — summarizer:** czysty `.md` to dopiero materiał. Kolejny krok to **zakotwiczone streszczenie** (`summarizer-demo/`): każdy akapit kończy się **tagiem źródła z lokalizacją**, brakujące sekcje = `N/A` (nie „z pamięci"). To wejście do matrycy (B8) i do agenta (B11).
 
@@ -885,10 +888,12 @@ To aneks dla chętnych — na sali nie omawiam punkt po punkcie. Cztery mechaniz
 ## B11 · 📚 Hierarchia agentów — *dla chętnych* {.smaller}
 
 1. **Claude Code / Claude Cowork** — *główny agent kursu* (najwięcej uwagi): praca na plikach, instrukcje projektowe, MCP.
-2. **Codex** — drugi wybór, dojrzały agent kodująco-badawczy.
+2. **ChatGPT for desktop** (dawniej **Codex**, zmiana nazwy 9.07.2026) — dojrzały agent kodująco-badawczy OpenAI.
 3. **Antigravity** — dostęp do **nowych modeli Gemini** oraz cenionych **starszych** (Opus 4.6, Sonnet).
 4. **OpenCode** — **otwarte** narzędzie (używam go na co dzień); darmowe modele (m.in. Nvidia) + lokalne.
 5. **Hermes, Pi** — istnieją; warto wiedzieć, że są (wzmianka).
+
+> **ChatGPT for desktop = trzy tryby:** **Chat** (jak w przeglądarce) · **ChatGPT Work** (tryb agentowy dla początkujących/średnio zaawansowanych) · **ChatGPT Codex** (zaawansowany, programistyczny). Lustrzane odbicie Claude Desktop: Chat ↔ Chat · ChatGPT Work ↔ Cowork · ChatGPT Codex ↔ Claude Code.
 
 <!-- ════════ GRAFIKA [G07] ════════
 TYP: GENERATOR (piramida/hierarchia)
@@ -901,7 +906,7 @@ Każdy poziom z ikoną, malejący rozmiar. Styl flat, granat/bursztyn, 16:9, czy
 ![](images/g07-hierarchia-agentow.png){width="70%" fig-align="center"}
 
 ::: notes
-Świadomie ustawiam hierarchię uwagi. Najwięcej czasu poświęcam Claude Code i Cowork, bo to mój główny agent do pracy na plikach z instrukcjami projektowymi i MCP. Codex jako solidna alternatywa. Antigravity ma ważną zaletę: daje dostęp i do najnowszych Gemini, i do cenionych starszych modeli — Opus 4.6, Sonnet — co bywa istotne, gdy zależy nam na konkretnym charakterze odpowiedzi. OpenCode to narzędzie otwarte, którego sam używam codziennie; pozwala sięgać po darmowe modele, w tym od Nvidii, oraz po modele lokalne — i właśnie nim można odpalić nasze demo offline. Hermes i Pi tylko wymieniam, żeby Państwo wiedzieli, że istnieją.
+Świadomie ustawiam hierarchię uwagi. Najwięcej czasu poświęcam Claude Code i Cowork, bo to mój główny agent do pracy na plikach z instrukcjami projektowymi i MCP. ChatGPT for desktop (dawniej Codex — nazwę zmieniono 9 lipca 2026) jako solidna alternatywa; spina teraz trzy tryby: Chat jak w przeglądarce, ChatGPT Work jako tryb agentowy dla początkujących i średnio zaawansowanych oraz ChatGPT Codex jako zaawansowany tryb programistyczny — to dokładne odpowiedniki Chat, Cowork i Claude Code z Claude Desktop. Antigravity ma ważną zaletę: daje dostęp i do najnowszych Gemini, i do cenionych starszych modeli — Opus 4.6, Sonnet — co bywa istotne, gdy zależy nam na konkretnym charakterze odpowiedzi. OpenCode to narzędzie otwarte, którego sam używam codziennie; pozwala sięgać po darmowe modele, w tym od Nvidii, oraz po modele lokalne — i właśnie nim można odpalić nasze demo offline. Hermes i Pi tylko wymieniam, żeby Państwo wiedzieli, że istnieją.
 :::
 
 ## B11 · 📚 Edytory i terminale (uprzęże) — *dla chętnych* {.smaller}
@@ -963,7 +968,7 @@ w środku log rozumowania agenta, po prawej wygenerowany outline.opml lub report
 ![](images/s03-clustering-demo.png){width="82%" fig-align="center"}
 
 ::: notes
-To dowód, że agent to nie magia, lecz prompt plus kontekst plus pliki instrukcji plus nadzór człowieka — wszystko, co budowaliśmy przez trzy dni. Demonstrację robię na żywo, na moim komputerze, więc na slajdzie zostają tylko ramy; szczegóły i pełny potok są w katalogu clustering-demo i w pliku-wskaźniku modul-clustering-demo. Sednem jest tabela: plik instrukcji to cztery warstwy promptu z Bloku 2 rozpisane na osobne pliki — to uczestnik odkrywa sam w mikroćwiczeniu, przypisując fragmenty własnego promptu do czterech warstw. Na pokazie podłożę do folderu summaries znacznie więcej plików — pięćdziesiąt do stu — żeby było widać skalę. Dwie rzeczy podkreślam: to samo odpalę OpenCode z modelem lokalnym, więc streszczenia nie opuszczają komputera; a wynikiem jest nie tylko raport, ale i OPML — struktura z Dnia 2 gotowa do napisania przeglądu. Pokażę też krótko dwie umiejętności (skills) nad własnymi notatkami: bridge-finder i knowledge-gap-finder.
+To dowód, że agent to nie magia, lecz prompt plus kontekst plus pliki instrukcji plus nadzór człowieka — wszystko, co budowaliśmy przez trzy dni. Demonstrację robię na żywo, na moim komputerze, więc na slajdzie zostają tylko ramy; szczegóły i pełny pipeline są w katalogu clustering-demo i w pliku-wskaźniku modul-clustering-demo. Sednem jest tabela: plik instrukcji to cztery warstwy promptu z Bloku 2 rozpisane na osobne pliki — to uczestnik odkrywa sam w mikroćwiczeniu, przypisując fragmenty własnego promptu do czterech warstw. Na pokazie podłożę do folderu summaries znacznie więcej plików — pięćdziesiąt do stu — żeby było widać skalę. Dwie rzeczy podkreślam: to samo odpalę OpenCode z modelem lokalnym, więc streszczenia nie opuszczają komputera; a wynikiem jest nie tylko raport, ale i OPML — struktura z Dnia 2 gotowa do napisania przeglądu. Pokażę też krótko dwie umiejętności (skills) nad własnymi notatkami: bridge-finder i knowledge-gap-finder.
 :::
 
 ## 🆕 B11 · „Prompt injection w 2 minuty" — ryzyko na żywo {.smaller}
@@ -1007,7 +1012,9 @@ description: >                    ← OPIS-WYZWALACZ (najważniejsza linijka!)
 
 > 📄 `sylabus-fakultet` = wzorzec dojrzałego skilla: katalog `reference/` (wiedza czytana przed pracą) · twarde reguły + anty-wzorce · „brak danych = zapytaj, nie zgaduj" · auto-weryfikacja przed zapisem.
 >
-> **🎤 Mikroćwiczenie (10–15 min):** weź szablon (`kurs-pe/szablony/skill-*.md`) → przepisz **opis-wyzwalacz** i **2 kroki** pod swoją dyscyplinę → przetestuj w czacie („Działaj dokładnie według tej procedury").
+> 🗂️ **Zaktualizowane repo materiałów** ([github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy/)): szablony skills wydzielone do katalogu `./szablony-skills` w formacie `[NAZWA_SKILL].md`. Praca na przykładzie `sylabus-fakultet`: (1) dostosuj `/reference/jak-pisac-sylabusy.md` do swojej dyscypliny → (2) poproś agenta o nowy skill z trzech plików (`SKILL.md` + `jak-pisac-sylabusy.md` + `fakultet-szablon.md`) → (3) Prompt Wykonawczy odłóż we własnym katalogu `/prompty`.
+>
+> **🎤 Mikroćwiczenie (10–15 min):** weź szablon (`szablony-skills/[NAZWA_SKILL].md`) → przepisz **opis-wyzwalacz** i **2 kroki** pod swoją dyscyplinę → przetestuj w czacie („Działaj dokładnie według tej procedury").
 
 ::: notes
 Sekcja rozwinięta na wyraźną prośbę uczestników o praktyczne przykłady. Skill to spakowana procedura badawcza: plik SKILL.md z nazwą, opisem-wyzwalaczem i krokami, który agent ładuje na żądanie — nie obciąża kontekstu, dopóki niepotrzebny. Najważniejsza linijka to opis-wyzwalacz: po nim agent decyduje, kiedy skill uruchomić, więc piszemy go jak instrukcję dla dyżurnego — używaj gdy, nie używaj gdy. Trzy moje skille pokazują trzy różne typy procedur: research-ideation to spisany scenariusz rozmowy sokratejskiej — skill nie podaje odpowiedzi, zadaje pytania; paper-reviewer to symulacja wielu ról — model kolejno wciela się w recenzentów i dopiero na końcu składa werdykt, zasada writer nie równa się reviewer w praktyce; sylabus-fakultet to generator dokumentu według sztywnego wzorca uczelni — i zarazem wzorzec dojrzałego skilla: obok SKILL.md ma katalog reference z poradnikiem i wzorem tabeli, które czyta przed pracą zamiast dźwigać całą wiedzę w prompcie; ma twarde reguły i anty-wzorce, regułę „brak danych w źródłach — zapytaj, nie zgaduj", a przed zapisem sam sprawdza spójność łańcucha efekt-metoda-weryfikacja-ocena i raportuje przyjęte założenia do weryfikacji przez człowieka. To jest ograniczone zaufanie wbudowane w automatyzację. Wspólny wniosek: skill to nie automat zastępujący badacza, lecz spisany raz dobry warsztat. Decyzje merytoryczne zostają przy człowieku. Mikroćwiczenie daje artefakt: własny SKILL.md przetestowany w czacie.

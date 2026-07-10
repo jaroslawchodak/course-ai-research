@@ -80,10 +80,20 @@ PROMPT: "A clean four-tier pyramid diagram, thin precise linework. Bottom widest
 Świadomie ustawiamy hierarchię uwagi — od narzędzia, które omawiamy najszerzej, po te wspomniane jedynie z nazwy.
 
 1. **Claude Code / Claude Cowork** — *główny agent szkolenia*. Praca na folderze projektu badawczego: pliki kontekstowe, instrukcje projektowe, podłączenie do MCP. Najwięcej uwagi.
-2. **Codex** — dojrzała alternatywa, mocna tam, gdzie trzeba generować i poprawiać skrypty.
+2. **ChatGPT for desktop (dawniej Codex)** — dojrzała alternatywa OpenAI, mocna tam, gdzie trzeba generować i poprawiać skrypty. Od 9 lipca 2026 aplikacja Codex nosi nazwę **ChatGPT for desktop** i spina w jednym oknie trzy tryby pracy (patrz callout niżej).
 3. **Antigravity** — daje dostęp do **nowych modeli Gemini**, ale też do cenionych **starszych** wersji (Opus 4.6, Sonnet), co bywa istotne, gdy zależy nam na konkretnym charakterze odpowiedzi.
 4. **OpenCode** — narzędzie **otwarte**, którego sam używam na co dzień; pozwala sięgać po darmowe modele (m.in. od Nvidii) oraz po **modele lokalne**. To nim odpalimy demo offline.
 5. **Hermes, Pi** — istnieją; warto wiedzieć, że są (wzmianka).
+
+::: {.callout-note title="ChatGPT for desktop — trzy tryby pracy (od 9 lipca 2026)"}
+9 lipca 2026 OpenAI przemianowało aplikację **Codex** na **ChatGPT for desktop**, zbierając w jednym oknie trzy tryby o rosnącym stopniu samodzielności agenta:
+
+- **Chat** — standardowa rozmowa, taka sama jak w przeglądarce: pytania, streszczenia, szkice.
+- **ChatGPT Work** — tryb agentowy dla początkujących i średnio zaawansowanych: agent pracuje na plikach, ale prowadzi użytkownika za rękę.
+- **ChatGPT Codex** — zaawansowany tryb programistyczny: pełna praca nad repozytorium kodu, generowanie i poprawianie skryptów.
+
+Ten podział to lustrzane odbicie trzech trybów w Claude Desktop (Anthropic): **Chat** odpowiada **Chatowi**, **ChatGPT Work** — trybowi **Cowork**, a **ChatGPT Codex** — **Claude Code**. Kto opanował jedną rodzinę narzędzi, w drugiej odnajdzie się od razu; różni je marka, nie logika pracy.
+:::
 
 <!-- ════════ GRAFIKA [G07] ════════
 TYP: GENERATOR (hierarchia)
@@ -160,8 +170,20 @@ Skill to nie automat, który wyręcza w myśleniu, lecz **spisany raz dobry wars
 :::
 
 ::: {.callout-tip title="Mikroćwiczenie i artefakt"}
-Weź szablon (`kurs-pe/szablony/skill-*.md`), przepisz **opis-wyzwalacz** i **dwa pierwsze kroki** pod własną dyscyplinę, a potem przetestuj w czacie poleceniem „Działaj dokładnie według tej procedury". Artefakt: własny `SKILL.md` sprawdzony na jednym przebiegu.
+Weź szablon (`szablony-skills/[NAZWA_SKILL].md`), przepisz **opis-wyzwalacz** i **dwa pierwsze kroki** pod własną dyscyplinę, a potem przetestuj w czacie poleceniem „Działaj dokładnie według tej procedury". Artefakt: własny `SKILL.md` sprawdzony na jednym przebiegu.
 :::
+
+### Repozytorium materiałów i szablony skills
+
+Wszystkie omawiane szablony żyją w **repozytorium materiałów szkoleniowych**, które właśnie zaktualizowaliśmy. Na komputerach laboratoryjnych znajdziesz je pod ścieżką `…/00-course-ai-materials/kurs-pe-materialy`, a publiczny odpowiednik leży na GitHubie: [github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy/).
+
+Zmieniła się też architektura samych szablonów. Rozproszone wcześniej pliki `skill-*.md` **wydzieliliśmy do osobnego katalogu `./szablony-skills`**, gdzie każdy zapisano w formacie `[NAZWA_SKILL].md`. Dzięki temu dołożenie gotowej umiejętności do agenta sprowadza się do wskazania jednego, jednoznacznie nazwanego pliku — nie musisz już przekopywać się przez wspólny worek szablonów.
+
+Jak z tego korzystać w praktyce, najlepiej pokazuje umiejętność `sylabus-fakultet` (plik `SKILL.md`):
+
+1. W podkatalogu `/reference` **dostosuj plik `jak-pisac-sylabusy.md` do własnej dyscypliny** — to on niesie reguły, według których agent wypełni rubryki sylabusa.
+2. Poproś agenta, by **zbudował nową umiejętność w oparciu o trzy pliki** z katalogu `sylabus-fakultet` i jego podkatalogu `/reference`: `SKILL.md`, `jak-pisac-sylabusy.md` oraz `fakultet-szablon.md`.
+3. Wygenerowany w ten sposób **Prompt Wykonawczy (System Prompt)** możesz odłożyć we własnym katalogu `/prompty`, w dowolnym miejscu na dysku lokalnym — tak samo jak narastającą bibliotekę promptów, którą kompletujesz od pierwszego dnia szkolenia.
 
 <!-- ════════ GRAFIKA [G35] ════════
 TYP: GENERATOR (skill jako spakowana procedura ładowana na żądanie)
