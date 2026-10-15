@@ -10,7 +10,7 @@ Między prostym czatem a pełnym agentem jest całe spektrum:
 - **tryb research** dokłada przeszukiwanie sieci i cytaty,
 - **agentowy deep research** planuje, wyszukuje wielokrotnie i składa wielostronicowy raport.
 
-W praktyce badacza krążą tu konkretne narzędzia: **ChatGPT i Gemini Deep Research** oraz **Perplexity** po stronie ogólnej; **Elicit** (ekstrakcja danych z wielu prac), **Consensus** (synteza „co mówi nauka"), **Scite** (kontekst cytowań: czy praca wspiera, czy podważa) po stronie literaturowej; oraz grafy powiązań — **Connected Papers, Litmaps, Research Rabbit**. Pod spodem leżą otwarte źródła: **OpenAlex, Semantic Scholar, arXiv, PubMed**.
+W praktyce badacza krążą tu konkretne narzędzia (stan: październik 2026): **ChatGPT i Gemini Deep Research** oraz **Perplexity** po stronie ogólnej (na kontach darmowych głęboki research jest mocno ograniczony, a konsumencki Microsoft Copilot wycofał go w sierpniu 2026 r.); **Elicit** (ekstrakcja danych z wielu prac), **Consensus** (synteza „co mówi nauka"), **Scite** (kontekst cytowań: czy praca wspiera, czy podważa) po stronie literaturowej; oraz grafy powiązań — **Connected Papers, Litmaps, Research Rabbit**. Pod spodem leżą otwarte źródła: **OpenAlex, Semantic Scholar, arXiv, PubMed**. OpenAlex od lutego 2026 r. wymaga klucza do API (to dotyczy automatów i agentów); wyszukiwarka w przeglądarce działa bez zmian.
 
 ## „Deep research, płytka sprawczość"
 
@@ -70,12 +70,12 @@ i winiet, 16:9, bez tekstu." -->
 
 „Sprawdź, czy DOI działa" to za mało. Najgroźniejsza halucynacja bibliograficzna to nie zmyślony identyfikator — ten wychwyci każde kliknięcie — lecz **źródło prawdziwe z fałszywą tezą**: praca istnieje, DOI prowadzi we właściwe miejsce, ale model przypisał jej twierdzenie, którego autorzy nigdy nie postawili. Taki cytat przechodzi przez pobieżną kontrolę i osadza się w przeglądzie jako „zweryfikowany".
 
-Dlatego weryfikację *jednego* cytowania rozkładamy na pięć kroków:
+Dlatego weryfikację *jednego* cytowania rozkładamy na pięć kroków. To ta sama **drabina weryfikacji**, którą znasz z rozdziału o halucynacjach, zastosowana do gotowego raportu. Jest tu szczególnie potrzebna: w testach z 2026 r. agenci *deep research* częściej niż zwykłe czaty z wyszukiwaniem podawali adresy, które w ogóle nie istnieją (Rao, Wong i Callison-Burch, 2026).
 
 1. **DOI → [doi.org](https://doi.org).** Czy identyfikator istnieje i prowadzi do *tego* tytułu?
 2. **Tytuł → Google Scholar / OpenAlex / PubMed.** Czy autorzy i rok się zgadzają?
 3. **Teza → źródło (krok krytyczny).** Czy praca *rzeczywiście twierdzi* to, co przypisał jej model? Tu odsiewa się prawdziwe źródło z przekręconą tezą.
-4. **[Scite](https://scite.ai) — druga opinia.** Smart Citations pokazują, czy inne prace tę tezę wspierają, podważają, czy jedynie wzmiankują.
+4. **Status i [Scite](https://scite.ai) — druga opinia.** Sprawdź, czy praca nie została wycofana lub skorygowana (baner wydawcy, baza Retraction Watch udostępniana przez Crossref). Smart Citations w Scite pokazują, czy inne prace tę tezę wspierają, podważają, czy jedynie wzmiankują.
 5. **Werdykt — trzystopniowy, nie binarny.**
 
 Sednem jest właśnie trzystopniowość: ocena „prawda / fałsz" gubi najczęstszy przypadek — ten ze środka tabeli.

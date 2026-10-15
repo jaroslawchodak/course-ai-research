@@ -6,11 +6,12 @@ Ta część jest o jednej rzeczy: jak rozmawiać z modelem tak, by dostać użyt
 
 Badacz, który nie odróżnia czatu od trybu *research* i od wyszukiwarki AI, zadaje właściwe pytanie niewłaściwemu narzędziu — i dostaje pewnie brzmiącą, niesprawdzalną odpowiedź. Zacznijmy więc od mapy.
 
-- **Czat ogólny** (ChatGPT, Claude, Gemini, Grok) — odpowiada „z pamięci", domyślnie bez źródeł.
+- **Czat ogólny** (ChatGPT, Claude, Gemini, Grok, Microsoft Copilot) — odpowiada „z pamięci"; bez włączonego wyszukiwania także bez źródeł.
 - **Tryb research / z przeglądaniem sieci** — dokłada aktualne wyszukiwanie i cytaty.
 - **Wyszukiwarka AI** (Perplexity, Grok) — punktem ciężkości są odnośniki do źródeł.
 - **Narzędzia literaturowe** (Elicit, Consensus, Scite) — pracują na bazach publikacji naukowych.
 - **Agentowy deep research** — model planuje, wyszukuje wielokrotnie i składa raport.
+- **Asystent pracujący na plikach** (ChatGPT Work, Claude z Cowork; dla zaawansowanych Codex i Claude Code) — czyta i zapisuje pliki w folderze, który mu udostępnisz. Folder jest lokalny, ale model pracuje w chmurze.
 
 <!-- ════════ GRAFIKA [G02] ════════
 TYP: GENERATOR (diagram)
@@ -20,7 +21,7 @@ rosnąca złożoność, ikony zamiast tekstu, styl flat, paleta japandi: matowe 
 
 ![](images/g02-piec-narzedzi.png){fig-align="center" width="100%"}
 
-Czym AI **nie jest**? Nie „wie" — przewiduje statystycznie prawdopodobny ciąg tokenów. To jedno zdanie wyjaśnia, dlaczego model potrafi zmyślić cytat brzmiący jak prawdziwy. Najmocniej widać to na żywo: poproś czat (bez przeglądania sieci) o pełny opis bibliograficzny „przełomowego artykułu" z wąskiej specjalności, a potem wklej podany DOI na [doi.org](https://doi.org). Zwykle trafisz na stronę błędu — model nie „skłamał", tylko *przewidział prawdopodobny ciąg tokenów* wyglądający jak cytat.
+Czym AI **nie jest**? Nie „wie" — przewiduje statystycznie prawdopodobny ciąg tokenów. To jedno zdanie wyjaśnia, dlaczego model potrafi zmyślić cytat brzmiący jak prawdziwy. Najmocniej widać to na żywo. Prosta prośba o „przełomowy artykuł z DOI" z wąskiej specjalności coraz częściej zwraca dziś prawdziwą pracę, więc pytamy inaczej: o literaturę łączącą dwa prawdziwe pojęcia, których nikt nie połączył — na przykład teorię słabych więzi Granovettera i wydajność edycji genów metodą CRISPR-Cas9. Czat bez wyszukiwania zwykle poda pewnie brzmiące tytuły z DOI; wklejony na [doi.org](https://doi.org) identyfikator prowadzi do strony błędu. Model nie „skłamał", tylko *przewidział, jak wyglądałby taki artykuł, gdyby istniał*. A jeśli odpowie „nie znam takich prac" — to też lekcja: dobry model przyznaje się do niewiedzy, więc warto najpierw zapytać, czy coś istnieje.
 
 ::: {.callout-warning title="Pułapka: błąd automatyzacji"}
 Im płynniej i pewniej brzmi odpowiedź, tym mocniej usypia czujność — wynik przyjmujemy bez weryfikacji właśnie wtedy, gdy „wygląda profesjonalnie". To udokumentowany mechanizm zawierzania systemom automatycznym (*automation bias*). Lekarstwo: weryfikacja jako **odruch, nie wyjątek**, oraz pytanie „gdzie trafiają moje dane?" przy każdym narzędziu.

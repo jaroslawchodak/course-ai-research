@@ -98,8 +98,8 @@ Symetria z resztą szkolenia jest prosta: każde mocne narzędzie ma cenę.
 ::: {.column width="50%"}
 **Ograniczenia / ryzyka**
 
-- chmura Google → uwaga, klatka prywatności,
-- potrafi zmyślać numery stron,
+- chmura Google → tylko dane 🟢,
+- potrafi zmyślać numery stron, a przypis bywa **pozornym dowodem**: wskazuje fragment, który tezy nie popiera,
 - audio/wideo bywa efektowne, ale spłyca,
 - to wciąż asystent — weryfikacja po stronie badacza.
 :::

@@ -4,7 +4,7 @@ Zanim zaczniemy pisać prompty, ustalmy wspólny grunt. Ten rozdział jest krót
 
 ## Całe szkolenie mieści się w jednym pytaniu
 
-Zanim użyjesz dowolnego narzędzia AI, zadaj sobie jedno pytanie: *„Czy ufam temu w ograniczonym stopniu, czy mam dowód — i gdzie trafiają moje dane?"*. To pytanie rozkłada się na trzy filary.
+Zanim użyjesz dowolnego narzędzia AI, zadaj sobie jedno pytanie: *„Czy ufam temu w ograniczonym stopniu, czy mam dowód — i jaki kolor mają moje dane?"*. To pytanie rozkłada się na trzy filary.
 
 ::: {.columns}
 ::: {.column width="33%"}
@@ -16,19 +16,19 @@ AI to **asystent pod nadzorem**, nie wyrocznia. Model przewiduje prawdopodobny t
 Wartościowa odpowiedź opiera się na **podanym materiale** i **sprawdzalnych źródłach**, nie na „pamięci" modelu.
 :::
 ::: {.column width="33%"}
-### Klatka prywatności (*privacy cage*)
-Świadome ograniczanie przepływu danych do **kontrolowanego, w miarę możliwości lokalnego** środowiska.
+### Sygnalizator danych 🟢🟡🔴
+Zanim cokolwiek trafi do AI, nadajesz danym **kolor** trzema pytaniami, a kolor wyznacza dozwolone narzędzie: od dowolnego czatu po „tylko lokalnie albo bez AI".
 :::
 :::
 
-Jeśli z całego szkolenia zapamiętasz tylko te trzy słowa — *zaufanie, zakotwiczenie, klatka* — reszta jest już tylko techniką, która je realizuje.
+Jeśli z całego szkolenia zapamiętasz tylko te trzy słowa — *zaufanie, zakotwiczenie, sygnalizator* — reszta jest już tylko techniką, która je realizuje.
 
 <!-- ════════ GRAFIKA [G16] ════════
 TYP: GENERATOR (trzy filary szkolenia)
 PLIK: images/g16-trzy-filary.png
 PROMPT: "Trzy cienko kreślone filary (kolumny) stojące obok siebie, każdy zwieńczony jedną małą ikoną:
 waga / półprzymknięte oko (ograniczone zaufanie), kotwica (zakotwiczenie) i miękka zaokrąglona obudowa
-wokół małego dokumentu (klatka prywatności). Trzy filary podtrzymują jedną wąską poziomą belkę — wszystko
+wokół małego dokumentu (sygnalizator danych — ochrona danych). Trzy filary podtrzymują jedną wąską poziomą belkę — wszystko
 się na nich opiera. Styl flat, cienka precyzyjna kreska, paleta japandi: matowe kremowe tło #F1ECE3, akcenty
 szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, atrament #26211C; bez gradientów i winiet, 16:9, bez tekstu." -->
 
@@ -159,24 +159,24 @@ To narzędzie awaryjne. Jeśli w którymś momencie materiał wyda się zbyt gę
 | Krajobraz narzędzi | Nie ufam pewnie brzmiącemu wynikowi bez śladu źródła. |
 | Anatomia promptu | Rozpisuję prompt na rolę, kontekst, zadanie i format. |
 | Markdown i XML | Oddzielam dane od instrukcji. |
-| Halucynacje i dane | Każda teza ma kotwicę albo status „brak danych". |
+| Halucynacje i dane | Pytam, czy źródło mówi to, co twierdzi model, a danym nadaję kolor. |
 | Inżynieria kontekstu | Podaję minimalny, ale wystarczający kontekst. |
 | PDF → Markdown | Najpierw czyszczę materiał, potem proszę AI o analizę. |
 | Dane strukturalne | Dane strukturalne podaję jako dane strukturalne. |
 | RAG i matryca | Model syntetyzuje moją matrycę, nie wymyśla literatury. |
 | Deep research | Raport to lista tropów do sprawdzenia, nie gotowy przegląd. |
-| Lokalne LLM | Dla każdego typu danych wybieram środowisko. |
+| Lokalne LLM | Dla danych 🔴 wybieram: lokalnie, instytucjonalnie albo bez AI. |
 | Agenci | Agent pracuje na plikach pod moim nadzorem. |
 | Integracja | Mam protokół: narzędzie, format, dane, weryfikacja. |
 
 ## Jak pracujemy
 
-Każdy z dwunastu bloków szkolenia trwa 90 minut i kończy się **konkretnym artefaktem** — szablonem promptu, mapą ryzyka, matrycą literatury, kartą klatki prywatności. Suma artefaktów składa się na **portfolio**, które jest podstawą ewaluacji.
+Każdy z dwunastu bloków szkolenia trwa 90 minut i kończy się **konkretnym artefaktem** — szablonem promptu, kartą złapanego błędu, matrycą literatury, sygnalizatorem danych. Suma artefaktów składa się na **portfolio**, które jest podstawą ewaluacji.
 
 Pracujemy w **zwykłym folderze plików** oraz w edytorze Markdown, Obsidianie, Zotero lub Bookends — narzędziach dostępnych bezpłatnie lub powszechnie posiadanych. Wszystkie szablony są w katalogu `kurs-pe/`, więc nikt nie zaczyna od pustej kartki.
 
 ::: {.callout-warning title="Notion — dlaczego nie jako podstawowe środowisko"}
-Notion przechowuje treść na swoich serwerach. Dla materiałów badawczych łamie to zasadę klatki prywatności, dlatego nie budujemy na nim ćwiczeń. DEVONthink pokazuję wyłącznie jako *przykład* zaawansowanej, lokalnej bazy wiedzy prowadzącego — uczestnicy go nie potrzebują.
+Notion przechowuje treść na swoich serwerach. Nadaje się więc tylko do danych 🟢, dlatego nie budujemy na nim ćwiczeń. DEVONthink pokazuję wyłącznie jako *przykład* zaawansowanej, lokalnej bazy wiedzy prowadzącego — uczestnicy go nie potrzebują.
 :::
 
 ## Cztery standardy, które obowiązują w każdym rozdziale

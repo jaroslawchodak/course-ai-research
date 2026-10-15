@@ -45,13 +45,13 @@ Każdy klaster opisywany jest wedle stałego schematu z `WORKFLOW.md`: *proponow
 
 Pipeline jest **agnostyczny względem narzędzia** — odpalisz go dowolnym agentem nad plikami:
 
-- **Claude Code / Claude Cowork** — rekomendowany,
-- **Codex**,
-- **Antigravity** (nowe Gemini lub cenione starsze: Opus 4.6, Sonnet 4.6),
+- **Claude Code** albo aplikacja **Claude z Cowork** — rekomendowany,
+- **Codex** albo **ChatGPT Work** (aplikacja ChatGPT for desktop),
+- **Antigravity** (nowe Gemini lub cenione starsze modele),
 - **OpenCode + model lokalny** (Ollama) albo darmowe modele dostępne w OpenCode (m.in. od Nvidii).
 
-::: {.callout-important title="Klatka prywatności w praktyce"}
-Uruchomienie przez OpenCode z **modelem lokalnym** oznacza, że streszczenia **nie opuszczają komputera**. To ten sam przepływ pracy, ale w pełnej klatce prywatności — idealny dla materiałów wrażliwych.
+::: {.callout-important title="Sygnalizator danych w praktyce"}
+Claude Code, Cowork, Codex i Work czytają streszczenia z Twojego dysku, ale ich treść wysyłają do modelu w chmurze — w `summaries/` mogą więc leżeć tylko dane 🟢 i 🟡. Uruchomienie przez OpenCode z **modelem lokalnym** oznacza, że streszczenia **nie opuszczają komputera**. To ten sam przepływ pracy, ale dostępny także dla materiałów 🔴.
 :::
 
 ::: {.callout-note title="Dwa wnioski z demonstracji"}

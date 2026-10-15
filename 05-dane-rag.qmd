@@ -48,7 +48,7 @@ tekst jako abstrakcyjne kreski (nieczytelny). 16:9." -->
 JSON ma trzy zalety nad wklejoną tabelą: **nazywa każde pole** (`"rok": 2021` — znika dwuznaczność), jest **stabilny przy zagnieżdżeniu** (np. lista autorów w rekordzie) i — gdy poprosisz o **wynik w JSON** — zwraca dane gotowe do dalszego przetworzenia, choćby wczytania z powrotem do arkusza. (Kiedy wystarczy prostszy CSV, a kiedy warto sięgnąć po JSON — rozstrzygamy niżej, przy konwersji.)
 
 ::: {.callout-warning title="Struktura usypia czujność"}
-Im czystszy rekord budujesz, tym łatwiej *odruchowo* dołożyć pola identyfikujące (`"nazwisko"`, `"email"`, `"nr_pacjenta"`) — „skoro porządkuję dane, niech będą w komplecie". Tak struktura JSON, która ma pomóc, czyni wyciek najłatwiejszym. Przeciwdziałanie: **klucz zastępczy** (zamiast identyfikatora wstaw `"id": "R-017"`, a mapę trzymaj offline) oraz **minimalizacja pól** — analiza tez nie wymaga nazwisk. Pamiętaj: pseudonimizacja jest odwracalna, więc nie zwalnia z reguł klatki prywatności. Na ćwiczeniach pracujemy wyłącznie na jawnych metadanych bibliograficznych.
+Im czystszy rekord budujesz, tym łatwiej *odruchowo* dołożyć pola identyfikujące (`"nazwisko"`, `"email"`, `"nr_pacjenta"`) — „skoro porządkuję dane, niech będą w komplecie". Tak struktura JSON, która ma pomóc, czyni wyciek najłatwiejszym. Przeciwdziałanie: **klucz zastępczy** (zamiast identyfikatora wstaw `"id": "R-017"`, a mapę trzymaj offline) oraz **minimalizacja pól** — analiza tez nie wymaga nazwisk. Pamiętaj: pseudonimizacja jest odwracalna, więc nie zmienia koloru danych w sygnalizatorze — wciąż są 🔴. Na ćwiczeniach pracujemy wyłącznie na jawnych metadanych bibliograficznych.
 :::
 
 ::: {.callout-tip title="Ćwiczenie i artefakt"}
@@ -81,7 +81,7 @@ Jeśli konwersję wykonujesz w modelu chmurowym, obowiązuje ta sama granica, co
 
 **RAG po ludzku:** zamiast pytać model z pamięci, **najpierw wyszukujemy właściwe fragmenty z własnych materiałów**, a dopiero potem prosimy o odpowiedź opartą *tylko* na nich. To inżynieria kontekstu w skali biblioteki — albo, jak w metaforze rdzeniowej, egzamin z otwartą książką, ale wyłącznie z *Twoją* książką.
 
-Środowiska, w których to robimy, są lokalne i preferowane: **Obsidian** (notatki i linki), **Zotero** oraz **Bookends** (źródła i cytowania), albo zwykły folder `.md`. DEVONthink pokazuję jako *przykład* zaawansowanego RAG prowadzącego — nie jako wymóg. Notion odpada: serwer w chmurze stawia go poza klatką prywatności.
+Środowiska, w których to robimy, są lokalne i preferowane: **Obsidian** (notatki i linki), **Zotero** oraz **Bookends** (źródła i cytowania), albo zwykły folder `.md`. DEVONthink pokazuję jako *przykład* zaawansowanego RAG prowadzącego — nie jako wymóg. Notion odpada: przechowuje treść na serwerze, więc nadaje się tylko do danych 🟢.
 
 <!-- ════════ GRAFIKA [G05] ════════
 TYP: GENERATOR (diagram RAG)
@@ -105,7 +105,7 @@ Do matrycy trafiają **dokładne cytaty z numerem strony**, nie całe dokumenty.
 :::
 
 ::: {.callout-tip title="Ćwiczenie i artefakt"}
-Wypełnij `matryca-literatury.md` (`kurs-pe/szablony/matryca-literatury-szablon.md`) dla 3–5 własnych źródeł: *źródło · rok · metoda · teza · luka · cytat-kotwica (str.)*. Podaj matrycę modelowi i poproś o **przegląd zakotwiczony** z poleceniem „nie wychodź poza tabelę". Następnie przejdź tezę po tezie i sprawdź, czy każda ma numer wiersza-źródła i czy nie pojawiła się wiedza spoza matrycy. Artefakt: matryca + jeden zakotwiczony akapit przeglądowy.
+Wypełnij `matryca-literatury.md` (`kurs-pe/szablony/matryca-literatury-szablon.md`) dla 3–5 własnych źródeł: *źródło · rok · metoda · teza · luka · cytat-kotwica (str.)*. Podaj matrycę modelowi i poproś o **przegląd zakotwiczony** z poleceniem „nie wychodź poza tabelę". Następnie przejdź tezę po tezie i sprawdź, czy każda ma numer wiersza-źródła i czy nie pojawiła się wiedza spoza matrycy. Na koniec wybierz **dwie tezy** i dla każdej otwórz oryginał (nie streszczenie): czy cytat-kotwica tam jest i czy popiera tezę? To szczeble 3–4 drabiny weryfikacji. Artefakt: matryca + jeden zakotwiczony akapit przeglądowy z oznaczeniem ✅ / ⚠️ przekręcone / ❌ brak przy dwóch sprawdzonych tezach.
 :::
 
 RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co *Ty* uznałeś za istotne. To naturalny pomost do następnego rozdziału: NotebookLM, narzędzia, które ten proces częściowo automatyzuje.

@@ -48,7 +48,7 @@ pip install pymupdf4llm
 python konwersja.py artykul.pdf      # → artykul.md  (kurs-pe/konwersja/konwersja.py)
 ```
 
-Krajobraz narzędzi (stan czerwiec 2026): **pymupdf4llm** jest najlżejsze i świetne do PDF-ów z natywną warstwą tekstu; **Docling** (IBM) lepiej radzi sobie z tabelami i pipeline'ami RAG (potok); **marker** wspiera trudne układy z opcjonalnym wsparciem LLM; **Pandoc** to uniwersalna konwersja między formatami. Uwaga co do klatki prywatności: niektóre parsery (np. Llama Parse) przetwarzają w chmurze — nie do materiałów wrażliwych.
+Krajobraz narzędzi (stan czerwiec 2026): **pymupdf4llm** jest najlżejsze i świetne do PDF-ów z natywną warstwą tekstu; **Docling** (IBM) lepiej radzi sobie z tabelami i pipeline'ami RAG (potok); **marker** wspiera trudne układy z opcjonalnym wsparciem LLM; **Pandoc** to uniwersalna konwersja między formatami. Uwaga z perspektywy sygnalizatora danych: niektóre parsery (np. Llama Parse) przetwarzają w chmurze — tylko do materiałów 🟢.
 
 Gdy plików jest więcej — a w prawdziwej kwerendzie są ich dziesiątki — nie uruchamiasz skryptu raz po raz na każdym z osobna. Zaktualizowane **repozytorium materiałów szkoleniowych** (na komputerach laboratoryjnych pod ścieżką `…/00-course-ai-materials/kurs-pe-materialy`, publicznie: [github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy/)) daje na to gotowy **pipeline zbiorczego (batch) parsowania** wielu PDF-ów naraz. Odpowiada za niego skrypt `konwersja-batch.py`: wskazujesz mu folder z PDF-ami, a on zwraca komplet plików `.md` w katalogu wyjściowym. Instrukcję krok po kroku znajdziesz w pliku `instrukcja-python.md` (**Krok 5**).
 

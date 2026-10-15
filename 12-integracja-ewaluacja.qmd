@@ -7,8 +7,8 @@ Pojedyncze techniki dają wartość dopiero złożone w *powtarzalny, bezpieczny
 Całe szkolenie to jeden ciąg: **prompt → kontekst i dane → nadzorowany agent**. Osobisty protokół pracy z AI łączy cztery elementy w jedną stronę:
 
 - **szablon promptu** (cztery warstwy),
-- **karta klatki prywatności** (co lokalnie, co w chmurze, czego nie powierzam AI),
-- **checklista weryfikacji halucynacji** (kotwice + sprawdzenie próbki źródeł),
+- **sygnalizator danych** (jaki kolor mają moje dane i co z tego wynika: chmura, lokalnie, bez AI),
+- **checklista weryfikacji halucynacji** (kotwice, drabina weryfikacji, STAT-5),
 - **zasady doboru narzędzia**.
 
 > **Zasada proporcjonalności.** Prosty prompt do prostego pytania; agent i RAG tylko tam, gdzie złożoność tego wymaga. Protokół ma *upraszczać* decyzje, nie komplikować.
@@ -21,7 +21,7 @@ Pomocna jest mapa „pięciu stacji" jednego przepływu — każda to krok z wcz
 | 2. Struktura | przepisujesz metadane do `dane.json` / wiersza matrycy | dane mają strukturę → JSON / matryca |
 | 3. Synteza zakotwiczona | prosisz o akapit **wyłącznie** z matrycy, z numerem wiersza-źródła | format + „luki = brak danych" |
 | 4. Kontrola | przepuszczasz wynik przez checklistę halucynacji, sprawdzasz próbkę cytowań | checklista weryfikacji |
-| 5. Decyzja środowiskowa | nazywasz, czy materiał wolno było puścić w chmurę, czy wymagał lokalnego LLM | karta klatki prywatności |
+| 5. Decyzja środowiskowa | nazywasz, czy materiał wolno było puścić w chmurę, czy wymagał lokalnego LLM | sygnalizator danych |
 
 <!-- ════════ GRAFIKA [G27] ════════
 TYP: GENERATOR (pięć stacji przepływu)
@@ -47,8 +47,8 @@ Ocena jest **formująca**, nie rankingowa — chodzi o informację zwrotną i o 
 | Kryterium | Wskaźniki spełnienia |
 |---|---|
 | **Jasność zadania (prompt)** | struktura 4-warstwowa · ślad iteracji v1→v3 · trafny format (Markdown/XML/JSON) |
-| **Ochrona danych (klatka prywatności)** | mapa ryzyka · karta chmura/lokalnie · brak danych wrażliwych · minimalizacja |
-| **Kontrola halucynacji** | prompty zakotwiczające · cytaty-kotwice · weryfikacja próbki źródeł |
+| **Ochrona danych (sygnalizator 🟢🟡🔴)** | sygnalizator z decyzją dla każdego 🔴 · wyłączone trenowanie na kontach · w folderze agenta tylko 🟢/🟡 · minimalizacja |
+| **Kontrola halucynacji** | prompty zakotwiczające · cytaty-kotwice · karta złapanego błędu · weryfikacja drabiną |
 
 Skala dla każdego kryterium: *spełnia w pełni / spełnia częściowo / wymaga dopracowania*. Warunek zaliczenia: co najmniej „spełnia częściowo" w każdym kryterium, kompletny `PROTOKOL-AI.md` oraz dołączone **oświadczenie o użyciu AI** (`ai-disclosure-szablon.md`) opisujące, co w portfolio zrobił człowiek, a co narzędzie.
 
@@ -56,7 +56,7 @@ Skala dla każdego kryterium: *spełnia w pełni / spełnia częściowo / wymaga
 
 Zamykamy tym, czym otworzyliśmy: to szkolenie nie jest o tym, żeby „używać wszystkiego", lecz żeby mieć **protokół i trzy odruchy**. Zacznij od jednego nawyku i rozbudowuj resztę stopniowo.
 
-> Zanim wciśniesz Enter — zapytaj: *„gdzie trafiają te dane i czym to zakotwiczę?"*
+> Zanim wciśniesz Enter — zapytaj: *„jaki kolor mają te dane i czym to zakotwiczę?"*
 
 <!-- ════════ GRAFIKA [G08] ════════
 TYP: GENERATOR (ilustracja zamykająca)
@@ -69,7 +69,7 @@ zaufania. Styl flat, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałw
 
 ## Aneks — źródła i aktualność
 
-Stan narzędzi opisany w tym podręczniku to **lipiec 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach, nie latach — sprawdź je u producentów (OpenAI, Anthropic, Google) i na stronach narzędzi.
+Stan narzędzi opisany w tym podręczniku to **październik 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach, nie latach — sprawdź je u producentów (OpenAI, Anthropic, Google) i na stronach narzędzi.
 
 - Anthropic — *Effective context engineering for AI agents*; *Steering Claude Code: skills, hooks, subagents and more*.
 - Deep research i jego granice — Aaron Tay, *Deep Research, Shallow Agency* (2025).
@@ -78,5 +78,8 @@ Stan narzędzi opisany w tym podręczniku to **lipiec 2026**. Nazwy modeli i okn
 - Lokalne LLM — Ollama, LM Studio; wymagania sprzętowe i kwantyzacja.
 - Konwersja PDF→Markdown — pymupdf4llm, Docling, marker, Pandoc.
 - Ochrona danych / RODO — decyzja TSUE 2025 ws. danych pseudonimizowanych; wytyczne IOD/DPO uczelni (nie stanowią porady prawnej).
+- Ustawienia prywatności i aplikacje (październik 2026) — OpenAI: *Data controls FAQ*, *Moving to the new ChatGPT desktop app*, *ChatGPT Work and Codex* (help.openai.com); Anthropic: *Cowork is now Claude* (claude.com, 16.09.2026), *How do I change my model improvement privacy settings*, *How long do you store my data* (privacy.claude.com).
+- Halucynacje bibliograficzne — GPTZero, analiza cytowań NeurIPS 2025 (2026); Topaz i in., *The Lancet* (2026); Rao, Wong, Callison-Burch, arXiv:2604.03173 (2026); Xu i in., *GhostCite*, arXiv:2602.06718 (2026). Uległość modeli — Naddaf, *Nature* (2025); Cheng i in. (2026).
+- Modele lokalne — IBM Granite 4.2 ([ollama.com/library/granite4.2](https://ollama.com/library/granite4.2)); Gemma 4 (Apache 2.0, 2026).
 
 > **Zastrzeżenie.** Liczby i nazwy modeli pochodzą z materiałów branżowych o różnej wiarygodności i szybko się dezaktualizują. Traktuj je jako punkt wyjścia do weryfikacji, nie jako pewnik. Odniesienia prawne nie są poradą prawną — weryfikuj z IOD/DPO uczelni.

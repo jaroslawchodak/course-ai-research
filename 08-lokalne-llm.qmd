@@ -1,10 +1,10 @@
 # Lokalne modele LLM
 
-To moment, w którym klatka prywatności (*privacy cage*) przestaje być hasłem, a staje się konfiguracją. Są dane, których po prostu nie wolno wysłać do chmury — i wtedy model lokalny bywa jedyną drogą do użycia AI, za cenę jakości.
+Sygnalizator z rozdziału o halucynacjach rozstrzyga kolor danych. Ten rozdział odpowiada na pytanie, **co zrobić z czerwonymi**. Są trzy drogi: model lokalny (dane nie opuszczają komputera), narzędzie instytucjonalne zatwierdzone przez IOD albo rezygnacja z AI. Model lokalny bywa jedyną drogą do użycia AI przy danych 🔴 — za cenę jakości.
 
 ## Po co lokalnie — i czego to kosztuje
 
-Sedno jest jedno: **dane nie opuszczają komputera**. To rdzeń klatki prywatności. Cena jest jednak realna i trzeba ją powiedzieć uczciwie:
+Sedno jest jedno: **dane nie opuszczają komputera**. To jedyna droga, na której z danymi 🔴 można użyć AI bez zgody IOD na usługę chmurową. Cena jest jednak realna i trzeba ją powiedzieć uczciwie:
 
 - modele lokalne są **słabsze od modeli czołowych** (frontier; więcej błędów, gorsze rozumowanie),
 - nie przeglądają internetu — **nie znają „dziś"**, wiedzą tylko to, co zapamiętały do daty treningu,
@@ -39,23 +39,27 @@ Najważniejsza intuicja: **agent to warstwa nad modelem**. Ten sam OpenCode, Cod
 ollama launch codex --model gemma4:26b-a4b-it-qat
 
 # agent „claude" napędzany lekkim, lokalnym Granite:
-ollama launch claude --model granite4.1:3b
+ollama launch claude --model granite4.2:3b
 ```
 
 Dobór modelu zaczyna się od jednego, praktycznego pytania: **co udźwignie mój komputer?** Zasada jest prosta — im mocniejsza maszyna, tym większy model, a rozmiar poznasz po liczbie z literą `b` w nazwie (miliardy parametrów, czyli apetyt na pamięć). Poniższa tabela odpowiada na jedyne pytanie, które badacz realnie zadaje na starcie: *mam tyle a tyle RAM — co mogę uruchomić?*
 
 | Ile masz RAM | Który model na start |
 |---|---|
-| **8 GB** | `gemma4:e2b` · `granite4.1:3b` |
-| **16 GB** | `gemma4:e4b` · `granite4.1:8b` |
+| **8 GB** | `gemma4:e2b` · `granite4.2:3b` |
+| **16 GB** | `gemma4:e4b` · `granite4.2:8b` |
 | **32 GB** | `gemma4:12b` |
-| **64 GB** | `gemma4:26b` · `qwen3.6:35b` · `granite4.1:30b` |
+| **64 GB** | `gemma4:31b` · `qwen3.6:35b` · `granite4.2:30b` |
 
 Trzy uwagi wyczerpują temat na poziomie decyzji:
 
 1. **RAM to główne kryterium**, choć nie jedyne — liczą się też procesor i karta graficzna, a na Apple Silicon pamięć zunifikowana (współdzielona przez procesor i GPU) pozwala sięgnąć wyżej niż wskazywałaby sama liczba gigabajtów. Jeśli model działa wyraźnie za wolno, zejdź o jeden wiersz niżej.
 2. **Warianty skompresowane** (`Q4`, `qat`) to ten sam model „odchudzony" — na start wybieraj właśnie takie. Co dokładnie znaczą te sufiksy, wyjaśniamy niżej; do samej decyzji nie musisz tego wiedzieć.
 3. **Nie każdy model uniesie agenta.** Model, który pięknie rozmawia, niekoniecznie nadaje się do wywoływania narzędzi — to najczęstsze źródło rozczarowań, do którego wracamy przy rozróżnieniu *agent kontra chatbot*.
+
+::: {.callout-note title="Nowe w 2026: Granite 4.2 i Gemma 4"}
+**IBM Granite 4.2** (25 sierpnia 2026, licencja Apache 2.0) ma trzy rozmiary: `granite4.2:3b` (ok. 2,2 GB), `granite4.2:8b` (ok. 5,3 GB) i `granite4.2:30b` (ok. 18 GB), z oknem kontekstowym 128 tys. tokenów w Ollama i trybem rozumowania włączanym komendą `/set think` (wyłączanym: `/set nothink`). W przeciwieństwie do hybrydowych Granite 4.0 i 4.1 to modele gęste. Polecamy je na szkolenie z dwóch powodów: otwarta licencja i dobre trzymanie formatu, czyli przydatność także jako silnik agenta. **Gemma 4** (kwiecień 2026) jest teraz również na licencji Apache 2.0; ma rozmiary E2B, E4B, 26B (MoE) i 31B (gęsty). Nazwy wariantów sprawdzaj przed zajęciami w [bibliotece Ollama](https://ollama.com/library).
+:::
 
 Sufiksy w nazwach (`-a4b`, `-it-qat`, `-mlx`) nie są przypadkowe — wyjaśniamy je niżej, przy okazji rozróżnienia Dense/MoE i kwantyzacji.
 
@@ -123,7 +127,7 @@ Polski **Bielik** (oraz **Bielik-Minitron**) ma doskonałe rozumienie polszczyzn
 > **Reguła kciuka.** Zacznij od **Q4 lub qat**; schodź niżej tylko, gdy model nie mieści się w pamięci. Nie ścigaj się o najniższy bit.
 
 ::: {.callout-tip title="Ćwiczenie i artefakt"}
-Niezależnie od sprzętu wypełnij kartę `privacy-cage.md` (`kurs-pe/szablony/privacy-cage-szablon.md`): typ zadania/danych → środowisko (model czołowy w chmurze / lokalny LLM / bez AI) → dlaczego. Zapisz przynajmniej jeden przypadek, w którym **rezygnujesz z chmury**. Kto ma sprzęt — uruchamia mały model w Ollama/LM Studio i ocenia jego wynik trzypunktowym rubrykiem (wierność kotwiczeniu / kompletność / halucynacje). Artefakt: karta decyzyjna *privacy cage*.
+Niezależnie od sprzętu wróć do swojego sygnalizatora danych (`kurs-pe/szablony/sygnalizator-danych-szablon.md`) i przy każdym 🔴 wpisz drogę: model lokalny / narzędzie instytucjonalne (jakie, kto zatwierdził) / bez AI — z jednym zdaniem „dlaczego". Jeśli nie masz żadnego 🔴, dopisz typowy przypadek ze swojej dyscypliny (dokumentacja pacjenta, nagranie wywiadu, recenzja, dane z umowy z firmą). Kto ma sprzęt — uruchamia mały model w Ollama/LM Studio i ocenia jego wynik trzypunktowym rubrykiem (wierność kotwiczeniu / kompletność / halucynacje). Artefakt: sygnalizator danych z decyzją dla każdego 🔴.
 :::
 
 Skoro umiemy już podpiąć model — chmurowy lub lokalny — pod agenta, pora przyjrzeć się samym agentom: którym poświęcić uwagę i gdzie one „mieszkają".

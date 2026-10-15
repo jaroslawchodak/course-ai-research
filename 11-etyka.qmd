@@ -1,6 +1,6 @@
 # Etyka i granice AI
 
-Ten rozdział jest krótki, ale bez niego cały warsztat byłby naiwny. Zbiera wątki etyczne rozsiane po wszystkich poprzednich rozdziałach — od ograniczonego zaufania, przez zakotwiczenie i klatkę prywatności, po nadzór nad agentem — i domyka je jedną tezą.
+Ten rozdział jest krótki, ale bez niego cały warsztat byłby naiwny. Zbiera wątki etyczne rozsiane po wszystkich poprzednich rozdziałach — od ograniczonego zaufania, przez zakotwiczenie i sygnalizator danych, po nadzór nad agentem — i domyka je jedną tezą.
 
 > **Refleksyjność badacza zostaje po stronie człowieka.**
 

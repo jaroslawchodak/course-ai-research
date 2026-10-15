@@ -32,7 +32,7 @@ Całe szkolenie można streścić jednym stwierdzeniem: **AI to asystent wspiera
 
 1. **Ograniczone zaufanie** — model nie „wie", lecz przewiduje prawdopodobny tekst; stąd halucynacje.
 2. **Zakotwiczenie w danych (*grounding*)** — wartościowa odpowiedź opiera się na podanym materiale i sprawdzalnych źródłach.
-3. **Klatka prywatności (*privacy cage*)** — świadome ograniczanie przepływu danych badawczych do kontrolowanego, w miarę możliwości lokalnego środowiska.
+3. **Sygnalizator danych 🟢🟡🔴** — zanim cokolwiek trafi do AI, nadajesz danym kolor (czy da się rozpoznać osobę? czy obiecałeś poufność? czy to niepublikowane i cenne?), a kolor wyznacza dozwolone narzędzie.
 
 ## Czego (nie) musisz umieć na start
 
@@ -71,13 +71,13 @@ Nie musisz rozumieć sieci neuronowych.
 |---|---|
 | **Fundament** | Trzy filary i odwrotne prawa AI, słownik pojęć, pięć metafor, mapa odruchów. |
 | **Zapytania** | Krajobraz narzędzi, anatomia promptu, Markdown i XML. |
-| **Halucynacje i ochrona danych** | Zakotwiczenie, klatka prywatności, RODO, trzy środowiska danych. |
+| **Halucynacje i ochrona danych** | Sześć błędów 2026, drabina weryfikacji, sygnalizator danych, ustawienia prywatności kont, RODO. |
 | **Kontekst** | Inżynieria kontekstu, śmietnik kontekstowy, PDF→Markdown. |
 | **Dane i RAG** | Dane strukturalne w JSON, matryca literatury jako „mały RAG". |
 | **NotebookLM** | Parser i generator notatek; case study czytania książki naukowej. |
 | **Deep research** | Tryby pogłębione, cztery tryby porażki, obowiązkowa weryfikacja źródeł. |
-| **Lokalne LLM** | Dense vs MoE, agentic vs chatbot, kwantyzacja, uruchamianie z agentami. |
-| **Agenci i środowiska** | Hierarchia agentów, edytory i terminale, twarde bezpieczniki, MCP. |
+| **Lokalne LLM** | Droga dla danych 🔴, Granite 4.2 i Gemma 4, Dense vs MoE, agentic vs chatbot, kwantyzacja. |
+| **Agenci i środowiska** | ChatGPT Work i Claude Cowork, pliki kontekstowe, praca na folderze w trzech ścieżkach, skills, MCP. |
 | **Klastrowanie** | Agent w działaniu — klastrowanie literatury (demonstracja). |
 | **Etyka i granice AI** | Co zostaje przy badaczu, higiena pracy, oświadczenie o użyciu AI. |
 | **Integracja i ewaluacja** | Złożenie własnego przepływu, portfolio, źródła. |
@@ -93,4 +93,4 @@ Nie musisz rozumieć sieci neuronowych.
 
 **Pliki robocze i szablony** znajdziesz w repozytorium GitHub `kurs-pe-materialy` (skrót od *kurs prompt engineering materiały*): [github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy){target="_blank" rel="noopener"}. Jest tam również instrukcja, jak pobrać jego zawartość na swój komputer.
 
-> Stan wiedzy o narzędziach w tym podręczniku: **lipiec 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach — w trakcie lektury zweryfikuj je u źródeł.
+> Stan wiedzy o narzędziach w tym podręczniku: **październik 2026**. Nazwy modeli i okna kontekstowe zmieniają się w miesiącach — w trakcie lektury zweryfikuj je u źródeł.
