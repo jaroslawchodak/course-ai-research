@@ -74,7 +74,7 @@ Nie musisz rozumieć sieci neuronowych.
 | **Halucynacje i ochrona danych** | Sześć błędów 2026, drabina weryfikacji, sygnalizator danych, ustawienia prywatności kont, RODO. |
 | **Kontekst** | Inżynieria kontekstu, śmietnik kontekstowy, PDF→Markdown. |
 | **Dane i RAG** | Dane strukturalne w JSON, matryca literatury jako „mały RAG". |
-| **NotebookLM** | Parser i generator notatek; case study czytania książki naukowej. |
+| **Gemini Notebook** (dawniej NotebookLM) | Parser i generator notatek; case study czytania książki naukowej. |
 | **Deep research** | Tryby pogłębione, cztery tryby porażki, obowiązkowa weryfikacja źródeł. |
 | **Lokalne LLM** | Droga dla danych 🔴, Granite 4.2 i Gemma 4, Dense vs MoE, agentic vs chatbot, kwantyzacja. |
 | **Agenci i środowiska** | ChatGPT Work i Claude Cowork, pliki kontekstowe, praca na folderze w trzech ścieżkach, skills, MCP. |

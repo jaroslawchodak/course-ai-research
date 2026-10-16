@@ -108,4 +108,4 @@ Do matrycy trafiają **dokładne cytaty z numerem strony**, nie całe dokumenty.
 Wypełnij `matryca-literatury.md` (`kurs-pe/szablony/matryca-literatury-szablon.md`) dla 3–5 własnych źródeł: *źródło · rok · metoda · teza · luka · cytat-kotwica (str.)*. Podaj matrycę modelowi i poproś o **przegląd zakotwiczony** z poleceniem „nie wychodź poza tabelę". Następnie przejdź tezę po tezie i sprawdź, czy każda ma numer wiersza-źródła i czy nie pojawiła się wiedza spoza matrycy. Na koniec wybierz **dwie tezy** i dla każdej otwórz oryginał (nie streszczenie): czy cytat-kotwica tam jest i czy popiera tezę? To szczeble 3–4 drabiny weryfikacji. Artefakt: matryca + jeden zakotwiczony akapit przeglądowy z oznaczeniem ✅ / ⚠️ przekręcone / ❌ brak przy dwóch sprawdzonych tezach.
 :::
 
-RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co *Ty* uznałeś za istotne. To naturalny pomost do następnego rozdziału: NotebookLM, narzędzia, które ten proces częściowo automatyzuje.
+RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co *Ty* uznałeś za istotne. To naturalny pomost do następnego rozdziału: Gemini Notebook, narzędzia, które ten proces częściowo automatyzuje.

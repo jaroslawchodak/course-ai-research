@@ -87,7 +87,7 @@ Powitanie. Ten kurs prowadzi od pojedynczego zapytania, przez inżynierię konte
 - B6 · PDF → czysty Markdown (Python)
 - B7 · Dane strukturalne (JSON)
 - B8 · RAG + matryca literatury
-- 🆕 **NotebookLM** — parser i generator
+- 🆕 **Gemini Notebook** (dawniej NotebookLM) — parser i generator
 :::
 ::: {.column width="33%"}
 **DZIEŃ 3 — Agenci**
@@ -104,7 +104,7 @@ Powitanie. Ten kurs prowadzi od pojedynczego zapytania, przez inżynierię konte
 > **Cztery standardy przekrojowe** (w każdym bloku): 🪟/🍎 dwutorowość Windows/macOS · trzy tory dyscyplinarne (ścisłe · społeczne · humanistyka) · Plan B dla kont darmowych · narastająca biblioteka promptów.
 
 ::: notes
-To jest mapa całości i zarazem kontrakt na trzy dni. Zwracam uwagę na nowości względem pierwotnego planu, oznaczone „nowość": pełna dwutorowość Windows/macOS w każdej instrukcji, trzy tory dyscyplinarne w ćwiczeniach, moduł NotebookLM w Dniu 2, warsztat weryfikacji źródeł z trzystopniowym werdyktem w B9, a w Dniu 3 — modele lokalne prowadzone jako „decyzja + demonstracja", agent nad plikami z demem klastrowania literatury i pokazem prompt injection, wreszcie budowa katalogu projektu od zera. Kolejności nie odwracamy — agent bez opanowanego promptu i kontekstu tylko szybciej powiela błędy.
+To jest mapa całości i zarazem kontrakt na trzy dni. Zwracam uwagę na nowości względem pierwotnego planu, oznaczone „nowość": pełna dwutorowość Windows/macOS w każdej instrukcji, trzy tory dyscyplinarne w ćwiczeniach, moduł Gemini Notebook w Dniu 2, warsztat weryfikacji źródeł z trzystopniowym werdyktem w B9, a w Dniu 3 — modele lokalne prowadzone jako „decyzja + demonstracja", agent nad plikami z demem klastrowania literatury i pokazem prompt injection, wreszcie budowa katalogu projektu od zera. Kolejności nie odwracamy — agent bez opanowanego promptu i kontekstu tylko szybciej powiela błędy.
 :::
 
 ---
@@ -576,10 +576,10 @@ Strzałki, ikony, styl flat granat/bursztyn, 16:9, minimum tekstu."
 ![](images/g05-rag.png){width="70%" fig-align="center"}
 
 ::: notes
-RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co Państwo uznali za istotne. Ćwiczenie: matryca dla 3–5 własnych źródeł z kolumną cytat-kotwica i numerem strony, potem przegląd zakotwiczony z poleceniem „nie wychodź poza tabelę". Ryzyko: śmietnik kontekstowy, gdy ktoś wrzuci całe PDF-y. Pytanie refleksyjne: czy inny badacz odtworzyłby mój wniosek z tej matrycy. To naturalny pomost do NotebookLM — narzędzia, które ten proces częściowo automatyzuje.
+RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co Państwo uznali za istotne. Ćwiczenie: matryca dla 3–5 własnych źródeł z kolumną cytat-kotwica i numerem strony, potem przegląd zakotwiczony z poleceniem „nie wychodź poza tabelę". Ryzyko: śmietnik kontekstowy, gdy ktoś wrzuci całe PDF-y. Pytanie refleksyjne: czy inny badacz odtworzyłby mój wniosek z tej matrycy. To naturalny pomost do Gemini Notebook — narzędzia, które ten proces częściowo automatyzuje.
 :::
 
-## 🆕 NotebookLM — parser i generator notatek {.smaller}
+## 🆕 Gemini Notebook (dawniej NotebookLM) — parser i generator notatek {.smaller}
 
 **Czym jest:** narzędzie, które **wczytuje wiele źródeł** (PDF, strony, wideo, własne notatki) i pozwala je odpytywać z **zakotwiczeniem (groundingiem) w tych źródłach**.
 
@@ -592,7 +592,7 @@ RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co Państwo uzna
 <!-- ════════ GRAFIKA [S02] ════════
 TYP: SCREENSHOT
 PLIK: images/s02-notebooklm.png
-DO UCHWYCENIA: "Interfejs NotebookLM: po lewej panel źródeł (kilka wgranych PDF/książka),
+DO UCHWYCENIA: "Interfejs Gemini Notebook: po lewej panel źródeł (kilka wgranych PDF/książka),
 w środku odpowiedź z cytowaniami [1][2], po prawej panel generowania (Audio Overview / wideo /
 notatki). Pokaż, że output jest wielokanałowy."
 ═══════════════════════════════════════════════════════════════════════════ -->
@@ -600,10 +600,10 @@ notatki). Pokaż, że output jest wielokanałowy."
 ![](images/s02-notebooklm.png){width="82%" fig-align="center"}
 
 ::: notes
-NotebookLM to wygodny most między blokiem o RAG a praktyką badacza. Jego siła to dwie rzeczy: po pierwsze odpowiedzi są zakotwiczone w Państwa źródłach i opatrzone odnośnikami; po drugie ten sam materiał można wyprowadzić w wielu formatach — od notatek, przez slajdy i PDF, po audio-podcast i wideo. Dla dydaktyki i szybkiego ogarniania literatury to bardzo mocne. Za chwilę pokażę konkretny schemat czytania książki naukowej i jego ograniczenia.
+Gemini Notebook to wygodny most między blokiem o RAG a praktyką badacza. Jego siła to dwie rzeczy: po pierwsze odpowiedzi są zakotwiczone w Państwa źródłach i opatrzone odnośnikami; po drugie ten sam materiał można wyprowadzić w wielu formatach — od notatek, przez slajdy i PDF, po audio-podcast i wideo. Dla dydaktyki i szybkiego ogarniania literatury to bardzo mocne. Za chwilę pokażę konkretny schemat czytania książki naukowej i jego ograniczenia.
 :::
 
-## 🆕 NotebookLM — case study: czytanie książki naukowej {.smaller}
+## 🆕 Gemini Notebook — case study: czytanie książki naukowej {.smaller}
 
 **Krok 0 — preambuła sesji (wklej raz):**
 
@@ -628,7 +628,7 @@ Zasady na całą rozmowę:
 To skrót mojego sprawdzonego schematu z pliku NotebookLM-book-reading-PL. Pokazuję preambułę, bo to zakotwiczenie w czystej postaci — te same zasady, co w bloku 4, tylko zaaplikowane do całej książki. Z siedmiu kroków na slajdzie zostawiam trzy reprezentatywne: orientację, aparat pojęciowy i syntezę z notatkami trwałymi. Ważna wskazówka metodyczna: krok krytyczny — ocena książki — jest naprawdę mocny dopiero, gdy do notatnika dorzucimy recenzje albo prace konkurencyjne jako dodatkowe źródła. Inaczej krytyka wisi w powietrzu.
 :::
 
-## 🆕 NotebookLM — ta sama książka, trzy pytania dyscyplinarne {.smaller}
+## 🆕 Gemini Notebook — ta sama książka, trzy pytania dyscyplinarne {.smaller}
 
 Na **tych samych** wgranych źródłach prowadzący zadaje kolejno trzy pytania z trzech perspektyw:
 
@@ -638,13 +638,13 @@ Na **tych samych** wgranych źródłach prowadzący zadaje kolejno trzy pytania 
 
 > **Puenta:** zakotwiczenie działa **niezależnie od dyscypliny** — te same źródła, ta sama reguła „odpowiadaj tylko z materiału". Zmienia się nie narzędzie, lecz *pytanie badacza*.
 
-**Ścieżka literatury kursu:** kwerenda (B9) → czyszczenie i streszczenie (B6) → matryca / „mały RAG" (B8) → zakotwiczona lektura wielu źródeł (NotebookLM) → weryfikacja cytowań (B9).
+**Ścieżka literatury kursu:** kwerenda (B9) → czyszczenie i streszczenie (B6) → matryca / „mały RAG" (B8) → zakotwiczona lektura wielu źródeł (Gemini Notebook) → weryfikacja cytowań (B9).
 
 ::: notes
-To domyka ścieżkę literatury całego kursu i zarazem spina trzy tory dyscyplinarne. Pokazuję na żywo, że jedno narzędzie i jedna reguła zakotwiczenia obsługują chemika, psychologa i historyka — różni się tylko pytanie. Dla tej grupy to ważne, bo 60% to nauki ścisłe, a NotebookLM zna dopiero 20%. Wariacja pięciominutowa: te same źródła, trzy perspektywy. Na koniec rysuję pełną ścieżkę literatury — od kwerendy przez streszczenie i matrycę po zakotwiczoną lekturę i weryfikację cytowań w Bloku 9.
+To domyka ścieżkę literatury całego kursu i zarazem spina trzy tory dyscyplinarne. Pokazuję na żywo, że jedno narzędzie i jedna reguła zakotwiczenia obsługują chemika, psychologa i historyka — różni się tylko pytanie. Dla tej grupy to ważne, bo 60% to nauki ścisłe, a NotebookLM, dziś Gemini Notebook, zna dopiero 20%. Wariacja pięciominutowa: te same źródła, trzy perspektywy. Na koniec rysuję pełną ścieżkę literatury — od kwerendy przez streszczenie i matrycę po zakotwiczoną lekturę i weryfikację cytowań w Bloku 9.
 :::
 
-## 🆕 NotebookLM — możliwości a ograniczenia {.smaller}
+## 🆕 Gemini Notebook — możliwości a ograniczenia {.smaller}
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -665,7 +665,7 @@ To domyka ścieżkę literatury całego kursu i zarazem spina trzy tory dyscypli
 :::
 :::
 
-> **Reguła:** NotebookLM tak — ale na **źródłach jawnych**; dane wrażliwe trzymamy lokalnie (zob. Dzień 3).
+> **Reguła:** Gemini Notebook tak — ale na **źródłach jawnych**; dane wrażliwe trzymamy lokalnie (zob. Dzień 3).
 
 ::: notes
 Symetria z resztą kursu: każde mocne narzędzie ma cenę. Tu ceną jest chmura — materiały trafiają na serwery Google, więc niezanonimizowanych transkrypcji czy danych pacjentów tam nie wgrywamy. To naturalne wejście w Dzień trzeci, gdzie pokażę, jak te same zadania zrobić lokalnie, gdy dane są wrażliwe. Druga rzecz: kazałem w preambule nie zmyślać stron właśnie dlatego, że to typowy błąd tego narzędzia.
@@ -1208,7 +1208,7 @@ Ewaluacja jest formująca, nie rankingowa — chodzi o informację zwrotną i o 
 
 - Materiały i szablony: **`kurs-pe/`**
 - Demo agentowe: **`clustering-demo/`** (opis: `kurs-pe/modul-clustering-demo.md`)
-- Schemat NotebookLM: **`NotebookLM-book-reading-PL.md`**
+- Schemat Gemini Notebook: **`NotebookLM-book-reading-PL.md`**
 
 <!-- ════════ GRAFIKA [G08] ════════
 TYP: GENERATOR (ilustracja zamykająca)

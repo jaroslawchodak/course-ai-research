@@ -82,7 +82,7 @@ gradientów i winiet, tekst jako abstrakcyjne kreski (nieczytelny), 16:9." -->
 
 ## Drabina weryfikacji
 
-Zamiast kilku list kontrolnych używamy jednej, pięciostopniowej. Wraca ona przy matrycy literatury, przy NotebookLM i przy raportach *deep research*.
+Zamiast kilku list kontrolnych używamy jednej, pięciostopniowej. Wraca ona przy matrycy literatury, przy Gemini Notebook i przy raportach *deep research*.
 
 | Szczebel | Pytanie | Gdzie sprawdzasz |
 |---|---|---|

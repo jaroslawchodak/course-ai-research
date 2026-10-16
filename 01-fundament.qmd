@@ -140,7 +140,7 @@ Krajobraz narzędzi · anatomia promptu · Markdown i XML · halucynacje i ochro
 **Kontekst**
 *„Co podać modelowi?"*
 
-Czym jest kontekst · PDF→Markdown · dane w JSON · RAG i matryca · NotebookLM.
+Czym jest kontekst · PDF→Markdown · dane w JSON · RAG i matryca · Gemini Notebook.
 :::
 ::: {.column width="33%"}
 **Agenci**

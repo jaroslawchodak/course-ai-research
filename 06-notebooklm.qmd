@@ -1,10 +1,14 @@
-# NotebookLM — parser i generator notatek
+# Gemini Notebook — parser i generator notatek
 
-NotebookLM jest wygodnym mostem między rozdziałem o RAG a codzienną praktyką badacza. Wczytuje wiele źródeł i pozwala je odpytywać z zakotwiczeniem (*groundingiem*) w tych źródłach — a przy tym wyprowadza wynik w zaskakująco wielu formatach.
+Gemini Notebook jest wygodnym mostem między rozdziałem o RAG a codzienną praktyką badacza. Wczytuje wiele źródeł i pozwala je odpytywać z zakotwiczeniem (*groundingiem*) w tych źródłach — a przy tym wyprowadza wynik w zaskakująco wielu formatach.
+
+::: {.callout-note title="Nowa nazwa: NotebookLM → Gemini Notebook"}
+16 lipca 2026 r. Google zmienił nazwę NotebookLM na **Gemini Notebook**. Narzędzie działa tak samo, a stary adres `notebooklm.google.com` przekierowuje na `notebook.google.com`. W starszych poradnikach i artykułach spotkasz dawną nazwę. Te same notatniki otworzysz też w aplikacji Gemini (synchronizują się z osobną aplikacją). Nie myl ich ze zwykłym czatem Gemini: notatnik odpowiada na podstawie wgranych źródeł i podaje do nich przypisy. Nowość: każdy notatnik dostaje środowisko w chmurze do uruchamiania kodu i analizy danych (najpierw plany Ultra i Workspace, stopniowo Pro). Stan: październik 2026.
+:::
 
 ## Czym jest i co potrafi
 
-NotebookLM **wczytuje wiele źródeł** naraz (PDF-y, strony, wideo, własne notatki) i odpowiada na pytania, opierając się na tych źródłach i opatrując odpowiedzi odnośnikami. To zakotwiczenie w gotowym narzędziu.
+Gemini Notebook **wczytuje wiele źródeł** naraz (PDF-y, strony, wideo, własne notatki) i odpowiada na pytania, opierając się na tych źródłach i opatrując odpowiedzi odnośnikami. To zakotwiczenie w gotowym narzędziu.
 
 Jego druga siła to **rozległy output**. Z tego samego materiału można wygenerować:
 
@@ -25,13 +29,13 @@ i cieni, bez czytelnego tekstu. 16:9." -->
 
 
 <!-- ════════ Screenshot [s02] ════════
-> 📸 **MIEJSCE NA ZRZUT EKRANU:** Interfejs NotebookLM — po lewej panel źródeł (kilka wgranych PDF-ów / książka), w środku odpowiedź z cytowaniami `[1][2]`, po prawej panel generowania (Audio Overview / wideo / notatki). Ujęcie ma uwidocznić, że output jest wielokanałowy. Plik docelowy: `images/s02-notebooklm.png`. -->
+> 📸 **MIEJSCE NA ZRZUT EKRANU:** Interfejs Gemini Notebook — po lewej panel źródeł (kilka wgranych PDF-ów / książka), w środku odpowiedź z cytowaniami `[1][2]`, po prawej panel generowania (Audio Overview / wideo / notatki). Ujęcie ma uwidocznić, że output jest wielokanałowy. Plik docelowy: `images/s02-notebooklm.png`. -->
 
 ![](images/s02-notebooklm.png){fig-align="center" width="100%"}
 
 ## Case study: czytanie książki naukowej
 
-Najlepiej pokazać NotebookLM na konkretnym, sprawdzonym schemacie czytania książki. Zaczynamy od **preambuły sesji**, którą wklejamy raz — to zakotwiczenie w czystej postaci, te same zasady, które poznaliśmy wcześniej, tylko zaaplikowane do całej książki:
+Najlepiej pokazać Gemini Notebook na konkretnym, sprawdzonym schemacie czytania książki. Zaczynamy od **preambuły sesji**, którą wklejamy raz — to zakotwiczenie w czystej postaci, te same zasady, które poznaliśmy wcześniej, tylko zaaplikowane do całej książki:
 
 ```markdown
 Zasady na całą rozmowę:
@@ -64,11 +68,11 @@ Zakotwiczenie działa **niezależnie od dyscypliny**. Na *tych samych* wgranych 
 
 Jedno narzędzie i jedna reguła zakotwiczenia obsługują chemika, psychologa i historyka jednakowo. To praktyczny dowód, że dobór *pytania* leży po stronie badacza, a zakotwiczenie po stronie metody — nie dyscypliny.
 
-## Gdzie NotebookLM leży w ścieżce pracy z literaturą
+## Gdzie Gemini Notebook leży w ścieżce pracy z literaturą
 
-NotebookLM nie zastępuje wcześniejszych kroków — wpina się między nie. Cała ścieżka pracy z literaturą, którą składamy w trakcie szkolenia, tworzy powtarzalny ciąg:
+Gemini Notebook nie zastępuje wcześniejszych kroków — wpina się między nie. Cała ścieżka pracy z literaturą, którą składamy w trakcie szkolenia, tworzy powtarzalny ciąg:
 
-**kwerenda** (deep research) → **czyszczenie i streszczenie** (PDF → Markdown) → **matryca / „mały RAG"** → **zakotwiczona lektura wielu źródeł** (NotebookLM) → **weryfikacja cytowań** (u źródła).
+**kwerenda** (deep research) → **czyszczenie i streszczenie** (PDF → Markdown) → **matryca / „mały RAG"** → **zakotwiczona lektura wielu źródeł** (Gemini Notebook) → **weryfikacja cytowań** (u źródła).
 
 <!-- ════════ GRAFIKA [G30] ════════
 TYP: GENERATOR (ścieżka pracy z literaturą)
@@ -109,4 +113,4 @@ Symetria z resztą szkolenia jest prosta: każde mocne narzędzie ma cenę.
 Ceną wygody jest chmura: materiały trafiają na serwery Google. Niezanonimizowanych transkrypcji, recenzji pod NDA czy danych pacjentów tam **nie wgrywamy**. To naturalne wejście w część o agentach, gdzie pokazujemy, jak te same zadania zrobić lokalnie, gdy dane są wrażliwe.
 :::
 
-NotebookLM domyka temat kontekstu od strony narzędzia gotowego. Teraz przechodzimy do agentów — najpierw do trybów *deep research*, a potem do tego, co zrobić, gdy dane nie mogą opuścić komputera.
+Gemini Notebook domyka temat kontekstu od strony narzędzia gotowego. Teraz przechodzimy do agentów — najpierw do trybów *deep research*, a potem do tego, co zrobić, gdy dane nie mogą opuścić komputera.
