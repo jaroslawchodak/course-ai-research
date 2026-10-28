@@ -110,14 +110,14 @@ Niezależny audyt — nowa rozmowa z rolą krytyka albo inny model — dobrze wy
 <!-- ════════ GRAFIKA [G38] ════════
 TYP: GENERATOR (protokół weryfikacji twierdzeń)
 PLIK: images/g38-protokol-twierdzen.png
-UWAGA: plik jeszcze nie istnieje — po wygenerowaniu wstaw pod tym komentarzem:
-![](images/g38-protokol-twierdzen.png){fig-align="center" width="100%"}
 PROMPT: "Akapit tekstu (abstrakcyjne kreski) rozcięty na pięć wąskich pasków-twierdzeń, każdy z małą etykietą
 literową w kółku; od każdego paska cienka linia prowadzi do otwartego źródła, gdzie mała lupa wskazuje konkretny
 fragment; po prawej kolumna prostych znaków werdyktu (pełne koło, koło przekreślone ukośnie, puste koło, dwa
 przeciwne grotami trójkąty). Sens: sprawdzanie twierdzenie po twierdzeniu. Styl flat, cienka precyzyjna kreska,
 paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, ciepły
 akcent #B08A6A, atrament #26211C; bez gradientów i winiet, bez czytelnego tekstu, 16:9." -->
+
+![](images/g38-protokol-twierdzen.png){fig-align="center" width="100%"}
 
 <!-- ════════ GRAFIKA [G21] ════════
 TYP: GENERATOR (zakotwiczenie odpowiedzi)

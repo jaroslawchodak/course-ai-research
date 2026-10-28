@@ -104,14 +104,14 @@ Wniosek nie brzmi „narzędzia dedykowane są zbędne". Działają według szty
 <!-- ════════ GRAFIKA [G37] ════════
 TYP: GENERATOR (trzy poziomy wyszukiwania)
 PLIK: images/g37-trzy-poziomy-wyszukiwania.png
-UWAGA: plik jeszcze nie istnieje — po wygenerowaniu wstaw pod tym komentarzem:
-![](images/g37-trzy-poziomy-wyszukiwania.png){fig-align="center" width="100%"}
 PROMPT: "Trzy stopnie schodów od lewej do prawej, na każdym prosty piktogram: dymek czatu z małą lupą (czat z
 wyszukiwaniem), złożony wielostronicowy raport z przypisami (deep research), mała postać asystenta przy
 szafce z teczkami, który odkłada raport i notes z listą zapytań do opisanej teczki (wyszukiwanie agentowe).
 Nad wszystkimi stopniami cienka linia z lupą badacza — weryfikacja na każdym poziomie. Styl flat, cienka
 precyzyjna kreska, paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy
 #6B7B8C, atrament #26211C; bez gradientów i winiet, bez czytelnego tekstu, 16:9." -->
+
+![](images/g37-trzy-poziomy-wyszukiwania.png){fig-align="center" width="100%"}
 
 ## Test luki cytowań: który „agent" naprawdę rozumuje
 
