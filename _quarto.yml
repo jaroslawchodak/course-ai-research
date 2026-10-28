@@ -37,6 +37,7 @@ book:
     - 10-clustering-demo.qmd
     - 11-etyka.qmd
     - 12-integracja-ewaluacja.qmd
+    - 13-dla-chetnych.qmd
 
 format:
   html:

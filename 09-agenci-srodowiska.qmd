@@ -75,6 +75,14 @@ PROMPT: "A clean four-tier pyramid diagram, thin precise linework. Bottom widest
 ![](images/g07a-4-warstwy-kontekstu.png){fig-align="center" width="100%"}
 
 
+## Biblioteka promptów jako warstwa projektu
+
+Od pierwszego rozdziału odkładasz działające prompty do folderu `prompty/`. W katalogu projektu ta biblioteka zmienia funkcję: z notatnika staje się **zestawem sprawdzonych poleceń, które agent wykonuje na Twoje wezwanie** — „Wykonaj `prompty/matryca-z-plikow.md` na plikach z `zrodla/md/`". Polecenie nie jest wtedy przepisywane z pamięci, więc za każdym razem działa tak samo.
+
+Porządek biblioteki opiera się na czterech zasadach. **Jeden prompt to jeden plik**, nazwany czasownikiem i obiektem (`streszczenie-z-tagami.md`). Każdy plik ma **tę samą budowę**: kiedy używam, prompt, *wejście i wyjście* (skąd agent czyta, dokąd pisze) oraz uwagi po testach. W `prompty/README.md` leży **spis** — po jednej linijce na prompt — dzięki któremu agent sam wskaże pasujące polecenie. Wreszcie **wersjonujesz przez uwagi, nie przez kopie**: poprawkę opisujesz w uwagach, zamiast mnożyć pliki `v2`, `v3`.
+
+Prompty ogólne (streszczenie, recenzja, weryfikacja) trzymasz w jednym miejscu na dysku i kopiujesz do nowych projektów; prompty specyficzne, na przykład kodowanie według książki kodów konkretnego badania, zostają w projekcie. Prompt, którego używasz co tydzień i który zawsze wymaga tych samych kroków, jest kandydatem na **skill** — o tym niżej.
+
 ## Hierarchia agentów: na czym skupiamy uwagę
 
 Świadomie ustawiamy hierarchię uwagi — od narzędzia, które omawiamy najszerzej, po te wspomniane jedynie z nazwy.
@@ -153,9 +161,26 @@ description: >                     # OPIS-WYZWALACZ — najważniejsza linijka!
 1. [czynność]  2. [czynność]  3. [czynność + format i miejsce zapisu]
 ```
 
-Najważniejszy jest **opis-wyzwalacz** (`description`): to po nim agent decyduje, *kiedy* sięgnąć po skill. Piszesz go więc jak instrukcję dla dyżurnego — precyzyjnie: „używaj, gdy…", „nie używaj, gdy…". Źle napisany opis sprawia, że skill albo nie uruchamia się nigdy, albo włącza się nie w porę.
+Najważniejszy jest **opis-wyzwalacz** (`description`): to po nim agent decyduje, *kiedy* sięgnąć po skill. Piszesz go więc jak instrukcję dla dyżurnego — precyzyjnie: „używaj, gdy…", „nie używaj, gdy…". Źle napisany opis sprawia, że skill albo nie uruchamia się nigdy, albo włącza się nie w porę. W praktyce warto dodać do skilla jeszcze dwie sekcje: **wejście i wyjście** (jakie pliki czyta, co i gdzie zapisuje) oraz **reguły** (czego nie wolno i co robić, gdy brakuje danych).
 
-Trzy realne skille — trzy różne *typy* procedur, które warto rozpoznać, bo pokrywają większość zastosowań badawczych:
+Skill instalujesz w zależności od narzędzia. W **aplikacji Claude** (czat i Cowork, tak samo na Windows i macOS) pakujesz folder skilla do `.zip` i dodajesz go w **Ustawienia → Dostosuj → Skills**; działa to także na planie darmowym, a wbudowany skill *skill-creator* pomaga napisać nowy w rozmowie (Shabanov, 2026). W **Claude Code** kopiujesz folder do `.claude/skills/` w katalogu projektu albo w katalogu domowym (🪟 `C:\Users\<nazwa>\.claude\skills\` · 🍎 `~/.claude/skills/`). **Codex** korzysta ze zgodnego formatu `SKILL.md`. Bez żadnej instalacji skill przetestujesz w każdym czacie, wklejając jego treść z poleceniem „Działaj dokładnie według tej procedury".
+
+Większość pracy badawczej da się opisać kilkoma powtarzalnymi procedurami. Repozytorium materiałów zawiera osiem gotowych skills, z których każdy powstał z promptu znanego z wcześniejszych rozdziałów:
+
+| Skill | Typ procedury | Wejście → wyjście |
+|---|---|---|
+| `streszczenie-z-tagami` | ekstrakcja | plik `.md` → streszczenie z tagiem źródła przy każdym akapicie |
+| `wiersz-matrycy` | ekstrakcja | plik źródła → wiersz matrycy z cytatem-kotwicą |
+| `kwerenda-literatury` | wyszukiwanie | protokół kwerendy → raport, lista kandydatów, dziennik zapytań |
+| `weryfikacja-twierdzen` | kontrola | tekst + `zrodla/` → dziennik weryfikacji (werdykty do zatwierdzenia przez badacza) |
+| `kodowanie-wg-ksiazki-kodow` | analiza jakościowa | materiał zanonimizowany + książka kodów → tabela kodowań z cytatami |
+| `analiza-opisowa` | analiza ilościowa | plik CSV → skrypt, statystyki opisowe, kontrola STAT-5 |
+| `recenzja-metodologiczna` | kontrola (autor ≠ recenzent) | szkic → raport recenzji, bez poprawiania tekstu |
+| `eksport-do-worda` | format | plik `.md` → `.docx` (pandoc) i `.xlsx` |
+
+Wszystkie mają tę samą konstrukcję co dobry prompt: rola zapisana w opisie, wyraźne wejście i wyjście, kroki z planem przed ruchem i reguły chroniące przed zgadywaniem. Na przykład `weryfikacja-twierdzen` rozkłada tekst na twierdzenia, szuka dowodu wyłącznie w `zrodla/`, ale werdykty traktuje jako propozycję — ostatnie słowo należy do badacza.
+
+Trzy skille prowadzącego dobrze pokazują trzy różne *typy* procedur:
 
 | Skill | Typ procedury | Co robi |
 |---|---|---|
@@ -170,14 +195,18 @@ Skill to nie automat, który wyręcza w myśleniu, lecz **spisany raz dobry wars
 :::
 
 ::: {.callout-tip title="Mikroćwiczenie i artefakt"}
-Weź szablon (`szablony-skills/[NAZWA_SKILL].md`), przepisz **opis-wyzwalacz** i **dwa pierwsze kroki** pod własną dyscyplinę, a potem przetestuj w czacie poleceniem „Działaj dokładnie według tej procedury". Artefakt: własny `SKILL.md` sprawdzony na jednym przebiegu.
+Wybierz z `prompty/` prompt, którego użyłeś co najmniej dwa razy, albo jeden z ośmiu skills z tabeli. Przepisz go na `SKILL.md`: nazwa, opis-wyzwalacz, wejście i wyjście, co najmniej trzy kroki, reguły. Przetestuj w nowej rozmowie poleceniem „Działaj dokładnie według tej procedury" na jednym pliku ze `zrodla/` i popraw jedną rzecz, która nie zadziałała. Artefakt: własny `SKILL.md` sprawdzony na jednym przebiegu.
+:::
+
+::: {.callout-warning title="Cudzy skill to cudze instrukcje w Twoim folderze"}
+Skill pobrany z internetu wykonuje polecenia autora w Twoim katalogu projektu, czasem razem ze skryptami. Przed instalacją przeczytaj cały `SKILL.md` i pliki pomocnicze, a pierwszy test zrób na kopii folderu z danymi 🟢.
 :::
 
 ### Repozytorium materiałów i szablony skills
 
 Wszystkie omawiane szablony żyją w **repozytorium materiałów szkoleniowych**, które właśnie zaktualizowaliśmy. Na komputerach laboratoryjnych znajdziesz je pod ścieżką `…/00-course-ai-materials/kurs-pe-materialy`, a publiczny odpowiednik leży na GitHubie: [github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy/).
 
-Zmieniła się też architektura samych szablonów. Rozproszone wcześniej pliki `skill-*.md` **wydzieliliśmy do osobnego katalogu `./szablony-skills`**, gdzie każdy zapisano w formacie `[NAZWA_SKILL].md`. Dzięki temu dołożenie gotowej umiejętności do agenta sprowadza się do wskazania jednego, jednoznacznie nazwanego pliku — nie musisz już przekopywać się przez wspólny worek szablonów.
+Zmieniła się też architektura samych szablonów. Wszystkie skills leżą w katalogu `./szablony-skills`, każdy w osobnym folderze z plikiem `SKILL.md` (i ewentualnie podkatalogami `reference/` lub `scripts/`). Spis z instrukcją instalacji jest w `szablony-skills/README.md`. Osiem folderów to skills gotowe do instalacji; `research-ideation`, `paper-reviewer` i `sylabus-fakultet` to szablony do adaptacji.
 
 Jak z tego korzystać w praktyce, najlepiej pokazuje umiejętność `sylabus-fakultet` (plik `SKILL.md`):
 
@@ -231,7 +260,8 @@ moj-projekt/
 ├── CLAUDE.md                ← zasady stałe: rola · dane 🟢🟡🔴 · rzetelność · tryb · format
 ├── CONTEXT.md               ← „tu jesteśmy": temat, etap, decyzje
 ├── WORKFLOW.md              ← „tak to robimy": kroki i format wyniku
-├── prompty/                 ← biblioteka promptów odkładana od początku szkolenia
+├── prompty/                 ← biblioteka promptów odkładana od początku szkolenia + README.md ze spisem
+├── skills/                  ← własne skills
 ├── zrodla/                  ← czyste .md z konwersji + matryca literatury
 ├── notatki/                 ← notatki robocze i log akceptacji (`log.md`)
 └── wyniki/                  ← WYŁĄCZNIE efekty pracy AI (nigdy zmieszane ze źródłami)
@@ -379,7 +409,7 @@ Nadzór sprowadza się do trzech czynności: sprawdzasz **plan** (czy agent chce
 :::
 
 ::: {.callout-tip title="Ćwiczenie i artefakt"}
-Zbuduj `moj-projekt/` (pliki kontekstowe + `prompty/`, `zrodla/`, `notatki/`, `wyniki/`), napisz `CLAUDE.md` w pięciu sekcjach i rozetnij go na `CONTEXT.md` i `WORKFLOW.md`. Wrzuć do `zrodla/` swoje czyste `.md` i matrycę literatury. Uruchom prompt wykonawczy na swojej ścieżce (A, B lub C), sprawdź plan, zweryfikuj dwie komórki wyniku i zapisz punkt akceptacji w `notatki/log.md`. Artefakt: katalog projektu z plikami kontekstowymi, `wyniki/matryca-robocza.md` i log nadzoru.
+Zbuduj `moj-projekt/` (pliki kontekstowe + `prompty/` ze spisem, `skills/`, `zrodla/`, `notatki/`, `wyniki/`), napisz `CLAUDE.md` w pięciu sekcjach i rozetnij go na `CONTEXT.md` i `WORKFLOW.md`. Wrzuć do `zrodla/` swoje czyste `.md` i matrycę literatury. Uruchom prompt wykonawczy na swojej ścieżce (A, B lub C), sprawdź plan, zweryfikuj dwie komórki wyniku i zapisz punkt akceptacji w `notatki/log.md`. Artefakt: katalog projektu z plikami kontekstowymi, `wyniki/matryca-robocza.md` i log nadzoru.
 :::
 
 

@@ -1,4 +1,4 @@
-# Halucynacje w 2026 roku i sygnalizator danych
+# Halucynacje: protokół weryfikacji i sygnalizator danych
 
 Halucynacja brzmi *dokładnie tak samo pewnie* jak fakt, dlatego potrzebujemy metody jej wykrycia, a nie wyczucia. A skoro dobry prompt zachęca do podawania modelowi coraz więcej materiału, właśnie tutaj zaczyna się ryzyko wycieku danych. Ten rozdział łączy dwie strony tej samej ostrożności: *sprawdź, czy źródło mówi to, co twierdzi model*, i *nadaj danym kolor, zanim je komuś oddasz*.
 
@@ -33,7 +33,9 @@ Skala zjawiska poza salą szkoleniową nie jest marginalna. W artykułach przyj�
 
 ## Sześć błędów, których szukamy
 
-Zamiast jednej kategorii „halucynacja" pracujemy z mapą sześciu typów. Każdy wygląda inaczej i każdy łapie się na innym etapie weryfikacji.
+Literatura przeglądowa rozróżnia dwie rodziny błędów. Błędy **wierności** (*faithfulness*) to odpowiedź, która odbiega od materiału przekazanego modelowi, na przykład od Twojego PDF-u. Błędy **faktograficzności** (*factuality*) to odpowiedź niezgodna ze stanem wiedzy, na przykład zmyślony artykuł (Ji i in., 2023; Huang i in., 2025). Rozróżnienie ma praktyczny sens: pierwszy rodzaj sprawdzasz w materiale, który sam podałeś, drugi w źródłach zewnętrznych.
+
+W obrębie tych rodzin pracujemy z typologią sześciu błędów. Każdy wygląda inaczej i każdy łapie się na innym etapie weryfikacji.
 
 | # | Typ błędu | Jak wygląda | Kiedy spodziewać się go najbardziej |
 |---|---|---|---|
@@ -67,6 +69,55 @@ Wobec subtelnych błędów z mapy powyżej zakotwiczenie warto uzupełnić trzem
 - **Najpierw pytaj, czy coś istnieje, potem o szczegóły.** „Czy znasz prace łączące X i Y? Jeśli nie masz pewności, napisz to wprost" zamiast „Podaj trzy prace łączące X i Y".
 - **Źródło każdej liczby.** „Przy każdej liczbie wskaż, z której komórki danych ją wziąłeś; liczby obliczone oznacz i pokaż obliczenie."
 - **Świeży czat jako recenzent.** Wynik oceniasz w nowej rozmowie, bez historii, z rolą krytyka — nie w tej, w której powstał.
+- **Instrukcja końcowa.** Na samym końcu promptu, tuż przed zadaniem, przypominasz: nie dodawaj szczegółów, których nie ma w materiale; formułuj ustalenie tylko wtedy, gdy wskażesz fragment, który je uzasadnia; jeśli materiał jest niejednoznaczny, powiedz to wprost. Takie przypomnienie jako ostatni element instrukcji zaleca zespół Applied AI firmy Anthropic.
+
+Zakotwiczenie ogranicza błędy, ale ich nie usuwa. Drugą połową pracy jest ich wykrywanie — i tu potrzebna jest procedura, a nie ogólne wrażenie.
+
+## Protokół weryfikacji twierdzeń
+
+Weryfikacja „całej odpowiedzi naraz" zawodzi, bo jedno trafne zdanie uwiarygadnia trzy błędne. Dlatego sprawdzamy **twierdzenia atomowe** — najmniejsze jednostki treści, które da się osobno potwierdzić albo obalić. Na tej samej zasadzie badacze mierzą faktograficzność długich odpowiedzi modeli (metoda FActScore; Min i in., 2023). Protokół ma pięć kroków:
+
+| Krok | Co robisz | Kto wykonuje |
+|---|---|---|
+| **1. Dekompozycja** | rozkładasz odpowiedź na ponumerowane twierdzenia atomowe | model, badacz poprawia |
+| **2. Typ** | **B** bibliograficzne (istnieje praca X) · **A** atrybucja (praca X twierdzi Y) · **E** empiryczne (wynik, próba, liczba) · **I** interpretacja lub synteza | badacz |
+| **3. Dowód** | dla B, A i E źródło pierwotne, lokalizacja i dosłowny fragment; dla I numery twierdzeń, na których wniosek stoi | badacz |
+| **4. Werdykt** | **potwierdzone** · **zniekształcone** (źródło istnieje, ale mówi co innego lub mniej) · **niepotwierdzone** (brak dowodu) · **sprzeczne**; dodatkowo adnotacja *wycofana lub skorygowana* | badacz |
+| **5. Dziennik** | zapis w tabeli i decyzja: użyj, przeformułuj sam, usuń | badacz |
+
+Typ twierdzenia mówi, gdzie szukać dowodu: B w bazach bibliograficznych, A i E w tekście źródła — nie w abstrakcie — a I ocenia się przez trafność twierdzeń, na których stoi. Werdykt **zniekształcone** jest najważniejszy: oznacza prawdziwe źródło z fałszywą tezą, czyli błąd, który przechodzi przez sprawdzenie samego DOI.
+
+Krok pierwszy możesz zlecić modelowi:
+
+```text
+Rozłóż poniższy tekst na ponumerowane twierdzenia atomowe:
+jedno twierdzenie = jedna informacja, którą da się osobno sprawdzić.
+Przy każdym podaj typ: B (istnienie publikacji), A (publikacja X twierdzi Y),
+E (liczba, wynik, próba), I (interpretacja lub synteza).
+Nie oceniaj prawdziwości, nie poprawiaj i nie dodawaj treści.
+Format: tabela | nr | twierdzenie | typ | fragment tekstu, z którego pochodzi |
+```
+
+**Dziennik weryfikacji** jest dowodem staranności: pokazuje, co sprawdzono, gdzie i z jakim wynikiem. Dołączasz go do dokumentacji projektu i przywołujesz w oświadczeniu o użyciu AI. Szablon: `kurs-pe/szablony/dziennik-weryfikacji-szablon.md`.
+
+Dwie metody wspierają protokół z obu stron:
+
+- **Po stronie modelu — Chain-of-Verification.** Model do każdego twierdzenia formułuje pytanie kontrolne, a odpowiedzi udziela w *nowej* rozmowie, niezależnie od pierwotnego tekstu i najlepiej na podstawie załączonego źródła (Dhuliawala i in., 2023). Rozbieżności wskazują, co sprawdzić najpierw. Model przygotowuje weryfikację, ale jej nie rozstrzyga.
+- **Po stronie badacza — czytanie lateralne (SIFT).** Metoda z dydaktyki weryfikacji informacji ma cztery ruchy: zatrzymaj się, sprawdź źródło poza nim samym, poszukaj lepszego opracowania, dotrzyj do miejsca, z którego twierdzenie pochodzi (Caulfield i Wineburg, 2023). Przy wynikach AI najważniejszy jest ostatni ruch: odpowiedź modelu nie ma autora ani redakcji, którą można ocenić, więc liczy się tylko to, czy twierdzenie da się prześledzić do źródła.
+
+Niezależny audyt — nowa rozmowa z rolą krytyka albo inny model — dobrze wyłapuje niespójności i liczby bez źródła, ale nie zastępuje wiedzy dziedzinowej. Jest filtrem, który wskazuje, co sprawdzić, a nie werdyktem.
+
+<!-- ════════ GRAFIKA [G38] ════════
+TYP: GENERATOR (protokół weryfikacji twierdzeń)
+PLIK: images/g38-protokol-twierdzen.png
+UWAGA: plik jeszcze nie istnieje — po wygenerowaniu wstaw pod tym komentarzem:
+![](images/g38-protokol-twierdzen.png){fig-align="center" width="100%"}
+PROMPT: "Akapit tekstu (abstrakcyjne kreski) rozcięty na pięć wąskich pasków-twierdzeń, każdy z małą etykietą
+literową w kółku; od każdego paska cienka linia prowadzi do otwartego źródła, gdzie mała lupa wskazuje konkretny
+fragment; po prawej kolumna prostych znaków werdyktu (pełne koło, koło przekreślone ukośnie, puste koło, dwa
+przeciwne grotami trójkąty). Sens: sprawdzanie twierdzenie po twierdzeniu. Styl flat, cienka precyzyjna kreska,
+paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, ciepły
+akcent #B08A6A, atrament #26211C; bez gradientów i winiet, bez czytelnego tekstu, 16:9." -->
 
 <!-- ════════ GRAFIKA [G21] ════════
 TYP: GENERATOR (zakotwiczenie odpowiedzi)
@@ -82,7 +133,7 @@ gradientów i winiet, tekst jako abstrakcyjne kreski (nieczytelny), 16:9." -->
 
 ## Drabina weryfikacji
 
-Zamiast kilku list kontrolnych używamy jednej, pięciostopniowej. Wraca ona przy matrycy literatury, przy Gemini Notebook i przy raportach *deep research*.
+Drabina mówi, *gdzie* szukać dowodu do trzeciego kroku protokołu. Wraca przy matrycy literatury, przy Gemini Notebook i przy raportach z kwerendy.
 
 | Szczebel | Pytanie | Gdzie sprawdzasz |
 |---|---|---|
@@ -92,9 +143,9 @@ Zamiast kilku list kontrolnych używamy jednej, pięciostopniowej. Wraca ona prz
 | 4. **Metoda i liczby** | czy próba, procedura i wyniki są z *tej* pracy? | sekcja metod i tabele |
 | 5. **Status** | czy praca nie została wycofana lub skorygowana i jak przyjęli ją inni? | baner wydawcy, baza Retraction Watch (udostępniana przez Crossref), [Scite](https://scite.ai) |
 
-Próg zależy od stawki, a nie od tego, jak dobrze model wypadł ostatnio. Do orientacji w temacie wystarczą szczeble 1–2 na próbce. Do własnego tekstu każde cytowanie przechodzi szczeble 1–4. Do publikacji — wszystkie pięć.
+Próg zależy od stawki, a nie od tego, jak dobrze model wypadł ostatnio. Do orientacji w temacie wystarczy losowa próbka twierdzeń B i A na szczeblach 1–2. Do własnego tekstu wszystkie twierdzenia B, A i E przechodzą szczeble 1–4. Do publikacji — wszystkie twierdzenia i wszystkie pięć szczebli.
 
-Akapit z liczbami sprawdzasz dodatkowo **checklistą STAT-5**:
+Twierdzenia typu E w akapicie z wynikami sprawdzasz dodatkowo **checklistą STAT-5**:
 
 1. Czy **każda liczba** ma źródło w danych albo pokazane obliczenie?
 2. Czy słowo „istotny" stoi przy **wykonanym** teście, a nie przy „trendzie"?
@@ -114,8 +165,8 @@ stawka, tym wyżej trzeba wejść. Styl flat, cienka precyzyjna kreska, paleta j
 #F1ECE3, akcenty szałwiowa zieleń #8A9A82 i błękit łupkowy #6B7B8C, ciepły akcent #B08A6A, atrament #26211C;
 bez gradientów i winiet, bez czytelnego tekstu, 16:9." -->
 
-::: {.callout-tip title="Ćwiczenie i artefakt: polowanie na halucynacje"}
-W parach wybierz dwie pułapki: jedną ze swojego toru dyscyplinarnego (typy 1–5) i pułapkę uległości (typ 6). Uruchom je w czacie z wyłączonym wyszukiwaniem i sprawdź każdą odpowiedź drabiną weryfikacji. Wypełnij **kartę złapanego błędu**: typ, prompt, co twierdził model, szczebel drabiny, na którym błąd wyszedł, źródło weryfikacji, werdykt i zmianę promptu, która mu zapobiegnie. Model nie popełnił błędu? To też wynik: zapisz test negatywny z dwoma szczeblami weryfikacji i zmień jedną rzecz (wyłącz rozumowanie, zawęź temat, dodaj fałszywą przesłankę). Jeden poprawny wynik niczego nie dowodzi. Artefakt: karta złapanego błędu + checklista weryfikacji (3–5 punktów). Mapa błędów, karta i drabina: `kurs-pe/pulapki/przyklady-halucynacji.md`.
+::: {.callout-tip title="Ćwiczenie i artefakt: dziennik weryfikacji"}
+Przygotuj materiał na jeden z dwóch sposobów: uruchom **test kontrolny** ze swojego toru dyscyplinarnego (prompt zaprojektowany tak, by sprowokować określony typ błędu, np. pytanie o pracę z „bliźniakiem" albo o polemikę, która nie mogła się odbyć) albo poproś model o krótki akapit przeglądowy z trzema odwołaniami do literatury i jedną liczbą. Rozłóż odpowiedź na twierdzenia, sprawdź co najmniej sześć — w tym wszystkie typu B i A, a jedno A lub E w tekście źródła, nie w abstrakcie — i zapisz werdykty w dzienniku. Wszystko potwierdzone? To też wynik; jedna poprawna odpowiedź nie dowodzi rzetelności narzędzia. Artefakt: dziennik weryfikacji + 3–5 reguł weryfikacji do osobistego protokołu. Typologia błędów, testy kontrolne i drabina: `kurs-pe/pulapki/przyklady-halucynacji.md`.
 :::
 
 ## Sygnalizator danych 🟢🟡🔴
@@ -182,4 +233,4 @@ Stan prawny się zmienia (m.in. wyrok TSUE z 2025 r. zawężający, kiedy dane *
 Wypisz pięć typów danych, z którymi realnie pracujesz, i nadaj każdemu kolor przez trzy pytania (`kurs-pe/szablony/sygnalizator-danych-szablon.md`). Przy każdym 🔴 wpisz, co z nim zrobisz: lokalnie, w narzędziu instytucjonalnym albo bez AI. Na koniec wyłącz trenowanie na swoim koncie w ChatGPT lub Claude i zapisz datę sprawdzenia. Artefakt: sygnalizator moich danych — wrócisz do niego w rozdziale o modelach lokalnych.
 :::
 
-Mamy już dwa odruchy na całe życie: *sprawdź, czy źródło mówi to, co twierdzi model*, i *nadaj danym kolor*. Dotąd działały w skali pojedynczego promptu. Teraz przenosimy je na skalę całego materiału badawczego — i to jest inżynieria kontekstu.
+Mamy już dwa odruchy na całe życie: *sprawdź twierdzenie po twierdzeniu, czy źródło mówi to, co twierdzi model*, i *nadaj danym kolor*. Dotąd działały w skali pojedynczego promptu. Teraz przenosimy je na skalę całego materiału badawczego — i to jest inżynieria kontekstu.

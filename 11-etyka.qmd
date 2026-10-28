@@ -2,15 +2,15 @@
 
 Ten rozdział jest krótki, ale bez niego cały warsztat byłby naiwny. Zbiera wątki etyczne rozsiane po wszystkich poprzednich rozdziałach — od ograniczonego zaufania, przez zakotwiczenie i sygnalizator danych, po nadzór nad agentem — i domyka je jedną tezą.
 
-> **Refleksyjność badacza zostaje po stronie człowieka.**
+> **Decyzje badawcze i odpowiedzialność za wynik zostają po stronie człowieka.**
 
 ## Co zostaje przy badaczu — nawet z agentem
 
-AI nie ma biografii ani stawki w temacie. Dlatego trzy rzeczy są **nieprzekazywalne**, niezależnie od tego, jak sprawny jest agent:
+Model nie ponosi odpowiedzialności za wynik i zna cel badania tylko z tego, co mu podano. Dlatego trzy rzeczy są **nieprzekazywalne**, niezależnie od tego, jak sprawny jest agent:
 
-- **Pozycja badacza.** Kto pyta, z jakiej pozycji, z jakimi założeniami. Agent nie umiejscowi kategorii względem własnych uprzedzeń, bo ich nie ma.
+- **Decyzje badawcze.** Pytanie badawcze, rama teoretyczna, dobór próby i kategorii analizy to decyzje, które badacz musi umieć uzasadnić. Model może zaproponować warianty, ale nie odpowiada za wybór.
 - **Odpowiedzialność za interpretację.** Model może *zaproponować* kategorie czy wzorce; ich osadzenie w teorii i kontekście to praca badacza.
-- **Autorstwo wyniku.** Refleksyjność nie znika z pojawieniem się agenta — wymaga jawnego opisu: co zrobił człowiek, a co narzędzie.
+- **Autorstwo wyniku.** Udział narzędzia wymaga jawnego opisu: co zrobił człowiek, a co narzędzie. Dziennik weryfikacji i opis kwerendy są tu najlepszym materiałem.
 
 <!-- ════════ GRAFIKA [G26] ════════
 TYP: GENERATOR (odpowiedzialność zostaje przy badaczu)
@@ -34,7 +34,7 @@ Pięć reguł, które przewijały się przez całe szkolenie jako konkretne nawy
 - **Oddzielaj cytat, parafrazę i interpretację** — cytat zlepiony z parafrazą to plagiat w cudzysłowie.
 - **Anonimizuj przed chmurą** — dane wrażliwe bez anonimizacji to naruszenie zaufania, a przy danych osobowych — naruszenie RODO (wklejenie = przetwarzanie; minimalizacja, podstawa prawna, konsultacja z IOD/DPO). Pamiętaj: pseudonimizacja jest *odwracalna*, więc nie czyni danych anonimowymi.
 - **Pracuj na kopiach** — źródła nigdy nie są edytowane przez agenta.
-- **Zapisuj ślad pracy** — log (`agent_logs/`) to nie luksus, to warunek brzegowy odtwarzalności.
+- **Zapisuj ślad pracy** — log (`notatki/log.md`, `agent_logs/`) i dziennik weryfikacji to nie luksus, to warunek brzegowy odtwarzalności.
 
 ## Ujawnianie użycia AI — część rzetelności
 
@@ -74,7 +74,7 @@ bez gradientów i winiet, 16:9, bez tekstu." -->
 
 > **Reguła startowa.** AI może pomóc Ci pisać, ale autorem i osobą odpowiedzialną jesteś Ty. Twórczy wkład, weryfikacja źródeł i sprawdzenie oryginalności to praca, której nie da się delegować.
 
-> **Kluczowy wniosek.** Narzędzie można delegować; odpowiedzialności — nie. Pozycja badacza, interpretacja i autorstwo zostają po stronie człowieka, a ich jawny opis (*disclosure*) jest częścią rzetelności.
+> **Kluczowy wniosek.** Narzędzie można delegować; odpowiedzialności — nie. Decyzje badawcze, interpretacja i autorstwo zostają po stronie człowieka, a ich jawny opis (*disclosure*) jest częścią rzetelności.
 
 **Pytanie, które zostaje z Tobą.** Gdyby recenzent zapytał „co tu zrobił człowiek, a co AI?" — czy potrafię odpowiedzieć precyzyjnie, dla *każdego* fragmentu?
 

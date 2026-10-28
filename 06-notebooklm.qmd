@@ -72,7 +72,7 @@ Jedno narzędzie i jedna reguła zakotwiczenia obsługują chemika, psychologa i
 
 Gemini Notebook nie zastępuje wcześniejszych kroków — wpina się między nie. Cała ścieżka pracy z literaturą, którą składamy w trakcie szkolenia, tworzy powtarzalny ciąg:
 
-**kwerenda** (deep research) → **czyszczenie i streszczenie** (PDF → Markdown) → **matryca / „mały RAG"** → **zakotwiczona lektura wielu źródeł** (Gemini Notebook) → **weryfikacja cytowań** (u źródła).
+**kwerenda** (czat z wyszukiwaniem, deep research albo agent) → **czyszczenie i streszczenie** (PDF → Markdown) → **matryca / „mały RAG"** → **zakotwiczona lektura wielu źródeł** (Gemini Notebook) → **weryfikacja cytowań** (protokół twierdzeń, u źródła).
 
 <!-- ════════ GRAFIKA [G30] ════════
 TYP: GENERATOR (ścieżka pracy z literaturą)

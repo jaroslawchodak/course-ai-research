@@ -53,7 +53,7 @@ Krajobraz narzędzi (stan czerwiec 2026): **pymupdf4llm** jest najlżejsze i św
 Gdy plików jest więcej — a w prawdziwej kwerendzie są ich dziesiątki — nie uruchamiasz skryptu raz po raz na każdym z osobna. Zaktualizowane **repozytorium materiałów szkoleniowych** (na komputerach laboratoryjnych pod ścieżką `…/00-course-ai-materials/kurs-pe-materialy`, publicznie: [github.com/jaroslawchodak/kurs-pe-materialy](https://github.com/jaroslawchodak/kurs-pe-materialy/)) daje na to gotowy **pipeline zbiorczego (batch) parsowania** wielu PDF-ów naraz. Odpowiada za niego skrypt `konwersja-batch.py`: wskazujesz mu folder z PDF-ami, a on zwraca komplet plików `.md` w katalogu wyjściowym. Instrukcję krok po kroku znajdziesz w pliku `instrukcja-python.md` (**Krok 5**).
 
 ```bash
-python konwersja-batch.py ./pdfy ./markdown   # cały folder PDF → folder .md
+python konwersja-batch.py -i ./pdfy -o ./markdown   # cały folder PDF → folder .md
 ```
 
 Skala nie zwalnia z ostrożności: kontrolę wierności (opisaną niżej) wykonujesz na każdym pliku z osobna, bo batch mnoży nie tylko wygodę, ale i ryzyko cichej utraty treści.
@@ -70,4 +70,33 @@ Skonwertuj własny, zanonimizowany PDF, a potem wyczyść go wg `kurs-pe/konwers
 Groźniejsze od widocznych śmieci OCR jest to, że konwerter **bezgłośnie** zgubi tabelę, przypis, wzór albo pojedynczą liczbę — a Ty analizujesz potem uszkodzone „źródło", nie wiedząc o tym. Dopiero plik z potwierdzoną wiernością wolno traktować jako materiał źródłowy do dalszych rozdziałów. Uszkodzona konwersja zatruwa każdy późniejszy cytat-kotwicę.
 :::
 
-Mamy czysty materiał. Teraz nadamy mu strukturę danych i zbudujemy z niego matrycę literatury — to następny rozdział.
+## Droga powrotna: z Markdown do Worda i Excela
+
+Markdown jest formatem pracy, ale współpracownicy, redakcje i dziekanaty oczekują plików `.docx` i `.xlsx`. Wyniki z czatu i od agenta — matrycę, raport z kwerendy, streszczenie — zapisujesz więc w Markdown, a do Worda konwertujesz na końcu, jedną komendą. **Pandoc** to bezpłatny konwerter, który działa lokalnie: plik nie trafia do żadnej chmury.
+
+::: {.columns}
+::: {.column width="50%"}
+**🪟 Windows (PowerShell)**
+```bash
+winget install --id JohnMacFarlane.Pandoc
+pandoc matryca.md -o matryca.docx
+```
+:::
+::: {.column width="50%"}
+**🍎 macOS (Terminal)**
+```bash
+brew install pandoc
+pandoc matryca.md -o matryca.docx
+```
+:::
+:::
+
+Nagłówki stają się stylami Worda, tabele tabelami, a listy i pogrubienia zostają. Własne style (krój, marginesy, numeracja nagłówków) dodasz szablonem: raz tworzysz kopię wzorca poleceniem `pandoc -o moj-szablon.docx --print-default-data-file reference.docx`, zmieniasz w niej style w Wordzie, a potem konwertujesz z opcją `--reference-doc=moj-szablon.docx`. Bibliografię z eksportu Zotero dołączysz opcjami `--citeproc --bibliography=biblioteka.bib --csl=apa.csl`.
+
+Z Excelem jest inaczej: pandoc umie pliki `.xlsx` wczytać, ale **nie zapisuje** ich (sprawdzone na wersji 3.10). Tabelę przeniesiesz na trzy sposoby: skopiujesz ją z gotowego `.docx` do Excela, użyjesz krótkiego skryptu `md2xlsx.py` z repozytorium materiałów (każda tabela trafia do osobnego arkusza, liczby zostają liczbami) albo poprosisz agenta, by zapisał tabelę jako `.xlsx` bez zmiany treści. W każdym przypadku sprawdzasz potem liczbę wierszy i jedną liczbę.
+
+::: {.callout-note title="Markdown to wersja źródłowa"}
+Poprawki nanosisz w pliku `.md` i konwertujesz ponownie. Poprawianie samego Worda rozjeżdża wersję, na której pracuje agent, z wersją, którą wysyłasz.
+:::
+
+Mamy czysty materiał i wiemy, jak oddać wynik w formacie, którego oczekują inni. Teraz nadamy materiałowi strukturę danych i zbudujemy z niego matrycę literatury — to następny rozdział.

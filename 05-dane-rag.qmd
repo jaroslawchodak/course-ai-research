@@ -149,7 +149,7 @@ Wynik to zawsze lista tabel (każda tabela to lista wierszy), także gdy dokumen
 
 **Windows.** Polecenia `python3 -c '…'` działają w Terminalu macOS i Linuksa. W Windows zapisz kod spomiędzy apostrofów jako plik, np. `xlsx2json.py`, i uruchom: `py xlsx2json.py dane.xlsx dane.json`.
 
-## RAG i matryca literatury
+## RAG i analiza własnej literatury
 
 „Zapytaj model o literaturę z pamięci" to prosta droga do zmyślonych cytatów. RAG odwraca kolejność.
 
@@ -166,6 +166,18 @@ paleta japandi: matowe kremowe tło #F1ECE3, akcenty szałwiowa zieleń #8A9A82 
 
 ![](images/g05-rag.png){fig-align="center" width="100%"}
 
+### Ta sama zasada w trzech skalach
+
+Zasada „najpierw moje fragmenty, potem odpowiedź" działa na trzech poziomach automatyzacji. Różnią się tym, kto wyszukuje fragmenty — a nie tym, kto odpowiada za wynik.
+
+| Skala | Kto wyszukuje fragmenty | Kiedy wystarcza | Gdzie trafiają dane |
+|---|---|---|---|
+| **Matryca literatury** | badacz, ręcznie | 3–15 źródeł, pełna kontrola nad każdą komórką | tam, gdzie wkleisz matrycę |
+| **Gemini Notebook** (następny rozdział) | narzędzie, w obrębie wgranych źródeł | szybka orientacja w kilkunastu źródłach jawnych | chmura Google — tylko 🟢 |
+| **Agent w katalogu projektu** | agent: przegląda pliki, otwiera trafne, cytuje fragmenty z lokalizacją | dziesiątki lub setki źródeł, analizy przekrojowe, zadania powtarzalne | folder lokalny, ale treść czytanych plików idzie do modelu w chmurze (🟢/🟡), chyba że model jest lokalny |
+
+### Matryca literatury: „mały RAG"
+
 W praktyce zaczynamy od **matrycy literatury** — ręcznego, w pełni kontrolowalnego „małego RAG", w którym to badacz decyduje, co wchodzi do kontekstu. Mając choćby kilka wierszy, uruchamiamy prompt zakotwiczony do matrycy:
 
 ```text
@@ -175,11 +187,47 @@ Na podstawie WYŁĄCZNIE poniższej matrycy:
 ```
 
 ::: {.callout-important title="Cytaty-kotwice, nie całe PDF-y"}
-Do matrycy trafiają **dokładne cytaty z numerem strony**, nie całe dokumenty. Wrzucenie pełnych PDF-ów to klasyczny śmietnik kontekstowy. Groźniejsza jest jednak **konfabulacja komórek**: poproszony, by „pomógł wypełnić" matrycę, model potrafi wygenerować prawdopodobnie brzmiącą tezę, lukę, a nawet *cytat-kotwicę* — z pamięci, nie z Twojego źródła. Jeśli taka komórka wejdzie do matrycy, RAG traci sens. Cytat-kotwica musi być przepisany ze źródła przez badacza; rola modelu to **syntezator, nie autor** ustaleń.
+Do matrycy trafiają **dokładne cytaty z numerem strony**, nie całe dokumenty. Wrzucenie pełnych PDF-ów to klasyczny śmietnik kontekstowy. Groźniejsza jest jednak **konfabulacja komórek**: poproszony, by „pomógł wypełnić" matrycę, model potrafi wygenerować prawdopodobnie brzmiącą tezę, lukę, a nawet *cytat-kotwicę* — z pamięci, nie z Twojego źródła. Jeśli taka komórka wejdzie do matrycy, RAG traci sens. Cytat-kotwica musi być przepisany ze źródła przez badacza albo — gdy pracuje agent — sprawdzony na próbce w pliku źródłowym; rola modelu to **syntezator, nie autor** ustaleń.
+:::
+
+### Agentowa analiza literatury w katalogu projektu
+
+Przy pięciu artykułach wystarczy ręczna matryca. Przy pięćdziesięciu ręczna praca staje się wąskim gardłem — i wtedy agent pracujący na folderze czystych plików `.md` robi w kwadrans to, co zajęłoby tydzień. Warunek jest jeden: pracuje według tych samych reguł zakotwiczenia.
+
+**Najpierw PDF → Markdown hurtem.** Skrypt wsadowy z repozytorium materiałów zamienia cały folder PDF-ów na pliki `.md` (🪟 PowerShell: `py konwersja-batch.py -i zrodla\pdf -o zrodla\md` · 🍎 Terminal: `python3 konwersja-batch.py -i zrodla/pdf -o zrodla/md`). Dlaczego Markdown, a nie PDF, gdy pracuje agent? Po pierwsze, **mniej tokenów**: agent czyta treść, a nie stopki i szum układu, więc w tym samym oknie kontekstowym mieści więcej źródeł. Po drugie, **przeszukiwalność**: agent wyszukuje frazy w plikach tekstowych — tak jak Ty funkcją „Znajdź" — i otwiera tylko trafne fragmenty, więc dla większości zadań badawczych nie potrzeba osobnej bazy wektorowej. Po trzecie, **sprawdzalność**: cytat-kotwica wskazuje plik i miejsce w tekście, które otworzysz w każdym edytorze w kilka sekund.
+
+**Potem zadania, których ręcznie się nie robi:**
+
+```text
+Przeczytaj CLAUDE.md. Pracuj wyłącznie na plikach z zrodla/md/.
+
+A. Mapa pojęć: wypisz 10 pojęć, które pojawiają się w co najmniej 3 plikach.
+   Tabela: pojęcie | pliki | jak definiuje je każdy autor (dosłowny fragment + plik).
+B. Kto co twierdzi: zestaw stanowiska wobec tezy „<teza>": popiera / podważa /
+   nie zajmuje stanowiska. Przy każdym wpisie dosłowny fragment i nazwa pliku.
+C. Sprzeczności: wskaż pary źródeł, które podają sprzeczne wyniki lub definicje.
+D. Matryca: dla każdego pliku jeden wiersz „źródło | rok | metoda | teza | luka |
+   cytat-kotwica (plik, miejsce)". Zapisz jako wyniki/matryca-robocza.md.
+
+Czego nie ma w plikach, oznacz „brak danych". Nie dopisuj źródeł z pamięci.
+Na końcu wypisz pliki, których nie udało się przeczytać lub zrozumieć.
+```
+
+**Na końcu kontrola.** Losujesz trzy komórki wyniku i sprawdzasz je protokołem weryfikacji: czy fragment jest w pliku i czy popiera tezę. Raport z pięćdziesięciu plików wygląda na wyczerpujący, nawet gdy agent pominął część z nich — dlatego polecenie każe wypisać pliki nieprzeczytane, a Ty porównujesz liczbę wierszy matrycy z liczbą plików. Agent **skaluje** selekcję i ekstrakcję; werdykt o tym, co trafi do tekstu, zostaje przy Tobie.
+
+### Ten sam wzorzec dla danych empirycznych
+
+Układ „wejście tylko do odczytu, wyniki osobno, plan przed ruchem, ślad pracy" sprawdza się także przy danych.
+
+- **Dane ilościowe.** Agent nie „liczy w głowie": pisze skrypt (R lub Python), uruchamia go na danych z folderu `dane/` i zapisuje skrypt, wynik i opis kroków. Analiza jest **odtwarzalna** — każdy może uruchomić skrypt ponownie i dostać te same liczby. Ty sprawdzasz raport checklistą STAT-5 i porównujesz jedną–dwie wartości z arkuszem.
+- **Dane jakościowe.** Agent stosuje **książkę kodów** przygotowaną przez badacza (kod, definicja, przykład, kontrprzykład) i przy każdym zakodowanym fragmencie podaje dosłowny cytat z lokalizacją. Ty kodujesz niezależnie próbkę fragmentów i porównujesz zgodność. Model jest drugim kodującym, nie jedynym; pierwsze badania z lat 2025–2026 opisują taki układ, choć dowody są na razie wstępne. Książkę kodów i interpretację tworzy badacz.
+
+::: {.callout-warning title="Dane empiryczne a sygnalizator"}
+Transkrypcje wywiadów i dane osób są zwykle 🔴. Do agenta w chmurze trafiają tylko dane zanonimizowane (nie pseudonimizowane) albo zagregowane; w pozostałych przypadkach ten sam wzorzec uruchamiasz z modelem lokalnym albo pracujesz bez AI. Reguła „skrypt może czytać dane osobowe, kontekst agenta — nigdy" pozwala liczyć lokalnie i przekazywać modelowi tylko zagregowany wynik.
 :::
 
 ::: {.callout-tip title="Ćwiczenie i artefakt"}
-Wypełnij `matryca-literatury.md` (`kurs-pe/szablony/matryca-literatury-szablon.md`) dla 3–5 własnych źródeł: *źródło · rok · metoda · teza · luka · cytat-kotwica (str.)*. Podaj matrycę modelowi i poproś o **przegląd zakotwiczony** z poleceniem „nie wychodź poza tabelę". Następnie przejdź tezę po tezie i sprawdź, czy każda ma numer wiersza-źródła i czy nie pojawiła się wiedza spoza matrycy. Na koniec wybierz **dwie tezy** i dla każdej otwórz oryginał (nie streszczenie): czy cytat-kotwica tam jest i czy popiera tezę? To szczeble 3–4 drabiny weryfikacji. Artefakt: matryca + jeden zakotwiczony akapit przeglądowy z oznaczeniem ✅ / ⚠️ przekręcone / ❌ brak przy dwóch sprawdzonych tezach.
+Wypełnij `matryca-literatury.md` (`kurs-pe/szablony/matryca-literatury-szablon.md`) dla 3–5 własnych źródeł: *źródło · rok · metoda · teza · luka · cytat-kotwica (str.)*. Podaj matrycę modelowi i poproś o **przegląd zakotwiczony** z poleceniem „nie wychodź poza tabelę". Przejdź tezę po tezie i sprawdź, czy każda ma numer wiersza-źródła i czy nie pojawiła się wiedza spoza matrycy. Na koniec wybierz **dwie tezy** i dla każdej otwórz oryginał (nie streszczenie): czy cytat-kotwica tam jest i czy popiera tezę? Zapisz werdykt z protokołu weryfikacji (potwierdzone / zniekształcone / niepotwierdzone / sprzeczne). Artefakt: matryca + jeden zakotwiczony akapit przeglądowy z werdyktami dla dwóch tez. Dla chętnych: pierwsza analiza agentowa na własnym folderze `.md` (DC-7) i agent przy danych empirycznych (DC-8).
 :::
 
-RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co *Ty* uznałeś za istotne. To naturalny pomost do następnego rozdziału: Gemini Notebook, narzędzia, które ten proces częściowo automatyzuje.
+RAG zaczyna się od ludzkiej selekcji — model syntetyzuje to, co *Ty* uznałeś za istotne, a agent przenosi tę zasadę na setki plików. Zanim jednak oddamy pracę agentowi, zobaczmy narzędzie pośrednie: Gemini Notebook, który część tego procesu automatyzuje w chmurze.

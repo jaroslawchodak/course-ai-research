@@ -71,16 +71,17 @@ Nie musisz rozumieć sieci neuronowych.
 |---|---|
 | **Fundament** | Trzy filary i odwrotne prawa AI, słownik pojęć, pięć metafor, mapa odruchów. |
 | **Zapytania** | Krajobraz narzędzi, anatomia promptu, Markdown i XML. |
-| **Halucynacje i ochrona danych** | Sześć błędów 2026, drabina weryfikacji, sygnalizator danych, ustawienia prywatności kont, RODO. |
-| **Kontekst** | Inżynieria kontekstu, śmietnik kontekstowy, PDF→Markdown. |
-| **Dane i RAG** | Dane strukturalne w JSON, matryca literatury jako „mały RAG". |
+| **Halucynacje i ochrona danych** | Sześć błędów 2026, protokół weryfikacji twierdzeń i dziennik, drabina weryfikacji, sygnalizator danych, ustawienia prywatności kont, RODO. |
+| **Kontekst** | Inżynieria kontekstu, śmietnik kontekstowy, PDF→Markdown, droga powrotna do Worda i Excela (pandoc). |
+| **Dane i RAG** | Dane strukturalne w JSON, matryca literatury, agentowa analiza własnej literatury, dane ilościowe i jakościowe. |
 | **Gemini Notebook** (dawniej NotebookLM) | Parser i generator notatek; case study czytania książki naukowej. |
-| **Deep research** | Tryby pogłębione, cztery tryby porażki, obowiązkowa weryfikacja źródeł. |
+| **Wyszukiwanie literatury** | Prompt wyszukiwawczy jako protokół, czat, deep research i wyszukiwanie agentowe, narzędzia dedykowane a modele ogólne, cztery tryby porażki. |
 | **Lokalne LLM** | Droga dla danych 🔴, Granite 4.2 i Gemma 4, Dense vs MoE, agentic vs chatbot, kwantyzacja. |
-| **Agenci i środowiska** | ChatGPT Work i Claude Cowork, pliki kontekstowe, praca na folderze w trzech ścieżkach, skills, MCP. |
+| **Agenci i środowiska** | ChatGPT Work i Claude Cowork, katalog projektu, pliki kontekstowe, biblioteka promptów, osiem skills badawczych, MCP. |
 | **Klastrowanie** | Agent w działaniu — klastrowanie literatury (demonstracja). |
 | **Etyka i granice AI** | Co zostaje przy badaczu, higiena pracy, oświadczenie o użyciu AI. |
-| **Integracja i ewaluacja** | Złożenie własnego przepływu, portfolio, źródła. |
+| **Integracja i ewaluacja** | Własny przepływ z agentem, lista kontrolna katalogu projektu, post-test, źródła. |
+| **Dla chętnych** | Czternaście ćwiczeń rozszerzających, uporządkowanych według rozdziałów. |
 
 ## Jak korzystać z tego podręcznika
 

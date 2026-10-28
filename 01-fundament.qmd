@@ -140,13 +140,13 @@ Krajobraz narzędzi · anatomia promptu · Markdown i XML · halucynacje i ochro
 **Kontekst**
 *„Co podać modelowi?"*
 
-Czym jest kontekst · PDF→Markdown · dane w JSON · RAG i matryca · Gemini Notebook.
+Czym jest kontekst · PDF ↔ Markdown ↔ Word · dane w JSON · RAG i analiza literatury · Gemini Notebook.
 :::
 ::: {.column width="33%"}
 **Agenci**
 *„Jak to bezpiecznie złożyć?"*
 
-Deep research · lokalne LLM · hierarchia agentów i edytory · klastrowanie · etyka i portfolio.
+Wyszukiwanie literatury · lokalne LLM · katalog projektu, biblioteka promptów i skills · klastrowanie · etyka i ewaluacja.
 :::
 :::
 
@@ -159,19 +159,19 @@ To narzędzie awaryjne. Jeśli w którymś momencie materiał wyda się zbyt gę
 | Krajobraz narzędzi | Nie ufam pewnie brzmiącemu wynikowi bez śladu źródła. |
 | Anatomia promptu | Rozpisuję prompt na rolę, kontekst, zadanie i format. |
 | Markdown i XML | Oddzielam dane od instrukcji. |
-| Halucynacje i dane | Pytam, czy źródło mówi to, co twierdzi model, a danym nadaję kolor. |
+| Halucynacje i dane | Sprawdzam twierdzenie po twierdzeniu i zapisuję dowód; danym nadaję kolor. |
 | Inżynieria kontekstu | Podaję minimalny, ale wystarczający kontekst. |
 | PDF → Markdown | Najpierw czyszczę materiał, potem proszę AI o analizę. |
 | Dane strukturalne | Dane strukturalne podaję jako dane strukturalne. |
-| RAG i matryca | Model syntetyzuje moją matrycę, nie wymyśla literatury. |
-| Deep research | Raport to lista tropów do sprawdzenia, nie gotowy przegląd. |
+| RAG i analiza literatury | Model syntetyzuje moją matrycę; agent skaluje selekcję, ale jej nie zastępuje. |
+| Wyszukiwanie literatury | Prompt wyszukiwawczy to protokół; wynik kwerendy to lista tropów. |
 | Lokalne LLM | Dla danych 🔴 wybieram: lokalnie, instytucjonalnie albo bez AI. |
-| Agenci | Agent pracuje na plikach pod moim nadzorem. |
-| Integracja | Mam protokół: narzędzie, format, dane, weryfikacja. |
+| Agenci | Agent wie tyle, ile zastanie w katalogu projektu; powtarzalną procedurę zamieniam w skill. |
+| Integracja | Mam protokół i katalog projektu: narzędzie, format, dane, weryfikacja. |
 
 ## Jak pracujemy
 
-Każdy z dwunastu bloków szkolenia trwa 90 minut i kończy się **konkretnym artefaktem** — szablonem promptu, kartą złapanego błędu, matrycą literatury, sygnalizatorem danych. Suma artefaktów składa się na **portfolio**, które jest podstawą ewaluacji.
+Każdy z dwunastu bloków szkolenia trwa 90 minut i kończy się **konkretnym artefaktem** — szablonem promptu, dziennikiem weryfikacji, matrycą literatury, sygnalizatorem danych. Artefakty trafiają do jednego **katalogu projektu**, który jest zarazem podstawą ewaluacji. Ćwiczenia wykraczające poza minimum zebraliśmy w rozdziale „Dla chętnych".
 
 Pracujemy w **zwykłym folderze plików** oraz w edytorze Markdown, Obsidianie, Zotero lub Bookends — narzędziach dostępnych bezpłatnie lub powszechnie posiadanych. Wszystkie szablony są w katalogu `kurs-pe/`, więc nikt nie zaczyna od pustej kartki.
 
@@ -186,8 +186,8 @@ Cztery reguły przewijają się przez całe szkolenie — raz nazwane, dalej ju�
 1. **Dwutorowość 🪟 Windows / 🍎 macOS.** Każda instrukcja techniczna ma wariant dla obu systemów (pary skrótów i ścieżek: `Ctrl+C`/`⌘C`, Eksplorator/Finder, PowerShell/Terminal) — czytasz tylko swoją ramkę.
 2. **Trzy tory dyscyplinarne.** Każde ćwiczenie ma *ten sam* przebieg, lecz inny materiał: **A** nauki ścisłe i przyrodnicze · **B** społeczne · **C** humanistyka. Wybierasz jeden — procedura i kryterium ukończenia są identyczne, różni się wyłącznie treść.
 3. **Plan B dla kont darmowych.** Dla każdego ćwiczenia zagrożonego limitem darmowego planu jest obejście; narzędzia płatne uruchamiamy *na początku* bloku, nie w jego połowie.
-4. **Narastająca biblioteka promptów.** Po każdym rozdziale odkładasz **jeden działający prompt** do `moj-warsztat/prompty/` (nazwa = czasownik + obiekt). Na koniec masz co najmniej sześć promptów — zalążek portfolio i „skills w wersji ręcznej".
+4. **Narastająca biblioteka promptów.** Po każdym rozdziale odkładasz **jeden działający prompt** do `moj-warsztat/prompty/` (nazwa = czasownik + obiekt). Na koniec masz co najmniej sześć promptów — zalążek biblioteki w katalogu projektu i „skills w wersji ręcznej".
 
-Czwarty standard jest artefaktem *narastającym*: ta sama biblioteka promptów wróci w rozdziale o agentach jako folder, który wskażesz swojemu agentowi. Warto zacząć ją prowadzić od pierwszego ćwiczenia.
+Czwarty standard jest artefaktem *narastającym*: ta sama biblioteka promptów wróci w rozdziale o agentach jako folder, z którego agent wykonuje polecenia, a najczęściej używane prompty zamienisz w skills. Warto zacząć ją prowadzić od pierwszego ćwiczenia.
 
 Mając fundament za sobą, zaczynamy od pojedynczego, niezgrabnego zapytania i doprowadzamy je do precyzyjnej instrukcji.

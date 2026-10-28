@@ -1,0 +1,30 @@
+# Dla chętnych {.unnumbered}
+
+Każdy rozdział tego podręcznika kończy się jednym ćwiczeniem, które da się wykonać w czasie zajęć, bez dodatkowej instalacji albo z instalacją przygotowaną przed szkoleniem. Wszystko, co wykracza poza to minimum — warianty techniczne, porównania kilku narzędzi, praca na większych zbiorach — zebraliśmy tutaj. Te ćwiczenia wykonujesz w domu, gdy skończysz minimum przed czasem, albo podczas konsultacji technicznych. Pominięcie żadnego z nich nie blokuje ukończenia szkolenia.
+
+Kryterium podziału było proste. Na zajęciach zostało ćwiczenie, które kończy się artefaktem potrzebnym w katalogu projektu, jest wykonalne bez instalacji (albo z instalacją z materiału wstępnego) i mieści się w 45 minutach razem z omówieniem. Pozostałe trafiły do tej listy, uporządkowanej w kolejności rozdziałów. Pełna treść każdego ćwiczenia leży w repozytorium materiałów, w katalogu `kurs-pe/dla-chetnych/`.
+
+| Nr | Rozdział | Ćwiczenie | Wymaga |
+|---|---|---|---|
+| [DC-1](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-01-drugie-narzedzie.md){target="_blank" rel="noopener"} | Krajobraz narzędzi | drugie narzędzie: to samo pytanie w deep research lub narzędziu literaturowym | konto z deep research |
+| [DC-2](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-02-wariant-dyscyplinarny-i-wlasny-fragment.md){target="_blank" rel="noopener"} | Zapytania | wariant promptu dla własnej dyscypliny i test MD/XML na własnym fragmencie | — |
+| [DC-3](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-03-dwa-narzedzia-i-metoda-cove.md){target="_blank" rel="noopener"} | Halucynacje | ten sam tekst w dwóch narzędziach i metoda CoVe | dwa konta |
+| [DC-4](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-04-zakotwiczone-streszczenie-summarizer.md){target="_blank" rel="noopener"} | Kontekst (PDF → Markdown, pandoc) | zakotwiczone streszczenie (`summarizer-demo/`) | Python albo agent |
+| [DC-5](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-05-json-dla-opornych-konwersja-tabel-i-kontrast.md){target="_blank" rel="noopener"} | Dane strukturalne | JSON dla opornych: konwersja tabel promptem i skryptem, kontrast CSV/JSON | opcjonalnie Python |
+| [DC-6](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-06-automat-a-reka.md){target="_blank" rel="noopener"} | RAG i analiza literatury | automat a ręka: ta sama matryca w Elicit lub Gemini Notebook | konto Elicit/Google |
+| [DC-7](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-07-pierwsza-analiza-agentowa-na-wlasnym-folderze.md){target="_blank" rel="noopener"} | RAG i analiza literatury | pierwsza analiza agentowa na własnym folderze `.md` | agent (B11) |
+| [DC-8](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-08-agent-i-dane-empiryczne.md){target="_blank" rel="noopener"} | RAG i analiza literatury | agent i dane empiryczne: analiza opisowa CSV albo kodowanie według książki kodów | agent (B11), dane 🟢 |
+| [DC-9](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-09-narzedzia-dedykowane-na-tym-samym-pytaniu.md){target="_blank" rel="noopener"} | Wyszukiwanie literatury | narzędzia dedykowane: Elicit, Consensus, Research Rabbit na tym samym pytaniu | konta darmowe |
+| [DC-10](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-10-kwerenda-agentowa-z-raportem-w-pliku.md){target="_blank" rel="noopener"} | Wyszukiwanie literatury | kwerenda agentowa z raportem w pliku (OpenAlex przez API) | agent, klucz OpenAlex |
+| [DC-11](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-11-porzadki-w-plikach-z-planem-przed-ruchem.md){target="_blank" rel="noopener"} | Agenci i środowiska | porządkowanie folderu PDF-ów z planem przed ruchem | agent |
+| [DC-12](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-12-sciezka-terminalowa-i-wariant-bez-sieci.md){target="_blank" rel="noopener"} | Agenci i środowiska | ścieżka C: Claude Code / Codex; wariant bez sieci OpenCode + Ollama | instalacja z Bloku 0 |
+| [DC-13](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-13-test-modelu-lokalnego-z-rubrykiem.md){target="_blank" rel="noopener"} | Lokalne LLM | test modelu lokalnego z rubrykiem | Ollama lub LM Studio |
+| [DC-14](https://github.com/jaroslawchodak/kurs-pe-materialy/blob/main/kurs-pe/dla-chetnych/DC-14-pandoc-w-praktyce.md){target="_blank" rel="noopener"} | Kontekst (PDF → Markdown, pandoc) | pandoc w praktyce: szablon stylów, bibliografia, eksport tabel do Excela | pandoc, opcjonalnie Python |
+
+::: {.callout-tip title="Od czego zacząć"}
+Jeśli masz czas tylko na dwa ćwiczenia, wybierz **DC-7** (pierwsza analiza agentowa na własnym folderze plików `.md`) i **DC-10** (kwerenda agentowa z raportem w pliku). Oba przenoszą umiejętności z zajęć na Twój prawdziwy materiał i oba kończą się plikami, które zostają w katalogu projektu.
+:::
+
+::: {.callout-important title="Te same zasady co na zajęciach"}
+Ćwiczenia dla chętnych nie zmieniają reguł: do folderu agenta trafiają tylko dane 🟢 i 🟡, wynik weryfikujesz protokołem twierdzeń, a decyzje badawcze należą do Ciebie.
+:::
